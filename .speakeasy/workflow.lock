@@ -2,8 +2,8 @@ speakeasyVersion: 1.335.2
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:1b898c288d323de368271babb0ced625efe86b593f0794d1a4b84310b115716f
-        sourceBlobDigest: sha256:265a2675014684b7924a6376339964e77d86b34ccae324cc7124547e95a0efb1
+        sourceRevisionDigest: sha256:d73615c135cb6a657032725013f5462880b56eef7adc0d75ebed76d806f1d904
+        sourceBlobDigest: sha256:cb58cc3dd51f13f4dadf7853d8361f94a97efaa25e26045d869fdc28dc65a7e7
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     comfy-deploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:1b898c288d323de368271babb0ced625efe86b593f0794d1a4b84310b115716f
-        sourceBlobDigest: sha256:265a2675014684b7924a6376339964e77d86b34ccae324cc7124547e95a0efb1
+        sourceRevisionDigest: sha256:d73615c135cb6a657032725013f5462880b56eef7adc0d75ebed76d806f1d904
+        sourceBlobDigest: sha256:cb58cc3dd51f13f4dadf7853d8361f94a97efaa25e26045d869fdc28dc65a7e7
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -27,3 +27,6 @@ workflow:
         comfy-deploy:
             target: typescript
             source: comfydeploy-api
+            publish:
+                npm:
+                    token: $npm_token
