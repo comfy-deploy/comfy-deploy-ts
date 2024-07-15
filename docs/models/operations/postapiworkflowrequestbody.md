@@ -1,0 +1,13 @@
+# PostApiWorkflowRequestBody
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `workflowId`                                                                     | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `workflowName`                                                                   | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `workflow`                                                                       | *any*                                                                            | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `workflowApi`                                                                    | Record<string, [operations.WorkflowApi](../../models/operations/workflowapi.md)> | :heavy_check_mark:                                                               | N/A                                                                              |
+| `snapshot`                                                                       | [operations.Snapshot](../../models/operations/snapshot.md)                       | :heavy_check_mark:                                                               | N/A                                                                              |
+| `dependencies`                                                                   | [operations.Dependencies](../../models/operations/dependencies.md)               | :heavy_minus_sign:                                                               | N/A                                                                              |

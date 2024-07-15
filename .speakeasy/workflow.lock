@@ -1,0 +1,27 @@
+speakeasyVersion: 1.335.2
+sources:
+    comfydeploy-api:
+        sourceNamespace: comfydeploy-api
+        sourceRevisionDigest: sha256:b1ecd283ed3fa6a5395206cc164e7a5ebf39fc41617192469ed912a4dc2017f0
+        sourceBlobDigest: sha256:ee8f8c1a45b62fe835ca717dc0c8214bfa4b8a564c9c3bfc8a056a1516a28214
+        tags:
+            - latest
+targets:
+    comfy-deploy:
+        source: comfydeploy-api
+        sourceNamespace: comfydeploy-api
+        sourceRevisionDigest: sha256:b1ecd283ed3fa6a5395206cc164e7a5ebf39fc41617192469ed912a4dc2017f0
+        sourceBlobDigest: sha256:ee8f8c1a45b62fe835ca717dc0c8214bfa4b8a564c9c3bfc8a056a1516a28214
+        outLocation: /Users/bennykok/Documents/GitHub/comfy-deploy-ts
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        comfydeploy-api:
+            inputs:
+                - location: https://www.comfydeploy.com/api/doc
+            registry:
+                location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/comfydeploy-api
+    targets:
+        comfy-deploy:
+            target: typescript
+            source: comfydeploy-api
