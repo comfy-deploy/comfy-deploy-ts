@@ -7,9 +7,6 @@ sources:
         registry:
             location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/comfydeploy-api
 targets:
-    comfy-deploy:
+    comfydeploy:
         target: typescript
         source: comfydeploy-api
-        publish:
-            npm:
-                token: $npm_token

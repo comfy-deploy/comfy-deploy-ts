@@ -21,7 +21,7 @@ typescript:
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
-  author: Speakeasy
+  author: comfydeploy
   clientServerStatusCodesAsErrors: true
   enumFormat: union
   flattenGlobalSecurity: true
@@ -38,7 +38,7 @@ typescript:
   methodArguments: require-security-and-request
   moduleFormat: commonjs
   outputModelSuffix: output
-  packageName: comfy-deploy
+  packageName: comfydeploy
   responseFormat: flat
   templateVersion: v2
   useIndexModules: true
