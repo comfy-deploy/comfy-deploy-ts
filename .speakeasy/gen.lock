@@ -5,8 +5,10 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.335.2
   generationVersion: 2.372.3
-  releaseVersion: 0.0.1
-  configChecksum: dddcafe3ab9a568783ddc106e2d6e183
+  releaseVersion: 0.0.2
+  configChecksum: 9b603cf0b5cb7dc0bee2d4b987938ace
+  repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
+  installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
 features:
   typescript:
     additionalDependencies: 0.1.0

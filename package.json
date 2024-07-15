@@ -1,9 +1,13 @@
 {
   "name": "comfy-deploy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/comfy-deploy/comfy-deploy-ts.git"
+  },
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",
