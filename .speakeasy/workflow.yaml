@@ -10,3 +10,6 @@ targets:
     comfy-deploy:
         target: typescript
         source: comfydeploy-api
+        publish:
+            npm:
+                token: $npm_token
