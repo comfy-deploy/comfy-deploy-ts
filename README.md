@@ -22,25 +22,25 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add comfy-deploy
+npm add comfydeploy
 ```
 
 ### PNPM
 
 ```bash
-pnpm add comfy-deploy
+pnpm add comfydeploy
 ```
 
 ### Bun
 
 ```bash
-bun add comfy-deploy
+bun add comfydeploy
 ```
 
 ### Yarn
 
 ```bash
-yarn add comfy-deploy zod
+yarn add comfydeploy zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -59,7 +59,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ### Example
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -121,7 +121,7 @@ Some of the endpoints in this SDK support retries.  If you use the SDK without a
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -156,7 +156,7 @@ run();
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     retryConfig: {
@@ -201,8 +201,8 @@ Validation errors can also occur when either method arguments or data returned f
 
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
-import { SDKValidationError } from "comfy-deploy/models/errors";
+import { ComfyDeploy } from "comfydeploy";
+import { SDKValidationError } from "comfydeploy/models/errors";
 
 const comfyDeploy = new ComfyDeploy({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -258,7 +258,7 @@ You can override the default server globally by passing a server index to the `s
 | 0 | `https:///api` | None |
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     serverIdx: 0,
@@ -284,7 +284,7 @@ run();
 The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     serverURL: "https:///api",
@@ -323,8 +323,8 @@ custom header and a timeout to requests and how to use the `"requestError"` hook
 to log errors:
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
-import { HTTPClient } from "comfy-deploy/lib/http";
+import { ComfyDeploy } from "comfydeploy";
+import { HTTPClient } from "comfydeploy/lib/http";
 
 const httpClient = new HTTPClient({
   // fetcher takes a function that has the same signature as native `fetch`.
@@ -367,7 +367,7 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",

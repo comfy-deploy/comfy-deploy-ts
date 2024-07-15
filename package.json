@@ -1,7 +1,7 @@
 {
-  "name": "comfy-deploy",
-  "version": "0.0.3",
-  "author": "Speakeasy",
+  "name": "comfydeploy",
+  "version": "0.0.17-beta",
+  "author": "comfydeploy",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {

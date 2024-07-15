@@ -1,6 +1,6 @@
 <!-- Start SDK Example Usage [usage] -->
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",

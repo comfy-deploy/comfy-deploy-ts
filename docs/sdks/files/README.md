@@ -12,7 +12,7 @@ Usually when you run something, you want to upload a file, image etc.
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",

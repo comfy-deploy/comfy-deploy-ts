@@ -17,7 +17,7 @@ This endpoints is specifically built for ComfyUI workflow upload.
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -62,7 +62,7 @@ This endpoints is specifically built for ComfyUI workflow upload.
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -125,7 +125,7 @@ Use this to retrieve comfyui workflow by id
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -170,7 +170,7 @@ Use this to retrieve comfyui workflow by id
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -215,7 +215,7 @@ Use this to retrieve comfyui workflow inputs definition by id
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -260,7 +260,7 @@ Get all deployed workflows
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",

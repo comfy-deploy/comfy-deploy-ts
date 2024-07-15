@@ -19,7 +19,7 @@ Call this to get a run's output, usually in conjunction with polling method
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -65,7 +65,7 @@ Run a workflow via deployment_id
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -108,7 +108,7 @@ Get a websocket url for a specific deployment
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -153,7 +153,7 @@ Create an endpoint for a machine
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -199,7 +199,7 @@ Retrieve workflows based on optional query parameters
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -242,7 +242,7 @@ Create a new workflow by analyzing the provided workflow JSON
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -285,7 +285,7 @@ Retrieve the latest version of a specific workflow by its ID
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -330,7 +330,7 @@ Retrieve the latest version of a specific workflow by its ID
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",

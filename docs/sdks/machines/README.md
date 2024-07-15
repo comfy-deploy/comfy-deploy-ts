@@ -15,7 +15,7 @@ Register a machine event
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -63,7 +63,7 @@ Retrieve details of all machines for the authenticated user, with pagination and
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -106,7 +106,7 @@ Create a new machine with optional default setting
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -149,7 +149,7 @@ Retrieve details of a specific machine by its ID, with optional workspace detail
 ### Example Usage
 
 ```typescript
-import { ComfyDeploy } from "comfy-deploy";
+import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
   bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",

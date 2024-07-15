@@ -1,8 +1,8 @@
 
 
 {
-  "name": "comfy-deploy",
-  "version": "0.0.3",
+  "name": "comfydeploy",
+  "version": "0.0.17-beta",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    
