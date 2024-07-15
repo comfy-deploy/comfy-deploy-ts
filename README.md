@@ -22,25 +22,25 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add https://github.com/comfy-deploy/comfy-deploy-ts
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add https://github.com/comfy-deploy/comfy-deploy-ts
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add https://github.com/comfy-deploy/comfy-deploy-ts
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET> zod
+yarn add https://github.com/comfy-deploy/comfy-deploy-ts zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
