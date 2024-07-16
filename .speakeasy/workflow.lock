@@ -1,11 +1,12 @@
-speakeasyVersion: 1.335.2
+speakeasyVersion: 1.337.0
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:eac5e140a52d73dcc0e37041f7f1dc6ef92a2e44557d1e0b5b47ccea8ac2c3e4
-        sourceBlobDigest: sha256:78cfd5ded5011c777fb13f2e9a18a5288f2a389687fb87ac77af3b052dc51ff9
+        sourceRevisionDigest: sha256:bdeffcc9e02785c7abccd3379f539fa5b2f6ab1bffba5c3de83b654b2b9fadc2
+        sourceBlobDigest: sha256:c8ec7f5a332ba2e2658605eee678c16482b29f8e00ef0c1a147ed64527f26011
         tags:
             - latest
+            - main
 targets:
     comfy-deploy:
         source: comfydeploy-api
@@ -16,19 +17,25 @@ targets:
     comfydeploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:eac5e140a52d73dcc0e37041f7f1dc6ef92a2e44557d1e0b5b47ccea8ac2c3e4
-        sourceBlobDigest: sha256:78cfd5ded5011c777fb13f2e9a18a5288f2a389687fb87ac77af3b052dc51ff9
-        outLocation: /Users/bennykok/Documents/GitHub/comfy-deploy-ts
+        sourceRevisionDigest: sha256:bdeffcc9e02785c7abccd3379f539fa5b2f6ab1bffba5c3de83b654b2b9fadc2
+        sourceBlobDigest: sha256:c8ec7f5a332ba2e2658605eee678c16482b29f8e00ef0c1a147ed64527f26011
+        codeSamplesNamespace: code-samples-typescript-comfydeploy
+        codeSamplesRevisionDigest: sha256:43d9e2de84329fb2a91eb719f2cae58d5bcb02358f94d000628bfe9ba620ce52
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         comfydeploy-api:
             inputs:
-                - location: http://localhost:3010/api/openapi.json
+                - location: https://www.comfydeploy.com/api/openapi.json
             registry:
                 location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/comfydeploy-api
     targets:
         comfydeploy:
             target: typescript
             source: comfydeploy-api
+            codeSamples:
+                output: codeSamples.yaml
+                registry:
+                    location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/code-samples-typescript-comfydeploy
