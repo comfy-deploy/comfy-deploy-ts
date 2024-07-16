@@ -49,15 +49,15 @@ export class Comfyui extends ClientSDK {
      * @remarks
      * This endpoints is specifically built for ComfyUI workflow upload.
      */
-    async getApiAuthResponseRequestId(
-        request: operations.GetApiAuthResponseRequestIdRequest,
+    async getAuthResponseRequestId(
+        request: operations.GetAuthResponseRequestIdRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiAuthResponseRequestIdResponse> {
+    ): Promise<operations.GetAuthResponseRequestIdResponse> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiAuthResponseRequestIdRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetAuthResponseRequestIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -68,7 +68,7 @@ export class Comfyui extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-        const path$ = this.templateURLComponent("/api/auth-response/{request_id}")(pathParams$);
+        const path$ = this.templateURLComponent("/auth-response/{request_id}")(pathParams$);
 
         const query$ = "";
 
@@ -85,7 +85,7 @@ export class Comfyui extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/auth-response/{request_id}",
+            operationID: "get_/auth-response/{request_id}",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -116,11 +116,11 @@ export class Comfyui extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiAuthResponseRequestIdResponse>()
-            .json(200, operations.GetApiAuthResponseRequestIdResponse$inboundSchema)
-            .json(201, operations.GetApiAuthResponseRequestIdResponse$inboundSchema)
+        const [result$] = await this.matcher<operations.GetAuthResponseRequestIdResponse>()
+            .json(200, operations.GetAuthResponseRequestIdResponse$inboundSchema)
+            .json(201, operations.GetAuthResponseRequestIdResponse$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.GetApiAuthResponseRequestIdResponseBody$inboundSchema, { err: true })
+            .json(500, errors.GetAuthResponseRequestIdResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -132,22 +132,21 @@ export class Comfyui extends ClientSDK {
      * @remarks
      * This endpoints is specifically built for ComfyUI workflow upload.
      */
-    async postApiWorkflow(
-        request?: operations.PostApiWorkflowRequestBody | undefined,
+    async postWorkflow(
+        request?: operations.PostWorkflowRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.PostApiWorkflowResponseBody> {
+    ): Promise<operations.PostWorkflowResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.PostApiWorkflowRequestBody$outboundSchema.optional().parse(value$),
+            (value$) => operations.PostWorkflowRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
             payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/api/workflow")();
+        const path$ = this.templateURLComponent("/workflow")();
 
         const query$ = "";
 
@@ -165,7 +164,7 @@ export class Comfyui extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "post_/api/workflow",
+            operationID: "post_/workflow",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -196,10 +195,10 @@ export class Comfyui extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.PostApiWorkflowResponseBody>()
-            .json(200, operations.PostApiWorkflowResponseBody$inboundSchema)
+        const [result$] = await this.matcher<operations.PostWorkflowResponseBody>()
+            .json(200, operations.PostWorkflowResponseBody$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.PostApiWorkflowResponseBody$inboundSchema, { err: true })
+            .json(500, errors.PostWorkflowResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -211,16 +210,15 @@ export class Comfyui extends ClientSDK {
      * @remarks
      * Use this to retrieve comfyui workflow by id
      */
-    async getApiWorkflowVersionVersionId(
-        request: operations.GetApiWorkflowVersionVersionIdRequest,
+    async getWorkflowVersionVersionId(
+        request: operations.GetWorkflowVersionVersionIdRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiWorkflowVersionVersionIdResponseBody> {
+    ): Promise<operations.GetWorkflowVersionVersionIdResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.GetApiWorkflowVersionVersionIdRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetWorkflowVersionVersionIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -231,7 +229,7 @@ export class Comfyui extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-        const path$ = this.templateURLComponent("/api/workflow-version/{version_id}")(pathParams$);
+        const path$ = this.templateURLComponent("/workflow-version/{version_id}")(pathParams$);
 
         const query$ = "";
 
@@ -248,7 +246,7 @@ export class Comfyui extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/workflow-version/{version_id}",
+            operationID: "get_/workflow-version/{version_id}",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -279,14 +277,11 @@ export class Comfyui extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] =
-            await this.matcher<operations.GetApiWorkflowVersionVersionIdResponseBody>()
-                .json(200, operations.GetApiWorkflowVersionVersionIdResponseBody$inboundSchema)
-                .fail([401, "4XX", "5XX"])
-                .json(500, errors.GetApiWorkflowVersionVersionIdResponseBody$inboundSchema, {
-                    err: true,
-                })
-                .match(response, { extraFields: responseFields$ });
+        const [result$] = await this.matcher<operations.GetWorkflowVersionVersionIdResponseBody>()
+            .json(200, operations.GetWorkflowVersionVersionIdResponseBody$inboundSchema)
+            .fail([401, "4XX", "5XX"])
+            .json(500, errors.GetWorkflowVersionVersionIdResponseBody$inboundSchema, { err: true })
+            .match(response, { extraFields: responseFields$ });
 
         return result$;
     }
@@ -297,15 +292,15 @@ export class Comfyui extends ClientSDK {
      * @remarks
      * Use this to retrieve comfyui workflow by id
      */
-    async getApiWorkflowId(
-        request: operations.GetApiWorkflowIdRequest,
+    async getWorkflowId(
+        request: operations.GetWorkflowIdRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiWorkflowIdResponseBody> {
+    ): Promise<operations.GetWorkflowIdResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiWorkflowIdRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetWorkflowIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -313,7 +308,7 @@ export class Comfyui extends ClientSDK {
         const pathParams$ = {
             id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-        const path$ = this.templateURLComponent("/api/workflow/{id}")(pathParams$);
+        const path$ = this.templateURLComponent("/workflow/{id}")(pathParams$);
 
         const query$ = "";
 
@@ -330,7 +325,7 @@ export class Comfyui extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/workflow/{id}",
+            operationID: "get_/workflow/{id}",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -361,10 +356,10 @@ export class Comfyui extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiWorkflowIdResponseBody>()
-            .json(200, operations.GetApiWorkflowIdResponseBody$inboundSchema)
+        const [result$] = await this.matcher<operations.GetWorkflowIdResponseBody>()
+            .json(200, operations.GetWorkflowIdResponseBody$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.GetApiWorkflowIdResponseBody$inboundSchema, { err: true })
+            .json(500, errors.GetWorkflowIdResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -376,15 +371,15 @@ export class Comfyui extends ClientSDK {
      * @remarks
      * Use this to retrieve comfyui workflow inputs definition by id
      */
-    async getApiDeploymentIdInputs(
-        request: operations.GetApiDeploymentIdInputsRequest,
+    async getDeploymentIdInputs(
+        request: operations.GetDeploymentIdInputsRequest,
         options?: RequestOptions
     ): Promise<Array<operations.ResponseBody>> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiDeploymentIdInputsRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetDeploymentIdInputsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -392,7 +387,7 @@ export class Comfyui extends ClientSDK {
         const pathParams$ = {
             id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-        const path$ = this.templateURLComponent("/api/deployment/{id}/inputs")(pathParams$);
+        const path$ = this.templateURLComponent("/deployment/{id}/inputs")(pathParams$);
 
         const query$ = "";
 
@@ -409,7 +404,7 @@ export class Comfyui extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/deployment/{id}/inputs",
+            operationID: "get_/deployment/{id}/inputs",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -443,7 +438,7 @@ export class Comfyui extends ClientSDK {
         const [result$] = await this.matcher<Array<operations.ResponseBody>>()
             .json(200, z.array(operations.ResponseBody$inboundSchema))
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.GetApiDeploymentIdInputsResponseBody$inboundSchema, { err: true })
+            .json(500, errors.GetDeploymentIdInputsResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -455,20 +450,20 @@ export class Comfyui extends ClientSDK {
      * @remarks
      * Get all deployed workflows
      */
-    async getApiDeployment(
-        request: operations.GetApiDeploymentRequest,
+    async getDeployment(
+        request: operations.GetDeploymentRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetApiDeploymentResponseBody>> {
+    ): Promise<Array<operations.GetDeploymentResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiDeploymentRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetDeploymentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
 
-        const path$ = this.templateURLComponent("/api/deployment")();
+        const path$ = this.templateURLComponent("/deployment")();
 
         const query$ = encodeFormQuery$({
             environment: payload$.environment,
@@ -487,7 +482,7 @@ export class Comfyui extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/deployment",
+            operationID: "get_/deployment",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -518,9 +513,9 @@ export class Comfyui extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<Array<operations.GetApiDeploymentResponseBody>>()
-            .json(200, z.array(operations.GetApiDeploymentResponseBody$inboundSchema))
-            .json(500, errors.GetApiDeploymentResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<Array<operations.GetDeploymentResponseBody>>()
+            .json(200, z.array(operations.GetDeploymentResponseBody$inboundSchema))
+            .json(500, errors.GetDeploymentResponseBody$inboundSchema, { err: true })
             .fail(["4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

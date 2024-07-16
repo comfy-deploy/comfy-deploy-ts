@@ -3,16 +3,16 @@
 
 ### Available Operations
 
-* [getApiRun](#getapirun) - Get workflow run output
-* [postApiRun](#postapirun) - Run a workflow via deployment_id
-* [getApiWebsocketDeploymentId](#getapiwebsocketdeploymentid) - Get a websocket url for a specific deployment
-* [postApiMachineEndpoint](#postapimachineendpoint) - Create an endpoint for a machine
-* [getApiV1Workflows](#getapiv1workflows) - Retrieve workflows
-* [postApiV1Workflows](#postapiv1workflows) - Create a new workflow
-* [getApiV1WorkflowsWorkflowId](#getapiv1workflowsworkflowid) - Retrieve a specific workflow by ID
-* [getApiV1WorkflowsWorkflowIdOutputs](#getapiv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
+* [getRun](#getrun) - Get workflow run output
+* [postRun](#postrun) - Run a workflow via deployment_id
+* [getWebsocketDeploymentId](#getwebsocketdeploymentid) - Get a websocket url for a specific deployment
+* [postMachineEndpoint](#postmachineendpoint) - Create an endpoint for a machine
+* [getV1Workflows](#getv1workflows) - Retrieve workflows
+* [postV1Workflows](#postv1workflows) - Create a new workflow
+* [getV1WorkflowsWorkflowId](#getv1workflowsworkflowid) - Retrieve a specific workflow by ID
+* [getV1WorkflowsWorkflowIdOutputs](#getv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
 
-## getApiRun
+## getRun
 
 Call this to get a run's output, usually in conjunction with polling method
 
@@ -26,7 +26,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getApiRun({
+  const result = await comfyDeploy.workflows.getRun({
     runId: "<value>",
   });
 
@@ -41,7 +41,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetApiRunRequest](../../models/operations/getapirunrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetRunRequest](../../models/operations/getrunrequest.md)                                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -49,16 +49,16 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetApiRunResponseBody](../../models/operations/getapirunresponsebody.md)\>**
+**Promise\<[operations.GetRunResponseBody](../../models/operations/getrunresponsebody.md)\>**
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.GetApiRunResponseBody          | 400                                   | application/json                      |
-| errors.GetApiRunWorkflowsResponseBody | 500                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GetRunResponseBody          | 400                                | application/json                   |
+| errors.GetRunWorkflowsResponseBody | 500                                | application/json                   |
+| errors.SDKError                    | 4xx-5xx                            | */*                                |
 
-## postApiRun
+## postRun
 
 Run a workflow via deployment_id
 
@@ -72,7 +72,14 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.postApiRun({});
+  const result = await comfyDeploy.workflows.postRun({
+      deploymentId: "<value>",
+      inputs: {
+        "input_text": "value1",
+        "input_url": "https://example.png",
+      },
+      webhook: "https://example.com/webhook",
+    });
 
   // Handle the result
   console.log(result)
@@ -85,7 +92,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiRunRequestBody](../../models/operations/postapirunrequestbody.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostRunRequestBody](../../models/operations/postrunrequestbody.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -93,15 +100,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostApiRunResponseBody](../../models/operations/postapirunresponsebody.md)\>**
+**Promise\<[operations.PostRunResponseBody](../../models/operations/postrunresponsebody.md)\>**
 ### Errors
 
-| Error Object                  | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.PostApiRunResponseBody | 500                           | application/json              |
-| errors.SDKError               | 4xx-5xx                       | */*                           |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.PostRunResponseBody | 500                        | application/json           |
+| errors.SDKError            | 4xx-5xx                    | */*                        |
 
-## getApiWebsocketDeploymentId
+## getWebsocketDeploymentId
 
 Get a websocket url for a specific deployment
 
@@ -115,7 +122,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getApiWebsocketDeploymentId({
+  const result = await comfyDeploy.workflows.getWebsocketDeploymentId({
     deploymentId: "<value>",
   });
 
@@ -130,7 +137,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetApiWebsocketDeploymentIdRequest](../../models/operations/getapiwebsocketdeploymentidrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetWebsocketDeploymentIdRequest](../../models/operations/getwebsocketdeploymentidrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -138,15 +145,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetApiWebsocketDeploymentIdResponseBody](../../models/operations/getapiwebsocketdeploymentidresponsebody.md)\>**
+**Promise\<[operations.GetWebsocketDeploymentIdResponseBody](../../models/operations/getwebsocketdeploymentidresponsebody.md)\>**
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| errors.GetApiWebsocketDeploymentIdResponseBody | 500                                            | application/json                               |
-| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+| Error Object                                | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.GetWebsocketDeploymentIdResponseBody | 500                                         | application/json                            |
+| errors.SDKError                             | 4xx-5xx                                     | */*                                         |
 
-## postApiMachineEndpoint
+## postMachineEndpoint
 
 Create an endpoint for a machine
 
@@ -160,7 +167,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.postApiMachineEndpoint({
+  const result = await comfyDeploy.workflows.postMachineEndpoint({
     machineId: "<value>",
     type: "<value>",
   });
@@ -176,7 +183,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiMachineEndpointRequestBody](../../models/operations/postapimachineendpointrequestbody.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostMachineEndpointRequestBody](../../models/operations/postmachineendpointrequestbody.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -184,15 +191,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostApiMachineEndpointResponseBody](../../models/operations/postapimachineendpointresponsebody.md)\>**
+**Promise\<[operations.PostMachineEndpointResponseBody](../../models/operations/postmachineendpointresponsebody.md)\>**
 ### Errors
 
-| Error Object                              | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| errors.PostApiMachineEndpointResponseBody | 500                                       | application/json                          |
-| errors.SDKError                           | 4xx-5xx                                   | */*                                       |
+| Error Object                           | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.PostMachineEndpointResponseBody | 500                                    | application/json                       |
+| errors.SDKError                        | 4xx-5xx                                | */*                                    |
 
-## getApiV1Workflows
+## getV1Workflows
 
 Retrieve workflows based on optional query parameters
 
@@ -206,7 +213,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getApiV1Workflows({});
+  const result = await comfyDeploy.workflows.getV1Workflows({});
 
   // Handle the result
   console.log(result)
@@ -219,7 +226,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetApiV1WorkflowsRequest](../../models/operations/getapiv1workflowsrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetV1WorkflowsRequest](../../models/operations/getv1workflowsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -227,15 +234,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetApiV1WorkflowsResponseBody[]](../../models/.md)\>**
+**Promise\<[operations.GetV1WorkflowsResponseBody[]](../../models/.md)\>**
 ### Errors
 
-| Error Object                         | Status Code                          | Content Type                         |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| errors.GetApiV1WorkflowsResponseBody | 400                                  | application/json                     |
-| errors.SDKError                      | 4xx-5xx                              | */*                                  |
+| Error Object                      | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.GetV1WorkflowsResponseBody | 400                               | application/json                  |
+| errors.SDKError                   | 4xx-5xx                           | */*                               |
 
-## postApiV1Workflows
+## postV1Workflows
 
 Create a new workflow by analyzing the provided workflow JSON
 
@@ -249,7 +256,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.postApiV1Workflows({});
+  const result = await comfyDeploy.workflows.postV1Workflows({});
 
   // Handle the result
   console.log(result)
@@ -262,7 +269,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiV1WorkflowsRequestBody](../../models/operations/postapiv1workflowsrequestbody.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostV1WorkflowsRequestBody](../../models/operations/postv1workflowsrequestbody.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -270,15 +277,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostApiV1WorkflowsResponseBody](../../models/operations/postapiv1workflowsresponsebody.md)\>**
+**Promise\<[operations.PostV1WorkflowsResponseBody](../../models/operations/postv1workflowsresponsebody.md)\>**
 ### Errors
 
-| Error Object                          | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.PostApiV1WorkflowsResponseBody | 400                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.PostV1WorkflowsResponseBody | 400                                | application/json                   |
+| errors.SDKError                    | 4xx-5xx                            | */*                                |
 
-## getApiV1WorkflowsWorkflowId
+## getV1WorkflowsWorkflowId
 
 Retrieve the latest version of a specific workflow by its ID
 
@@ -292,7 +299,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getApiV1WorkflowsWorkflowId({
+  const result = await comfyDeploy.workflows.getV1WorkflowsWorkflowId({
     workflowId: "<value>",
   });
 
@@ -307,7 +314,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetApiV1WorkflowsWorkflowIdRequest](../../models/operations/getapiv1workflowsworkflowidrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetV1WorkflowsWorkflowIdRequest](../../models/operations/getv1workflowsworkflowidrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -315,15 +322,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetApiV1WorkflowsWorkflowIdResponseBody](../../models/operations/getapiv1workflowsworkflowidresponsebody.md)\>**
+**Promise\<[operations.GetV1WorkflowsWorkflowIdResponseBody](../../models/operations/getv1workflowsworkflowidresponsebody.md)\>**
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| errors.GetApiV1WorkflowsWorkflowIdResponseBody | 400                                            | application/json                               |
-| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+| Error Object                                | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.GetV1WorkflowsWorkflowIdResponseBody | 400                                         | application/json                            |
+| errors.SDKError                             | 4xx-5xx                                     | */*                                         |
 
-## getApiV1WorkflowsWorkflowIdOutputs
+## getV1WorkflowsWorkflowIdOutputs
 
 Retrieve the latest version of a specific workflow by its ID
 
@@ -337,7 +344,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getApiV1WorkflowsWorkflowIdOutputs({
+  const result = await comfyDeploy.workflows.getV1WorkflowsWorkflowIdOutputs({
     workflowId: "<value>",
   });
 
@@ -352,7 +359,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetApiV1WorkflowsWorkflowIdOutputsRequest](../../models/operations/getapiv1workflowsworkflowidoutputsrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetV1WorkflowsWorkflowIdOutputsRequest](../../models/operations/getv1workflowsworkflowidoutputsrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -360,10 +367,10 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetApiV1WorkflowsWorkflowIdOutputsResponseBody](../../models/operations/getapiv1workflowsworkflowidoutputsresponsebody.md)\>**
+**Promise\<[operations.GetV1WorkflowsWorkflowIdOutputsResponseBody](../../models/operations/getv1workflowsworkflowidoutputsresponsebody.md)\>**
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| errors.GetApiV1WorkflowsWorkflowIdOutputsResponseBody | 400                                                   | application/json                                      |
-| errors.SDKError                                       | 4xx-5xx                                               | */*                                                   |
+| Error Object                                       | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| errors.GetV1WorkflowsWorkflowIdOutputsResponseBody | 400                                                | application/json                                   |
+| errors.SDKError                                    | 4xx-5xx                                            | */*                                                |

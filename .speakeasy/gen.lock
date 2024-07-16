@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: 3cf33fbb31b8195edb1b5fa154b73a99
+  docChecksum: ca2ba8a7e2afc67cb919825001fb87e3
   docVersion: 0.0.1
   speakeasyVersion: 1.335.2
   generationVersion: 2.372.3
-  releaseVersion: 0.0.19-beta
-  configChecksum: bc4b22bf1ecce9b17085cc6685368b79
+  releaseVersion: 0.0.19-beta.5
+  configChecksum: 51f3c92038c61609bd8b307a38cc8cb9
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -58,88 +58,91 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
-  - src/models/operations/getapirun.ts
-  - src/models/operations/postapirun.ts
-  - src/models/operations/getapiwebsocketdeploymentid.ts
-  - src/models/operations/postapimachineendpoint.ts
-  - src/models/operations/getapiv1workflows.ts
-  - src/models/operations/postapiv1workflows.ts
-  - src/models/operations/getapiv1workflowsworkflowid.ts
-  - src/models/operations/getapiv1workflowsworkflowidoutputs.ts
-  - src/models/operations/getapiuploadurl.ts
-  - src/models/operations/getapiauthresponserequestid.ts
-  - src/models/operations/postapiworkflow.ts
-  - src/models/operations/getapiworkflowversionversionid.ts
-  - src/models/operations/getapiworkflowid.ts
-  - src/models/operations/getapideploymentidinputs.ts
-  - src/models/operations/getapideployment.ts
-  - src/models/operations/postapigpuevent.ts
-  - src/models/operations/getapiv1machines.ts
-  - src/models/operations/postapiv1machines.ts
-  - src/models/operations/getapiv1machinesmachineid.ts
-  - src/models/errors/getapirun.ts
-  - src/models/errors/postapirun.ts
-  - src/models/errors/getapiwebsocketdeploymentid.ts
-  - src/models/errors/postapimachineendpoint.ts
-  - src/models/errors/getapiv1workflows.ts
-  - src/models/errors/postapiv1workflows.ts
-  - src/models/errors/getapiv1workflowsworkflowid.ts
-  - src/models/errors/getapiv1workflowsworkflowidoutputs.ts
-  - src/models/errors/getapiuploadurl.ts
-  - src/models/errors/getapiauthresponserequestid.ts
-  - src/models/errors/postapiworkflow.ts
-  - src/models/errors/getapiworkflowversionversionid.ts
-  - src/models/errors/getapiworkflowid.ts
-  - src/models/errors/getapideploymentidinputs.ts
-  - src/models/errors/getapideployment.ts
-  - src/models/errors/postapigpuevent.ts
-  - src/models/errors/getapiv1machines.ts
-  - src/models/errors/postapiv1machines.ts
-  - src/models/errors/getapiv1machinesmachineid.ts
+  - src/models/operations/getrun.ts
+  - src/models/operations/postrun.ts
+  - src/models/operations/getwebsocketdeploymentid.ts
+  - src/models/operations/postmachineendpoint.ts
+  - src/models/operations/getv1workflows.ts
+  - src/models/operations/postv1workflows.ts
+  - src/models/operations/getv1workflowsworkflowid.ts
+  - src/models/operations/getv1workflowsworkflowidoutputs.ts
+  - src/models/operations/getuploadurl.ts
+  - src/models/operations/getauthresponserequestid.ts
+  - src/models/operations/postworkflow.ts
+  - src/models/operations/getworkflowversionversionid.ts
+  - src/models/operations/getworkflowid.ts
+  - src/models/operations/getdeploymentidinputs.ts
+  - src/models/operations/getdeployment.ts
+  - src/models/operations/postgpuevent.ts
+  - src/models/operations/getv1machines.ts
+  - src/models/operations/postv1machines.ts
+  - src/models/operations/getv1machinesmachineid.ts
+  - src/models/errors/getrun.ts
+  - src/models/errors/postrun.ts
+  - src/models/errors/getwebsocketdeploymentid.ts
+  - src/models/errors/postmachineendpoint.ts
+  - src/models/errors/getv1workflows.ts
+  - src/models/errors/postv1workflows.ts
+  - src/models/errors/getv1workflowsworkflowid.ts
+  - src/models/errors/getv1workflowsworkflowidoutputs.ts
+  - src/models/errors/getuploadurl.ts
+  - src/models/errors/getauthresponserequestid.ts
+  - src/models/errors/postworkflow.ts
+  - src/models/errors/getworkflowversionversionid.ts
+  - src/models/errors/getworkflowid.ts
+  - src/models/errors/getdeploymentidinputs.ts
+  - src/models/errors/getdeployment.ts
+  - src/models/errors/postgpuevent.ts
+  - src/models/errors/getv1machines.ts
+  - src/models/errors/postv1machines.ts
+  - src/models/errors/getv1machinesmachineid.ts
   - src/models/components/security.ts
   - src/models/errors/index.ts
   - src/models/operations/index.ts
   - src/models/components/index.ts
-  - docs/models/operations/getapirunrequest.md
+  - docs/models/operations/getrunrequest.md
   - docs/models/operations/workflowinputs.md
-  - docs/models/operations/getapirunworkflowapi.md
+  - docs/models/operations/getrunworkflowapi.md
   - docs/models/operations/origin.md
   - docs/models/operations/status.md
-  - docs/models/operations/getapirungpu.md
+  - docs/models/operations/getrungpu.md
   - docs/models/operations/machinetype.md
   - docs/models/operations/runlog.md
   - docs/models/operations/webhookstatus.md
-  - docs/models/operations/getapirunresponsebody.md
+  - docs/models/operations/getrunresponsebody.md
   - docs/models/operations/gpu.md
+  - docs/models/operations/requestbodyrunorigin.md
+  - docs/models/operations/requestbodyinputs.md
+  - docs/models/operations/two.md
   - docs/models/operations/inputs.md
-  - docs/models/operations/runorigin.md
-  - docs/models/operations/postapirunrequestbody.md
-  - docs/models/operations/postapirunresponsebody.md
-  - docs/models/operations/getapiwebsocketdeploymentidrequest.md
-  - docs/models/operations/getapiwebsocketdeploymentidresponsebody.md
-  - docs/models/operations/postapimachineendpointrequestbody.md
-  - docs/models/operations/postapimachineendpointresponsebody.md
-  - docs/models/operations/getapiv1workflowsrequest.md
+  - docs/models/operations/requestbody1.md
+  - docs/models/operations/postrunrequestbody.md
+  - docs/models/operations/postrunresponsebody.md
+  - docs/models/operations/getwebsocketdeploymentidrequest.md
+  - docs/models/operations/getwebsocketdeploymentidresponsebody.md
+  - docs/models/operations/postmachineendpointrequestbody.md
+  - docs/models/operations/postmachineendpointresponsebody.md
+  - docs/models/operations/getv1workflowsrequest.md
   - docs/models/operations/user.md
   - docs/models/operations/versions.md
-  - docs/models/operations/getapiv1workflowsresponsebody.md
+  - docs/models/operations/getv1workflowsresponsebody.md
   - docs/models/operations/workflowjson.md
-  - docs/models/operations/postapiv1workflowsrequestbody.md
-  - docs/models/operations/postapiv1workflowsresponsebody.md
-  - docs/models/operations/getapiv1workflowsworkflowidrequest.md
-  - docs/models/operations/getapiv1workflowsworkflowidversions.md
-  - docs/models/operations/getapiv1workflowsworkflowidresponsebody.md
-  - docs/models/operations/queryparamrunorigin.md
-  - docs/models/operations/getapiv1workflowsworkflowidoutputsrequest.md
+  - docs/models/operations/postv1workflowsrequestbody.md
+  - docs/models/operations/postv1workflowsresponsebody.md
+  - docs/models/operations/getv1workflowsworkflowidrequest.md
+  - docs/models/operations/getv1workflowsworkflowidversions.md
+  - docs/models/operations/getv1workflowsworkflowidresponsebody.md
+  - docs/models/operations/runorigin.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsrequest.md
   - docs/models/operations/outputs.md
-  - docs/models/operations/getapiv1workflowsworkflowidoutputsresponsebody.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsresponsebody.md
   - docs/models/operations/type.md
-  - docs/models/operations/getapiuploadurlrequest.md
-  - docs/models/operations/getapiuploadurlresponsebody.md
-  - docs/models/operations/getapiauthresponserequestidrequest.md
-  - docs/models/operations/getapiauthresponserequestidcomfyuiresponsebody.md
-  - docs/models/operations/getapiauthresponserequestidresponsebody.md
-  - docs/models/operations/getapiauthresponserequestidresponse.md
+  - docs/models/operations/getuploadurlrequest.md
+  - docs/models/operations/getuploadurlresponsebody.md
+  - docs/models/operations/getauthresponserequestidrequest.md
+  - docs/models/operations/getauthresponserequestidcomfyuiresponsebody.md
+  - docs/models/operations/getauthresponserequestidresponsebody.md
+  - docs/models/operations/getauthresponserequestidresponse.md
   - docs/models/operations/workflowapi.md
   - docs/models/operations/gitcustomnodes.md
   - docs/models/operations/snapshot.md
@@ -150,62 +153,62 @@ generatedFiles:
   - docs/models/operations/models.md
   - docs/models/operations/files.md
   - docs/models/operations/dependencies.md
-  - docs/models/operations/postapiworkflowrequestbody.md
-  - docs/models/operations/postapiworkflowresponsebody.md
-  - docs/models/operations/getapiworkflowversionversionidrequest.md
+  - docs/models/operations/postworkflowrequestbody.md
+  - docs/models/operations/postworkflowresponsebody.md
+  - docs/models/operations/getworkflowversionversionidrequest.md
   - docs/models/operations/workflow.md
-  - docs/models/operations/getapiworkflowversionversionidworkflowapi.md
-  - docs/models/operations/getapiworkflowversionversionidsnapshot.md
-  - docs/models/operations/getapiworkflowversionversioniddependencies.md
-  - docs/models/operations/getapiworkflowversionversionidresponsebody.md
-  - docs/models/operations/getapiworkflowidrequest.md
-  - docs/models/operations/getapiworkflowidworkflow.md
-  - docs/models/operations/getapiworkflowidworkflowapi.md
-  - docs/models/operations/getapiworkflowidsnapshot.md
-  - docs/models/operations/getapiworkflowiddependencies.md
-  - docs/models/operations/getapiworkflowidresponsebody.md
-  - docs/models/operations/getapideploymentidinputsrequest.md
+  - docs/models/operations/getworkflowversionversionidworkflowapi.md
+  - docs/models/operations/getworkflowversionversionidsnapshot.md
+  - docs/models/operations/getworkflowversionversioniddependencies.md
+  - docs/models/operations/getworkflowversionversionidresponsebody.md
+  - docs/models/operations/getworkflowidrequest.md
+  - docs/models/operations/getworkflowidworkflow.md
+  - docs/models/operations/getworkflowidworkflowapi.md
+  - docs/models/operations/getworkflowidsnapshot.md
+  - docs/models/operations/getworkflowiddependencies.md
+  - docs/models/operations/getworkflowidresponsebody.md
+  - docs/models/operations/getdeploymentidinputsrequest.md
   - docs/models/operations/responsebody.md
   - docs/models/operations/environment.md
-  - docs/models/operations/getapideploymentrequest.md
-  - docs/models/operations/getapideploymentresponsebody.md
+  - docs/models/operations/getdeploymentrequest.md
+  - docs/models/operations/getdeploymentresponsebody.md
   - docs/models/operations/gputype.md
   - docs/models/operations/wsgputype.md
   - docs/models/operations/eventtype.md
   - docs/models/operations/gpuprovider.md
-  - docs/models/operations/postapigpueventrequestbody.md
-  - docs/models/operations/postapigpueventresponsebody.md
+  - docs/models/operations/postgpueventrequestbody.md
+  - docs/models/operations/postgpueventresponsebody.md
   - docs/models/operations/fields.md
-  - docs/models/operations/getapiv1machinesrequest.md
+  - docs/models/operations/getv1machinesrequest.md
   - docs/models/operations/machines.md
-  - docs/models/operations/getapiv1machinesresponsebody.md
-  - docs/models/operations/postapiv1machinesrequestbody.md
-  - docs/models/operations/postapiv1machinestype.md
-  - docs/models/operations/postapiv1machinesstatus.md
-  - docs/models/operations/postapiv1machinesgpu.md
-  - docs/models/operations/postapiv1machinesresponsebody.md
-  - docs/models/operations/getapiv1machinesmachineidrequest.md
-  - docs/models/operations/getapiv1machinesmachineidresponsebody.md
-  - docs/models/errors/getapirunworkflowsresponsebody.md
-  - docs/models/errors/getapirunresponsebody.md
-  - docs/models/errors/postapirunresponsebody.md
-  - docs/models/errors/getapiwebsocketdeploymentidresponsebody.md
-  - docs/models/errors/postapimachineendpointresponsebody.md
-  - docs/models/errors/getapiv1workflowsresponsebody.md
-  - docs/models/errors/postapiv1workflowsresponsebody.md
-  - docs/models/errors/getapiv1workflowsworkflowidresponsebody.md
-  - docs/models/errors/getapiv1workflowsworkflowidoutputsresponsebody.md
-  - docs/models/errors/getapiuploadurlresponsebody.md
-  - docs/models/errors/getapiauthresponserequestidresponsebody.md
-  - docs/models/errors/postapiworkflowresponsebody.md
-  - docs/models/errors/getapiworkflowversionversionidresponsebody.md
-  - docs/models/errors/getapiworkflowidresponsebody.md
-  - docs/models/errors/getapideploymentidinputsresponsebody.md
-  - docs/models/errors/getapideploymentresponsebody.md
-  - docs/models/errors/postapigpueventresponsebody.md
-  - docs/models/errors/getapiv1machinesresponsebody.md
-  - docs/models/errors/postapiv1machinesresponsebody.md
-  - docs/models/errors/getapiv1machinesmachineidresponsebody.md
+  - docs/models/operations/getv1machinesresponsebody.md
+  - docs/models/operations/postv1machinesrequestbody.md
+  - docs/models/operations/postv1machinestype.md
+  - docs/models/operations/postv1machinesstatus.md
+  - docs/models/operations/postv1machinesgpu.md
+  - docs/models/operations/postv1machinesresponsebody.md
+  - docs/models/operations/getv1machinesmachineidrequest.md
+  - docs/models/operations/getv1machinesmachineidresponsebody.md
+  - docs/models/errors/getrunworkflowsresponsebody.md
+  - docs/models/errors/getrunresponsebody.md
+  - docs/models/errors/postrunresponsebody.md
+  - docs/models/errors/getwebsocketdeploymentidresponsebody.md
+  - docs/models/errors/postmachineendpointresponsebody.md
+  - docs/models/errors/getv1workflowsresponsebody.md
+  - docs/models/errors/postv1workflowsresponsebody.md
+  - docs/models/errors/getv1workflowsworkflowidresponsebody.md
+  - docs/models/errors/getv1workflowsworkflowidoutputsresponsebody.md
+  - docs/models/errors/getuploadurlresponsebody.md
+  - docs/models/errors/getauthresponserequestidresponsebody.md
+  - docs/models/errors/postworkflowresponsebody.md
+  - docs/models/errors/getworkflowversionversionidresponsebody.md
+  - docs/models/errors/getworkflowidresponsebody.md
+  - docs/models/errors/getdeploymentidinputsresponsebody.md
+  - docs/models/errors/getdeploymentresponsebody.md
+  - docs/models/errors/postgpueventresponsebody.md
+  - docs/models/errors/getv1machinesresponsebody.md
+  - docs/models/errors/postv1machinesresponsebody.md
+  - docs/models/errors/getv1machinesmachineidresponsebody.md
   - docs/models/components/security.md
   - docs/sdks/comfydeploy/README.md
   - docs/lib/utils/retryconfig.md

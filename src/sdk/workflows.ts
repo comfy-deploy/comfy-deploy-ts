@@ -49,20 +49,20 @@ export class Workflows extends ClientSDK {
      * @remarks
      * Call this to get a run's output, usually in conjunction with polling method
      */
-    async getApiRun(
-        request: operations.GetApiRunRequest,
+    async getRun(
+        request: operations.GetRunRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiRunResponseBody> {
+    ): Promise<operations.GetRunResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiRunRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetRunRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
 
-        const path$ = this.templateURLComponent("/api/run")();
+        const path$ = this.templateURLComponent("/run")();
 
         const query$ = encodeFormQuery$({
             run_id: payload$.run_id,
@@ -81,7 +81,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/run",
+            operationID: "get_/run",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -112,11 +112,11 @@ export class Workflows extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiRunResponseBody>()
-            .json(200, operations.GetApiRunResponseBody$inboundSchema)
-            .json(400, errors.GetApiRunResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<operations.GetRunResponseBody>()
+            .json(200, operations.GetRunResponseBody$inboundSchema)
+            .json(400, errors.GetRunResponseBody$inboundSchema, { err: true })
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.GetApiRunWorkflowsResponseBody$inboundSchema, { err: true })
+            .json(500, errors.GetRunWorkflowsResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -125,21 +125,21 @@ export class Workflows extends ClientSDK {
     /**
      * Run a workflow via deployment_id
      */
-    async postApiRun(
-        request?: operations.PostApiRunRequestBody | undefined,
+    async postRun(
+        request?: operations.PostRunRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.PostApiRunResponseBody> {
+    ): Promise<operations.PostRunResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.PostApiRunRequestBody$outboundSchema.optional().parse(value$),
+            (value$) => operations.PostRunRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
             payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/api/run")();
+        const path$ = this.templateURLComponent("/run")();
 
         const query$ = "";
 
@@ -157,7 +157,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "post_/api/run",
+            operationID: "post_/run",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -188,10 +188,10 @@ export class Workflows extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.PostApiRunResponseBody>()
-            .json(200, operations.PostApiRunResponseBody$inboundSchema)
+        const [result$] = await this.matcher<operations.PostRunResponseBody>()
+            .json(200, operations.PostRunResponseBody$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.PostApiRunResponseBody$inboundSchema, { err: true })
+            .json(500, errors.PostRunResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -200,15 +200,15 @@ export class Workflows extends ClientSDK {
     /**
      * Get a websocket url for a specific deployment
      */
-    async getApiWebsocketDeploymentId(
-        request: operations.GetApiWebsocketDeploymentIdRequest,
+    async getWebsocketDeploymentId(
+        request: operations.GetWebsocketDeploymentIdRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiWebsocketDeploymentIdResponseBody> {
+    ): Promise<operations.GetWebsocketDeploymentIdResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiWebsocketDeploymentIdRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetWebsocketDeploymentIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -219,7 +219,7 @@ export class Workflows extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-        const path$ = this.templateURLComponent("/api/websocket/{deployment_id}")(pathParams$);
+        const path$ = this.templateURLComponent("/websocket/{deployment_id}")(pathParams$);
 
         const query$ = "";
 
@@ -236,7 +236,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/websocket/{deployment_id}",
+            operationID: "get_/websocket/{deployment_id}",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -267,10 +267,10 @@ export class Workflows extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiWebsocketDeploymentIdResponseBody>()
-            .json(200, operations.GetApiWebsocketDeploymentIdResponseBody$inboundSchema)
+        const [result$] = await this.matcher<operations.GetWebsocketDeploymentIdResponseBody>()
+            .json(200, operations.GetWebsocketDeploymentIdResponseBody$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.GetApiWebsocketDeploymentIdResponseBody$inboundSchema, { err: true })
+            .json(500, errors.GetWebsocketDeploymentIdResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -279,24 +279,22 @@ export class Workflows extends ClientSDK {
     /**
      * Create an endpoint for a machine
      */
-    async postApiMachineEndpoint(
-        request?: operations.PostApiMachineEndpointRequestBody | undefined,
+    async postMachineEndpoint(
+        request?: operations.PostMachineEndpointRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.PostApiMachineEndpointResponseBody> {
+    ): Promise<operations.PostMachineEndpointResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.PostApiMachineEndpointRequestBody$outboundSchema.optional().parse(
-                    value$
-                ),
+                operations.PostMachineEndpointRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
             payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/api/machine-endpoint")();
+        const path$ = this.templateURLComponent("/machine-endpoint")();
 
         const query$ = "";
 
@@ -314,7 +312,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "post_/api/machine-endpoint",
+            operationID: "post_/machine-endpoint",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -345,10 +343,10 @@ export class Workflows extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.PostApiMachineEndpointResponseBody>()
-            .json(200, operations.PostApiMachineEndpointResponseBody$inboundSchema)
+        const [result$] = await this.matcher<operations.PostMachineEndpointResponseBody>()
+            .json(200, operations.PostMachineEndpointResponseBody$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.PostApiMachineEndpointResponseBody$inboundSchema, { err: true })
+            .json(500, errors.PostMachineEndpointResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -360,20 +358,20 @@ export class Workflows extends ClientSDK {
      * @remarks
      * Retrieve workflows based on optional query parameters
      */
-    async getApiV1Workflows(
-        request: operations.GetApiV1WorkflowsRequest,
+    async getV1Workflows(
+        request: operations.GetV1WorkflowsRequest,
         options?: RequestOptions
-    ): Promise<Array<operations.GetApiV1WorkflowsResponseBody>> {
+    ): Promise<Array<operations.GetV1WorkflowsResponseBody>> {
         const input$ = typeof request === "undefined" ? {} : request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiV1WorkflowsRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetV1WorkflowsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
 
-        const path$ = this.templateURLComponent("/api/v1/workflows")();
+        const path$ = this.templateURLComponent("/v1/workflows")();
 
         const query$ = encodeFormQuery$({
             page: payload$.page,
@@ -394,7 +392,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/v1/workflows",
+            operationID: "get_/v1/workflows",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -425,9 +423,9 @@ export class Workflows extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<Array<operations.GetApiV1WorkflowsResponseBody>>()
-            .json(200, z.array(operations.GetApiV1WorkflowsResponseBody$inboundSchema))
-            .json(400, errors.GetApiV1WorkflowsResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<Array<operations.GetV1WorkflowsResponseBody>>()
+            .json(200, z.array(operations.GetV1WorkflowsResponseBody$inboundSchema))
+            .json(400, errors.GetV1WorkflowsResponseBody$inboundSchema, { err: true })
             .fail([401, "4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -440,22 +438,22 @@ export class Workflows extends ClientSDK {
      * @remarks
      * Create a new workflow by analyzing the provided workflow JSON
      */
-    async postApiV1Workflows(
-        request?: operations.PostApiV1WorkflowsRequestBody | undefined,
+    async postV1Workflows(
+        request?: operations.PostV1WorkflowsRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.PostApiV1WorkflowsResponseBody> {
+    ): Promise<operations.PostV1WorkflowsResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.PostApiV1WorkflowsRequestBody$outboundSchema.optional().parse(value$),
+                operations.PostV1WorkflowsRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
             payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/api/v1/workflows")();
+        const path$ = this.templateURLComponent("/v1/workflows")();
 
         const query$ = "";
 
@@ -473,7 +471,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "post_/api/v1/workflows",
+            operationID: "post_/v1/workflows",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -504,9 +502,9 @@ export class Workflows extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.PostApiV1WorkflowsResponseBody>()
-            .json(200, operations.PostApiV1WorkflowsResponseBody$inboundSchema)
-            .json(400, errors.PostApiV1WorkflowsResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<operations.PostV1WorkflowsResponseBody>()
+            .json(200, operations.PostV1WorkflowsResponseBody$inboundSchema)
+            .json(400, errors.PostV1WorkflowsResponseBody$inboundSchema, { err: true })
             .fail([401, "4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -519,15 +517,15 @@ export class Workflows extends ClientSDK {
      * @remarks
      * Retrieve the latest version of a specific workflow by its ID
      */
-    async getApiV1WorkflowsWorkflowId(
-        request: operations.GetApiV1WorkflowsWorkflowIdRequest,
+    async getV1WorkflowsWorkflowId(
+        request: operations.GetV1WorkflowsWorkflowIdRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiV1WorkflowsWorkflowIdResponseBody> {
+    ): Promise<operations.GetV1WorkflowsWorkflowIdResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiV1WorkflowsWorkflowIdRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetV1WorkflowsWorkflowIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -538,7 +536,7 @@ export class Workflows extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-        const path$ = this.templateURLComponent("/api/v1/workflows/{workflow_id}")(pathParams$);
+        const path$ = this.templateURLComponent("/v1/workflows/{workflow_id}")(pathParams$);
 
         const query$ = "";
 
@@ -555,7 +553,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/v1/workflows/{workflow_id}",
+            operationID: "get_/v1/workflows/{workflow_id}",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -586,9 +584,9 @@ export class Workflows extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiV1WorkflowsWorkflowIdResponseBody>()
-            .json(200, operations.GetApiV1WorkflowsWorkflowIdResponseBody$inboundSchema)
-            .json(400, errors.GetApiV1WorkflowsWorkflowIdResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<operations.GetV1WorkflowsWorkflowIdResponseBody>()
+            .json(200, operations.GetV1WorkflowsWorkflowIdResponseBody$inboundSchema)
+            .json(400, errors.GetV1WorkflowsWorkflowIdResponseBody$inboundSchema, { err: true })
             .fail([401, "4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -601,16 +599,16 @@ export class Workflows extends ClientSDK {
      * @remarks
      * Retrieve the latest version of a specific workflow by its ID
      */
-    async getApiV1WorkflowsWorkflowIdOutputs(
-        request: operations.GetApiV1WorkflowsWorkflowIdOutputsRequest,
+    async getV1WorkflowsWorkflowIdOutputs(
+        request: operations.GetV1WorkflowsWorkflowIdOutputsRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiV1WorkflowsWorkflowIdOutputsResponseBody> {
+    ): Promise<operations.GetV1WorkflowsWorkflowIdOutputsResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.GetApiV1WorkflowsWorkflowIdOutputsRequest$outboundSchema.parse(value$),
+                operations.GetV1WorkflowsWorkflowIdOutputsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -621,9 +619,7 @@ export class Workflows extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-        const path$ = this.templateURLComponent("/api/v1/workflows/{workflow_id}/outputs")(
-            pathParams$
-        );
+        const path$ = this.templateURLComponent("/v1/workflows/{workflow_id}/outputs")(pathParams$);
 
         const query$ = encodeFormQuery$({
             page: payload$.page,
@@ -645,7 +641,7 @@ export class Workflows extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/v1/workflows/{workflow_id}/outputs",
+            operationID: "get_/v1/workflows/{workflow_id}/outputs",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -677,9 +673,9 @@ export class Workflows extends ClientSDK {
         };
 
         const [result$] =
-            await this.matcher<operations.GetApiV1WorkflowsWorkflowIdOutputsResponseBody>()
-                .json(200, operations.GetApiV1WorkflowsWorkflowIdOutputsResponseBody$inboundSchema)
-                .json(400, errors.GetApiV1WorkflowsWorkflowIdOutputsResponseBody$inboundSchema, {
+            await this.matcher<operations.GetV1WorkflowsWorkflowIdOutputsResponseBody>()
+                .json(200, operations.GetV1WorkflowsWorkflowIdOutputsResponseBody$inboundSchema)
+                .json(400, errors.GetV1WorkflowsWorkflowIdOutputsResponseBody$inboundSchema, {
                     err: true,
                 })
                 .fail([401, "4XX", "5XX"])

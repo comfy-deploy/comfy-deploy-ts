@@ -1,0 +1,11 @@
+# RequestBody1
+
+
+## Fields
+
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `deploymentId`                                                 | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |                                                                |
+| `inputs`                                                       | Record<string, *operations.Inputs*>                            | :heavy_minus_sign:                                             | External inputs to the workflow                                | {<br/>"input_text": "value1",<br/>"input_url": "https://example.png"<br/>} |
+| `webhook`                                                      | *string*                                                       | :heavy_minus_sign:                                             | Webhook URL to receive workflow updates                        | https://example.com/webhook                                    |
+| `stream`                                                       | *boolean*                                                      | :heavy_minus_sign:                                             | Whether to return a streaming url                              |                                                                |

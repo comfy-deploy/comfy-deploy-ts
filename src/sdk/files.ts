@@ -44,20 +44,20 @@ export class Files extends ClientSDK {
      * @remarks
      * Usually when you run something, you want to upload a file, image etc.
      */
-    async getApiUploadUrl(
-        request: operations.GetApiUploadUrlRequest,
+    async getUploadUrl(
+        request: operations.GetUploadUrlRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiUploadUrlResponseBody> {
+    ): Promise<operations.GetUploadUrlResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiUploadUrlRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetUploadUrlRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
 
-        const path$ = this.templateURLComponent("/api/upload-url")();
+        const path$ = this.templateURLComponent("/upload-url")();
 
         const query$ = encodeFormQuery$({
             file_size: payload$.file_size,
@@ -77,7 +77,7 @@ export class Files extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/upload-url",
+            operationID: "get_/upload-url",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -108,10 +108,10 @@ export class Files extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiUploadUrlResponseBody>()
-            .json(200, operations.GetApiUploadUrlResponseBody$inboundSchema)
+        const [result$] = await this.matcher<operations.GetUploadUrlResponseBody>()
+            .json(200, operations.GetUploadUrlResponseBody$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.GetApiUploadUrlResponseBody$inboundSchema, { err: true })
+            .json(500, errors.GetUploadUrlResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;

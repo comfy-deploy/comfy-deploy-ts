@@ -2,8 +2,8 @@ speakeasyVersion: 1.335.2
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:325ea71cda548fd683d76d48c1b391819424dcbd504fa9111591ec2cca8365e3
-        sourceBlobDigest: sha256:4b8b28a2ef6594b03ad49755f945f33ff77b89c257c1fe28f4361706d51d7b3d
+        sourceRevisionDigest: sha256:c607750cb9d1125aad71f0d66fb79e4a1bd8bb75ed3d8f15d4d7172fa7ab66cd
+        sourceBlobDigest: sha256:7f441bd8fffaa32a1f3e5a9a219e756309d07f0c126db0c5012fa2febd157b16
         tags:
             - latest
 targets:
@@ -16,8 +16,8 @@ targets:
     comfydeploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:325ea71cda548fd683d76d48c1b391819424dcbd504fa9111591ec2cca8365e3
-        sourceBlobDigest: sha256:4b8b28a2ef6594b03ad49755f945f33ff77b89c257c1fe28f4361706d51d7b3d
+        sourceRevisionDigest: sha256:c607750cb9d1125aad71f0d66fb79e4a1bd8bb75ed3d8f15d4d7172fa7ab66cd
+        sourceBlobDigest: sha256:7f441bd8fffaa32a1f3e5a9a219e756309d07f0c126db0c5012fa2febd157b16
         outLocation: /Users/bennykok/Documents/GitHub/comfy-deploy-ts
 workflow:
     workflowVersion: 1.0.0
@@ -25,7 +25,7 @@ workflow:
     sources:
         comfydeploy-api:
             inputs:
-                - location: https://www.comfydeploy.com/api/openapi.json
+                - location: http://localhost:3010/api/openapi.json
             registry:
                 location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/comfydeploy-api
     targets:

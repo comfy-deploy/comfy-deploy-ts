@@ -66,7 +66,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getApiRun({
+    const result = await comfyDeploy.workflows.getRun({
         runId: "<value>",
     });
 
@@ -84,34 +84,34 @@ run();
 
 ### [workflows](docs/sdks/workflows/README.md)
 
-* [getApiRun](docs/sdks/workflows/README.md#getapirun) - Get workflow run output
-* [postApiRun](docs/sdks/workflows/README.md#postapirun) - Run a workflow via deployment_id
-* [getApiWebsocketDeploymentId](docs/sdks/workflows/README.md#getapiwebsocketdeploymentid) - Get a websocket url for a specific deployment
-* [postApiMachineEndpoint](docs/sdks/workflows/README.md#postapimachineendpoint) - Create an endpoint for a machine
-* [getApiV1Workflows](docs/sdks/workflows/README.md#getapiv1workflows) - Retrieve workflows
-* [postApiV1Workflows](docs/sdks/workflows/README.md#postapiv1workflows) - Create a new workflow
-* [getApiV1WorkflowsWorkflowId](docs/sdks/workflows/README.md#getapiv1workflowsworkflowid) - Retrieve a specific workflow by ID
-* [getApiV1WorkflowsWorkflowIdOutputs](docs/sdks/workflows/README.md#getapiv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
+* [getRun](docs/sdks/workflows/README.md#getrun) - Get workflow run output
+* [postRun](docs/sdks/workflows/README.md#postrun) - Run a workflow via deployment_id
+* [getWebsocketDeploymentId](docs/sdks/workflows/README.md#getwebsocketdeploymentid) - Get a websocket url for a specific deployment
+* [postMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint) - Create an endpoint for a machine
+* [getV1Workflows](docs/sdks/workflows/README.md#getv1workflows) - Retrieve workflows
+* [postV1Workflows](docs/sdks/workflows/README.md#postv1workflows) - Create a new workflow
+* [getV1WorkflowsWorkflowId](docs/sdks/workflows/README.md#getv1workflowsworkflowid) - Retrieve a specific workflow by ID
+* [getV1WorkflowsWorkflowIdOutputs](docs/sdks/workflows/README.md#getv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
 
 ### [files](docs/sdks/files/README.md)
 
-* [getApiUploadUrl](docs/sdks/files/README.md#getapiuploadurl) - Upload any files to the storage
+* [getUploadUrl](docs/sdks/files/README.md#getuploadurl) - Upload any files to the storage
 
 ### [comfyui](docs/sdks/comfyui/README.md)
 
-* [getApiAuthResponseRequestId](docs/sdks/comfyui/README.md#getapiauthresponserequestid) - Get an API Key with code
-* [postApiWorkflow](docs/sdks/comfyui/README.md#postapiworkflow) - Upload workflow from ComfyUI
-* [getApiWorkflowVersionVersionId](docs/sdks/comfyui/README.md#getapiworkflowversionversionid) - Get comfyui workflow
-* [getApiWorkflowId](docs/sdks/comfyui/README.md#getapiworkflowid) - Get comfyui workflow
-* [getApiDeploymentIdInputs](docs/sdks/comfyui/README.md#getapideploymentidinputs) - Get comfyui workflow inputs definition
-* [getApiDeployment](docs/sdks/comfyui/README.md#getapideployment) - Get all deployed workflows
+* [getAuthResponseRequestId](docs/sdks/comfyui/README.md#getauthresponserequestid) - Get an API Key with code
+* [postWorkflow](docs/sdks/comfyui/README.md#postworkflow) - Upload workflow from ComfyUI
+* [getWorkflowVersionVersionId](docs/sdks/comfyui/README.md#getworkflowversionversionid) - Get comfyui workflow
+* [getWorkflowId](docs/sdks/comfyui/README.md#getworkflowid) - Get comfyui workflow
+* [getDeploymentIdInputs](docs/sdks/comfyui/README.md#getdeploymentidinputs) - Get comfyui workflow inputs definition
+* [getDeployment](docs/sdks/comfyui/README.md#getdeployment) - Get all deployed workflows
 
 ### [machines](docs/sdks/machines/README.md)
 
-* [postApiGpuEvent](docs/sdks/machines/README.md#postapigpuevent) - Register a machine event
-* [getApiV1Machines](docs/sdks/machines/README.md#getapiv1machines) - Retrieve all machines for a user
-* [postApiV1Machines](docs/sdks/machines/README.md#postapiv1machines) - Create a new machine
-* [getApiV1MachinesMachineId](docs/sdks/machines/README.md#getapiv1machinesmachineid) - Retrieve a specific machine by ID
+* [postGpuEvent](docs/sdks/machines/README.md#postgpuevent) - Register a machine event
+* [getV1Machines](docs/sdks/machines/README.md#getv1machines) - Retrieve all machines for a user
+* [postV1Machines](docs/sdks/machines/README.md#postv1machines) - Create a new machine
+* [getV1MachinesMachineId](docs/sdks/machines/README.md#getv1machinesmachineid) - Retrieve a specific machine by ID
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Retries [retries] -->
@@ -128,7 +128,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getApiRun(
+    const result = await comfyDeploy.workflows.getRun(
         {
             runId: "<value>",
         },
@@ -173,7 +173,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getApiRun({
+    const result = await comfyDeploy.workflows.getRun({
         runId: "<value>",
     });
 
@@ -191,11 +191,11 @@ run();
 
 All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object                          | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.GetApiRunResponseBody          | 400                                   | application/json                      |
-| errors.GetApiRunWorkflowsResponseBody | 500                                   | application/json                      |
-| errors.SDKError                       | 4xx-5xx                               | */*                                   |
+| Error Object                       | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GetRunResponseBody          | 400                                | application/json                   |
+| errors.GetRunWorkflowsResponseBody | 500                                | application/json                   |
+| errors.SDKError                    | 4xx-5xx                            | */*                                |
 
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
 
@@ -211,7 +211,7 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
     let result;
     try {
-        result = await comfyDeploy.workflows.getApiRun({
+        result = await comfyDeploy.workflows.getRun({
             runId: "<value>",
         });
     } catch (err) {
@@ -223,11 +223,11 @@ async function run() {
                 console.error(err.rawValue);
                 return;
             }
-            case err instanceof errors.GetApiRunResponseBody: {
+            case err instanceof errors.GetRunResponseBody: {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.GetApiRunWorkflowsResponseBody: {
+            case err instanceof errors.GetRunWorkflowsResponseBody: {
                 console.error(err); // handle exception
                 return;
             }
@@ -255,7 +255,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://www.comfydeploy.com/` | None |
+| 0 | `https:///api` | None |
 
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
@@ -266,7 +266,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getApiRun({
+    const result = await comfyDeploy.workflows.getRun({
         runId: "<value>",
     });
 
@@ -287,12 +287,12 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    serverURL: "https://www.comfydeploy.com/",
+    serverURL: "https:///api",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getApiRun({
+    const result = await comfyDeploy.workflows.getRun({
         runId: "<value>",
     });
 
@@ -374,7 +374,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getApiRun({
+    const result = await comfyDeploy.workflows.getRun({
         runId: "<value>",
     });
 

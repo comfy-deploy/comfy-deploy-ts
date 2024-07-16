@@ -45,22 +45,21 @@ export class Machines extends ClientSDK {
     /**
      * Register a machine event
      */
-    async postApiGpuEvent(
-        request?: operations.PostApiGpuEventRequestBody | undefined,
+    async postGpuEvent(
+        request?: operations.PostGpuEventRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.PostApiGpuEventResponseBody> {
+    ): Promise<operations.PostGpuEventResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.PostApiGpuEventRequestBody$outboundSchema.optional().parse(value$),
+            (value$) => operations.PostGpuEventRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
             payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/api/gpu_event")();
+        const path$ = this.templateURLComponent("/gpu_event")();
 
         const query$ = "";
 
@@ -78,7 +77,7 @@ export class Machines extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "post_/api/gpu_event",
+            operationID: "post_/gpu_event",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -109,10 +108,10 @@ export class Machines extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.PostApiGpuEventResponseBody>()
-            .json(200, operations.PostApiGpuEventResponseBody$inboundSchema)
+        const [result$] = await this.matcher<operations.PostGpuEventResponseBody>()
+            .json(200, operations.PostGpuEventResponseBody$inboundSchema)
             .fail([401, "4XX", "5XX"])
-            .json(500, errors.PostApiGpuEventResponseBody$inboundSchema, { err: true })
+            .json(500, errors.PostGpuEventResponseBody$inboundSchema, { err: true })
             .match(response, { extraFields: responseFields$ });
 
         return result$;
@@ -124,20 +123,20 @@ export class Machines extends ClientSDK {
      * @remarks
      * Retrieve details of all machines for the authenticated user, with pagination and optional field selection
      */
-    async getApiV1Machines(
-        request: operations.GetApiV1MachinesRequest,
+    async getV1Machines(
+        request: operations.GetV1MachinesRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiV1MachinesResponseBody> {
+    ): Promise<operations.GetV1MachinesResponseBody> {
         const input$ = typeof request === "undefined" ? {} : request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiV1MachinesRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetV1MachinesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
 
-        const path$ = this.templateURLComponent("/api/v1/machines")();
+        const path$ = this.templateURLComponent("/v1/machines")();
 
         const query$ = encodeFormQuery$({
             fields: payload$.fields,
@@ -158,7 +157,7 @@ export class Machines extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/v1/machines",
+            operationID: "get_/v1/machines",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -189,9 +188,9 @@ export class Machines extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiV1MachinesResponseBody>()
-            .json(200, operations.GetApiV1MachinesResponseBody$inboundSchema)
-            .json(400, errors.GetApiV1MachinesResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<operations.GetV1MachinesResponseBody>()
+            .json(200, operations.GetV1MachinesResponseBody$inboundSchema)
+            .json(400, errors.GetV1MachinesResponseBody$inboundSchema, { err: true })
             .fail([401, "4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -204,22 +203,22 @@ export class Machines extends ClientSDK {
      * @remarks
      * Create a new machine with optional default setting
      */
-    async postApiV1Machines(
-        request?: operations.PostApiV1MachinesRequestBody | undefined,
+    async postV1Machines(
+        request?: operations.PostV1MachinesRequestBody | undefined,
         options?: RequestOptions
-    ): Promise<operations.PostApiV1MachinesResponseBody> {
+    ): Promise<operations.PostV1MachinesResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.PostApiV1MachinesRequestBody$outboundSchema.optional().parse(value$),
+                operations.PostV1MachinesRequestBody$outboundSchema.optional().parse(value$),
             "Input validation failed"
         );
         const body$ =
             payload$ === undefined ? null : encodeJSON$("body", payload$, { explode: true });
 
-        const path$ = this.templateURLComponent("/api/v1/machines")();
+        const path$ = this.templateURLComponent("/v1/machines")();
 
         const query$ = "";
 
@@ -237,7 +236,7 @@ export class Machines extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "post_/api/v1/machines",
+            operationID: "post_/v1/machines",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -268,9 +267,9 @@ export class Machines extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.PostApiV1MachinesResponseBody>()
-            .json(200, operations.PostApiV1MachinesResponseBody$inboundSchema)
-            .json(400, errors.PostApiV1MachinesResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<operations.PostV1MachinesResponseBody>()
+            .json(200, operations.PostV1MachinesResponseBody$inboundSchema)
+            .json(400, errors.PostV1MachinesResponseBody$inboundSchema, { err: true })
             .fail([401, "4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -283,15 +282,15 @@ export class Machines extends ClientSDK {
      * @remarks
      * Retrieve details of a specific machine by its ID, with optional workspace details
      */
-    async getApiV1MachinesMachineId(
-        request: operations.GetApiV1MachinesMachineIdRequest,
+    async getV1MachinesMachineId(
+        request: operations.GetV1MachinesMachineIdRequest,
         options?: RequestOptions
-    ): Promise<operations.GetApiV1MachinesMachineIdResponseBody> {
+    ): Promise<operations.GetV1MachinesMachineIdResponseBody> {
         const input$ = request;
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.GetApiV1MachinesMachineIdRequest$outboundSchema.parse(value$),
+            (value$) => operations.GetV1MachinesMachineIdRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -302,7 +301,7 @@ export class Machines extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-        const path$ = this.templateURLComponent("/api/v1/machines/{machine_id}")(pathParams$);
+        const path$ = this.templateURLComponent("/v1/machines/{machine_id}")(pathParams$);
 
         const query$ = encodeFormQuery$({
             extUrls: payload$.extUrls,
@@ -321,7 +320,7 @@ export class Machines extends ClientSDK {
             security$ = {};
         }
         const context = {
-            operationID: "get_/api/v1/machines/{machine_id}",
+            operationID: "get_/v1/machines/{machine_id}",
             oAuth2Scopes: [],
             securitySource: this.options$.bearerAuth,
         };
@@ -352,9 +351,9 @@ export class Machines extends ClientSDK {
             HttpMeta: { Response: response, Request: request$ },
         };
 
-        const [result$] = await this.matcher<operations.GetApiV1MachinesMachineIdResponseBody>()
-            .json(200, operations.GetApiV1MachinesMachineIdResponseBody$inboundSchema)
-            .json(400, errors.GetApiV1MachinesMachineIdResponseBody$inboundSchema, { err: true })
+        const [result$] = await this.matcher<operations.GetV1MachinesMachineIdResponseBody>()
+            .json(200, operations.GetV1MachinesMachineIdResponseBody$inboundSchema)
+            .json(400, errors.GetV1MachinesMachineIdResponseBody$inboundSchema, { err: true })
             .fail([401, "4XX", "5XX"])
             .match(response, { extraFields: responseFields$ });
 

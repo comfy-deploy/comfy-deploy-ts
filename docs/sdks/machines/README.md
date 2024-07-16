@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [postApiGpuEvent](#postapigpuevent) - Register a machine event
-* [getApiV1Machines](#getapiv1machines) - Retrieve all machines for a user
-* [postApiV1Machines](#postapiv1machines) - Create a new machine
-* [getApiV1MachinesMachineId](#getapiv1machinesmachineid) - Retrieve a specific machine by ID
+* [postGpuEvent](#postgpuevent) - Register a machine event
+* [getV1Machines](#getv1machines) - Retrieve all machines for a user
+* [postV1Machines](#postv1machines) - Create a new machine
+* [getV1MachinesMachineId](#getv1machinesmachineid) - Retrieve a specific machine by ID
 
-## postApiGpuEvent
+## postGpuEvent
 
 Register a machine event
 
@@ -22,11 +22,11 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.postApiGpuEvent({
+  const result = await comfyDeploy.machines.postGpuEvent({
     machineId: "<value>",
     timestamp: "<value>",
     eventType: "gpu_end",
-    gpuProvider: "runpod",
+    gpuProvider: "modal",
   });
 
   // Handle the result
@@ -40,7 +40,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiGpuEventRequestBody](../../models/operations/postapigpueventrequestbody.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostGpuEventRequestBody](../../models/operations/postgpueventrequestbody.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -48,15 +48,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostApiGpuEventResponseBody](../../models/operations/postapigpueventresponsebody.md)\>**
+**Promise\<[operations.PostGpuEventResponseBody](../../models/operations/postgpueventresponsebody.md)\>**
 ### Errors
 
-| Error Object                       | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.PostApiGpuEventResponseBody | 500                                | application/json                   |
-| errors.SDKError                    | 4xx-5xx                            | */*                                |
+| Error Object                    | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| errors.PostGpuEventResponseBody | 500                             | application/json                |
+| errors.SDKError                 | 4xx-5xx                         | */*                             |
 
-## getApiV1Machines
+## getV1Machines
 
 Retrieve details of all machines for the authenticated user, with pagination and optional field selection
 
@@ -70,7 +70,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.getApiV1Machines({});
+  const result = await comfyDeploy.machines.getV1Machines({});
 
   // Handle the result
   console.log(result)
@@ -83,7 +83,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetApiV1MachinesRequest](../../models/operations/getapiv1machinesrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetV1MachinesRequest](../../models/operations/getv1machinesrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -91,15 +91,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetApiV1MachinesResponseBody](../../models/operations/getapiv1machinesresponsebody.md)\>**
+**Promise\<[operations.GetV1MachinesResponseBody](../../models/operations/getv1machinesresponsebody.md)\>**
 ### Errors
 
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.GetApiV1MachinesResponseBody | 400                                 | application/json                    |
-| errors.SDKError                     | 4xx-5xx                             | */*                                 |
+| Error Object                     | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.GetV1MachinesResponseBody | 400                              | application/json                 |
+| errors.SDKError                  | 4xx-5xx                          | */*                              |
 
-## postApiV1Machines
+## postV1Machines
 
 Create a new machine with optional default setting
 
@@ -113,7 +113,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.postApiV1Machines({});
+  const result = await comfyDeploy.machines.postV1Machines({});
 
   // Handle the result
   console.log(result)
@@ -126,7 +126,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostApiV1MachinesRequestBody](../../models/operations/postapiv1machinesrequestbody.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostV1MachinesRequestBody](../../models/operations/postv1machinesrequestbody.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -134,15 +134,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostApiV1MachinesResponseBody](../../models/operations/postapiv1machinesresponsebody.md)\>**
+**Promise\<[operations.PostV1MachinesResponseBody](../../models/operations/postv1machinesresponsebody.md)\>**
 ### Errors
 
-| Error Object                         | Status Code                          | Content Type                         |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| errors.PostApiV1MachinesResponseBody | 400                                  | application/json                     |
-| errors.SDKError                      | 4xx-5xx                              | */*                                  |
+| Error Object                      | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.PostV1MachinesResponseBody | 400                               | application/json                  |
+| errors.SDKError                   | 4xx-5xx                           | */*                               |
 
-## getApiV1MachinesMachineId
+## getV1MachinesMachineId
 
 Retrieve details of a specific machine by its ID, with optional workspace details
 
@@ -156,7 +156,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.getApiV1MachinesMachineId({
+  const result = await comfyDeploy.machines.getV1MachinesMachineId({
     machineId: "<value>",
   });
 
@@ -171,7 +171,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetApiV1MachinesMachineIdRequest](../../models/operations/getapiv1machinesmachineidrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetV1MachinesMachineIdRequest](../../models/operations/getv1machinesmachineidrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -179,10 +179,10 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetApiV1MachinesMachineIdResponseBody](../../models/operations/getapiv1machinesmachineidresponsebody.md)\>**
+**Promise\<[operations.GetV1MachinesMachineIdResponseBody](../../models/operations/getv1machinesmachineidresponsebody.md)\>**
 ### Errors
 
-| Error Object                                 | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| errors.GetApiV1MachinesMachineIdResponseBody | 400                                          | application/json                             |
-| errors.SDKError                              | 4xx-5xx                                      | */*                                          |
+| Error Object                              | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| errors.GetV1MachinesMachineIdResponseBody | 400                                       | application/json                          |
+| errors.SDKError                           | 4xx-5xx                                   | */*                                       |
