@@ -2,8 +2,8 @@ speakeasyVersion: 1.335.2
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:8fd66beed4c045e9b0c2d9734d0d73720370ae0b8897c17838b66369269e821f
-        sourceBlobDigest: sha256:4271d9092d713c6d1ddb643b4c6808840224b4ecf8e9914db33209e294e043c7
+        sourceRevisionDigest: sha256:2525e783f1ee7d4d286ee179a499d7e203a77ee7156eb3544e26911504e4e047
+        sourceBlobDigest: sha256:a16398018c3827b9f2293653212ae67eaef7d6d16bb4ef10427f62b91366b0ca
         tags:
             - latest
 targets:
@@ -16,8 +16,8 @@ targets:
     comfydeploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:8fd66beed4c045e9b0c2d9734d0d73720370ae0b8897c17838b66369269e821f
-        sourceBlobDigest: sha256:4271d9092d713c6d1ddb643b4c6808840224b4ecf8e9914db33209e294e043c7
+        sourceRevisionDigest: sha256:2525e783f1ee7d4d286ee179a499d7e203a77ee7156eb3544e26911504e4e047
+        sourceBlobDigest: sha256:a16398018c3827b9f2293653212ae67eaef7d6d16bb4ef10427f62b91366b0ca
         outLocation: /Users/bennykok/Documents/GitHub/comfy-deploy-ts
 workflow:
     workflowVersion: 1.0.0

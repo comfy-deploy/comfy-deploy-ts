@@ -7,20 +7,20 @@ import * as z from "zod";
 /**
  * Error getting output
  */
-export type GetRunWorkflowsResponseBodyData = {
+export type GetRunRunResponseBodyData = {
     error: string;
 };
 
 /**
  * Error getting output
  */
-export class GetRunWorkflowsResponseBody extends Error {
+export class GetRunRunResponseBody extends Error {
     error: string;
 
     /** The original data that was passed to this error instance. */
-    data$: GetRunWorkflowsResponseBodyData;
+    data$: GetRunRunResponseBodyData;
 
-    constructor(err: GetRunWorkflowsResponseBodyData) {
+    constructor(err: GetRunRunResponseBodyData) {
         const message =
             "message" in err && typeof err.message === "string"
                 ? err.message
@@ -30,7 +30,7 @@ export class GetRunWorkflowsResponseBody extends Error {
 
         this.error = err.error;
 
-        this.name = "GetRunWorkflowsResponseBody";
+        this.name = "GetRunRunResponseBody";
     }
 }
 
@@ -66,8 +66,8 @@ export class GetRunResponseBody extends Error {
 }
 
 /** @internal */
-export const GetRunWorkflowsResponseBody$inboundSchema: z.ZodType<
-    GetRunWorkflowsResponseBody,
+export const GetRunRunResponseBody$inboundSchema: z.ZodType<
+    GetRunRunResponseBody,
     z.ZodTypeDef,
     unknown
 > = z
@@ -75,21 +75,21 @@ export const GetRunWorkflowsResponseBody$inboundSchema: z.ZodType<
         error: z.string(),
     })
     .transform((v) => {
-        return new GetRunWorkflowsResponseBody(v);
+        return new GetRunRunResponseBody(v);
     });
 
 /** @internal */
-export type GetRunWorkflowsResponseBody$Outbound = {
+export type GetRunRunResponseBody$Outbound = {
     error: string;
 };
 
 /** @internal */
-export const GetRunWorkflowsResponseBody$outboundSchema: z.ZodType<
-    GetRunWorkflowsResponseBody$Outbound,
+export const GetRunRunResponseBody$outboundSchema: z.ZodType<
+    GetRunRunResponseBody$Outbound,
     z.ZodTypeDef,
-    GetRunWorkflowsResponseBody
+    GetRunRunResponseBody
 > = z
-    .instanceof(GetRunWorkflowsResponseBody)
+    .instanceof(GetRunRunResponseBody)
     .transform((v) => v.data$)
     .pipe(
         z.object({
@@ -101,13 +101,13 @@ export const GetRunWorkflowsResponseBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetRunWorkflowsResponseBody$ {
-    /** @deprecated use `GetRunWorkflowsResponseBody$inboundSchema` instead. */
-    export const inboundSchema = GetRunWorkflowsResponseBody$inboundSchema;
-    /** @deprecated use `GetRunWorkflowsResponseBody$outboundSchema` instead. */
-    export const outboundSchema = GetRunWorkflowsResponseBody$outboundSchema;
-    /** @deprecated use `GetRunWorkflowsResponseBody$Outbound` instead. */
-    export type Outbound = GetRunWorkflowsResponseBody$Outbound;
+export namespace GetRunRunResponseBody$ {
+    /** @deprecated use `GetRunRunResponseBody$inboundSchema` instead. */
+    export const inboundSchema = GetRunRunResponseBody$inboundSchema;
+    /** @deprecated use `GetRunRunResponseBody$outboundSchema` instead. */
+    export const outboundSchema = GetRunRunResponseBody$outboundSchema;
+    /** @deprecated use `GetRunRunResponseBody$Outbound` instead. */
+    export type Outbound = GetRunRunResponseBody$Outbound;
 }
 
 /** @internal */

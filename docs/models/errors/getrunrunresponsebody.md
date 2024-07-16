@@ -1,4 +1,4 @@
-# GetRunWorkflowsResponseBody
+# GetRunRunResponseBody
 
 Error getting output
 

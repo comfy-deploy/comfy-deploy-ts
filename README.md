@@ -66,7 +66,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getRun({
+    const result = await comfyDeploy.run.get({
         runId: "<value>",
     });
 
@@ -82,20 +82,23 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+### [run](docs/sdks/run/README.md)
+
+* [get](docs/sdks/run/README.md#get) - Get workflow run output
+* [create](docs/sdks/run/README.md#create) - Run a workflow via deployment_id
+
+### [files](docs/sdks/files/README.md)
+
+* [getUploadUrl](docs/sdks/files/README.md#getuploadurl) - Upload any files to the storage
+
 ### [workflows](docs/sdks/workflows/README.md)
 
-* [getRun](docs/sdks/workflows/README.md#getrun) - Get workflow run output
-* [postRun](docs/sdks/workflows/README.md#postrun) - Run a workflow via deployment_id
 * [getWebsocketDeploymentId](docs/sdks/workflows/README.md#getwebsocketdeploymentid) - Get a websocket url for a specific deployment
 * [postMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint) - Create an endpoint for a machine
 * [getV1Workflows](docs/sdks/workflows/README.md#getv1workflows) - Retrieve workflows
 * [postV1Workflows](docs/sdks/workflows/README.md#postv1workflows) - Create a new workflow
 * [getV1WorkflowsWorkflowId](docs/sdks/workflows/README.md#getv1workflowsworkflowid) - Retrieve a specific workflow by ID
 * [getV1WorkflowsWorkflowIdOutputs](docs/sdks/workflows/README.md#getv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
-
-### [files](docs/sdks/files/README.md)
-
-* [getUploadUrl](docs/sdks/files/README.md#getuploadurl) - Upload any files to the storage
 
 ### [comfyui](docs/sdks/comfyui/README.md)
 
@@ -128,7 +131,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getRun(
+    const result = await comfyDeploy.run.get(
         {
             runId: "<value>",
         },
@@ -173,7 +176,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getRun({
+    const result = await comfyDeploy.run.get({
         runId: "<value>",
     });
 
@@ -191,11 +194,11 @@ run();
 
 All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object                       | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.GetRunResponseBody          | 400                                | application/json                   |
-| errors.GetRunWorkflowsResponseBody | 500                                | application/json                   |
-| errors.SDKError                    | 4xx-5xx                            | */*                                |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| errors.GetRunResponseBody    | 400                          | application/json             |
+| errors.GetRunRunResponseBody | 500                          | application/json             |
+| errors.SDKError              | 4xx-5xx                      | */*                          |
 
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
 
@@ -211,7 +214,7 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
     let result;
     try {
-        result = await comfyDeploy.workflows.getRun({
+        result = await comfyDeploy.run.get({
             runId: "<value>",
         });
     } catch (err) {
@@ -227,7 +230,7 @@ async function run() {
                 console.error(err); // handle exception
                 return;
             }
-            case err instanceof errors.GetRunWorkflowsResponseBody: {
+            case err instanceof errors.GetRunRunResponseBody: {
                 console.error(err); // handle exception
                 return;
             }
@@ -266,7 +269,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getRun({
+    const result = await comfyDeploy.run.get({
         runId: "<value>",
     });
 
@@ -292,7 +295,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getRun({
+    const result = await comfyDeploy.run.get({
         runId: "<value>",
     });
 
@@ -374,7 +377,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getRun({
+    const result = await comfyDeploy.run.get({
         runId: "<value>",
     });
 

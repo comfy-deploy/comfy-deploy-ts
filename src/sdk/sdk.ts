@@ -9,6 +9,7 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Comfyui } from "./comfyui.js";
 import { Files } from "./files.js";
 import { Machines } from "./machines.js";
+import { Run } from "./run.js";
 import { Workflows } from "./workflows.js";
 
 export class ComfyDeploy extends ClientSDK {
@@ -38,14 +39,19 @@ export class ComfyDeploy extends ClientSDK {
         void this.options$;
     }
 
-    private _workflows?: Workflows;
-    get workflows(): Workflows {
-        return (this._workflows ??= new Workflows(this.options$));
+    private _run?: Run;
+    get run(): Run {
+        return (this._run ??= new Run(this.options$));
     }
 
     private _files?: Files;
     get files(): Files {
         return (this._files ??= new Files(this.options$));
+    }
+
+    private _workflows?: Workflows;
+    get workflows(): Workflows {
+        return (this._workflows ??= new Workflows(this.options$));
     }
 
     private _comfyui?: Comfyui;

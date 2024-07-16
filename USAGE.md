@@ -7,7 +7,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-    const result = await comfyDeploy.workflows.getRun({
+    const result = await comfyDeploy.run.get({
         runId: "<value>",
     });
 
