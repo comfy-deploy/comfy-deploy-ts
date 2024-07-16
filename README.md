@@ -258,7 +258,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https:///api` | None |
+| 0 | `https://www.comfydeploy.com/api` | None |
 
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
@@ -290,7 +290,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    serverURL: "https:///api",
+    serverURL: "https://www.comfydeploy.com/api",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 

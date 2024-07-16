@@ -9,7 +9,7 @@ import { Params, pathToFunc } from "./url.js";
 /**
  * Contains the list of servers available to the SDK
  */
-export const ServerList = ["https:///api"] as const;
+export const ServerList = ["https://www.comfydeploy.com/api"] as const;
 
 export type SDKOptions = {
     bearerAuth?: string | (() => Promise<string>);
@@ -50,7 +50,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "0.0.1",
-    sdkVersion: "0.0.19-beta.9",
+    sdkVersion: "0.0.19-beta.10",
     genVersion: "2.372.3",
-    userAgent: "speakeasy-sdk/typescript 0.0.19-beta.9 2.372.3 0.0.1 comfydeploy",
+    userAgent: "speakeasy-sdk/typescript 0.0.19-beta.10 2.372.3 0.0.1 comfydeploy",
 } as const;
