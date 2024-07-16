@@ -6,21 +6,21 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { ClosedEnum } from "../../types/enums.js";
 import * as z from "zod";
 
-export const RunOrigin = {
+export const QueryParamRunOrigin = {
     Manual: "manual",
     Api: "api",
     PublicShare: "public-share",
     PublicTemplate: "public-template",
     Workspace: "workspace",
 } as const;
-export type RunOrigin = ClosedEnum<typeof RunOrigin>;
+export type QueryParamRunOrigin = ClosedEnum<typeof QueryParamRunOrigin>;
 
 export type GetV1WorkflowsWorkflowIdOutputsRequest = {
     workflowId: string;
     page?: string | undefined;
     pageSize?: string | undefined;
     search?: string | undefined;
-    runOrigin?: RunOrigin | undefined;
+    runOrigin?: QueryParamRunOrigin | undefined;
 };
 
 export type Outputs = {
@@ -38,20 +38,22 @@ export type GetV1WorkflowsWorkflowIdOutputsResponseBody = {
 };
 
 /** @internal */
-export const RunOrigin$inboundSchema: z.ZodNativeEnum<typeof RunOrigin> = z.nativeEnum(RunOrigin);
+export const QueryParamRunOrigin$inboundSchema: z.ZodNativeEnum<typeof QueryParamRunOrigin> =
+    z.nativeEnum(QueryParamRunOrigin);
 
 /** @internal */
-export const RunOrigin$outboundSchema: z.ZodNativeEnum<typeof RunOrigin> = RunOrigin$inboundSchema;
+export const QueryParamRunOrigin$outboundSchema: z.ZodNativeEnum<typeof QueryParamRunOrigin> =
+    QueryParamRunOrigin$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RunOrigin$ {
-    /** @deprecated use `RunOrigin$inboundSchema` instead. */
-    export const inboundSchema = RunOrigin$inboundSchema;
-    /** @deprecated use `RunOrigin$outboundSchema` instead. */
-    export const outboundSchema = RunOrigin$outboundSchema;
+export namespace QueryParamRunOrigin$ {
+    /** @deprecated use `QueryParamRunOrigin$inboundSchema` instead. */
+    export const inboundSchema = QueryParamRunOrigin$inboundSchema;
+    /** @deprecated use `QueryParamRunOrigin$outboundSchema` instead. */
+    export const outboundSchema = QueryParamRunOrigin$outboundSchema;
 }
 
 /** @internal */
@@ -65,7 +67,7 @@ export const GetV1WorkflowsWorkflowIdOutputsRequest$inboundSchema: z.ZodType<
         page: z.string().default("1"),
         pageSize: z.string().default("12"),
         search: z.string().optional(),
-        runOrigin: RunOrigin$inboundSchema.optional(),
+        runOrigin: QueryParamRunOrigin$inboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -93,7 +95,7 @@ export const GetV1WorkflowsWorkflowIdOutputsRequest$outboundSchema: z.ZodType<
         page: z.string().default("1"),
         pageSize: z.string().default("12"),
         search: z.string().optional(),
-        runOrigin: RunOrigin$outboundSchema.optional(),
+        runOrigin: QueryParamRunOrigin$outboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {

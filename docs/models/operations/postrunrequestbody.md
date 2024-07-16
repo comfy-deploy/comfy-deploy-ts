@@ -1,17 +1,21 @@
 # PostRunRequestBody
 
+Run options
 
-## Supported Types
 
-### `operations.RequestBody1`
+## Fields
 
-```typescript
-const value: operations.RequestBody1 = /* values here */
-```
-
-### `operations.Two`
-
-```typescript
-const value: operations.Two = /* values here */
-```
-
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `deploymentId`                                                 | *string*                                                       | :heavy_minus_sign:                                             | Deployment ID to run                                           | d290f1ee-6c54-4b01-90e6-d701748f0851                           |
+| `workflowApi`                                                  | *any*                                                          | :heavy_minus_sign:                                             | Workflow API JSON to run                                       |                                                                |
+| `workflowId`                                                   | *string*                                                       | :heavy_minus_sign:                                             | Workflow ID to run                                             | f47ac10b-58cc-4372-a567-0e02b2c3d479                           |
+| `machineId`                                                    | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |                                                                |
+| `gpu`                                                          | [operations.Gpu](../../models/operations/gpu.md)               | :heavy_minus_sign:                                             | N/A                                                            |                                                                |
+| `concurrencyLimit`                                             | *number*                                                       | :heavy_minus_sign:                                             | N/A                                                            |                                                                |
+| `privateVolumeName`                                            | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |                                                                |
+| `timeout`                                                      | *number*                                                       | :heavy_minus_sign:                                             | N/A                                                            |                                                                |
+| `runOrigin`                                                    | [operations.RunOrigin](../../models/operations/runorigin.md)   | :heavy_minus_sign:                                             | N/A                                                            |                                                                |
+| `inputs`                                                       | Record<string, *operations.Inputs*>                            | :heavy_minus_sign:                                             | External inputs to the workflow                                | {<br/>"input_text": "value1",<br/>"input_url": "https://example.png"<br/>} |
+| `webhook`                                                      | *string*                                                       | :heavy_minus_sign:                                             | Webhook URL to receive workflow updates                        | https://example.com/webhook                                    |
+| `stream`                                                       | *boolean*                                                      | :heavy_minus_sign:                                             | Whether to return a streaming url                              |                                                                |

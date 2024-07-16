@@ -15,26 +15,39 @@ export const Gpu = {
 } as const;
 export type Gpu = ClosedEnum<typeof Gpu>;
 
-export const RequestBodyRunOrigin = {
+export const RunOrigin = {
     Manual: "manual",
     Api: "api",
     PublicShare: "public-share",
     PublicTemplate: "public-template",
     Workspace: "workspace",
 } as const;
-export type RequestBodyRunOrigin = ClosedEnum<typeof RequestBodyRunOrigin>;
+export type RunOrigin = ClosedEnum<typeof RunOrigin>;
 
-export type RequestBodyInputs = string | number;
+export type Inputs = string | number;
 
-export type Two = {
+/**
+ * Run options
+ */
+export type PostRunRequestBody = {
+    /**
+     * Deployment ID to run
+     */
+    deploymentId?: string | undefined;
+    /**
+     * Workflow API JSON to run
+     */
     workflowApi?: any | null | undefined;
-    workflowId: string;
+    /**
+     * Workflow ID to run
+     */
+    workflowId?: string | undefined;
     machineId?: string | undefined;
     gpu?: Gpu | undefined;
     concurrencyLimit?: number | undefined;
     privateVolumeName?: string | undefined;
     timeout?: number | undefined;
-    runOrigin?: RequestBodyRunOrigin | undefined;
+    runOrigin?: RunOrigin | undefined;
     /**
      * External inputs to the workflow
      */
@@ -48,26 +61,6 @@ export type Two = {
      */
     stream?: boolean | undefined;
 };
-
-export type Inputs = string | number;
-
-export type RequestBody1 = {
-    deploymentId: string;
-    /**
-     * External inputs to the workflow
-     */
-    inputs?: { [k: string]: string | number } | undefined;
-    /**
-     * Webhook URL to receive workflow updates
-     */
-    webhook?: string | undefined;
-    /**
-     * Whether to return a streaming url
-     */
-    stream?: boolean | undefined;
-};
-
-export type PostRunRequestBody = RequestBody1 | Two;
 
 /**
  * Workflow queued
@@ -94,129 +87,20 @@ export namespace Gpu$ {
 }
 
 /** @internal */
-export const RequestBodyRunOrigin$inboundSchema: z.ZodNativeEnum<typeof RequestBodyRunOrigin> =
-    z.nativeEnum(RequestBodyRunOrigin);
+export const RunOrigin$inboundSchema: z.ZodNativeEnum<typeof RunOrigin> = z.nativeEnum(RunOrigin);
 
 /** @internal */
-export const RequestBodyRunOrigin$outboundSchema: z.ZodNativeEnum<typeof RequestBodyRunOrigin> =
-    RequestBodyRunOrigin$inboundSchema;
+export const RunOrigin$outboundSchema: z.ZodNativeEnum<typeof RunOrigin> = RunOrigin$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RequestBodyRunOrigin$ {
-    /** @deprecated use `RequestBodyRunOrigin$inboundSchema` instead. */
-    export const inboundSchema = RequestBodyRunOrigin$inboundSchema;
-    /** @deprecated use `RequestBodyRunOrigin$outboundSchema` instead. */
-    export const outboundSchema = RequestBodyRunOrigin$outboundSchema;
-}
-
-/** @internal */
-export const RequestBodyInputs$inboundSchema: z.ZodType<RequestBodyInputs, z.ZodTypeDef, unknown> =
-    z.union([z.string(), z.number()]);
-
-/** @internal */
-export type RequestBodyInputs$Outbound = string | number;
-
-/** @internal */
-export const RequestBodyInputs$outboundSchema: z.ZodType<
-    RequestBodyInputs$Outbound,
-    z.ZodTypeDef,
-    RequestBodyInputs
-> = z.union([z.string(), z.number()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBodyInputs$ {
-    /** @deprecated use `RequestBodyInputs$inboundSchema` instead. */
-    export const inboundSchema = RequestBodyInputs$inboundSchema;
-    /** @deprecated use `RequestBodyInputs$outboundSchema` instead. */
-    export const outboundSchema = RequestBodyInputs$outboundSchema;
-    /** @deprecated use `RequestBodyInputs$Outbound` instead. */
-    export type Outbound = RequestBodyInputs$Outbound;
-}
-
-/** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-    .object({
-        workflow_api: z.nullable(z.any()).optional(),
-        workflow_id: z.string(),
-        machine_id: z.string().optional(),
-        gpu: Gpu$inboundSchema.optional(),
-        concurrency_limit: z.number().optional(),
-        private_volume_name: z.string().optional(),
-        timeout: z.number().optional(),
-        run_origin: RequestBodyRunOrigin$inboundSchema.optional(),
-        inputs: z.record(z.union([z.string(), z.number()])).optional(),
-        webhook: z.string().optional(),
-        stream: z.boolean().optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            workflow_api: "workflowApi",
-            workflow_id: "workflowId",
-            machine_id: "machineId",
-            concurrency_limit: "concurrencyLimit",
-            private_volume_name: "privateVolumeName",
-            run_origin: "runOrigin",
-        });
-    });
-
-/** @internal */
-export type Two$Outbound = {
-    workflow_api?: any | null | undefined;
-    workflow_id: string;
-    machine_id?: string | undefined;
-    gpu?: string | undefined;
-    concurrency_limit?: number | undefined;
-    private_volume_name?: string | undefined;
-    timeout?: number | undefined;
-    run_origin?: string | undefined;
-    inputs?: { [k: string]: string | number } | undefined;
-    webhook?: string | undefined;
-    stream?: boolean | undefined;
-};
-
-/** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-    .object({
-        workflowApi: z.nullable(z.any()).optional(),
-        workflowId: z.string(),
-        machineId: z.string().optional(),
-        gpu: Gpu$outboundSchema.optional(),
-        concurrencyLimit: z.number().optional(),
-        privateVolumeName: z.string().optional(),
-        timeout: z.number().optional(),
-        runOrigin: RequestBodyRunOrigin$outboundSchema.optional(),
-        inputs: z.record(z.union([z.string(), z.number()])).optional(),
-        webhook: z.string().optional(),
-        stream: z.boolean().optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            workflowApi: "workflow_api",
-            workflowId: "workflow_id",
-            machineId: "machine_id",
-            concurrencyLimit: "concurrency_limit",
-            privateVolumeName: "private_volume_name",
-            runOrigin: "run_origin",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Two$ {
-    /** @deprecated use `Two$inboundSchema` instead. */
-    export const inboundSchema = Two$inboundSchema;
-    /** @deprecated use `Two$outboundSchema` instead. */
-    export const outboundSchema = Two$outboundSchema;
-    /** @deprecated use `Two$Outbound` instead. */
-    export type Outbound = Two$Outbound;
+export namespace RunOrigin$ {
+    /** @deprecated use `RunOrigin$inboundSchema` instead. */
+    export const inboundSchema = RunOrigin$inboundSchema;
+    /** @deprecated use `RunOrigin$outboundSchema` instead. */
+    export const outboundSchema = RunOrigin$outboundSchema;
 }
 
 /** @internal */
@@ -248,9 +132,21 @@ export namespace Inputs$ {
 }
 
 /** @internal */
-export const RequestBody1$inboundSchema: z.ZodType<RequestBody1, z.ZodTypeDef, unknown> = z
+export const PostRunRequestBody$inboundSchema: z.ZodType<
+    PostRunRequestBody,
+    z.ZodTypeDef,
+    unknown
+> = z
     .object({
-        deployment_id: z.string(),
+        deployment_id: z.string().optional(),
+        workflow_api: z.nullable(z.any()).optional(),
+        workflow_id: z.string().optional(),
+        machine_id: z.string().optional(),
+        gpu: Gpu$inboundSchema.optional(),
+        concurrency_limit: z.number().optional(),
+        private_volume_name: z.string().optional(),
+        timeout: z.number().optional(),
+        run_origin: RunOrigin$inboundSchema.optional(),
         inputs: z.record(z.union([z.string(), z.number()])).optional(),
         webhook: z.string().optional(),
         stream: z.boolean().optional(),
@@ -258,25 +154,47 @@ export const RequestBody1$inboundSchema: z.ZodType<RequestBody1, z.ZodTypeDef, u
     .transform((v) => {
         return remap$(v, {
             deployment_id: "deploymentId",
+            workflow_api: "workflowApi",
+            workflow_id: "workflowId",
+            machine_id: "machineId",
+            concurrency_limit: "concurrencyLimit",
+            private_volume_name: "privateVolumeName",
+            run_origin: "runOrigin",
         });
     });
 
 /** @internal */
-export type RequestBody1$Outbound = {
-    deployment_id: string;
+export type PostRunRequestBody$Outbound = {
+    deployment_id?: string | undefined;
+    workflow_api?: any | null | undefined;
+    workflow_id?: string | undefined;
+    machine_id?: string | undefined;
+    gpu?: string | undefined;
+    concurrency_limit?: number | undefined;
+    private_volume_name?: string | undefined;
+    timeout?: number | undefined;
+    run_origin?: string | undefined;
     inputs?: { [k: string]: string | number } | undefined;
     webhook?: string | undefined;
     stream?: boolean | undefined;
 };
 
 /** @internal */
-export const RequestBody1$outboundSchema: z.ZodType<
-    RequestBody1$Outbound,
+export const PostRunRequestBody$outboundSchema: z.ZodType<
+    PostRunRequestBody$Outbound,
     z.ZodTypeDef,
-    RequestBody1
+    PostRunRequestBody
 > = z
     .object({
-        deploymentId: z.string(),
+        deploymentId: z.string().optional(),
+        workflowApi: z.nullable(z.any()).optional(),
+        workflowId: z.string().optional(),
+        machineId: z.string().optional(),
+        gpu: Gpu$outboundSchema.optional(),
+        concurrencyLimit: z.number().optional(),
+        privateVolumeName: z.string().optional(),
+        timeout: z.number().optional(),
+        runOrigin: RunOrigin$outboundSchema.optional(),
         inputs: z.record(z.union([z.string(), z.number()])).optional(),
         webhook: z.string().optional(),
         stream: z.boolean().optional(),
@@ -284,38 +202,14 @@ export const RequestBody1$outboundSchema: z.ZodType<
     .transform((v) => {
         return remap$(v, {
             deploymentId: "deployment_id",
+            workflowApi: "workflow_api",
+            workflowId: "workflow_id",
+            machineId: "machine_id",
+            concurrencyLimit: "concurrency_limit",
+            privateVolumeName: "private_volume_name",
+            runOrigin: "run_origin",
         });
     });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestBody1$ {
-    /** @deprecated use `RequestBody1$inboundSchema` instead. */
-    export const inboundSchema = RequestBody1$inboundSchema;
-    /** @deprecated use `RequestBody1$outboundSchema` instead. */
-    export const outboundSchema = RequestBody1$outboundSchema;
-    /** @deprecated use `RequestBody1$Outbound` instead. */
-    export type Outbound = RequestBody1$Outbound;
-}
-
-/** @internal */
-export const PostRunRequestBody$inboundSchema: z.ZodType<
-    PostRunRequestBody,
-    z.ZodTypeDef,
-    unknown
-> = z.union([z.lazy(() => RequestBody1$inboundSchema), z.lazy(() => Two$inboundSchema)]);
-
-/** @internal */
-export type PostRunRequestBody$Outbound = RequestBody1$Outbound | Two$Outbound;
-
-/** @internal */
-export const PostRunRequestBody$outboundSchema: z.ZodType<
-    PostRunRequestBody$Outbound,
-    z.ZodTypeDef,
-    PostRunRequestBody
-> = z.union([z.lazy(() => RequestBody1$outboundSchema), z.lazy(() => Two$outboundSchema)]);
 
 /**
  * @internal

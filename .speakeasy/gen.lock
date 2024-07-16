@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: ca2ba8a7e2afc67cb919825001fb87e3
+  docChecksum: 57f6c75b38984e75900a9b428ecae849
   docVersion: 0.0.1
   speakeasyVersion: 1.335.2
   generationVersion: 2.372.3
-  releaseVersion: 0.0.19-beta.5
-  configChecksum: 51f3c92038c61609bd8b307a38cc8cb9
+  releaseVersion: 0.0.19-beta.7
+  configChecksum: 7efeaa63f69f1ffff096fbe23783bad4
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -111,11 +111,8 @@ generatedFiles:
   - docs/models/operations/webhookstatus.md
   - docs/models/operations/getrunresponsebody.md
   - docs/models/operations/gpu.md
-  - docs/models/operations/requestbodyrunorigin.md
-  - docs/models/operations/requestbodyinputs.md
-  - docs/models/operations/two.md
+  - docs/models/operations/runorigin.md
   - docs/models/operations/inputs.md
-  - docs/models/operations/requestbody1.md
   - docs/models/operations/postrunrequestbody.md
   - docs/models/operations/postrunresponsebody.md
   - docs/models/operations/getwebsocketdeploymentidrequest.md
@@ -132,7 +129,7 @@ generatedFiles:
   - docs/models/operations/getv1workflowsworkflowidrequest.md
   - docs/models/operations/getv1workflowsworkflowidversions.md
   - docs/models/operations/getv1workflowsworkflowidresponsebody.md
-  - docs/models/operations/runorigin.md
+  - docs/models/operations/queryparamrunorigin.md
   - docs/models/operations/getv1workflowsworkflowidoutputsrequest.md
   - docs/models/operations/outputs.md
   - docs/models/operations/getv1workflowsworkflowidoutputsresponsebody.md
