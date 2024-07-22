@@ -2,8 +2,7 @@ configVersion: 2.0.0
 generation:
   devContainers:
     enabled: true
-    schemaPath: https://www.comfydeploy.com/api/openapi.json
-  baseServerUrl: https://www.comfydeploy.com
+    schemaPath: https://www.comfydeploy.com/api
   sdkClassName: ComfyDeploy
   maintainOpenAPIOrder: true
   usageSnippets:
