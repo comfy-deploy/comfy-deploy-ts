@@ -62,7 +62,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -127,7 +127,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -172,7 +172,7 @@ const comfyDeploy = new ComfyDeploy({
         },
         retryConnectionErrors: false,
     },
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -208,7 +208,7 @@ import { ComfyDeploy } from "comfydeploy";
 import { SDKValidationError } from "comfydeploy/models/errors";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -265,7 +265,7 @@ import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     serverIdx: 0,
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -291,7 +291,7 @@ import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     serverURL: "https://www.comfydeploy.com/api",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -373,7 +373,7 @@ To authenticate with the API the `bearerAuth` parameter must be set when initial
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {

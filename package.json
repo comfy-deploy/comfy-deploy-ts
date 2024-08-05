@@ -1,6 +1,6 @@
 {
   "name": "comfydeploy",
-  "version": "0.0.19-beta.11",
+  "version": "0.0.19-beta.12",
   "author": "comfydeploy",
   "main": "./index.js",
   "sideEffects": false,
