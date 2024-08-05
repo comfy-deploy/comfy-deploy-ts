@@ -16,7 +16,7 @@ Call this to get a run's output, usually in conjunction with polling method
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -62,7 +62,7 @@ Run a workflow via deployment_id
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {

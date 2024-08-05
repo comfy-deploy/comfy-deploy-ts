@@ -3,7 +3,7 @@
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {

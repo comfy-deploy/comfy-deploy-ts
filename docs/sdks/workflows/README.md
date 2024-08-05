@@ -20,7 +20,7 @@ Get a websocket url for a specific deployment
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -65,14 +65,11 @@ Create an endpoint for a machine
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.postMachineEndpoint({
-    machineId: "<value>",
-    type: "<value>",
-  });
+  const result = await comfyDeploy.workflows.postMachineEndpoint();
 
   // Handle the result
   console.log(result)
@@ -111,7 +108,7 @@ Retrieve workflows based on optional query parameters
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -154,11 +151,11 @@ Create a new workflow by analyzing the provided workflow JSON
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.postV1Workflows({});
+  const result = await comfyDeploy.workflows.postV1Workflows();
 
   // Handle the result
   console.log(result)
@@ -197,7 +194,7 @@ Retrieve the latest version of a specific workflow by its ID
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -242,7 +239,7 @@ Retrieve the latest version of a specific workflow by its ID
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: 751bbee351db5354325a9ef968014e0d
+  docChecksum: 758b13f74fcbb24560b25f761d26fe35
   docVersion: 0.0.1
-  speakeasyVersion: 1.337.0
-  generationVersion: 2.373.0
-  releaseVersion: 0.0.19-beta.11
-  configChecksum: 36f9dd4b6c879e914d7a4ec701bed06c
+  speakeasyVersion: 1.352.1
+  generationVersion: 2.385.1
+  releaseVersion: 0.0.19-beta.12
+  configChecksum: 82f1eab256c9082ae8371e12311292a9
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -14,9 +14,10 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.6
+    core: 3.11.13
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
+    envVarSecurityUsage: 0.1.1
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
@@ -26,7 +27,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.5
+    unions: 2.85.6
 generatedFiles:
   - src/sdk/run.ts
   - src/sdk/files.ts
@@ -42,9 +43,11 @@ generatedFiles:
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
+  - src/lib/dlv.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -52,10 +55,12 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
+  - src/models/errors/httpclienterrors.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
   - src/types/enums.ts
+  - src/types/fp.ts
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
@@ -111,6 +116,11 @@ generatedFiles:
   - docs/models/operations/machinetype.md
   - docs/models/operations/runlog.md
   - docs/models/operations/webhookstatus.md
+  - docs/models/operations/images.md
+  - docs/models/operations/getrunfiles.md
+  - docs/models/operations/gifs.md
+  - docs/models/operations/data.md
+  - docs/models/operations/outputs.md
   - docs/models/operations/getrunresponsebody.md
   - docs/models/operations/gpu.md
   - docs/models/operations/runorigin.md
@@ -136,7 +146,7 @@ generatedFiles:
   - docs/models/operations/getv1workflowsworkflowidresponsebody.md
   - docs/models/operations/queryparamrunorigin.md
   - docs/models/operations/getv1workflowsworkflowidoutputsrequest.md
-  - docs/models/operations/outputs.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsoutputs.md
   - docs/models/operations/getv1workflowsworkflowidoutputsresponsebody.md
   - docs/models/operations/getauthresponserequestidrequest.md
   - docs/models/operations/getauthresponserequestidcomfyuiresponsebody.md
@@ -224,3 +234,4 @@ generatedFiles:
   - src/hooks/hooks.ts
   - src/hooks/types.ts
   - src/hooks/index.ts
+  - CONTRIBUTING.md

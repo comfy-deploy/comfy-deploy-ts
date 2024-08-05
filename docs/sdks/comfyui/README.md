@@ -20,7 +20,7 @@ This endpoints is specifically built for ComfyUI workflow upload.
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -65,31 +65,11 @@ This endpoints is specifically built for ComfyUI workflow upload.
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
-  const result = await comfyDeploy.comfyui.postWorkflow({
-    workflowApi: {
-      "key": {
-        inputs: {
-          "key": "<value>",
-        },
-      },
-    },
-    snapshot: {
-      comfyui: "<value>",
-      gitCustomNodes: {
-        "key": {
-          hash: "<value>",
-          disabled: false,
-        },
-      },
-      fileCustomNodes: [
-        "<value>",
-      ],
-    },
-  });
+  const result = await comfyDeploy.comfyui.postWorkflow();
 
   // Handle the result
   console.log(result)
@@ -128,7 +108,7 @@ Use this to retrieve comfyui workflow by id
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -173,7 +153,7 @@ Use this to retrieve comfyui workflow by id
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -218,7 +198,7 @@ Use this to retrieve comfyui workflow inputs definition by id
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -263,7 +243,7 @@ Get all deployed workflows
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {

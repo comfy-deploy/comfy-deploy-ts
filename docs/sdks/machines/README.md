@@ -18,16 +18,11 @@ Register a machine event
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.postGpuEvent({
-    machineId: "<value>",
-    timestamp: "<value>",
-    eventType: "gpu_end",
-    gpuProvider: "modal",
-  });
+  const result = await comfyDeploy.machines.postGpuEvent();
 
   // Handle the result
   console.log(result)
@@ -66,7 +61,7 @@ Retrieve details of all machines for the authenticated user, with pagination and
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
@@ -109,11 +104,11 @@ Create a new machine with optional default setting
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.postV1Machines({});
+  const result = await comfyDeploy.machines.postV1Machines();
 
   // Handle the result
   console.log(result)
@@ -152,7 +147,7 @@ Retrieve details of a specific machine by its ID, with optional workspace detail
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearerAuth: process.env.BEARER_AUTH,
 });
 
 async function run() {
