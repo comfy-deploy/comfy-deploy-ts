@@ -3,10 +3,10 @@ id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
   docChecksum: 758b13f74fcbb24560b25f761d26fe35
   docVersion: 0.0.1
-  speakeasyVersion: 1.352.1
-  generationVersion: 2.385.1
-  releaseVersion: 0.0.19-beta.12
-  configChecksum: 82f1eab256c9082ae8371e12311292a9
+  speakeasyVersion: 1.352.2
+  generationVersion: 2.385.2
+  releaseVersion: 0.0.19-beta.13
+  configChecksum: 5220db3bf760fc081585972707898274
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -18,7 +18,7 @@ features:
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
-    globalSecurity: 2.82.9
+    globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4

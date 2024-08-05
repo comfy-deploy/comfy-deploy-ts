@@ -2,7 +2,7 @@
 
 {
   "name": "comfydeploy",
-  "version": "0.0.19-beta.12",
+  "version": "0.0.19-beta.13",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    

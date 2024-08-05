@@ -62,7 +62,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: process.env.BEARER_AUTH,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -127,7 +127,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: process.env.BEARER_AUTH,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -172,7 +172,7 @@ const comfyDeploy = new ComfyDeploy({
         },
         retryConnectionErrors: false,
     },
-    bearerAuth: process.env.BEARER_AUTH,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -208,7 +208,7 @@ import { ComfyDeploy } from "comfydeploy";
 import { SDKValidationError } from "comfydeploy/models/errors";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: process.env.BEARER_AUTH,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -265,7 +265,7 @@ import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     serverIdx: 0,
-    bearerAuth: process.env.BEARER_AUTH,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -291,7 +291,7 @@ import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
     serverURL: "https://www.comfydeploy.com/api",
-    bearerAuth: process.env.BEARER_AUTH,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
@@ -368,12 +368,12 @@ This SDK supports the following security scheme globally:
 | ------------ | ------------ | ------------ |
 | `bearerAuth` | http         | HTTP Bearer  |
 
-To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `nullT` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    bearerAuth: process.env.BEARER_AUTH,
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
