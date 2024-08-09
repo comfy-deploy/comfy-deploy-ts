@@ -91,14 +91,9 @@ run();
 
 * [getUploadUrl](docs/sdks/files/README.md#getuploadurl) - Upload any files to the storage
 
-### [workflows](docs/sdks/workflows/README.md)
+### [websocket](docs/sdks/websocket/README.md)
 
-* [getWebsocketDeploymentId](docs/sdks/workflows/README.md#getwebsocketdeploymentid) - Get a websocket url for a specific deployment
-* [postMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint) - Create an endpoint for a machine
-* [getV1Workflows](docs/sdks/workflows/README.md#getv1workflows) - Retrieve workflows
-* [postV1Workflows](docs/sdks/workflows/README.md#postv1workflows) - Create a new workflow
-* [getV1WorkflowsWorkflowId](docs/sdks/workflows/README.md#getv1workflowsworkflowid) - Retrieve a specific workflow by ID
-* [getV1WorkflowsWorkflowIdOutputs](docs/sdks/workflows/README.md#getv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
+* [get](docs/sdks/websocket/README.md#get) - Get a websocket url for a specific deployment
 
 ### [comfyui](docs/sdks/comfyui/README.md)
 
@@ -108,6 +103,14 @@ run();
 * [getWorkflowId](docs/sdks/comfyui/README.md#getworkflowid) - Get comfyui workflow
 * [getDeploymentIdInputs](docs/sdks/comfyui/README.md#getdeploymentidinputs) - Get comfyui workflow inputs definition
 * [getDeployment](docs/sdks/comfyui/README.md#getdeployment) - Get all deployed workflows
+
+### [workflows](docs/sdks/workflows/README.md)
+
+* [postMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint) - Create an endpoint for a machine
+* [getAll](docs/sdks/workflows/README.md#getall) - Retrieve workflows
+* [create](docs/sdks/workflows/README.md#create) - Create a new workflow
+* [get](docs/sdks/workflows/README.md#get) - Retrieve a specific workflow by ID
+* [getOutputs](docs/sdks/workflows/README.md#getoutputs) - Retrieve the most recent outputs for a workflow
 
 ### [machines](docs/sdks/machines/README.md)
 
@@ -368,7 +371,7 @@ This SDK supports the following security scheme globally:
 | ------------ | ------------ | ------------ |
 | `bearerAuth` | http         | HTTP Bearer  |
 
-To authenticate with the API the `nullT` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
 

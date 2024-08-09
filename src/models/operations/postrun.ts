@@ -65,6 +65,10 @@ export type PostRunRequestBody = {
      */
     webhook?: string | undefined;
     /**
+     * Whether to send webhook on intermediate status
+     */
+    webhookIntermediateStatus?: boolean | undefined;
+    /**
      * Whether to return a streaming url
      */
     stream?: boolean | undefined;
@@ -163,6 +167,7 @@ export const PostRunRequestBody$inboundSchema: z.ZodType<
         inputs: z.record(z.union([z.string(), z.number()])).optional(),
         inputs_json: z.string().optional(),
         webhook: z.string().optional(),
+        webhook_intermediate_status: z.boolean().optional(),
         stream: z.boolean().optional(),
         batch_number: z.number().default(1),
     })
@@ -177,6 +182,7 @@ export const PostRunRequestBody$inboundSchema: z.ZodType<
             private_volume_name: "privateVolumeName",
             run_origin: "runOrigin",
             inputs_json: "inputsJson",
+            webhook_intermediate_status: "webhookIntermediateStatus",
             batch_number: "batchNumber",
         });
     });
@@ -196,6 +202,7 @@ export type PostRunRequestBody$Outbound = {
     inputs?: { [k: string]: string | number } | undefined;
     inputs_json?: string | undefined;
     webhook?: string | undefined;
+    webhook_intermediate_status?: boolean | undefined;
     stream?: boolean | undefined;
     batch_number: number;
 };
@@ -220,6 +227,7 @@ export const PostRunRequestBody$outboundSchema: z.ZodType<
         inputs: z.record(z.union([z.string(), z.number()])).optional(),
         inputsJson: z.string().optional(),
         webhook: z.string().optional(),
+        webhookIntermediateStatus: z.boolean().optional(),
         stream: z.boolean().optional(),
         batchNumber: z.number().default(1),
     })
@@ -234,6 +242,7 @@ export const PostRunRequestBody$outboundSchema: z.ZodType<
             privateVolumeName: "private_volume_name",
             runOrigin: "run_origin",
             inputsJson: "inputs_json",
+            webhookIntermediateStatus: "webhook_intermediate_status",
             batchNumber: "batch_number",
         });
     });
