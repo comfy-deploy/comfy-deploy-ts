@@ -121,7 +121,8 @@ export type GetRunResponseBody = {
     isRealtime: boolean;
     webhook: string | null;
     webhookStatus: WebhookStatus | null;
-    outputs: Array<Outputs>;
+    webhookIntermediateStatus: boolean;
+    outputs?: Array<Outputs> | null | undefined;
 };
 
 /** @internal */
@@ -528,7 +529,8 @@ export const GetRunResponseBody$inboundSchema: z.ZodType<
         is_realtime: z.boolean(),
         webhook: z.nullable(z.string()),
         webhook_status: z.nullable(WebhookStatus$inboundSchema),
-        outputs: z.array(z.lazy(() => Outputs$inboundSchema)),
+        webhook_intermediate_status: z.boolean(),
+        outputs: z.nullable(z.array(z.lazy(() => Outputs$inboundSchema))).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -552,6 +554,7 @@ export const GetRunResponseBody$inboundSchema: z.ZodType<
             live_status: "liveStatus",
             is_realtime: "isRealtime",
             webhook_status: "webhookStatus",
+            webhook_intermediate_status: "webhookIntermediateStatus",
         });
     });
 
@@ -583,7 +586,8 @@ export type GetRunResponseBody$Outbound = {
     is_realtime: boolean;
     webhook: string | null;
     webhook_status: string | null;
-    outputs: Array<Outputs$Outbound>;
+    webhook_intermediate_status: boolean;
+    outputs?: Array<Outputs$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -619,7 +623,8 @@ export const GetRunResponseBody$outboundSchema: z.ZodType<
         isRealtime: z.boolean(),
         webhook: z.nullable(z.string()),
         webhookStatus: z.nullable(WebhookStatus$outboundSchema),
-        outputs: z.array(z.lazy(() => Outputs$outboundSchema)),
+        webhookIntermediateStatus: z.boolean(),
+        outputs: z.nullable(z.array(z.lazy(() => Outputs$outboundSchema))).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -643,6 +648,7 @@ export const GetRunResponseBody$outboundSchema: z.ZodType<
             liveStatus: "live_status",
             isRealtime: "is_realtime",
             webhookStatus: "webhook_status",
+            webhookIntermediateStatus: "webhook_intermediate_status",
         });
     });
 

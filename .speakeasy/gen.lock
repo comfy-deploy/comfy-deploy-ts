@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: 758b13f74fcbb24560b25f761d26fe35
+  docChecksum: 8ed9e950c1ab0e9d2c62c171580542b4
   docVersion: 0.0.1
-  speakeasyVersion: 1.352.2
-  generationVersion: 2.385.2
-  releaseVersion: 0.0.19-beta.13
-  configChecksum: 5220db3bf760fc081585972707898274
+  speakeasyVersion: 1.358.0
+  generationVersion: 2.390.6
+  releaseVersion: 0.0.19-beta.14
+  configChecksum: b0e71b06af02379aaa315cab700c6f00
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
-    core: 3.11.13
+    constsAndDefaults: 0.1.6
+    core: 3.12.3
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.1.1
-    globalSecurity: 2.82.10
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -29,10 +29,30 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.6
 generatedFiles:
+  - src/funcs/runGet.ts
+  - src/funcs/runCreate.ts
+  - src/funcs/filesGetUploadUrl.ts
+  - src/funcs/websocketGet.ts
+  - src/funcs/comfyuiGetAuthResponseRequestId.ts
+  - src/funcs/comfyuiPostWorkflow.ts
+  - src/funcs/comfyuiGetWorkflowVersionVersionId.ts
+  - src/funcs/comfyuiGetWorkflowId.ts
+  - src/funcs/comfyuiGetDeploymentIdInputs.ts
+  - src/funcs/comfyuiGetDeployment.ts
+  - src/funcs/workflowsPostMachineEndpoint.ts
+  - src/funcs/workflowsGetAll.ts
+  - src/funcs/workflowsCreate.ts
+  - src/funcs/workflowsGet.ts
+  - src/funcs/workflowsGetOutputs.ts
+  - src/funcs/machinesPostGpuEvent.ts
+  - src/funcs/machinesGetV1Machines.ts
+  - src/funcs/machinesPostV1Machines.ts
+  - src/funcs/machinesGetV1MachinesMachineId.ts
   - src/sdk/run.ts
   - src/sdk/files.ts
-  - src/sdk/workflows.ts
+  - src/sdk/websocket.ts
   - src/sdk/comfyui.ts
+  - src/sdk/workflows.ts
   - src/sdk/machines.ts
   - src/sdk/sdk.ts
   - .eslintrc.cjs
@@ -40,6 +60,7 @@ generatedFiles:
   - RUNTIMES.md
   - jsr.json
   - package.json
+  - src/core.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
@@ -69,17 +90,17 @@ generatedFiles:
   - src/models/operations/postrun.ts
   - src/models/operations/getuploadurl.ts
   - src/models/operations/getwebsocketdeploymentid.ts
-  - src/models/operations/postmachineendpoint.ts
-  - src/models/operations/getv1workflows.ts
-  - src/models/operations/postv1workflows.ts
-  - src/models/operations/getv1workflowsworkflowid.ts
-  - src/models/operations/getv1workflowsworkflowidoutputs.ts
   - src/models/operations/getauthresponserequestid.ts
   - src/models/operations/postworkflow.ts
   - src/models/operations/getworkflowversionversionid.ts
   - src/models/operations/getworkflowid.ts
   - src/models/operations/getdeploymentidinputs.ts
   - src/models/operations/getdeployment.ts
+  - src/models/operations/postmachineendpoint.ts
+  - src/models/operations/getv1workflows.ts
+  - src/models/operations/postv1workflows.ts
+  - src/models/operations/getv1workflowsworkflowid.ts
+  - src/models/operations/getv1workflowsworkflowidoutputs.ts
   - src/models/operations/postgpuevent.ts
   - src/models/operations/getv1machines.ts
   - src/models/operations/postv1machines.ts
@@ -88,17 +109,17 @@ generatedFiles:
   - src/models/errors/postrun.ts
   - src/models/errors/getuploadurl.ts
   - src/models/errors/getwebsocketdeploymentid.ts
-  - src/models/errors/postmachineendpoint.ts
-  - src/models/errors/getv1workflows.ts
-  - src/models/errors/postv1workflows.ts
-  - src/models/errors/getv1workflowsworkflowid.ts
-  - src/models/errors/getv1workflowsworkflowidoutputs.ts
   - src/models/errors/getauthresponserequestid.ts
   - src/models/errors/postworkflow.ts
   - src/models/errors/getworkflowversionversionid.ts
   - src/models/errors/getworkflowid.ts
   - src/models/errors/getdeploymentidinputs.ts
   - src/models/errors/getdeployment.ts
+  - src/models/errors/postmachineendpoint.ts
+  - src/models/errors/getv1workflows.ts
+  - src/models/errors/postv1workflows.ts
+  - src/models/errors/getv1workflowsworkflowid.ts
+  - src/models/errors/getv1workflowsworkflowidoutputs.ts
   - src/models/errors/postgpuevent.ts
   - src/models/errors/getv1machines.ts
   - src/models/errors/postv1machines.ts
@@ -132,22 +153,6 @@ generatedFiles:
   - docs/models/operations/getuploadurlresponsebody.md
   - docs/models/operations/getwebsocketdeploymentidrequest.md
   - docs/models/operations/getwebsocketdeploymentidresponsebody.md
-  - docs/models/operations/postmachineendpointrequestbody.md
-  - docs/models/operations/postmachineendpointresponsebody.md
-  - docs/models/operations/getv1workflowsrequest.md
-  - docs/models/operations/user.md
-  - docs/models/operations/versions.md
-  - docs/models/operations/getv1workflowsresponsebody.md
-  - docs/models/operations/workflowjson.md
-  - docs/models/operations/postv1workflowsrequestbody.md
-  - docs/models/operations/postv1workflowsresponsebody.md
-  - docs/models/operations/getv1workflowsworkflowidrequest.md
-  - docs/models/operations/getv1workflowsworkflowidversions.md
-  - docs/models/operations/getv1workflowsworkflowidresponsebody.md
-  - docs/models/operations/queryparamrunorigin.md
-  - docs/models/operations/getv1workflowsworkflowidoutputsrequest.md
-  - docs/models/operations/getv1workflowsworkflowidoutputsoutputs.md
-  - docs/models/operations/getv1workflowsworkflowidoutputsresponsebody.md
   - docs/models/operations/getauthresponserequestidrequest.md
   - docs/models/operations/getauthresponserequestidcomfyuiresponsebody.md
   - docs/models/operations/getauthresponserequestidresponsebody.md
@@ -181,6 +186,22 @@ generatedFiles:
   - docs/models/operations/environment.md
   - docs/models/operations/getdeploymentrequest.md
   - docs/models/operations/getdeploymentresponsebody.md
+  - docs/models/operations/postmachineendpointrequestbody.md
+  - docs/models/operations/postmachineendpointresponsebody.md
+  - docs/models/operations/getv1workflowsrequest.md
+  - docs/models/operations/user.md
+  - docs/models/operations/versions.md
+  - docs/models/operations/getv1workflowsresponsebody.md
+  - docs/models/operations/workflowjson.md
+  - docs/models/operations/postv1workflowsrequestbody.md
+  - docs/models/operations/postv1workflowsresponsebody.md
+  - docs/models/operations/getv1workflowsworkflowidrequest.md
+  - docs/models/operations/getv1workflowsworkflowidversions.md
+  - docs/models/operations/getv1workflowsworkflowidresponsebody.md
+  - docs/models/operations/queryparamrunorigin.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsrequest.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsoutputs.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsresponsebody.md
   - docs/models/operations/gputype.md
   - docs/models/operations/wsgputype.md
   - docs/models/operations/eventtype.md
@@ -203,17 +224,17 @@ generatedFiles:
   - docs/models/errors/postrunresponsebody.md
   - docs/models/errors/getuploadurlresponsebody.md
   - docs/models/errors/getwebsocketdeploymentidresponsebody.md
-  - docs/models/errors/postmachineendpointresponsebody.md
-  - docs/models/errors/getv1workflowsresponsebody.md
-  - docs/models/errors/postv1workflowsresponsebody.md
-  - docs/models/errors/getv1workflowsworkflowidresponsebody.md
-  - docs/models/errors/getv1workflowsworkflowidoutputsresponsebody.md
   - docs/models/errors/getauthresponserequestidresponsebody.md
   - docs/models/errors/postworkflowresponsebody.md
   - docs/models/errors/getworkflowversionversionidresponsebody.md
   - docs/models/errors/getworkflowidresponsebody.md
   - docs/models/errors/getdeploymentidinputsresponsebody.md
   - docs/models/errors/getdeploymentresponsebody.md
+  - docs/models/errors/postmachineendpointresponsebody.md
+  - docs/models/errors/getv1workflowsresponsebody.md
+  - docs/models/errors/postv1workflowsresponsebody.md
+  - docs/models/errors/getv1workflowsworkflowidresponsebody.md
+  - docs/models/errors/getv1workflowsworkflowidoutputsresponsebody.md
   - docs/models/errors/postgpueventresponsebody.md
   - docs/models/errors/getv1machinesresponsebody.md
   - docs/models/errors/postv1machinesresponsebody.md
@@ -223,8 +244,9 @@ generatedFiles:
   - docs/lib/utils/retryconfig.md
   - docs/sdks/run/README.md
   - docs/sdks/files/README.md
-  - docs/sdks/workflows/README.md
+  - docs/sdks/websocket/README.md
   - docs/sdks/comfyui/README.md
+  - docs/sdks/workflows/README.md
   - docs/sdks/machines/README.md
   - USAGE.md
   - .gitattributes
