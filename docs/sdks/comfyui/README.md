@@ -7,8 +7,6 @@
 * [postWorkflow](#postworkflow) - Upload workflow from ComfyUI
 * [getWorkflowVersionVersionId](#getworkflowversionversionid) - Get comfyui workflow
 * [getWorkflowId](#getworkflowid) - Get comfyui workflow
-* [getDeploymentIdInputs](#getdeploymentidinputs) - Get comfyui workflow inputs definition
-* [getDeployment](#getdeployment) - Get all deployed workflows
 
 ## getAuthResponseRequestId
 
@@ -27,6 +25,39 @@ async function run() {
   const result = await comfyDeploy.comfyui.getAuthResponseRequestId({
     requestId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { comfyuiGetAuthResponseRequestId } from "comfydeploy/funcs/comfyuiGetAuthResponseRequestId.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await comfyuiGetAuthResponseRequestId(comfyDeploy, {
+    requestId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -70,6 +101,37 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.comfyui.postWorkflow();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { comfyuiPostWorkflow } from "comfydeploy/funcs/comfyuiPostWorkflow.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await comfyuiPostWorkflow(comfyDeploy);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -123,6 +185,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { comfyuiGetWorkflowVersionVersionId } from "comfydeploy/funcs/comfyuiGetWorkflowVersionVersionId.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await comfyuiGetWorkflowVersionVersionId(comfyDeploy, {
+    versionId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -168,6 +263,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { comfyuiGetWorkflowId } from "comfydeploy/funcs/comfyuiGetWorkflowId.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await comfyuiGetWorkflowId(comfyDeploy, {
+    id: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -186,92 +314,4 @@ run();
 | Error Object                     | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.GetWorkflowIdResponseBody | 500                              | application/json                 |
-| errors.SDKError                  | 4xx-5xx                          | */*                              |
-
-## getDeploymentIdInputs
-
-Use this to retrieve comfyui workflow inputs definition by id
-
-### Example Usage
-
-```typescript
-import { ComfyDeploy } from "comfydeploy";
-
-const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await comfyDeploy.comfyui.getDeploymentIdInputs({
-    id: "<id>",
-  });
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetDeploymentIdInputsRequest](../../models/operations/getdeploymentidinputsrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-
-### Response
-
-**Promise\<[operations.ResponseBody[]](../../models/.md)\>**
-### Errors
-
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| errors.GetDeploymentIdInputsResponseBody | 500                                      | application/json                         |
-| errors.SDKError                          | 4xx-5xx                                  | */*                                      |
-
-## getDeployment
-
-Get all deployed workflows
-
-### Example Usage
-
-```typescript
-import { ComfyDeploy } from "comfydeploy";
-
-const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await comfyDeploy.comfyui.getDeployment({});
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetDeploymentRequest](../../models/operations/getdeploymentrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-
-### Response
-
-**Promise\<[operations.GetDeploymentResponseBody[]](../../models/.md)\>**
-### Errors
-
-| Error Object                     | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| errors.GetDeploymentResponseBody | 500                              | application/json                 |
 | errors.SDKError                  | 4xx-5xx                          | */*                              |

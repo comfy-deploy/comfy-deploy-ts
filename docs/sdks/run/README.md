@@ -31,6 +31,39 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { runGet } from "comfydeploy/funcs/runGet.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await runGet(comfyDeploy, {
+    runId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -68,13 +101,54 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.create({
     deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
     inputs: {
       "input_text": "value1",
       "input_url": "https://example.png",
     },
     webhook: "https://example.com/webhook",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { runCreate } from "comfydeploy/funcs/runCreate.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await runCreate(comfyDeploy, {
+    workflowApi: {
+  
+  },
+    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    inputs: {
+      "input_text": "value1",
+      "input_url": "https://example.png",
+    },
+    webhook: "https://example.com/webhook",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

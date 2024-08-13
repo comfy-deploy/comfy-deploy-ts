@@ -70,7 +70,7 @@ export type Dependencies = {
 export type PostWorkflowRequestBody = {
     workflowId?: string | undefined;
     workflowName?: string | undefined;
-    workflow?: any | null | undefined;
+    workflow?: any | undefined;
     workflowApi: { [k: string]: WorkflowApi };
     snapshot: Snapshot;
     dependencies?: Dependencies | undefined;
@@ -504,7 +504,7 @@ export const PostWorkflowRequestBody$inboundSchema: z.ZodType<
     .object({
         workflow_id: z.string().optional(),
         workflow_name: z.string().optional(),
-        workflow: z.nullable(z.any()).optional(),
+        workflow: z.any().optional(),
         workflow_api: z.record(z.lazy(() => WorkflowApi$inboundSchema)),
         snapshot: z.lazy(() => Snapshot$inboundSchema),
         dependencies: z.lazy(() => Dependencies$inboundSchema).optional(),
@@ -521,7 +521,7 @@ export const PostWorkflowRequestBody$inboundSchema: z.ZodType<
 export type PostWorkflowRequestBody$Outbound = {
     workflow_id?: string | undefined;
     workflow_name?: string | undefined;
-    workflow?: any | null | undefined;
+    workflow?: any | undefined;
     workflow_api: { [k: string]: WorkflowApi$Outbound };
     snapshot: Snapshot$Outbound;
     dependencies?: Dependencies$Outbound | undefined;
@@ -536,7 +536,7 @@ export const PostWorkflowRequestBody$outboundSchema: z.ZodType<
     .object({
         workflowId: z.string().optional(),
         workflowName: z.string().optional(),
-        workflow: z.nullable(z.any()).optional(),
+        workflow: z.any().optional(),
         workflowApi: z.record(z.lazy(() => WorkflowApi$outboundSchema)),
         snapshot: z.lazy(() => Snapshot$outboundSchema),
         dependencies: z.lazy(() => Dependencies$outboundSchema).optional(),

@@ -23,7 +23,7 @@ export const Origin = {
 } as const;
 export type Origin = ClosedEnum<typeof Origin>;
 
-export const Status = {
+export const GetRunStatus = {
     NotStarted: "not-started",
     Running: "running",
     Uploading: "uploading",
@@ -34,7 +34,7 @@ export const Status = {
     Timeout: "timeout",
     Cancelled: "cancelled",
 } as const;
-export type Status = ClosedEnum<typeof Status>;
+export type GetRunStatus = ClosedEnum<typeof GetRunStatus>;
 
 export const GetRunGpu = {
     T4: "T4",
@@ -97,12 +97,12 @@ export type Outputs = {
 export type GetRunResponseBody = {
     id: string;
     workflowVersionId: string | null;
-    workflowInputs: WorkflowInputs;
+    workflowInputs: WorkflowInputs | null;
     workflowId: string | null;
-    workflowApi?: GetRunWorkflowApi | undefined;
+    workflowApi?: GetRunWorkflowApi | null | undefined;
     machineId: string | null;
     origin: Origin;
-    status: Status;
+    status: GetRunStatus;
     endedAt: string | null;
     createdAt: string;
     updatedAt: string;
@@ -121,7 +121,8 @@ export type GetRunResponseBody = {
     isRealtime: boolean;
     webhook: string | null;
     webhookStatus: WebhookStatus | null;
-    outputs: Array<Outputs>;
+    webhookIntermediateStatus: boolean;
+    outputs?: Array<Outputs> | null | undefined;
 };
 
 /** @internal */
@@ -240,20 +241,22 @@ export namespace Origin$ {
 }
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z.nativeEnum(Status);
+export const GetRunStatus$inboundSchema: z.ZodNativeEnum<typeof GetRunStatus> =
+    z.nativeEnum(GetRunStatus);
 
 /** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> = Status$inboundSchema;
+export const GetRunStatus$outboundSchema: z.ZodNativeEnum<typeof GetRunStatus> =
+    GetRunStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Status$ {
-    /** @deprecated use `Status$inboundSchema` instead. */
-    export const inboundSchema = Status$inboundSchema;
-    /** @deprecated use `Status$outboundSchema` instead. */
-    export const outboundSchema = Status$outboundSchema;
+export namespace GetRunStatus$ {
+    /** @deprecated use `GetRunStatus$inboundSchema` instead. */
+    export const inboundSchema = GetRunStatus$inboundSchema;
+    /** @deprecated use `GetRunStatus$outboundSchema` instead. */
+    export const outboundSchema = GetRunStatus$outboundSchema;
 }
 
 /** @internal */
@@ -504,12 +507,12 @@ export const GetRunResponseBody$inboundSchema: z.ZodType<
     .object({
         id: z.string(),
         workflow_version_id: z.nullable(z.string()),
-        workflow_inputs: z.lazy(() => WorkflowInputs$inboundSchema),
+        workflow_inputs: z.nullable(z.lazy(() => WorkflowInputs$inboundSchema)),
         workflow_id: z.nullable(z.string()),
-        workflow_api: z.lazy(() => GetRunWorkflowApi$inboundSchema).optional(),
+        workflow_api: z.nullable(z.lazy(() => GetRunWorkflowApi$inboundSchema)).optional(),
         machine_id: z.nullable(z.string()),
         origin: Origin$inboundSchema,
-        status: Status$inboundSchema,
+        status: GetRunStatus$inboundSchema,
         ended_at: z.nullable(z.string()),
         created_at: z.string(),
         updated_at: z.string(),
@@ -528,7 +531,8 @@ export const GetRunResponseBody$inboundSchema: z.ZodType<
         is_realtime: z.boolean(),
         webhook: z.nullable(z.string()),
         webhook_status: z.nullable(WebhookStatus$inboundSchema),
-        outputs: z.array(z.lazy(() => Outputs$inboundSchema)),
+        webhook_intermediate_status: z.boolean(),
+        outputs: z.nullable(z.array(z.lazy(() => Outputs$inboundSchema))).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -552,6 +556,7 @@ export const GetRunResponseBody$inboundSchema: z.ZodType<
             live_status: "liveStatus",
             is_realtime: "isRealtime",
             webhook_status: "webhookStatus",
+            webhook_intermediate_status: "webhookIntermediateStatus",
         });
     });
 
@@ -559,9 +564,9 @@ export const GetRunResponseBody$inboundSchema: z.ZodType<
 export type GetRunResponseBody$Outbound = {
     id: string;
     workflow_version_id: string | null;
-    workflow_inputs: WorkflowInputs$Outbound;
+    workflow_inputs: WorkflowInputs$Outbound | null;
     workflow_id: string | null;
-    workflow_api?: GetRunWorkflowApi$Outbound | undefined;
+    workflow_api?: GetRunWorkflowApi$Outbound | null | undefined;
     machine_id: string | null;
     origin: string;
     status: string;
@@ -583,7 +588,8 @@ export type GetRunResponseBody$Outbound = {
     is_realtime: boolean;
     webhook: string | null;
     webhook_status: string | null;
-    outputs: Array<Outputs$Outbound>;
+    webhook_intermediate_status: boolean;
+    outputs?: Array<Outputs$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -595,12 +601,12 @@ export const GetRunResponseBody$outboundSchema: z.ZodType<
     .object({
         id: z.string(),
         workflowVersionId: z.nullable(z.string()),
-        workflowInputs: z.lazy(() => WorkflowInputs$outboundSchema),
+        workflowInputs: z.nullable(z.lazy(() => WorkflowInputs$outboundSchema)),
         workflowId: z.nullable(z.string()),
-        workflowApi: z.lazy(() => GetRunWorkflowApi$outboundSchema).optional(),
+        workflowApi: z.nullable(z.lazy(() => GetRunWorkflowApi$outboundSchema)).optional(),
         machineId: z.nullable(z.string()),
         origin: Origin$outboundSchema,
-        status: Status$outboundSchema,
+        status: GetRunStatus$outboundSchema,
         endedAt: z.nullable(z.string()),
         createdAt: z.string(),
         updatedAt: z.string(),
@@ -619,7 +625,8 @@ export const GetRunResponseBody$outboundSchema: z.ZodType<
         isRealtime: z.boolean(),
         webhook: z.nullable(z.string()),
         webhookStatus: z.nullable(WebhookStatus$outboundSchema),
-        outputs: z.array(z.lazy(() => Outputs$outboundSchema)),
+        webhookIntermediateStatus: z.boolean(),
+        outputs: z.nullable(z.array(z.lazy(() => Outputs$outboundSchema))).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -643,6 +650,7 @@ export const GetRunResponseBody$outboundSchema: z.ZodType<
             liveStatus: "live_status",
             isRealtime: "is_realtime",
             webhookStatus: "webhook_status",
+            webhookIntermediateStatus: "webhook_intermediate_status",
         });
     });
 

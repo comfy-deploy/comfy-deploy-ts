@@ -12,8 +12,8 @@ export type GetV1WorkflowsWorkflowIdRequest = {
 export type GetV1WorkflowsWorkflowIdVersions = {
     workflowId: string;
     id: string;
-    workflow?: any | null | undefined;
-    workflowApi?: any | null | undefined;
+    workflow?: any | undefined;
+    workflowApi?: any | undefined;
     comment: string | null;
     version: number;
     snapshot: string | null;
@@ -93,8 +93,8 @@ export const GetV1WorkflowsWorkflowIdVersions$inboundSchema: z.ZodType<
     .object({
         workflow_id: z.string(),
         id: z.string(),
-        workflow: z.nullable(z.any()).optional(),
-        workflow_api: z.nullable(z.any()).optional(),
+        workflow: z.any().optional(),
+        workflow_api: z.any().optional(),
         comment: z.nullable(z.string()),
         version: z.number(),
         snapshot: z.nullable(z.string()),
@@ -115,8 +115,8 @@ export const GetV1WorkflowsWorkflowIdVersions$inboundSchema: z.ZodType<
 export type GetV1WorkflowsWorkflowIdVersions$Outbound = {
     workflow_id: string;
     id: string;
-    workflow?: any | null | undefined;
-    workflow_api?: any | null | undefined;
+    workflow?: any | undefined;
+    workflow_api?: any | undefined;
     comment: string | null;
     version: number;
     snapshot: string | null;
@@ -134,8 +134,8 @@ export const GetV1WorkflowsWorkflowIdVersions$outboundSchema: z.ZodType<
     .object({
         workflowId: z.string(),
         id: z.string(),
-        workflow: z.nullable(z.any()).optional(),
-        workflowApi: z.nullable(z.any()).optional(),
+        workflow: z.any().optional(),
+        workflowApi: z.any().optional(),
         comment: z.nullable(z.string()),
         version: z.number(),
         snapshot: z.nullable(z.string()),

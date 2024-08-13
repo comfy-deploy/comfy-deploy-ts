@@ -26,7 +26,7 @@ export type Machines = {
     createdAt?: string | undefined;
     updatedAt?: string | undefined;
     endpoints: Array<string>;
-    objectInfo?: any | null | undefined;
+    objectInfo?: any | undefined;
 };
 
 /**
@@ -106,7 +106,7 @@ export const Machines$inboundSchema: z.ZodType<Machines, z.ZodTypeDef, unknown> 
         created_at: z.string().optional(),
         updated_at: z.string().optional(),
         endpoints: z.array(z.string()),
-        object_info: z.nullable(z.any()).optional(),
+        object_info: z.any().optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -125,7 +125,7 @@ export type Machines$Outbound = {
     created_at?: string | undefined;
     updated_at?: string | undefined;
     endpoints: Array<string>;
-    object_info?: any | null | undefined;
+    object_info?: any | undefined;
 };
 
 /** @internal */
@@ -138,7 +138,7 @@ export const Machines$outboundSchema: z.ZodType<Machines$Outbound, z.ZodTypeDef,
         createdAt: z.string().optional(),
         updatedAt: z.string().optional(),
         endpoints: z.array(z.string()),
-        objectInfo: z.nullable(z.any()).optional(),
+        objectInfo: z.any().optional(),
     })
     .transform((v) => {
         return remap$(v, {

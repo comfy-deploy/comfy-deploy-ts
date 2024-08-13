@@ -3,112 +3,6 @@ info:
   title: CodeSamples overlay for typescript target
   version: 0.0.0
 actions:
-  - target: $["paths"]["/v1/workflows"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: post_/v1/workflows
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.workflows.postV1Workflows();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/auth-response/{request_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: response/{request_id}
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.comfyui.getAuthResponseRequestId({
-                requestId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/workflow-version/{version_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: version/{version_id}
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.comfyui.getWorkflowVersionVersionId({
-                versionId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/v1/machines"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: post_/v1/machines
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.machines.postV1Machines();
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/v1/machines/{machine_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_/v1/machines/{machine_id}
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.machines.getV1MachinesMachineId({
-                machineId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
   - target: $["paths"]["/run"]["get"]
     update:
       x-codeSamples:
@@ -125,96 +19,6 @@ actions:
               const result = await comfyDeploy.run.get({
                 runId: "<value>",
               });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/run"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: post_/run
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.run.create({
-                deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-                workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-                inputs: {
-                  "input_text": "value1",
-                  "input_url": "https://example.png",
-                },
-                webhook: "https://example.com/webhook",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/websocket/{deployment_id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_/websocket/{deployment_id}
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.workflows.getWebsocketDeploymentId({
-                deploymentId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/v1/workflows"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_/v1/workflows
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.workflows.getV1Workflows({});
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/workflow"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: post_/workflow
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.comfyui.postWorkflow();
 
               // Handle the result
               console.log(result)
@@ -243,11 +47,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/deployment"]["get"]
+  - target: $["paths"]["/v1/workflows"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: get_/deployment
+          label: get_/v1/workflows
           source: |-
             import { ComfyDeploy } from "comfydeploy";
 
@@ -256,7 +60,163 @@ actions:
             });
 
             async function run() {
-              const result = await comfyDeploy.comfyui.getDeployment({});
+              const result = await comfyDeploy.workflows.getAll({});
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/v1/workflows"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: post_/v1/workflows
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.workflows.create();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/machine/{machine_id}/events"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_/machine/{machine_id}/events
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.machine.listEvents({
+                machineId: "<value>",
+                status: "running",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/workflow"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: post_/workflow
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.comfyui.postWorkflow();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/workflow-version/{version_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: version/{version_id}
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.comfyui.getWorkflowVersionVersionId({
+                versionId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/v1/workflows/{workflow_id}/outputs"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_/v1/workflows/{workflow_id}/outputs
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.workflows.getOutputs({
+                workflowId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/run"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: post_/run
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.run.create({
+                deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                inputs: {
+                  "input_text": "value1",
+                  "input_url": "https://example.png",
+                },
+                webhook: "https://example.com/webhook",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/websocket/{deployment_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_/websocket/{deployment_id}
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.websocket.get({
+                deploymentId: "<value>",
+              });
 
               // Handle the result
               console.log(result)
@@ -283,50 +243,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/v1/workflows/{workflow_id}/outputs"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_/v1/workflows/{workflow_id}/outputs
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.workflows.getV1WorkflowsWorkflowIdOutputs({
-                workflowId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/deployment/{id}/inputs"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: get_/deployment/{id}/inputs
-          source: |-
-            import { ComfyDeploy } from "comfydeploy";
-
-            const comfyDeploy = new ComfyDeploy({
-              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-            });
-
-            async function run() {
-              const result = await comfyDeploy.comfyui.getDeploymentIdInputs({
-                id: "<id>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
   - target: $["paths"]["/gpu_event"]["post"]
     update:
       x-codeSamples:
@@ -340,7 +256,69 @@ actions:
             });
 
             async function run() {
-              const result = await comfyDeploy.machines.postGpuEvent();
+              const result = await comfyDeploy.machine.postGpuEvent();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/v1/machines"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_/v1/machines
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.machine.getV1Machines({});
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/v1/machines"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: post_/v1/machines
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.machine.postV1Machines();
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/v1/machines/{machine_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_/v1/machines/{machine_id}
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.machine.getV1MachinesMachineId({
+                machineId: "<value>",
+              });
 
               // Handle the result
               console.log(result)
@@ -370,6 +348,28 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/auth-response/{request_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: response/{request_id}
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.comfyui.getAuthResponseRequestId({
+                requestId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
   - target: $["paths"]["/v1/workflows/{workflow_id}"]["get"]
     update:
       x-codeSamples:
@@ -383,7 +383,7 @@ actions:
             });
 
             async function run() {
-              const result = await comfyDeploy.workflows.getV1WorkflowsWorkflowId({
+              const result = await comfyDeploy.workflows.get({
                 workflowId: "<value>",
               });
 
@@ -392,11 +392,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/v1/machines"]["get"]
+  - target: $["paths"]["/deployment/{id}/inputs"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: get_/v1/machines
+          label: get_/deployment/{id}/inputs
           source: |-
             import { ComfyDeploy } from "comfydeploy";
 
@@ -405,7 +405,29 @@ actions:
             });
 
             async function run() {
-              const result = await comfyDeploy.machines.getV1Machines({});
+              const result = await comfyDeploy.deployment.getInputDefinition({
+                id: "<id>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/deployment"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: get_/deployment
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.deployment.get({});
 
               // Handle the result
               console.log(result)

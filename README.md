@@ -91,14 +91,9 @@ run();
 
 * [getUploadUrl](docs/sdks/files/README.md#getuploadurl) - Upload any files to the storage
 
-### [workflows](docs/sdks/workflows/README.md)
+### [websocket](docs/sdks/websocket/README.md)
 
-* [getWebsocketDeploymentId](docs/sdks/workflows/README.md#getwebsocketdeploymentid) - Get a websocket url for a specific deployment
-* [postMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint) - Create an endpoint for a machine
-* [getV1Workflows](docs/sdks/workflows/README.md#getv1workflows) - Retrieve workflows
-* [postV1Workflows](docs/sdks/workflows/README.md#postv1workflows) - Create a new workflow
-* [getV1WorkflowsWorkflowId](docs/sdks/workflows/README.md#getv1workflowsworkflowid) - Retrieve a specific workflow by ID
-* [getV1WorkflowsWorkflowIdOutputs](docs/sdks/workflows/README.md#getv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
+* [get](docs/sdks/websocket/README.md#get) - Get a websocket url for a specific deployment
 
 ### [comfyui](docs/sdks/comfyui/README.md)
 
@@ -106,15 +101,27 @@ run();
 * [postWorkflow](docs/sdks/comfyui/README.md#postworkflow) - Upload workflow from ComfyUI
 * [getWorkflowVersionVersionId](docs/sdks/comfyui/README.md#getworkflowversionversionid) - Get comfyui workflow
 * [getWorkflowId](docs/sdks/comfyui/README.md#getworkflowid) - Get comfyui workflow
-* [getDeploymentIdInputs](docs/sdks/comfyui/README.md#getdeploymentidinputs) - Get comfyui workflow inputs definition
-* [getDeployment](docs/sdks/comfyui/README.md#getdeployment) - Get all deployed workflows
 
-### [machines](docs/sdks/machines/README.md)
+### [workflows](docs/sdks/workflows/README.md)
 
-* [postGpuEvent](docs/sdks/machines/README.md#postgpuevent) - Register a machine event
-* [getV1Machines](docs/sdks/machines/README.md#getv1machines) - Retrieve all machines for a user
-* [postV1Machines](docs/sdks/machines/README.md#postv1machines) - Create a new machine
-* [getV1MachinesMachineId](docs/sdks/machines/README.md#getv1machinesmachineid) - Retrieve a specific machine by ID
+* [postMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint) - Create an endpoint for a machine
+* [getAll](docs/sdks/workflows/README.md#getall) - Retrieve workflows
+* [create](docs/sdks/workflows/README.md#create) - Create a new workflow
+* [get](docs/sdks/workflows/README.md#get) - Retrieve a specific workflow by ID
+* [getOutputs](docs/sdks/workflows/README.md#getoutputs) - Retrieve the most recent outputs for a workflow
+
+### [deployment](docs/sdks/deployment/README.md)
+
+* [getInputDefinition](docs/sdks/deployment/README.md#getinputdefinition) - Get comfyui workflow inputs definition
+* [get](docs/sdks/deployment/README.md#get) - Get all deployed workflows
+
+### [machine](docs/sdks/machine/README.md)
+
+* [postGpuEvent](docs/sdks/machine/README.md#postgpuevent) - Register a machine event
+* [listEvents](docs/sdks/machine/README.md#listevents) - Get recent gpu events
+* [getV1Machines](docs/sdks/machine/README.md#getv1machines) - Retrieve all machines for a user
+* [postV1Machines](docs/sdks/machine/README.md#postv1machines) - Create a new machine
+* [getV1MachinesMachineId](docs/sdks/machine/README.md#getv1machinesmachineid) - Retrieve a specific machine by ID
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Retries [retries] -->
@@ -258,7 +265,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://www.comfydeploy.com/api` | None |
+| 0 | `http://localhost:3010/api` | None |
 
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
@@ -290,7 +297,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-    serverURL: "https://www.comfydeploy.com/api",
+    serverURL: "http://localhost:3010/api",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
@@ -368,7 +375,7 @@ This SDK supports the following security scheme globally:
 | ------------ | ------------ | ------------ |
 | `bearerAuth` | http         | HTTP Bearer  |
 
-To authenticate with the API the `nullT` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
 
@@ -389,6 +396,61 @@ run();
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [comfyuiGetAuthResponseRequestId](docs/sdks/comfyui/README.md#getauthresponserequestid)
+- [comfyuiGetWorkflowId](docs/sdks/comfyui/README.md#getworkflowid)
+- [comfyuiGetWorkflowVersionVersionId](docs/sdks/comfyui/README.md#getworkflowversionversionid)
+- [comfyuiPostWorkflow](docs/sdks/comfyui/README.md#postworkflow)
+- [deploymentGetInputDefinition](docs/sdks/deployment/README.md#getinputdefinition)
+- [deploymentGet](docs/sdks/deployment/README.md#get)
+- [filesGetUploadUrl](docs/sdks/files/README.md#getuploadurl)
+- [machineGetV1MachinesMachineId](docs/sdks/machine/README.md#getv1machinesmachineid)
+- [machineGetV1Machines](docs/sdks/machine/README.md#getv1machines)
+- [machineListEvents](docs/sdks/machine/README.md#listevents)
+- [machinePostGpuEvent](docs/sdks/machine/README.md#postgpuevent)
+- [machinePostV1Machines](docs/sdks/machine/README.md#postv1machines)
+- [runCreate](docs/sdks/run/README.md#create)
+- [runGet](docs/sdks/run/README.md#get)
+- [websocketGet](docs/sdks/websocket/README.md#get)
+- [workflowsCreate](docs/sdks/workflows/README.md#create)
+- [workflowsGetAll](docs/sdks/workflows/README.md#getall)
+- [workflowsGetOutputs](docs/sdks/workflows/README.md#getoutputs)
+- [workflowsGet](docs/sdks/workflows/README.md#get)
+- [workflowsPostMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+To log HTTP requests and responses, you can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+
+const sdk = new ComfyDeploy({ debugLogger: console });
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

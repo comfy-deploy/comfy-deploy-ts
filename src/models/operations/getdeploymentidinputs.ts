@@ -9,12 +9,14 @@ export type GetDeploymentIdInputsRequest = {
     id: string;
 };
 
+export type DefaultValue = string | number;
+
 export type ResponseBody = {
     classType: string;
     inputId: string;
-    defaultValue: string;
-    minValue: number;
-    maxValue: number;
+    defaultValue: string | number;
+    minValue?: number | undefined;
+    maxValue?: number | undefined;
 };
 
 /** @internal */
@@ -54,13 +56,42 @@ export namespace GetDeploymentIdInputsRequest$ {
 }
 
 /** @internal */
+export const DefaultValue$inboundSchema: z.ZodType<DefaultValue, z.ZodTypeDef, unknown> = z.union([
+    z.string(),
+    z.number(),
+]);
+
+/** @internal */
+export type DefaultValue$Outbound = string | number;
+
+/** @internal */
+export const DefaultValue$outboundSchema: z.ZodType<
+    DefaultValue$Outbound,
+    z.ZodTypeDef,
+    DefaultValue
+> = z.union([z.string(), z.number()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DefaultValue$ {
+    /** @deprecated use `DefaultValue$inboundSchema` instead. */
+    export const inboundSchema = DefaultValue$inboundSchema;
+    /** @deprecated use `DefaultValue$outboundSchema` instead. */
+    export const outboundSchema = DefaultValue$outboundSchema;
+    /** @deprecated use `DefaultValue$Outbound` instead. */
+    export type Outbound = DefaultValue$Outbound;
+}
+
+/** @internal */
 export const ResponseBody$inboundSchema: z.ZodType<ResponseBody, z.ZodTypeDef, unknown> = z
     .object({
         class_type: z.string(),
         input_id: z.string(),
-        default_value: z.string(),
-        min_value: z.number(),
-        max_value: z.number(),
+        default_value: z.union([z.string(), z.number()]),
+        min_value: z.number().optional(),
+        max_value: z.number().optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -76,9 +107,9 @@ export const ResponseBody$inboundSchema: z.ZodType<ResponseBody, z.ZodTypeDef, u
 export type ResponseBody$Outbound = {
     class_type: string;
     input_id: string;
-    default_value: string;
-    min_value: number;
-    max_value: number;
+    default_value: string | number;
+    min_value?: number | undefined;
+    max_value?: number | undefined;
 };
 
 /** @internal */
@@ -90,9 +121,9 @@ export const ResponseBody$outboundSchema: z.ZodType<
     .object({
         classType: z.string(),
         inputId: z.string(),
-        defaultValue: z.string(),
-        minValue: z.number(),
-        maxValue: z.number(),
+        defaultValue: z.union([z.string(), z.number()]),
+        minValue: z.number().optional(),
+        maxValue: z.number().optional(),
     })
     .transform((v) => {
         return remap$(v, {

@@ -1,9 +1,10 @@
-# Machines
-(*machines*)
+# Machine
+(*machine*)
 
 ### Available Operations
 
 * [postGpuEvent](#postgpuevent) - Register a machine event
+* [listEvents](#listevents) - Get recent gpu events
 * [getV1Machines](#getv1machines) - Retrieve all machines for a user
 * [postV1Machines](#postv1machines) - Create a new machine
 * [getV1MachinesMachineId](#getv1machinesmachineid) - Retrieve a specific machine by ID
@@ -22,7 +23,38 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.postGpuEvent();
+  const result = await comfyDeploy.machine.postGpuEvent();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { machinePostGpuEvent } from "comfydeploy/funcs/machinePostGpuEvent.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await machinePostGpuEvent(comfyDeploy);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -51,6 +83,86 @@ run();
 | errors.PostGpuEventResponseBody | 500                             | application/json                |
 | errors.SDKError                 | 4xx-5xx                         | */*                             |
 
+## listEvents
+
+Get recent gpu events
+
+### Example Usage
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+
+const comfyDeploy = new ComfyDeploy({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await comfyDeploy.machine.listEvents({
+    machineId: "<value>",
+    status: "running",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { machineListEvents } from "comfydeploy/funcs/machineListEvents.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await machineListEvents(comfyDeploy, {
+    machineId: "<value>",
+    status: "completed",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetMachineMachineIdEventsRequest](../../models/operations/getmachinemachineideventsrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.GetMachineMachineIdEventsResponseBody[]](../../models/.md)\>**
+### Errors
+
+| Error Object                                 | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| errors.GetMachineMachineIdEventsResponseBody | 500                                          | application/json                             |
+| errors.SDKError                              | 4xx-5xx                                      | */*                                          |
+
 ## getV1Machines
 
 Retrieve details of all machines for the authenticated user, with pagination and optional field selection
@@ -65,7 +177,38 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.getV1Machines({});
+  const result = await comfyDeploy.machine.getV1Machines({});
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { machineGetV1Machines } from "comfydeploy/funcs/machineGetV1Machines.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await machineGetV1Machines(comfyDeploy, {});
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -108,7 +251,38 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.postV1Machines();
+  const result = await comfyDeploy.machine.postV1Machines();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { machinePostV1Machines } from "comfydeploy/funcs/machinePostV1Machines.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await machinePostV1Machines(comfyDeploy);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -151,9 +325,42 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.machines.getV1MachinesMachineId({
+  const result = await comfyDeploy.machine.getV1MachinesMachineId({
     machineId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { machineGetV1MachinesMachineId } from "comfydeploy/funcs/machineGetV1MachinesMachineId.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await machineGetV1MachinesMachineId(comfyDeploy, {
+    machineId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

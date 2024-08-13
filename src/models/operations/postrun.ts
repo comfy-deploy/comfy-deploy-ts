@@ -37,7 +37,7 @@ export type PostRunRequestBody = {
     /**
      * Workflow API JSON to run
      */
-    workflowApi?: any | null | undefined;
+    workflowApi?: any | undefined;
     /**
      * Workflow API JSON to run
      */
@@ -64,6 +64,10 @@ export type PostRunRequestBody = {
      * Webhook URL to receive workflow updates
      */
     webhook?: string | undefined;
+    /**
+     * Whether to send webhook on intermediate status
+     */
+    webhookIntermediateStatus?: boolean | undefined;
     /**
      * Whether to return a streaming url
      */
@@ -151,7 +155,7 @@ export const PostRunRequestBody$inboundSchema: z.ZodType<
 > = z
     .object({
         deployment_id: z.string().optional(),
-        workflow_api: z.nullable(z.any()).optional(),
+        workflow_api: z.any().optional(),
         workflow_api_json: z.string().optional(),
         workflow_id: z.string().optional(),
         machine_id: z.string().optional(),
@@ -163,6 +167,7 @@ export const PostRunRequestBody$inboundSchema: z.ZodType<
         inputs: z.record(z.union([z.string(), z.number()])).optional(),
         inputs_json: z.string().optional(),
         webhook: z.string().optional(),
+        webhook_intermediate_status: z.boolean().optional(),
         stream: z.boolean().optional(),
         batch_number: z.number().default(1),
     })
@@ -177,6 +182,7 @@ export const PostRunRequestBody$inboundSchema: z.ZodType<
             private_volume_name: "privateVolumeName",
             run_origin: "runOrigin",
             inputs_json: "inputsJson",
+            webhook_intermediate_status: "webhookIntermediateStatus",
             batch_number: "batchNumber",
         });
     });
@@ -184,7 +190,7 @@ export const PostRunRequestBody$inboundSchema: z.ZodType<
 /** @internal */
 export type PostRunRequestBody$Outbound = {
     deployment_id?: string | undefined;
-    workflow_api?: any | null | undefined;
+    workflow_api?: any | undefined;
     workflow_api_json?: string | undefined;
     workflow_id?: string | undefined;
     machine_id?: string | undefined;
@@ -196,6 +202,7 @@ export type PostRunRequestBody$Outbound = {
     inputs?: { [k: string]: string | number } | undefined;
     inputs_json?: string | undefined;
     webhook?: string | undefined;
+    webhook_intermediate_status?: boolean | undefined;
     stream?: boolean | undefined;
     batch_number: number;
 };
@@ -208,7 +215,7 @@ export const PostRunRequestBody$outboundSchema: z.ZodType<
 > = z
     .object({
         deploymentId: z.string().optional(),
-        workflowApi: z.nullable(z.any()).optional(),
+        workflowApi: z.any().optional(),
         workflowApiJson: z.string().optional(),
         workflowId: z.string().optional(),
         machineId: z.string().optional(),
@@ -220,6 +227,7 @@ export const PostRunRequestBody$outboundSchema: z.ZodType<
         inputs: z.record(z.union([z.string(), z.number()])).optional(),
         inputsJson: z.string().optional(),
         webhook: z.string().optional(),
+        webhookIntermediateStatus: z.boolean().optional(),
         stream: z.boolean().optional(),
         batchNumber: z.number().default(1),
     })
@@ -234,6 +242,7 @@ export const PostRunRequestBody$outboundSchema: z.ZodType<
             privateVolumeName: "private_volume_name",
             runOrigin: "run_origin",
             inputsJson: "inputs_json",
+            webhookIntermediateStatus: "webhook_intermediate_status",
             batchNumber: "batch_number",
         });
     });

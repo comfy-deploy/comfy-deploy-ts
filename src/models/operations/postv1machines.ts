@@ -41,10 +41,10 @@ export type PostV1MachinesResponseBody = {
     status: PostV1MachinesStatus;
     machineVersion: string | null;
     machineBuilderVersion: string;
-    snapshot?: any | null | undefined;
+    snapshot?: any | undefined;
     models: Array<any>;
     gpu: PostV1MachinesGpu;
-    wsGpu?: any | null | undefined;
+    wsGpu?: any | undefined;
     podId: string | null;
     baseDockerImage: string | null;
     allowConcurrentInputs: number;
@@ -56,16 +56,16 @@ export type PostV1MachinesResponseBody = {
     buildMachineInstanceId: string | null;
     buildLog: string | null;
     modalAppId: string | null;
-    objectInfo?: any | null | undefined;
+    objectInfo?: any | undefined;
     targetWorkflowId: string | null;
-    dependencies?: any | null | undefined;
-    extraDockerCommands?: any | null | undefined;
+    dependencies?: any | undefined;
+    extraDockerCommands?: any | undefined;
     installCustomNodeWithGpu: boolean;
     deleted: boolean;
     keepWarm: number;
     allowBackgroundVolumeCommits: boolean;
     gpuWorkspace: boolean;
-    dockerCommandSteps?: any | null | undefined;
+    dockerCommandSteps?: any | undefined;
 };
 
 /** @internal */
@@ -192,10 +192,10 @@ export const PostV1MachinesResponseBody$inboundSchema: z.ZodType<
         status: PostV1MachinesStatus$inboundSchema,
         machine_version: z.nullable(z.string()),
         machine_builder_version: z.string(),
-        snapshot: z.nullable(z.any()).optional(),
+        snapshot: z.any().optional(),
         models: z.array(z.any()),
         gpu: PostV1MachinesGpu$inboundSchema,
-        ws_gpu: z.nullable(z.any()).optional(),
+        ws_gpu: z.any().optional(),
         pod_id: z.nullable(z.string()),
         base_docker_image: z.nullable(z.string()),
         allow_concurrent_inputs: z.number(),
@@ -207,16 +207,16 @@ export const PostV1MachinesResponseBody$inboundSchema: z.ZodType<
         build_machine_instance_id: z.nullable(z.string()),
         build_log: z.nullable(z.string()),
         modal_app_id: z.nullable(z.string()),
-        object_info: z.nullable(z.any()).optional(),
+        object_info: z.any().optional(),
         target_workflow_id: z.nullable(z.string()),
-        dependencies: z.nullable(z.any()).optional(),
-        extra_docker_commands: z.nullable(z.any()).optional(),
+        dependencies: z.any().optional(),
+        extra_docker_commands: z.any().optional(),
         install_custom_node_with_gpu: z.boolean(),
         deleted: z.boolean(),
         keep_warm: z.number(),
         allow_background_volume_commits: z.boolean(),
         gpu_workspace: z.boolean(),
-        docker_command_steps: z.nullable(z.any()).optional(),
+        docker_command_steps: z.any().optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -263,10 +263,10 @@ export type PostV1MachinesResponseBody$Outbound = {
     status: string;
     machine_version: string | null;
     machine_builder_version: string;
-    snapshot?: any | null | undefined;
+    snapshot?: any | undefined;
     models: Array<any>;
     gpu: string;
-    ws_gpu?: any | null | undefined;
+    ws_gpu?: any | undefined;
     pod_id: string | null;
     base_docker_image: string | null;
     allow_concurrent_inputs: number;
@@ -278,16 +278,16 @@ export type PostV1MachinesResponseBody$Outbound = {
     build_machine_instance_id: string | null;
     build_log: string | null;
     modal_app_id: string | null;
-    object_info?: any | null | undefined;
+    object_info?: any | undefined;
     target_workflow_id: string | null;
-    dependencies?: any | null | undefined;
-    extra_docker_commands?: any | null | undefined;
+    dependencies?: any | undefined;
+    extra_docker_commands?: any | undefined;
     install_custom_node_with_gpu: boolean;
     deleted: boolean;
     keep_warm: number;
     allow_background_volume_commits: boolean;
     gpu_workspace: boolean;
-    docker_command_steps?: any | null | undefined;
+    docker_command_steps?: any | undefined;
 };
 
 /** @internal */
@@ -309,10 +309,10 @@ export const PostV1MachinesResponseBody$outboundSchema: z.ZodType<
         status: PostV1MachinesStatus$outboundSchema,
         machineVersion: z.nullable(z.string()),
         machineBuilderVersion: z.string(),
-        snapshot: z.nullable(z.any()).optional(),
+        snapshot: z.any().optional(),
         models: z.array(z.any()),
         gpu: PostV1MachinesGpu$outboundSchema,
-        wsGpu: z.nullable(z.any()).optional(),
+        wsGpu: z.any().optional(),
         podId: z.nullable(z.string()),
         baseDockerImage: z.nullable(z.string()),
         allowConcurrentInputs: z.number(),
@@ -324,16 +324,16 @@ export const PostV1MachinesResponseBody$outboundSchema: z.ZodType<
         buildMachineInstanceId: z.nullable(z.string()),
         buildLog: z.nullable(z.string()),
         modalAppId: z.nullable(z.string()),
-        objectInfo: z.nullable(z.any()).optional(),
+        objectInfo: z.any().optional(),
         targetWorkflowId: z.nullable(z.string()),
-        dependencies: z.nullable(z.any()).optional(),
-        extraDockerCommands: z.nullable(z.any()).optional(),
+        dependencies: z.any().optional(),
+        extraDockerCommands: z.any().optional(),
         installCustomNodeWithGpu: z.boolean(),
         deleted: z.boolean(),
         keepWarm: z.number(),
         allowBackgroundVolumeCommits: z.boolean(),
         gpuWorkspace: z.boolean(),
-        dockerCommandSteps: z.nullable(z.any()).optional(),
+        dockerCommandSteps: z.any().optional(),
     })
     .transform((v) => {
         return remap$(v, {

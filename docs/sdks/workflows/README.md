@@ -3,57 +3,11 @@
 
 ### Available Operations
 
-* [getWebsocketDeploymentId](#getwebsocketdeploymentid) - Get a websocket url for a specific deployment
 * [postMachineEndpoint](#postmachineendpoint) - Create an endpoint for a machine
-* [getV1Workflows](#getv1workflows) - Retrieve workflows
-* [postV1Workflows](#postv1workflows) - Create a new workflow
-* [getV1WorkflowsWorkflowId](#getv1workflowsworkflowid) - Retrieve a specific workflow by ID
-* [getV1WorkflowsWorkflowIdOutputs](#getv1workflowsworkflowidoutputs) - Retrieve the most recent outputs for a workflow
-
-## getWebsocketDeploymentId
-
-Get a websocket url for a specific deployment
-
-### Example Usage
-
-```typescript
-import { ComfyDeploy } from "comfydeploy";
-
-const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await comfyDeploy.workflows.getWebsocketDeploymentId({
-    deploymentId: "<value>",
-  });
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetWebsocketDeploymentIdRequest](../../models/operations/getwebsocketdeploymentidrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-
-### Response
-
-**Promise\<[operations.GetWebsocketDeploymentIdResponseBody](../../models/operations/getwebsocketdeploymentidresponsebody.md)\>**
-### Errors
-
-| Error Object                                | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| errors.GetWebsocketDeploymentIdResponseBody | 500                                         | application/json                            |
-| errors.SDKError                             | 4xx-5xx                                     | */*                                         |
+* [getAll](#getall) - Retrieve workflows
+* [create](#create) - Create a new workflow
+* [get](#get) - Retrieve a specific workflow by ID
+* [getOutputs](#getoutputs) - Retrieve the most recent outputs for a workflow
 
 ## postMachineEndpoint
 
@@ -70,6 +24,37 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.workflows.postMachineEndpoint();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { workflowsPostMachineEndpoint } from "comfydeploy/funcs/workflowsPostMachineEndpoint.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await workflowsPostMachineEndpoint(comfyDeploy);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -98,7 +83,7 @@ run();
 | errors.PostMachineEndpointResponseBody | 500                                    | application/json                       |
 | errors.SDKError                        | 4xx-5xx                                | */*                                    |
 
-## getV1Workflows
+## getAll
 
 Retrieve workflows based on optional query parameters
 
@@ -112,7 +97,38 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getV1Workflows({});
+  const result = await comfyDeploy.workflows.getAll({});
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { workflowsGetAll } from "comfydeploy/funcs/workflowsGetAll.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await workflowsGetAll(comfyDeploy, {});
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -141,7 +157,7 @@ run();
 | errors.GetV1WorkflowsResponseBody | 400                               | application/json                  |
 | errors.SDKError                   | 4xx-5xx                           | */*                               |
 
-## postV1Workflows
+## create
 
 Create a new workflow by analyzing the provided workflow JSON
 
@@ -155,7 +171,38 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.postV1Workflows();
+  const result = await comfyDeploy.workflows.create();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { workflowsCreate } from "comfydeploy/funcs/workflowsCreate.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await workflowsCreate(comfyDeploy);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -184,7 +231,7 @@ run();
 | errors.PostV1WorkflowsResponseBody | 400                                | application/json                   |
 | errors.SDKError                    | 4xx-5xx                            | */*                                |
 
-## getV1WorkflowsWorkflowId
+## get
 
 Retrieve the latest version of a specific workflow by its ID
 
@@ -198,9 +245,42 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getV1WorkflowsWorkflowId({
+  const result = await comfyDeploy.workflows.get({
     workflowId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { workflowsGet } from "comfydeploy/funcs/workflowsGet.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await workflowsGet(comfyDeploy, {
+    workflowId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -229,7 +309,7 @@ run();
 | errors.GetV1WorkflowsWorkflowIdResponseBody | 400                                         | application/json                            |
 | errors.SDKError                             | 4xx-5xx                                     | */*                                         |
 
-## getV1WorkflowsWorkflowIdOutputs
+## getOutputs
 
 Retrieve the latest version of a specific workflow by its ID
 
@@ -243,9 +323,42 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.workflows.getV1WorkflowsWorkflowIdOutputs({
+  const result = await comfyDeploy.workflows.getOutputs({
     workflowId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { workflowsGetOutputs } from "comfydeploy/funcs/workflowsGetOutputs.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await workflowsGetOutputs(comfyDeploy, {
+    workflowId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

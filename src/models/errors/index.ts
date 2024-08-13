@@ -5,6 +5,7 @@
 export * from "./getauthresponserequestid.js";
 export * from "./getdeployment.js";
 export * from "./getdeploymentidinputs.js";
+export * from "./getmachinemachineidevents.js";
 export * from "./getrun.js";
 export * from "./getuploadurl.js";
 export * from "./getv1machines.js";
@@ -15,6 +16,7 @@ export * from "./getv1workflowsworkflowidoutputs.js";
 export * from "./getwebsocketdeploymentid.js";
 export * from "./getworkflowid.js";
 export * from "./getworkflowversionversionid.js";
+export * from "./httpclienterrors.js";
 export * from "./postgpuevent.js";
 export * from "./postmachineendpoint.js";
 export * from "./postrun.js";

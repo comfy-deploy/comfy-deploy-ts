@@ -3,13 +3,14 @@
  */
 
 import { HTTPClient } from "./http.js";
+import { Logger } from "./logger.js";
 import { RetryConfig } from "./retries.js";
 import { Params, pathToFunc } from "./url.js";
 
 /**
  * Contains the list of servers available to the SDK
  */
-export const ServerList = ["https://www.comfydeploy.com/api"] as const;
+export const ServerList = ["http://localhost:3010/api"] as const;
 
 export type SDKOptions = {
     bearerAuth?: string | (() => Promise<string>);
@@ -28,6 +29,7 @@ export type SDKOptions = {
      */
     retryConfig?: RetryConfig;
     timeoutMs?: number;
+    debugLogger?: Logger;
 };
 
 export function serverURLFromOptions(options: SDKOptions): URL | null {
@@ -50,7 +52,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
     language: "typescript",
     openapiDocVersion: "0.0.1",
-    sdkVersion: "0.0.19-beta.13",
-    genVersion: "2.385.2",
-    userAgent: "speakeasy-sdk/typescript 0.0.19-beta.13 2.385.2 0.0.1 comfydeploy",
+    sdkVersion: "0.0.19-beta.25",
+    genVersion: "2.396.0",
+    userAgent: "speakeasy-sdk/typescript 0.0.19-beta.25 2.396.0 0.0.1 comfydeploy",
 } as const;

@@ -5,6 +5,7 @@
 export * from "./getauthresponserequestid.js";
 export * from "./getdeployment.js";
 export * from "./getdeploymentidinputs.js";
+export * from "./getmachinemachineidevents.js";
 export * from "./getrun.js";
 export * from "./getuploadurl.js";
 export * from "./getv1machines.js";
