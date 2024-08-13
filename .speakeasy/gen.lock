@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: 3687408495bcccef78f4d6f7bb9db7f3
+  docChecksum: d22b97e370a6fe89f8a345dcc925fba4
   docVersion: 0.0.1
   speakeasyVersion: 1.366.0
   generationVersion: 2.396.0
-  releaseVersion: 0.0.19-beta.25
-  configChecksum: db4aa6c3f1ef1c2f6f9d63d9ac4a0294
+  releaseVersion: 0.0.19-beta.26
+  configChecksum: 7193b9a1c850525dc7cb4a487ccc9665
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
