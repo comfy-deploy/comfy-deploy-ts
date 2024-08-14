@@ -28,8 +28,8 @@ export type GetWorkflowIdResponseBody = {
     userId: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowIdSnapshot;
-    dependencies: GetWorkflowIdDependencies;
+    snapshot: GetWorkflowIdSnapshot | null;
+    dependencies: GetWorkflowIdDependencies | null;
     createdAt: string;
     updatedAt: string;
 };
@@ -204,8 +204,8 @@ export const GetWorkflowIdResponseBody$inboundSchema: z.ZodType<
         user_id: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.lazy(() => GetWorkflowIdSnapshot$inboundSchema),
-        dependencies: z.lazy(() => GetWorkflowIdDependencies$inboundSchema),
+        snapshot: z.nullable(z.lazy(() => GetWorkflowIdSnapshot$inboundSchema)),
+        dependencies: z.nullable(z.lazy(() => GetWorkflowIdDependencies$inboundSchema)),
         created_at: z.string(),
         updated_at: z.string(),
     })
@@ -228,8 +228,8 @@ export type GetWorkflowIdResponseBody$Outbound = {
     user_id: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowIdSnapshot$Outbound;
-    dependencies: GetWorkflowIdDependencies$Outbound;
+    snapshot: GetWorkflowIdSnapshot$Outbound | null;
+    dependencies: GetWorkflowIdDependencies$Outbound | null;
     created_at: string;
     updated_at: string;
 };
@@ -248,8 +248,8 @@ export const GetWorkflowIdResponseBody$outboundSchema: z.ZodType<
         userId: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.lazy(() => GetWorkflowIdSnapshot$outboundSchema),
-        dependencies: z.lazy(() => GetWorkflowIdDependencies$outboundSchema),
+        snapshot: z.nullable(z.lazy(() => GetWorkflowIdSnapshot$outboundSchema)),
+        dependencies: z.nullable(z.lazy(() => GetWorkflowIdDependencies$outboundSchema)),
         createdAt: z.string(),
         updatedAt: z.string(),
     })

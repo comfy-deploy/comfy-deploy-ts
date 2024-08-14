@@ -28,8 +28,8 @@ export type GetWorkflowVersionVersionIdResponseBody = {
     userId: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowVersionVersionIdSnapshot;
-    dependencies: GetWorkflowVersionVersionIdDependencies;
+    snapshot: GetWorkflowVersionVersionIdSnapshot | null;
+    dependencies: GetWorkflowVersionVersionIdDependencies | null;
     createdAt: string;
     updatedAt: string;
 };
@@ -209,8 +209,10 @@ export const GetWorkflowVersionVersionIdResponseBody$inboundSchema: z.ZodType<
         user_id: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.lazy(() => GetWorkflowVersionVersionIdSnapshot$inboundSchema),
-        dependencies: z.lazy(() => GetWorkflowVersionVersionIdDependencies$inboundSchema),
+        snapshot: z.nullable(z.lazy(() => GetWorkflowVersionVersionIdSnapshot$inboundSchema)),
+        dependencies: z.nullable(
+            z.lazy(() => GetWorkflowVersionVersionIdDependencies$inboundSchema)
+        ),
         created_at: z.string(),
         updated_at: z.string(),
     })
@@ -233,8 +235,8 @@ export type GetWorkflowVersionVersionIdResponseBody$Outbound = {
     user_id: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowVersionVersionIdSnapshot$Outbound;
-    dependencies: GetWorkflowVersionVersionIdDependencies$Outbound;
+    snapshot: GetWorkflowVersionVersionIdSnapshot$Outbound | null;
+    dependencies: GetWorkflowVersionVersionIdDependencies$Outbound | null;
     created_at: string;
     updated_at: string;
 };
@@ -253,8 +255,10 @@ export const GetWorkflowVersionVersionIdResponseBody$outboundSchema: z.ZodType<
         userId: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.lazy(() => GetWorkflowVersionVersionIdSnapshot$outboundSchema),
-        dependencies: z.lazy(() => GetWorkflowVersionVersionIdDependencies$outboundSchema),
+        snapshot: z.nullable(z.lazy(() => GetWorkflowVersionVersionIdSnapshot$outboundSchema)),
+        dependencies: z.nullable(
+            z.lazy(() => GetWorkflowVersionVersionIdDependencies$outboundSchema)
+        ),
         createdAt: z.string(),
         updatedAt: z.string(),
     })
