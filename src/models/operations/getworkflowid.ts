@@ -9,27 +9,19 @@ export type GetWorkflowIdRequest = {
     id: string;
 };
 
-export type GetWorkflowIdWorkflow = {};
-
-export type GetWorkflowIdWorkflowApi = {};
-
-export type GetWorkflowIdSnapshot = {};
-
-export type GetWorkflowIdDependencies = {};
-
 /**
  * Retrieve the output
  */
 export type GetWorkflowIdResponseBody = {
     workflowId: string;
     id: string;
-    workflow: GetWorkflowIdWorkflow;
-    workflowApi: GetWorkflowIdWorkflowApi;
+    workflow?: any | undefined;
+    workflowApi?: any | undefined;
     userId: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowIdSnapshot | null;
-    dependencies: GetWorkflowIdDependencies | null;
+    snapshot?: any | undefined;
+    dependencies?: any | undefined;
     createdAt: string;
     updatedAt: string;
 };
@@ -71,126 +63,6 @@ export namespace GetWorkflowIdRequest$ {
 }
 
 /** @internal */
-export const GetWorkflowIdWorkflow$inboundSchema: z.ZodType<
-    GetWorkflowIdWorkflow,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type GetWorkflowIdWorkflow$Outbound = {};
-
-/** @internal */
-export const GetWorkflowIdWorkflow$outboundSchema: z.ZodType<
-    GetWorkflowIdWorkflow$Outbound,
-    z.ZodTypeDef,
-    GetWorkflowIdWorkflow
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkflowIdWorkflow$ {
-    /** @deprecated use `GetWorkflowIdWorkflow$inboundSchema` instead. */
-    export const inboundSchema = GetWorkflowIdWorkflow$inboundSchema;
-    /** @deprecated use `GetWorkflowIdWorkflow$outboundSchema` instead. */
-    export const outboundSchema = GetWorkflowIdWorkflow$outboundSchema;
-    /** @deprecated use `GetWorkflowIdWorkflow$Outbound` instead. */
-    export type Outbound = GetWorkflowIdWorkflow$Outbound;
-}
-
-/** @internal */
-export const GetWorkflowIdWorkflowApi$inboundSchema: z.ZodType<
-    GetWorkflowIdWorkflowApi,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type GetWorkflowIdWorkflowApi$Outbound = {};
-
-/** @internal */
-export const GetWorkflowIdWorkflowApi$outboundSchema: z.ZodType<
-    GetWorkflowIdWorkflowApi$Outbound,
-    z.ZodTypeDef,
-    GetWorkflowIdWorkflowApi
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkflowIdWorkflowApi$ {
-    /** @deprecated use `GetWorkflowIdWorkflowApi$inboundSchema` instead. */
-    export const inboundSchema = GetWorkflowIdWorkflowApi$inboundSchema;
-    /** @deprecated use `GetWorkflowIdWorkflowApi$outboundSchema` instead. */
-    export const outboundSchema = GetWorkflowIdWorkflowApi$outboundSchema;
-    /** @deprecated use `GetWorkflowIdWorkflowApi$Outbound` instead. */
-    export type Outbound = GetWorkflowIdWorkflowApi$Outbound;
-}
-
-/** @internal */
-export const GetWorkflowIdSnapshot$inboundSchema: z.ZodType<
-    GetWorkflowIdSnapshot,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type GetWorkflowIdSnapshot$Outbound = {};
-
-/** @internal */
-export const GetWorkflowIdSnapshot$outboundSchema: z.ZodType<
-    GetWorkflowIdSnapshot$Outbound,
-    z.ZodTypeDef,
-    GetWorkflowIdSnapshot
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkflowIdSnapshot$ {
-    /** @deprecated use `GetWorkflowIdSnapshot$inboundSchema` instead. */
-    export const inboundSchema = GetWorkflowIdSnapshot$inboundSchema;
-    /** @deprecated use `GetWorkflowIdSnapshot$outboundSchema` instead. */
-    export const outboundSchema = GetWorkflowIdSnapshot$outboundSchema;
-    /** @deprecated use `GetWorkflowIdSnapshot$Outbound` instead. */
-    export type Outbound = GetWorkflowIdSnapshot$Outbound;
-}
-
-/** @internal */
-export const GetWorkflowIdDependencies$inboundSchema: z.ZodType<
-    GetWorkflowIdDependencies,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type GetWorkflowIdDependencies$Outbound = {};
-
-/** @internal */
-export const GetWorkflowIdDependencies$outboundSchema: z.ZodType<
-    GetWorkflowIdDependencies$Outbound,
-    z.ZodTypeDef,
-    GetWorkflowIdDependencies
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkflowIdDependencies$ {
-    /** @deprecated use `GetWorkflowIdDependencies$inboundSchema` instead. */
-    export const inboundSchema = GetWorkflowIdDependencies$inboundSchema;
-    /** @deprecated use `GetWorkflowIdDependencies$outboundSchema` instead. */
-    export const outboundSchema = GetWorkflowIdDependencies$outboundSchema;
-    /** @deprecated use `GetWorkflowIdDependencies$Outbound` instead. */
-    export type Outbound = GetWorkflowIdDependencies$Outbound;
-}
-
-/** @internal */
 export const GetWorkflowIdResponseBody$inboundSchema: z.ZodType<
     GetWorkflowIdResponseBody,
     z.ZodTypeDef,
@@ -199,13 +71,13 @@ export const GetWorkflowIdResponseBody$inboundSchema: z.ZodType<
     .object({
         workflow_id: z.string(),
         id: z.string(),
-        workflow: z.lazy(() => GetWorkflowIdWorkflow$inboundSchema),
-        workflow_api: z.lazy(() => GetWorkflowIdWorkflowApi$inboundSchema),
+        workflow: z.any().optional(),
+        workflow_api: z.any().optional(),
         user_id: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.nullable(z.lazy(() => GetWorkflowIdSnapshot$inboundSchema)),
-        dependencies: z.nullable(z.lazy(() => GetWorkflowIdDependencies$inboundSchema)),
+        snapshot: z.any().optional(),
+        dependencies: z.any().optional(),
         created_at: z.string(),
         updated_at: z.string(),
     })
@@ -223,13 +95,13 @@ export const GetWorkflowIdResponseBody$inboundSchema: z.ZodType<
 export type GetWorkflowIdResponseBody$Outbound = {
     workflow_id: string;
     id: string;
-    workflow: GetWorkflowIdWorkflow$Outbound;
-    workflow_api: GetWorkflowIdWorkflowApi$Outbound;
+    workflow?: any | undefined;
+    workflow_api?: any | undefined;
     user_id: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowIdSnapshot$Outbound | null;
-    dependencies: GetWorkflowIdDependencies$Outbound | null;
+    snapshot?: any | undefined;
+    dependencies?: any | undefined;
     created_at: string;
     updated_at: string;
 };
@@ -243,13 +115,13 @@ export const GetWorkflowIdResponseBody$outboundSchema: z.ZodType<
     .object({
         workflowId: z.string(),
         id: z.string(),
-        workflow: z.lazy(() => GetWorkflowIdWorkflow$outboundSchema),
-        workflowApi: z.lazy(() => GetWorkflowIdWorkflowApi$outboundSchema),
+        workflow: z.any().optional(),
+        workflowApi: z.any().optional(),
         userId: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.nullable(z.lazy(() => GetWorkflowIdSnapshot$outboundSchema)),
-        dependencies: z.nullable(z.lazy(() => GetWorkflowIdDependencies$outboundSchema)),
+        snapshot: z.any().optional(),
+        dependencies: z.any().optional(),
         createdAt: z.string(),
         updatedAt: z.string(),
     })

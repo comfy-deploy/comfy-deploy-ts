@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: c2618831797e823b759d67076b7d7c2a
+  docChecksum: b75a2f87a8e112a48e4c7f038bbf36d7
   docVersion: 0.0.1
   speakeasyVersion: 1.366.0
   generationVersion: 2.396.0
-  releaseVersion: 0.0.19-beta.27
-  configChecksum: 85ad81fe24675cd431109612e26265fb
+  releaseVersion: 0.0.19-beta.30
+  configChecksum: a091f5276f409f814f09262041406100
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -180,16 +180,8 @@ generatedFiles:
   - docs/models/operations/postworkflowrequestbody.md
   - docs/models/operations/postworkflowresponsebody.md
   - docs/models/operations/getworkflowversionversionidrequest.md
-  - docs/models/operations/workflow.md
-  - docs/models/operations/getworkflowversionversionidworkflowapi.md
-  - docs/models/operations/getworkflowversionversionidsnapshot.md
-  - docs/models/operations/getworkflowversionversioniddependencies.md
   - docs/models/operations/getworkflowversionversionidresponsebody.md
   - docs/models/operations/getworkflowidrequest.md
-  - docs/models/operations/getworkflowidworkflow.md
-  - docs/models/operations/getworkflowidworkflowapi.md
-  - docs/models/operations/getworkflowidsnapshot.md
-  - docs/models/operations/getworkflowiddependencies.md
   - docs/models/operations/getworkflowidresponsebody.md
   - docs/models/operations/postmachineendpointrequestbody.md
   - docs/models/operations/postmachineendpointresponsebody.md

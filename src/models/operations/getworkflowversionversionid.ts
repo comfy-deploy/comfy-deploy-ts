@@ -9,27 +9,19 @@ export type GetWorkflowVersionVersionIdRequest = {
     versionId: string;
 };
 
-export type Workflow = {};
-
-export type GetWorkflowVersionVersionIdWorkflowApi = {};
-
-export type GetWorkflowVersionVersionIdSnapshot = {};
-
-export type GetWorkflowVersionVersionIdDependencies = {};
-
 /**
  * Retrieve the output
  */
 export type GetWorkflowVersionVersionIdResponseBody = {
     workflowId: string;
     id: string;
-    workflow: Workflow;
-    workflowApi: GetWorkflowVersionVersionIdWorkflowApi;
+    workflow?: any | undefined;
+    workflowApi?: any | undefined;
     userId: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowVersionVersionIdSnapshot | null;
-    dependencies: GetWorkflowVersionVersionIdDependencies | null;
+    snapshot?: any | undefined;
+    dependencies?: any | undefined;
     createdAt: string;
     updatedAt: string;
 };
@@ -83,119 +75,6 @@ export namespace GetWorkflowVersionVersionIdRequest$ {
 }
 
 /** @internal */
-export const Workflow$inboundSchema: z.ZodType<Workflow, z.ZodTypeDef, unknown> = z.object({});
-
-/** @internal */
-export type Workflow$Outbound = {};
-
-/** @internal */
-export const Workflow$outboundSchema: z.ZodType<Workflow$Outbound, z.ZodTypeDef, Workflow> =
-    z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Workflow$ {
-    /** @deprecated use `Workflow$inboundSchema` instead. */
-    export const inboundSchema = Workflow$inboundSchema;
-    /** @deprecated use `Workflow$outboundSchema` instead. */
-    export const outboundSchema = Workflow$outboundSchema;
-    /** @deprecated use `Workflow$Outbound` instead. */
-    export type Outbound = Workflow$Outbound;
-}
-
-/** @internal */
-export const GetWorkflowVersionVersionIdWorkflowApi$inboundSchema: z.ZodType<
-    GetWorkflowVersionVersionIdWorkflowApi,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type GetWorkflowVersionVersionIdWorkflowApi$Outbound = {};
-
-/** @internal */
-export const GetWorkflowVersionVersionIdWorkflowApi$outboundSchema: z.ZodType<
-    GetWorkflowVersionVersionIdWorkflowApi$Outbound,
-    z.ZodTypeDef,
-    GetWorkflowVersionVersionIdWorkflowApi
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkflowVersionVersionIdWorkflowApi$ {
-    /** @deprecated use `GetWorkflowVersionVersionIdWorkflowApi$inboundSchema` instead. */
-    export const inboundSchema = GetWorkflowVersionVersionIdWorkflowApi$inboundSchema;
-    /** @deprecated use `GetWorkflowVersionVersionIdWorkflowApi$outboundSchema` instead. */
-    export const outboundSchema = GetWorkflowVersionVersionIdWorkflowApi$outboundSchema;
-    /** @deprecated use `GetWorkflowVersionVersionIdWorkflowApi$Outbound` instead. */
-    export type Outbound = GetWorkflowVersionVersionIdWorkflowApi$Outbound;
-}
-
-/** @internal */
-export const GetWorkflowVersionVersionIdSnapshot$inboundSchema: z.ZodType<
-    GetWorkflowVersionVersionIdSnapshot,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type GetWorkflowVersionVersionIdSnapshot$Outbound = {};
-
-/** @internal */
-export const GetWorkflowVersionVersionIdSnapshot$outboundSchema: z.ZodType<
-    GetWorkflowVersionVersionIdSnapshot$Outbound,
-    z.ZodTypeDef,
-    GetWorkflowVersionVersionIdSnapshot
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkflowVersionVersionIdSnapshot$ {
-    /** @deprecated use `GetWorkflowVersionVersionIdSnapshot$inboundSchema` instead. */
-    export const inboundSchema = GetWorkflowVersionVersionIdSnapshot$inboundSchema;
-    /** @deprecated use `GetWorkflowVersionVersionIdSnapshot$outboundSchema` instead. */
-    export const outboundSchema = GetWorkflowVersionVersionIdSnapshot$outboundSchema;
-    /** @deprecated use `GetWorkflowVersionVersionIdSnapshot$Outbound` instead. */
-    export type Outbound = GetWorkflowVersionVersionIdSnapshot$Outbound;
-}
-
-/** @internal */
-export const GetWorkflowVersionVersionIdDependencies$inboundSchema: z.ZodType<
-    GetWorkflowVersionVersionIdDependencies,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type GetWorkflowVersionVersionIdDependencies$Outbound = {};
-
-/** @internal */
-export const GetWorkflowVersionVersionIdDependencies$outboundSchema: z.ZodType<
-    GetWorkflowVersionVersionIdDependencies$Outbound,
-    z.ZodTypeDef,
-    GetWorkflowVersionVersionIdDependencies
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetWorkflowVersionVersionIdDependencies$ {
-    /** @deprecated use `GetWorkflowVersionVersionIdDependencies$inboundSchema` instead. */
-    export const inboundSchema = GetWorkflowVersionVersionIdDependencies$inboundSchema;
-    /** @deprecated use `GetWorkflowVersionVersionIdDependencies$outboundSchema` instead. */
-    export const outboundSchema = GetWorkflowVersionVersionIdDependencies$outboundSchema;
-    /** @deprecated use `GetWorkflowVersionVersionIdDependencies$Outbound` instead. */
-    export type Outbound = GetWorkflowVersionVersionIdDependencies$Outbound;
-}
-
-/** @internal */
 export const GetWorkflowVersionVersionIdResponseBody$inboundSchema: z.ZodType<
     GetWorkflowVersionVersionIdResponseBody,
     z.ZodTypeDef,
@@ -204,15 +83,13 @@ export const GetWorkflowVersionVersionIdResponseBody$inboundSchema: z.ZodType<
     .object({
         workflow_id: z.string(),
         id: z.string(),
-        workflow: z.lazy(() => Workflow$inboundSchema),
-        workflow_api: z.lazy(() => GetWorkflowVersionVersionIdWorkflowApi$inboundSchema),
+        workflow: z.any().optional(),
+        workflow_api: z.any().optional(),
         user_id: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.nullable(z.lazy(() => GetWorkflowVersionVersionIdSnapshot$inboundSchema)),
-        dependencies: z.nullable(
-            z.lazy(() => GetWorkflowVersionVersionIdDependencies$inboundSchema)
-        ),
+        snapshot: z.any().optional(),
+        dependencies: z.any().optional(),
         created_at: z.string(),
         updated_at: z.string(),
     })
@@ -230,13 +107,13 @@ export const GetWorkflowVersionVersionIdResponseBody$inboundSchema: z.ZodType<
 export type GetWorkflowVersionVersionIdResponseBody$Outbound = {
     workflow_id: string;
     id: string;
-    workflow: Workflow$Outbound;
-    workflow_api: GetWorkflowVersionVersionIdWorkflowApi$Outbound;
+    workflow?: any | undefined;
+    workflow_api?: any | undefined;
     user_id: string | null;
     comment: string | null;
     version: number;
-    snapshot: GetWorkflowVersionVersionIdSnapshot$Outbound | null;
-    dependencies: GetWorkflowVersionVersionIdDependencies$Outbound | null;
+    snapshot?: any | undefined;
+    dependencies?: any | undefined;
     created_at: string;
     updated_at: string;
 };
@@ -250,15 +127,13 @@ export const GetWorkflowVersionVersionIdResponseBody$outboundSchema: z.ZodType<
     .object({
         workflowId: z.string(),
         id: z.string(),
-        workflow: z.lazy(() => Workflow$outboundSchema),
-        workflowApi: z.lazy(() => GetWorkflowVersionVersionIdWorkflowApi$outboundSchema),
+        workflow: z.any().optional(),
+        workflowApi: z.any().optional(),
         userId: z.nullable(z.string()),
         comment: z.nullable(z.string()),
         version: z.number(),
-        snapshot: z.nullable(z.lazy(() => GetWorkflowVersionVersionIdSnapshot$outboundSchema)),
-        dependencies: z.nullable(
-            z.lazy(() => GetWorkflowVersionVersionIdDependencies$outboundSchema)
-        ),
+        snapshot: z.any().optional(),
+        dependencies: z.any().optional(),
         createdAt: z.string(),
         updatedAt: z.string(),
     })
