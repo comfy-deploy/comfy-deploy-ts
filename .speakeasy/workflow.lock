@@ -2,10 +2,11 @@ speakeasyVersion: 1.405.6
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:cd344abedc9bc1e1a9268ae74db5ab131817d216bb23f1a9672907597861dc75
-        sourceBlobDigest: sha256:7bf0dca3d339da468f4f927e4ab68b9b1c5ad0063af5682bf4cd9a82fdbfe577
+        sourceRevisionDigest: sha256:25b9f3ec5b073f9a10a19b23e30c6e196a507ba92fb969e52a79420d6a276603
+        sourceBlobDigest: sha256:c57bd098eba3f3f62ba6cc7805f26c5eb4db61d979fbb7422ea7a0c1708c72f1
         tags:
             - latest
+            - main
 targets:
     comfy-deploy:
         source: comfydeploy-api
@@ -15,10 +16,10 @@ targets:
     comfydeploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:cd344abedc9bc1e1a9268ae74db5ab131817d216bb23f1a9672907597861dc75
-        sourceBlobDigest: sha256:7bf0dca3d339da468f4f927e4ab68b9b1c5ad0063af5682bf4cd9a82fdbfe577
+        sourceRevisionDigest: sha256:25b9f3ec5b073f9a10a19b23e30c6e196a507ba92fb969e52a79420d6a276603
+        sourceBlobDigest: sha256:c57bd098eba3f3f62ba6cc7805f26c5eb4db61d979fbb7422ea7a0c1708c72f1
         codeSamplesNamespace: code-samples-typescript-comfydeploy
-        codeSamplesRevisionDigest: sha256:f1483da413ea7d99a5761c024ac9610dcd15683eac2481e3954e32e8d20d79a0
+        codeSamplesRevisionDigest: sha256:c2197580efd88101c874687e83ff1808d7d9c84dc0544cc0a4a1ee7d00d7ff50
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
