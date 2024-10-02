@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.405.6
   generationVersion: 2.428.1
-  releaseVersion: 0.0.19
-  configChecksum: 62c4a233068d8722103f9536cc748331
+  releaseVersion: 0.0.20
+  configChecksum: bb6c372c114c410b802a7f0614756c73
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -465,3 +465,4 @@ examples:
       responses:
         "400":
           application/json: {"error": "<value>"}
+        "200": {}
