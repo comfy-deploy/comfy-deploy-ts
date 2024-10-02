@@ -1,5 +1,16 @@
 # Node
 
+## Example Usage
+
+```typescript
+import { Node } from "comfydeploy/models/operations";
+
+let value: Node = {
+  inputs: {
+    "key": "<value>",
+  },
+};
+```
 
 ## Fields
 

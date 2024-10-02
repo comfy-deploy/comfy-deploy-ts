@@ -2,6 +2,13 @@
 
 Error when fetching the API Key with code
 
+## Example Usage
+
+```typescript
+import { GetAuthResponseRequestIdResponseBody } from "comfydeploy/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

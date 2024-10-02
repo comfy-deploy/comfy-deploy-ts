@@ -1,5 +1,14 @@
 # GetRunRequest
 
+## Example Usage
+
+```typescript
+import { GetRunRequest } from "comfydeploy/models/operations";
+
+let value: GetRunRequest = {
+  runId: "<id>",
+};
+```
 
 ## Fields
 

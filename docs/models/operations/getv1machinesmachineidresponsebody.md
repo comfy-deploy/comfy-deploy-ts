@@ -2,6 +2,13 @@
 
 Specific machine retrieved successfully
 
+## Example Usage
+
+```typescript
+import { GetV1MachinesMachineIdResponseBody } from "comfydeploy/models/operations";
+
+let value: GetV1MachinesMachineIdResponseBody = {};
+```
 
 ## Fields
 

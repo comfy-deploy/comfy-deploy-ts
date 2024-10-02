@@ -1,9 +1,15 @@
 # GpuProvider
 
+## Example Usage
+
+```typescript
+import { GpuProvider } from "comfydeploy/models/operations";
+
+let value: GpuProvider = "modal";
+```
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Modal`  | modal    |
-| `Runpod` | runpod   |
+```typescript
+"modal" | "runpod"
+```

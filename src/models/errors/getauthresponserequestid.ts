@@ -8,73 +8,70 @@ import * as z from "zod";
  * Error when fetching the API Key with code
  */
 export type GetAuthResponseRequestIdResponseBodyData = {
-    error: string;
+  error: string;
 };
 
 /**
  * Error when fetching the API Key with code
  */
 export class GetAuthResponseRequestIdResponseBody extends Error {
-    error: string;
+  error: string;
 
-    /** The original data that was passed to this error instance. */
-    data$: GetAuthResponseRequestIdResponseBodyData;
+  /** The original data that was passed to this error instance. */
+  data$: GetAuthResponseRequestIdResponseBodyData;
 
-    constructor(err: GetAuthResponseRequestIdResponseBodyData) {
-        const message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : `API error occurred: ${JSON.stringify(err)}`;
-        super(message);
-        this.data$ = err;
+  constructor(err: GetAuthResponseRequestIdResponseBodyData) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message);
+    this.data$ = err;
 
-        this.error = err.error;
+    this.error = err.error;
 
-        this.name = "GetAuthResponseRequestIdResponseBody";
-    }
+    this.name = "GetAuthResponseRequestIdResponseBody";
+  }
 }
 
 /** @internal */
 export const GetAuthResponseRequestIdResponseBody$inboundSchema: z.ZodType<
-    GetAuthResponseRequestIdResponseBody,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        error: z.string(),
-    })
-    .transform((v) => {
-        return new GetAuthResponseRequestIdResponseBody(v);
-    });
+  GetAuthResponseRequestIdResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  error: z.string(),
+})
+  .transform((v) => {
+    return new GetAuthResponseRequestIdResponseBody(v);
+  });
 
 /** @internal */
 export type GetAuthResponseRequestIdResponseBody$Outbound = {
-    error: string;
+  error: string;
 };
 
 /** @internal */
 export const GetAuthResponseRequestIdResponseBody$outboundSchema: z.ZodType<
-    GetAuthResponseRequestIdResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetAuthResponseRequestIdResponseBody
-> = z
-    .instanceof(GetAuthResponseRequestIdResponseBody)
-    .transform((v) => v.data$)
-    .pipe(
-        z.object({
-            error: z.string(),
-        })
-    );
+  GetAuthResponseRequestIdResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetAuthResponseRequestIdResponseBody
+> = z.instanceof(GetAuthResponseRequestIdResponseBody)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    error: z.string(),
+  }));
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetAuthResponseRequestIdResponseBody$ {
-    /** @deprecated use `GetAuthResponseRequestIdResponseBody$inboundSchema` instead. */
-    export const inboundSchema = GetAuthResponseRequestIdResponseBody$inboundSchema;
-    /** @deprecated use `GetAuthResponseRequestIdResponseBody$outboundSchema` instead. */
-    export const outboundSchema = GetAuthResponseRequestIdResponseBody$outboundSchema;
-    /** @deprecated use `GetAuthResponseRequestIdResponseBody$Outbound` instead. */
-    export type Outbound = GetAuthResponseRequestIdResponseBody$Outbound;
+  /** @deprecated use `GetAuthResponseRequestIdResponseBody$inboundSchema` instead. */
+  export const inboundSchema =
+    GetAuthResponseRequestIdResponseBody$inboundSchema;
+  /** @deprecated use `GetAuthResponseRequestIdResponseBody$outboundSchema` instead. */
+  export const outboundSchema =
+    GetAuthResponseRequestIdResponseBody$outboundSchema;
+  /** @deprecated use `GetAuthResponseRequestIdResponseBody$Outbound` instead. */
+  export type Outbound = GetAuthResponseRequestIdResponseBody$Outbound;
 }

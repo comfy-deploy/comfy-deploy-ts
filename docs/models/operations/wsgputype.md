@@ -1,8 +1,15 @@
 # WsGpuType
 
+## Example Usage
+
+```typescript
+import { WsGpuType } from "comfydeploy/models/operations";
+
+let value: WsGpuType = "4090";
+```
 
 ## Values
 
-| Name                    | Value                   |
-| ----------------------- | ----------------------- |
-| `FourThousandAndNinety` | 4090                    |
+```typescript
+"4090"
+```

@@ -1,5 +1,17 @@
 # PostGpuEventRequestBody
 
+## Example Usage
+
+```typescript
+import { PostGpuEventRequestBody } from "comfydeploy/models/operations";
+
+let value: PostGpuEventRequestBody = {
+  machineId: "<id>",
+  timestamp: "<value>",
+  eventType: "gpu_end",
+  gpuProvider: "modal",
+};
+```
 
 ## Fields
 

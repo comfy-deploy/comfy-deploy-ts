@@ -1,5 +1,12 @@
 # Data
 
+## Example Usage
+
+```typescript
+import { Data } from "comfydeploy/models/operations";
+
+let value: Data = {};
+```
 
 ## Fields
 

@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { ComfyDeployCore } from "comfydeploy/core.js";
-import { runGet } from "comfydeploy/funcs/runGet.js";
+import { runCreate } from "comfydeploy/funcs/runCreate.js";
 import { SDKValidationError } from "comfydeploy/models/errors/sdkvalidationerror.js";
 
 // Use `ComfyDeployCore` for best tree-shaking performance.
@@ -30,8 +30,18 @@ const comfyDeploy = new ComfyDeployCore({
 });
 
 async function run() {
-  const res = await runGet(comfyDeploy, {
-    runId: "<value>",
+  const res = await runCreate(comfyDeploy, {
+    deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
+    workflowApi: {
+  
+    },
+    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    inputs: {
+      "input_text": "value1",
+      "input_url": "https://example.png",
+    },
+    webhook: "https://example.com/webhook",
   });
 
   switch (true) {
@@ -54,7 +64,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

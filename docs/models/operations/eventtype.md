@@ -1,9 +1,15 @@
 # EventType
 
+## Example Usage
+
+```typescript
+import { EventType } from "comfydeploy/models/operations";
+
+let value: EventType = "gpu_end";
+```
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `GpuStart` | gpu_start  |
-| `GpuEnd`   | gpu_end    |
+```typescript
+"gpu_start" | "gpu_end"
+```

@@ -2,6 +2,15 @@
 
 Machine event registered
 
+## Example Usage
+
+```typescript
+import { PostGpuEventResponseBody } from "comfydeploy/models/operations";
+
+let value: PostGpuEventResponseBody = {
+  eventId: "<id>",
+};
+```
 
 ## Fields
 

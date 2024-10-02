@@ -1,5 +1,15 @@
 # GitCustomNodes
 
+## Example Usage
+
+```typescript
+import { GitCustomNodes } from "comfydeploy/models/operations";
+
+let value: GitCustomNodes = {
+  hash: "<value>",
+  disabled: false,
+};
+```
 
 ## Fields
 

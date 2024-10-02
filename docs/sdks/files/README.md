@@ -1,6 +1,8 @@
 # Files
 (*files*)
 
+## Overview
+
 ### Available Operations
 
 * [getUploadUrl](#getuploadurl) - Upload any files to the storage
@@ -20,17 +22,16 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.files.getUploadUrl({
-    type: "application/octet-stream",
+    type: "application/zip",
     fileSize: "<value>",
   });
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -48,7 +49,7 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await filesGetUploadUrl(comfyDeploy, {
-    type: "image/png",
+    type: "application/zip",
     fileSize: "<value>",
   });
 
@@ -59,7 +60,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -74,13 +75,13 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetUploadUrlResponseBody](../../models/operations/getuploadurlresponsebody.md)\>**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
+| Error Type                      | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.GetUploadUrlResponseBody | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| errors.SDKError                 | 4XX, 5XX                        | \*/\*                           |

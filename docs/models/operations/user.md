@@ -1,5 +1,14 @@
 # User
 
+## Example Usage
+
+```typescript
+import { User } from "comfydeploy/models/operations";
+
+let value: User = {
+  name: "<value>",
+};
+```
 
 ## Fields
 

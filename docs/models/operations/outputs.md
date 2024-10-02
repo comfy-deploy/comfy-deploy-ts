@@ -1,5 +1,14 @@
 # Outputs
 
+## Example Usage
+
+```typescript
+import { Outputs } from "comfydeploy/models/operations";
+
+let value: Outputs = {
+  data: {},
+};
+```
 
 ## Fields
 

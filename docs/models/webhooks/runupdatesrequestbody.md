@@ -1,5 +1,22 @@
 # RunUpdatesRequestBody
 
+## Example Usage
+
+```typescript
+import { RunUpdatesRequestBody } from "comfydeploy/models/webhooks";
+
+let value: RunUpdatesRequestBody = {
+  status: "success",
+  liveStatus: "<value>",
+  progress: 6762.42,
+  runId: "<id>",
+  outputs: [
+    {
+      data: {},
+    },
+  ],
+};
+```
 
 ## Fields
 

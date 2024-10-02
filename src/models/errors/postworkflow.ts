@@ -8,73 +8,68 @@ import * as z from "zod";
  * Error when uploading the workflow
  */
 export type PostWorkflowResponseBodyData = {
-    error: string;
+  error: string;
 };
 
 /**
  * Error when uploading the workflow
  */
 export class PostWorkflowResponseBody extends Error {
-    error: string;
+  error: string;
 
-    /** The original data that was passed to this error instance. */
-    data$: PostWorkflowResponseBodyData;
+  /** The original data that was passed to this error instance. */
+  data$: PostWorkflowResponseBodyData;
 
-    constructor(err: PostWorkflowResponseBodyData) {
-        const message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : `API error occurred: ${JSON.stringify(err)}`;
-        super(message);
-        this.data$ = err;
+  constructor(err: PostWorkflowResponseBodyData) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message);
+    this.data$ = err;
 
-        this.error = err.error;
+    this.error = err.error;
 
-        this.name = "PostWorkflowResponseBody";
-    }
+    this.name = "PostWorkflowResponseBody";
+  }
 }
 
 /** @internal */
 export const PostWorkflowResponseBody$inboundSchema: z.ZodType<
-    PostWorkflowResponseBody,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        error: z.string(),
-    })
-    .transform((v) => {
-        return new PostWorkflowResponseBody(v);
-    });
+  PostWorkflowResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  error: z.string(),
+})
+  .transform((v) => {
+    return new PostWorkflowResponseBody(v);
+  });
 
 /** @internal */
 export type PostWorkflowResponseBody$Outbound = {
-    error: string;
+  error: string;
 };
 
 /** @internal */
 export const PostWorkflowResponseBody$outboundSchema: z.ZodType<
-    PostWorkflowResponseBody$Outbound,
-    z.ZodTypeDef,
-    PostWorkflowResponseBody
-> = z
-    .instanceof(PostWorkflowResponseBody)
-    .transform((v) => v.data$)
-    .pipe(
-        z.object({
-            error: z.string(),
-        })
-    );
+  PostWorkflowResponseBody$Outbound,
+  z.ZodTypeDef,
+  PostWorkflowResponseBody
+> = z.instanceof(PostWorkflowResponseBody)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    error: z.string(),
+  }));
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace PostWorkflowResponseBody$ {
-    /** @deprecated use `PostWorkflowResponseBody$inboundSchema` instead. */
-    export const inboundSchema = PostWorkflowResponseBody$inboundSchema;
-    /** @deprecated use `PostWorkflowResponseBody$outboundSchema` instead. */
-    export const outboundSchema = PostWorkflowResponseBody$outboundSchema;
-    /** @deprecated use `PostWorkflowResponseBody$Outbound` instead. */
-    export type Outbound = PostWorkflowResponseBody$Outbound;
+  /** @deprecated use `PostWorkflowResponseBody$inboundSchema` instead. */
+  export const inboundSchema = PostWorkflowResponseBody$inboundSchema;
+  /** @deprecated use `PostWorkflowResponseBody$outboundSchema` instead. */
+  export const outboundSchema = PostWorkflowResponseBody$outboundSchema;
+  /** @deprecated use `PostWorkflowResponseBody$Outbound` instead. */
+  export type Outbound = PostWorkflowResponseBody$Outbound;
 }

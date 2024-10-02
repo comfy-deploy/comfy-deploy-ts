@@ -8,73 +8,68 @@ import * as z from "zod";
  * Error in retrieving machines
  */
 export type GetV1MachinesResponseBodyData = {
-    error: string;
+  error: string;
 };
 
 /**
  * Error in retrieving machines
  */
 export class GetV1MachinesResponseBody extends Error {
-    error: string;
+  error: string;
 
-    /** The original data that was passed to this error instance. */
-    data$: GetV1MachinesResponseBodyData;
+  /** The original data that was passed to this error instance. */
+  data$: GetV1MachinesResponseBodyData;
 
-    constructor(err: GetV1MachinesResponseBodyData) {
-        const message =
-            "message" in err && typeof err.message === "string"
-                ? err.message
-                : `API error occurred: ${JSON.stringify(err)}`;
-        super(message);
-        this.data$ = err;
+  constructor(err: GetV1MachinesResponseBodyData) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message);
+    this.data$ = err;
 
-        this.error = err.error;
+    this.error = err.error;
 
-        this.name = "GetV1MachinesResponseBody";
-    }
+    this.name = "GetV1MachinesResponseBody";
+  }
 }
 
 /** @internal */
 export const GetV1MachinesResponseBody$inboundSchema: z.ZodType<
-    GetV1MachinesResponseBody,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        error: z.string(),
-    })
-    .transform((v) => {
-        return new GetV1MachinesResponseBody(v);
-    });
+  GetV1MachinesResponseBody,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  error: z.string(),
+})
+  .transform((v) => {
+    return new GetV1MachinesResponseBody(v);
+  });
 
 /** @internal */
 export type GetV1MachinesResponseBody$Outbound = {
-    error: string;
+  error: string;
 };
 
 /** @internal */
 export const GetV1MachinesResponseBody$outboundSchema: z.ZodType<
-    GetV1MachinesResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetV1MachinesResponseBody
-> = z
-    .instanceof(GetV1MachinesResponseBody)
-    .transform((v) => v.data$)
-    .pipe(
-        z.object({
-            error: z.string(),
-        })
-    );
+  GetV1MachinesResponseBody$Outbound,
+  z.ZodTypeDef,
+  GetV1MachinesResponseBody
+> = z.instanceof(GetV1MachinesResponseBody)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    error: z.string(),
+  }));
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace GetV1MachinesResponseBody$ {
-    /** @deprecated use `GetV1MachinesResponseBody$inboundSchema` instead. */
-    export const inboundSchema = GetV1MachinesResponseBody$inboundSchema;
-    /** @deprecated use `GetV1MachinesResponseBody$outboundSchema` instead. */
-    export const outboundSchema = GetV1MachinesResponseBody$outboundSchema;
-    /** @deprecated use `GetV1MachinesResponseBody$Outbound` instead. */
-    export type Outbound = GetV1MachinesResponseBody$Outbound;
+  /** @deprecated use `GetV1MachinesResponseBody$inboundSchema` instead. */
+  export const inboundSchema = GetV1MachinesResponseBody$inboundSchema;
+  /** @deprecated use `GetV1MachinesResponseBody$outboundSchema` instead. */
+  export const outboundSchema = GetV1MachinesResponseBody$outboundSchema;
+  /** @deprecated use `GetV1MachinesResponseBody$Outbound` instead. */
+  export type Outbound = GetV1MachinesResponseBody$Outbound;
 }

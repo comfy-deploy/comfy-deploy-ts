@@ -1,5 +1,15 @@
 # Gifs
 
+## Example Usage
+
+```typescript
+import { Gifs } from "comfydeploy/models/webhooks";
+
+let value: Gifs = {
+  url: "https://portly-programme.biz",
+  filename: "example.file",
+};
+```
 
 ## Fields
 

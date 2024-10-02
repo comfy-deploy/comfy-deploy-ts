@@ -1,12 +1,15 @@
 # QueryParamRunOrigin
 
+## Example Usage
+
+```typescript
+import { QueryParamRunOrigin } from "comfydeploy/models/operations";
+
+let value: QueryParamRunOrigin = "manual";
+```
 
 ## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `Manual`         | manual           |
-| `Api`            | api              |
-| `PublicShare`    | public-share     |
-| `PublicTemplate` | public-template  |
-| `Workspace`      | workspace        |
+```typescript
+"manual" | "api" | "public-share" | "public-template" | "workspace"
+```

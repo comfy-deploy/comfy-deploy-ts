@@ -9,26 +9,34 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Run extends ClientSDK {
-    /**
-     * Get workflow run output
-     *
-     * @remarks
-     * Call this to get a run's output, usually in conjunction with polling method
-     */
-    async get(
-        request: operations.GetRunRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetRunResponseBody> {
-        return unwrapAsync(runGet(this, request, options));
-    }
+  /**
+   * Run a workflow via deployment_id
+   */
+  async create(
+    request?: operations.PostRunRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.PostRunResponseBody> {
+    return unwrapAsync(runCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Run a workflow via deployment_id
-     */
-    async create(
-        request?: operations.PostRunRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.PostRunResponseBody> {
-        return unwrapAsync(runCreate(this, request, options));
-    }
+  /**
+   * Get workflow run output
+   *
+   * @remarks
+   * Call this to get a run's output, usually in conjunction with polling method
+   */
+  async get(
+    request: operations.GetRunRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetRunResponseBody> {
+    return unwrapAsync(runGet(
+      this,
+      request,
+      options,
+    ));
+  }
 }

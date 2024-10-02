@@ -1,5 +1,12 @@
 # Data
 
+## Example Usage
+
+```typescript
+import { Data } from "comfydeploy/models/webhooks";
+
+let value: Data = {};
+```
 
 ## Fields
 

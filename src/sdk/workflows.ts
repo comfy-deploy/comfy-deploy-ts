@@ -12,65 +12,85 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Workflows extends ClientSDK {
-    /**
-     * Create an endpoint for a machine
-     */
-    async postMachineEndpoint(
-        request?: operations.PostMachineEndpointRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.PostMachineEndpointResponseBody> {
-        return unwrapAsync(workflowsPostMachineEndpoint(this, request, options));
-    }
+  /**
+   * Create an endpoint for a machine
+   */
+  async postMachineEndpoint(
+    request?: operations.PostMachineEndpointRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.PostMachineEndpointResponseBody> {
+    return unwrapAsync(workflowsPostMachineEndpoint(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve workflows
-     *
-     * @remarks
-     * Retrieve workflows based on optional query parameters
-     */
-    async getAll(
-        request: operations.GetV1WorkflowsRequest,
-        options?: RequestOptions
-    ): Promise<Array<operations.GetV1WorkflowsResponseBody>> {
-        return unwrapAsync(workflowsGetAll(this, request, options));
-    }
+  /**
+   * Create a new workflow
+   *
+   * @remarks
+   * Create a new workflow by analyzing the provided workflow JSON
+   */
+  async create(
+    request?: operations.PostV1WorkflowsRequestBody | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.PostV1WorkflowsResponseBody> {
+    return unwrapAsync(workflowsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create a new workflow
-     *
-     * @remarks
-     * Create a new workflow by analyzing the provided workflow JSON
-     */
-    async create(
-        request?: operations.PostV1WorkflowsRequestBody | undefined,
-        options?: RequestOptions
-    ): Promise<operations.PostV1WorkflowsResponseBody> {
-        return unwrapAsync(workflowsCreate(this, request, options));
-    }
+  /**
+   * Retrieve workflows
+   *
+   * @remarks
+   * Retrieve workflows based on optional query parameters
+   */
+  async getAll(
+    request: operations.GetV1WorkflowsRequest,
+    options?: RequestOptions,
+  ): Promise<Array<operations.GetV1WorkflowsResponseBody>> {
+    return unwrapAsync(workflowsGetAll(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve a specific workflow by ID
-     *
-     * @remarks
-     * Retrieve the latest version of a specific workflow by its ID
-     */
-    async get(
-        request: operations.GetV1WorkflowsWorkflowIdRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetV1WorkflowsWorkflowIdResponseBody> {
-        return unwrapAsync(workflowsGet(this, request, options));
-    }
+  /**
+   * Retrieve a specific workflow by ID
+   *
+   * @remarks
+   * Retrieve the latest version of a specific workflow by its ID
+   */
+  async get(
+    request: operations.GetV1WorkflowsWorkflowIdRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetV1WorkflowsWorkflowIdResponseBody> {
+    return unwrapAsync(workflowsGet(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Retrieve the most recent outputs for a workflow
-     *
-     * @remarks
-     * Retrieve the latest version of a specific workflow by its ID
-     */
-    async getOutputs(
-        request: operations.GetV1WorkflowsWorkflowIdOutputsRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetV1WorkflowsWorkflowIdOutputsResponseBody> {
-        return unwrapAsync(workflowsGetOutputs(this, request, options));
-    }
+  /**
+   * Retrieve the most recent outputs for a workflow
+   *
+   * @remarks
+   * Retrieve the latest version of a specific workflow by its ID
+   */
+  async getOutputs(
+    request: operations.GetV1WorkflowsWorkflowIdOutputsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetV1WorkflowsWorkflowIdOutputsResponseBody> {
+    return unwrapAsync(workflowsGetOutputs(
+      this,
+      request,
+      options,
+    ));
+  }
 }

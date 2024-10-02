@@ -1,5 +1,14 @@
 # GetAuthResponseRequestIdRequest
 
+## Example Usage
+
+```typescript
+import { GetAuthResponseRequestIdRequest } from "comfydeploy/models/operations";
+
+let value: GetAuthResponseRequestIdRequest = {
+  requestId: "<id>",
+};
+```
 
 ## Fields
 

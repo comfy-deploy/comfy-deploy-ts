@@ -12,38 +12,38 @@ import { Websocket } from "./websocket.js";
 import { Workflows } from "./workflows.js";
 
 export class ComfyDeploy extends ClientSDK {
-    private _run?: Run;
-    get run(): Run {
-        return (this._run ??= new Run(this.options$));
-    }
+  private _run?: Run;
+  get run(): Run {
+    return (this._run ??= new Run(this._options));
+  }
 
-    private _files?: Files;
-    get files(): Files {
-        return (this._files ??= new Files(this.options$));
-    }
+  private _files?: Files;
+  get files(): Files {
+    return (this._files ??= new Files(this._options));
+  }
 
-    private _websocket?: Websocket;
-    get websocket(): Websocket {
-        return (this._websocket ??= new Websocket(this.options$));
-    }
+  private _websocket?: Websocket;
+  get websocket(): Websocket {
+    return (this._websocket ??= new Websocket(this._options));
+  }
 
-    private _comfyui?: Comfyui;
-    get comfyui(): Comfyui {
-        return (this._comfyui ??= new Comfyui(this.options$));
-    }
+  private _comfyui?: Comfyui;
+  get comfyui(): Comfyui {
+    return (this._comfyui ??= new Comfyui(this._options));
+  }
 
-    private _workflows?: Workflows;
-    get workflows(): Workflows {
-        return (this._workflows ??= new Workflows(this.options$));
-    }
+  private _workflows?: Workflows;
+  get workflows(): Workflows {
+    return (this._workflows ??= new Workflows(this._options));
+  }
 
-    private _deployment?: Deployment;
-    get deployment(): Deployment {
-        return (this._deployment ??= new Deployment(this.options$));
-    }
+  private _deployment?: Deployment;
+  get deployment(): Deployment {
+    return (this._deployment ??= new Deployment(this._options));
+  }
 
-    private _machine?: Machine;
-    get machine(): Machine {
-        return (this._machine ??= new Machine(this.options$));
-    }
+  private _machine?: Machine;
+  get machine(): Machine {
+    return (this._machine ??= new Machine(this._options));
+  }
 }

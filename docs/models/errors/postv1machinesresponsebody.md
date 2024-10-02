@@ -2,6 +2,13 @@
 
 Error in creating machine
 
+## Example Usage
+
+```typescript
+import { PostV1MachinesResponseBody } from "comfydeploy/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

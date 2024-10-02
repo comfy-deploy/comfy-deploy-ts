@@ -1,14 +1,15 @@
 # Type
 
+## Example Usage
+
+```typescript
+import { Type } from "comfydeploy/models/operations";
+
+let value: Type = "video/mp4";
+```
 
 ## Values
 
-| Name                     | Value                    |
-| ------------------------ | ------------------------ |
-| `ImagePng`               | image/png                |
-| `ImageJpg`               | image/jpg                |
-| `ImageJpeg`              | image/jpeg               |
-| `ImageWebp`              | image/webp               |
-| `VideoMp4`               | video/mp4                |
-| `VideoWebm`              | video/webm               |
-| `ApplicationOctetStream` | application/octet-stream |
+```typescript
+"image/png" | "image/jpg" | "image/jpeg" | "image/webp" | "video/mp4" | "video/webm" | "application/octet-stream" | "application/zip"
+```

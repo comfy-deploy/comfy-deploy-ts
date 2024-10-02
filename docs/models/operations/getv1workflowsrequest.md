@@ -1,5 +1,12 @@
 # GetV1WorkflowsRequest
 
+## Example Usage
+
+```typescript
+import { GetV1WorkflowsRequest } from "comfydeploy/models/operations";
+
+let value: GetV1WorkflowsRequest = {};
+```
 
 ## Fields
 

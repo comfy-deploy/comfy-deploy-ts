@@ -1,8 +1,15 @@
 # PostV1MachinesType
 
+## Example Usage
+
+```typescript
+import { PostV1MachinesType } from "comfydeploy/models/operations";
+
+let value: PostV1MachinesType = "comfy-deploy-serverless";
+```
 
 ## Values
 
-| Name                    | Value                   |
-| ----------------------- | ----------------------- |
-| `ComfyDeployServerless` | comfy-deploy-serverless |
+```typescript
+"comfy-deploy-serverless"
+```

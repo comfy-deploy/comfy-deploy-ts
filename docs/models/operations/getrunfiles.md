@@ -1,5 +1,15 @@
 # GetRunFiles
 
+## Example Usage
+
+```typescript
+import { GetRunFiles } from "comfydeploy/models/operations";
+
+let value: GetRunFiles = {
+  url: "https://blaring-bog.com",
+  filename: "example.file",
+};
+```
 
 ## Fields
 

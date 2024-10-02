@@ -1,5 +1,14 @@
 # GetWebsocketDeploymentIdRequest
 
+## Example Usage
+
+```typescript
+import { GetWebsocketDeploymentIdRequest } from "comfydeploy/models/operations";
+
+let value: GetWebsocketDeploymentIdRequest = {
+  deploymentId: "<id>",
+};
+```
 
 ## Fields
 

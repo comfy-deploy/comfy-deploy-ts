@@ -1,5 +1,14 @@
 # GetV1WorkflowsWorkflowIdOutputsRequest
 
+## Example Usage
+
+```typescript
+import { GetV1WorkflowsWorkflowIdOutputsRequest } from "comfydeploy/models/operations";
+
+let value: GetV1WorkflowsWorkflowIdOutputsRequest = {
+  workflowId: "<id>",
+};
+```
 
 ## Fields
 

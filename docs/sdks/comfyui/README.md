@@ -1,6 +1,8 @@
 # Comfyui
 (*comfyui*)
 
+## Overview
+
 ### Available Operations
 
 * [getAuthResponseRequestId](#getauthresponserequestid) - Get an API Key with code
@@ -23,16 +25,15 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.comfyui.getAuthResponseRequestId({
-    requestId: "<value>",
+    requestId: "<id>",
   });
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -50,7 +51,7 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await comfyuiGetAuthResponseRequestId(comfyDeploy, {
-    requestId: "<value>",
+    requestId: "<id>",
   });
 
   if (!res.ok) {
@@ -60,7 +61,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -75,16 +76,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetAuthResponseRequestIdResponse](../../models/operations/getauthresponserequestidresponse.md)\>**
+
 ### Errors
 
-| Error Object                                | Status Code                                 | Content Type                                |
+| Error Type                                  | Status Code                                 | Content Type                                |
 | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
 | errors.GetAuthResponseRequestIdResponseBody | 500                                         | application/json                            |
-| errors.SDKError                             | 4xx-5xx                                     | */*                                         |
+| errors.SDKError                             | 4XX, 5XX                                    | \*/\*                                       |
 
 ## postWorkflow
 
@@ -103,12 +104,11 @@ async function run() {
   const result = await comfyDeploy.comfyui.postWorkflow();
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -134,7 +134,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -149,16 +149,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.PostWorkflowResponseBody](../../models/operations/postworkflowresponsebody.md)\>**
+
 ### Errors
 
-| Error Object                    | Status Code                     | Content Type                    |
+| Error Type                      | Status Code                     | Content Type                    |
 | ------------------------------- | ------------------------------- | ------------------------------- |
 | errors.PostWorkflowResponseBody | 500                             | application/json                |
-| errors.SDKError                 | 4xx-5xx                         | */*                             |
+| errors.SDKError                 | 4XX, 5XX                        | \*/\*                           |
 
 ## getWorkflowVersionVersionId
 
@@ -175,16 +175,15 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.comfyui.getWorkflowVersionVersionId({
-    versionId: "<value>",
+    versionId: "<id>",
   });
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -202,7 +201,7 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await comfyuiGetWorkflowVersionVersionId(comfyDeploy, {
-    versionId: "<value>",
+    versionId: "<id>",
   });
 
   if (!res.ok) {
@@ -212,7 +211,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -227,16 +226,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetWorkflowVersionVersionIdResponseBody](../../models/operations/getworkflowversionversionidresponsebody.md)\>**
+
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
+| Error Type                                     | Status Code                                    | Content Type                                   |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | errors.GetWorkflowVersionVersionIdResponseBody | 500                                            | application/json                               |
-| errors.SDKError                                | 4xx-5xx                                        | */*                                            |
+| errors.SDKError                                | 4XX, 5XX                                       | \*/\*                                          |
 
 ## getWorkflowId
 
@@ -257,12 +256,11 @@ async function run() {
   });
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -290,7 +288,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -305,13 +303,13 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetWorkflowIdResponseBody](../../models/operations/getworkflowidresponsebody.md)\>**
+
 ### Errors
 
-| Error Object                     | Status Code                      | Content Type                     |
+| Error Type                       | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.GetWorkflowIdResponseBody | 500                              | application/json                 |
-| errors.SDKError                  | 4xx-5xx                          | */*                              |
+| errors.SDKError                  | 4XX, 5XX                         | \*/\*                            |

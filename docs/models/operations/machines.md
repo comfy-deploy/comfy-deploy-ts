@@ -1,5 +1,17 @@
 # Machines
 
+## Example Usage
+
+```typescript
+import { Machines } from "comfydeploy/models/operations";
+
+let value: Machines = {
+  id: "<id>",
+  endpoints: [
+    "<value>",
+  ],
+};
+```
 
 ## Fields
 

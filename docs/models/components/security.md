@@ -1,5 +1,14 @@
 # Security
 
+## Example Usage
+
+```typescript
+import { Security } from "comfydeploy/models/components";
+
+let value: Security = {
+  bearerAuth: "<value>",
+};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 Error creating run
 
+## Example Usage
+
+```typescript
+import { GetWebsocketDeploymentIdResponseBody } from "comfydeploy/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

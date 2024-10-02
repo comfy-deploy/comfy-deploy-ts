@@ -1,5 +1,14 @@
 # Outputs
 
+## Example Usage
+
+```typescript
+import { Outputs } from "comfydeploy/models/webhooks";
+
+let value: Outputs = {
+  data: {},
+};
+```
 
 ## Fields
 

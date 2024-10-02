@@ -1,5 +1,15 @@
 # GetMachineMachineIdEventsRequest
 
+## Example Usage
+
+```typescript
+import { GetMachineMachineIdEventsRequest } from "comfydeploy/models/operations";
+
+let value: GetMachineMachineIdEventsRequest = {
+  machineId: "<id>",
+  status: "running",
+};
+```
 
 ## Fields
 

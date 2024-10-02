@@ -1,9 +1,15 @@
 # ProviderType
 
+## Example Usage
+
+```typescript
+import { ProviderType } from "comfydeploy/models/operations";
+
+let value: ProviderType = "runpod";
+```
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Modal`  | modal    |
-| `Runpod` | runpod   |
+```typescript
+"modal" | "runpod"
+```

@@ -1,5 +1,16 @@
 # WorkflowApi
 
+## Example Usage
+
+```typescript
+import { WorkflowApi } from "comfydeploy/models/operations";
+
+let value: WorkflowApi = {
+  inputs: {
+    "key": "<value>",
+  },
+};
+```
 
 ## Fields
 

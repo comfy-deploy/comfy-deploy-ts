@@ -1,13 +1,15 @@
 # MachineType
 
+## Example Usage
+
+```typescript
+import { MachineType } from "comfydeploy/models/operations";
+
+let value: MachineType = "workspace-v2";
+```
 
 ## Values
 
-| Name                    | Value                   |
-| ----------------------- | ----------------------- |
-| `Classic`               | classic                 |
-| `RunpodServerless`      | runpod-serverless       |
-| `ModalServerless`       | modal-serverless        |
-| `ComfyDeployServerless` | comfy-deploy-serverless |
-| `Workspace`             | workspace               |
-| `WorkspaceV2`           | workspace-v2            |
+```typescript
+"classic" | "runpod-serverless" | "modal-serverless" | "comfy-deploy-serverless" | "workspace" | "workspace-v2"
+```

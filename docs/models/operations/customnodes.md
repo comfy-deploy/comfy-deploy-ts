@@ -1,5 +1,15 @@
 # CustomNodes
 
+## Example Usage
+
+```typescript
+import { CustomNodes } from "comfydeploy/models/operations";
+
+let value: CustomNodes = {
+  name: "<value>",
+  url: "https://jagged-exploration.net/",
+};
+```
 
 ## Fields
 

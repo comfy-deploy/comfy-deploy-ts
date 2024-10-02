@@ -1,5 +1,12 @@
 # GetV1MachinesRequest
 
+## Example Usage
+
+```typescript
+import { GetV1MachinesRequest } from "comfydeploy/models/operations";
+
+let value: GetV1MachinesRequest = {};
+```
 
 ## Fields
 

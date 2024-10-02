@@ -2,6 +2,22 @@
 
 Run options
 
+## Example Usage
+
+```typescript
+import { PostRunRequestBody } from "comfydeploy/models/operations";
+
+let value: PostRunRequestBody = {
+  workflowApi: {},
+  workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  inputs: {
+    "input_text": "value1",
+    "input_url": "https://example.png",
+  },
+  webhook: "https://example.com/webhook",
+};
+```
 
 ## Fields
 
