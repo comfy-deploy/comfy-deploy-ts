@@ -11,11 +11,22 @@ import { Params, pathToFunc } from "./url.js";
  * Contains the list of servers available to the SDK
  */
 export const ServerList = [
-  "https://www.comfydeploy.com/api",
+  /**
+   * Production server
+   */
+  "https://api.comfydeploy.com/api",
+  /**
+   * Staging server
+   */
+  "https://staging.api.comfydeploy.com/api",
+  /**
+   * Local development server
+   */
+  "http://localhost:3011/api",
 ] as const;
 
 export type SDKOptions = {
-  bearerAuth?: string | (() => Promise<string>);
+  bearer?: string | (() => Promise<string>);
 
   httpClient?: HTTPClient;
   /**
@@ -53,8 +64,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 
 export const SDK_METADATA = {
   language: "typescript",
-  openapiDocVersion: "0.0.1",
-  sdkVersion: "0.0.20",
-  genVersion: "2.428.1",
-  userAgent: "speakeasy-sdk/typescript 0.0.20 2.428.1 0.0.1 comfydeploy",
+  openapiDocVersion: "1.0.0",
+  sdkVersion: "2.0.0-beta.29",
+  genVersion: "2.429.0",
+  userAgent: "speakeasy-sdk/typescript 2.0.0-beta.29 2.429.0 1.0.0 comfydeploy",
 } as const;

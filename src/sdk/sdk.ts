@@ -3,13 +3,9 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
-import { Comfyui } from "./comfyui.js";
-import { Deployment } from "./deployment.js";
-import { Files } from "./files.js";
-import { Machine } from "./machine.js";
+import { Deployments } from "./deployments.js";
 import { Run } from "./run.js";
-import { Websocket } from "./websocket.js";
-import { Workflows } from "./workflows.js";
+import { Session } from "./session.js";
 
 export class ComfyDeploy extends ClientSDK {
   private _run?: Run;
@@ -17,33 +13,13 @@ export class ComfyDeploy extends ClientSDK {
     return (this._run ??= new Run(this._options));
   }
 
-  private _files?: Files;
-  get files(): Files {
-    return (this._files ??= new Files(this._options));
+  private _session?: Session;
+  get session(): Session {
+    return (this._session ??= new Session(this._options));
   }
 
-  private _websocket?: Websocket;
-  get websocket(): Websocket {
-    return (this._websocket ??= new Websocket(this._options));
-  }
-
-  private _comfyui?: Comfyui;
-  get comfyui(): Comfyui {
-    return (this._comfyui ??= new Comfyui(this._options));
-  }
-
-  private _workflows?: Workflows;
-  get workflows(): Workflows {
-    return (this._workflows ??= new Workflows(this._options));
-  }
-
-  private _deployment?: Deployment;
-  get deployment(): Deployment {
-    return (this._deployment ??= new Deployment(this._options));
-  }
-
-  private _machine?: Machine;
-  get machine(): Machine {
-    return (this._machine ??= new Machine(this._options));
+  private _deployments?: Deployments;
+  get deployments(): Deployments {
+    return (this._deployments ??= new Deployments(this._options));
   }
 }

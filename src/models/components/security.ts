@@ -3,9 +3,10 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 
 export type Security = {
-  bearerAuth: string;
+  bearer: string;
 };
 
 /** @internal */
@@ -14,12 +15,16 @@ export const Security$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bearerAuth: z.string(),
+  Bearer: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "Bearer": "bearer",
+  });
 });
 
 /** @internal */
 export type Security$Outbound = {
-  bearerAuth: string;
+  Bearer: string;
 };
 
 /** @internal */
@@ -28,7 +33,11 @@ export const Security$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Security
 > = z.object({
-  bearerAuth: z.string(),
+  bearer: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    bearer: "Bearer",
+  });
 });
 
 /**

@@ -19,7 +19,7 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 <!-- Start Summary [summary] -->
 ## Summary
 
-Comfy Deploy API: Interact with Comfy Deploy programmatically to trigger run and retrieve output
+ComfyDeploy API: API for ComfyDeploy
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -30,6 +30,7 @@ Comfy Deploy API: Interact with Comfy Deploy programmatically to trigger run and
 * [SDK Example Usage](#sdk-example-usage)
 * [Available Resources and Operations](#available-resources-and-operations)
 * [Standalone functions](#standalone-functions)
+* [Server-sent event streaming](#server-sent-event-streaming)
 * [Retries](#retries)
 * [Error Handling](#error-handling)
 * [Server Selection](#server-selection)
@@ -86,20 +87,12 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await comfyDeploy.run.create({
-    deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    workflowApi: {},
-    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    inputs: {
-      "input_text": "value1",
-      "input_url": "https://example.png",
-    },
-    webhook: "https://example.com/webhook",
+  const result = await comfyDeploy.run.getRunRunRunIdGet({
+    runId: "<id>",
   });
 
   // Handle the result
@@ -118,49 +111,80 @@ run();
 <summary>Available methods</summary>
 
 
-### [comfyui](docs/sdks/comfyui/README.md)
+### [deployments](docs/sdks/deployments/README.md)
 
-* [getAuthResponseRequestId](docs/sdks/comfyui/README.md#getauthresponserequestid) - Get an API Key with code
-* [postWorkflow](docs/sdks/comfyui/README.md#postworkflow) - Upload workflow from ComfyUI
-* [getWorkflowVersionVersionId](docs/sdks/comfyui/README.md#getworkflowversionversionid) - Get comfyui workflow
-* [getWorkflowId](docs/sdks/comfyui/README.md#getworkflowid) - Get comfyui workflow
-
-### [deployment](docs/sdks/deployment/README.md)
-
-* [getInputDefinition](docs/sdks/deployment/README.md#getinputdefinition) - Get comfyui workflow inputs definition
-* [get](docs/sdks/deployment/README.md#get) - Get all deployed workflows
-
-### [files](docs/sdks/files/README.md)
-
-* [getUploadUrl](docs/sdks/files/README.md#getuploadurl) - Upload any files to the storage
-
-### [machine](docs/sdks/machine/README.md)
-
-* [postGpuEvent](docs/sdks/machine/README.md#postgpuevent) - Register a machine event
-* [listEvents](docs/sdks/machine/README.md#listevents) - Get recent gpu events
-* [postV1Machines](docs/sdks/machine/README.md#postv1machines) - Create a new machine
-* [getV1Machines](docs/sdks/machine/README.md#getv1machines) - Retrieve all machines for a user
-* [getV1MachinesMachineId](docs/sdks/machine/README.md#getv1machinesmachineid) - Retrieve a specific machine by ID
+* [list](docs/sdks/deployments/README.md#list) - Get Deployments
 
 ### [run](docs/sdks/run/README.md)
 
-* [create](docs/sdks/run/README.md#create) - Run a workflow via deployment_id
-* [get](docs/sdks/run/README.md#get) - Get workflow run output
+* [getRunRunRunIdGet](docs/sdks/run/README.md#getrunrunrunidget) - Get Run
+* [queue](docs/sdks/run/README.md#queue) - Queue a workflow
+* [sync](docs/sdks/run/README.md#sync) - Run a workflow in sync
+* [stream](docs/sdks/run/README.md#stream) - Run a workflow in stream
 
-### [websocket](docs/sdks/websocket/README.md)
+### [session](docs/sdks/session/README.md)
 
-* [get](docs/sdks/websocket/README.md#get) - Get a websocket url for a specific deployment
-
-### [workflows](docs/sdks/workflows/README.md)
-
-* [postMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint) - Create an endpoint for a machine
-* [create](docs/sdks/workflows/README.md#create) - Create a new workflow
-* [getAll](docs/sdks/workflows/README.md#getall) - Retrieve workflows
-* [get](docs/sdks/workflows/README.md#get) - Retrieve a specific workflow by ID
-* [getOutputs](docs/sdks/workflows/README.md#getoutputs) - Retrieve the most recent outputs for a workflow
+* [get](docs/sdks/session/README.md#get) - Get Session
+* [cancel](docs/sdks/session/README.md#cancel) - Delete Session
+* [list](docs/sdks/session/README.md#list) - Get Machine Sessions
+* [create](docs/sdks/session/README.md#create) - Create Session
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Server-sent event streaming [eventstream] -->
+## Server-sent event streaming
+
+[Server-sent events][mdn-sse] are used to stream content from certain
+operations. These operations will expose the stream as an async iterable that
+can be consumed using a [`for await...of`][mdn-for-await-of] loop. The loop will
+terminate when the server no longer has any events to send and closes the
+underlying connection.
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+
+const comfyDeploy = new ComfyDeploy({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await comfyDeploy.run.stream({
+    executionMode: "async",
+    inputs: {},
+    webhook: "https://example.com/webhook",
+    webhookIntermediateStatus: true,
+    origin: "manual",
+    batchNumber: 5,
+    batchInputParams: {
+      "input_number": [
+        1,
+        2,
+        3,
+      ],
+      "input_text": [
+        "apple",
+        "banana",
+        "cherry",
+      ],
+    },
+    isNativeRun: true,
+    deploymentId: "41f69f97-08c7-43e9-a00c-844065577d45",
+  });
+
+  for await (const event of result) {
+    // Handle the event
+    console.log(event);
+  }
+}
+
+run();
+
+```
+
+[mdn-sse]: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+[mdn-for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+<!-- End Server-sent event streaming [eventstream] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -172,20 +196,12 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await comfyDeploy.run.create({
-    deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    workflowApi: {},
-    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    inputs: {
-      "input_text": "value1",
-      "input_url": "https://example.png",
-    },
-    webhook: "https://example.com/webhook",
+  const result = await comfyDeploy.run.getRunRunRunIdGet({
+    runId: "<id>",
   }, {
     retries: {
       strategy: "backoff",
@@ -222,20 +238,12 @@ const comfyDeploy = new ComfyDeploy({
     },
     retryConnectionErrors: false,
   },
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await comfyDeploy.run.create({
-    deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    workflowApi: {},
-    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    inputs: {
-      "input_text": "value1",
-      "input_url": "https://example.png",
-    },
-    webhook: "https://example.com/webhook",
+  const result = await comfyDeploy.run.getRunRunRunIdGet({
+    runId: "<id>",
   });
 
   // Handle the result
@@ -262,37 +270,29 @@ If a HTTP request fails, an operation my also throw an error from the `models/er
 | InvalidRequestError                                  | Any input used to create a request is invalid        |
 | UnexpectedClientError                                | Unrecognised or unexpected error                     |
 
-In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `create` method may throw the following errors:
+In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `getRunRunRunIdGet` method may throw the following errors:
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| errors.PostRunResponseBody | 500                        | application/json           |
+| errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
 import {
-  PostRunResponseBody,
+  HTTPValidationError,
   SDKValidationError,
 } from "comfydeploy/models/errors";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
   let result;
   try {
-    result = await comfyDeploy.run.create({
-      deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-      workflowApi: {},
-      workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-      machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-      inputs: {
-        "input_text": "value1",
-        "input_url": "https://example.png",
-      },
-      webhook: "https://example.com/webhook",
+    result = await comfyDeploy.run.getRunRunRunIdGet({
+      runId: "<id>",
     });
 
     // Handle the result
@@ -306,8 +306,8 @@ async function run() {
         console.error(err.rawValue);
         return;
       }
-      case (err instanceof PostRunResponseBody): {
-        // Handle err.data$: PostRunResponseBodyData
+      case (err instanceof HTTPValidationError): {
+        // Handle err.data$: HTTPValidationErrorData
         console.error(err);
         return;
       }
@@ -334,27 +334,21 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://www.comfydeploy.com/api` | None |
+| 0 | `https://api.comfydeploy.com/api` | None |
+| 1 | `https://staging.api.comfydeploy.com/api` | None |
+| 2 | `http://localhost:3011/api` | None |
 
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  serverIdx: 0,
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  serverIdx: 2,
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await comfyDeploy.run.create({
-    deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    workflowApi: {},
-    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    inputs: {
-      "input_text": "value1",
-      "input_url": "https://example.png",
-    },
-    webhook: "https://example.com/webhook",
+  const result = await comfyDeploy.run.getRunRunRunIdGet({
+    runId: "<id>",
   });
 
   // Handle the result
@@ -374,21 +368,13 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  serverURL: "https://www.comfydeploy.com/api",
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  serverURL: "https://api.comfydeploy.com/api",
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await comfyDeploy.run.create({
-    deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    workflowApi: {},
-    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    inputs: {
-      "input_text": "value1",
-      "input_url": "https://example.png",
-    },
-    webhook: "https://example.com/webhook",
+  const result = await comfyDeploy.run.getRunRunRunIdGet({
+    runId: "<id>",
   });
 
   // Handle the result
@@ -456,29 +442,21 @@ const sdk = new ComfyDeploy({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type         | Scheme       |
-| ------------ | ------------ | ------------ |
-| `bearerAuth` | http         | HTTP Bearer  |
+| Name        | Type        | Scheme      |
+| ----------- | ----------- | ----------- |
+| `bearer`    | http        | HTTP Bearer |
 
-To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
 
 const comfyDeploy = new ComfyDeploy({
-  bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
 async function run() {
-  const result = await comfyDeploy.run.create({
-    deploymentId: "d290f1ee-6c54-4b01-90e6-d701748f0851",
-    workflowApi: {},
-    workflowId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    machineId: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-    inputs: {
-      "input_text": "value1",
-      "input_url": "https://example.png",
-    },
-    webhook: "https://example.com/webhook",
+  const result = await comfyDeploy.run.getRunRunRunIdGet({
+    runId: "<id>",
   });
 
   // Handle the result
@@ -505,26 +483,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [comfyuiGetAuthResponseRequestId](docs/sdks/comfyui/README.md#getauthresponserequestid)
-- [comfyuiGetWorkflowId](docs/sdks/comfyui/README.md#getworkflowid)
-- [comfyuiGetWorkflowVersionVersionId](docs/sdks/comfyui/README.md#getworkflowversionversionid)
-- [comfyuiPostWorkflow](docs/sdks/comfyui/README.md#postworkflow)
-- [deploymentGetInputDefinition](docs/sdks/deployment/README.md#getinputdefinition)
-- [deploymentGet](docs/sdks/deployment/README.md#get)
-- [filesGetUploadUrl](docs/sdks/files/README.md#getuploadurl)
-- [machineGetV1MachinesMachineId](docs/sdks/machine/README.md#getv1machinesmachineid)
-- [machineGetV1Machines](docs/sdks/machine/README.md#getv1machines)
-- [machineListEvents](docs/sdks/machine/README.md#listevents)
-- [machinePostGpuEvent](docs/sdks/machine/README.md#postgpuevent)
-- [machinePostV1Machines](docs/sdks/machine/README.md#postv1machines)
-- [runCreate](docs/sdks/run/README.md#create)
-- [runGet](docs/sdks/run/README.md#get)
-- [websocketGet](docs/sdks/websocket/README.md#get)
-- [workflowsCreate](docs/sdks/workflows/README.md#create)
-- [workflowsGetAll](docs/sdks/workflows/README.md#getall)
-- [workflowsGetOutputs](docs/sdks/workflows/README.md#getoutputs)
-- [workflowsGet](docs/sdks/workflows/README.md#get)
-- [workflowsPostMachineEndpoint](docs/sdks/workflows/README.md#postmachineendpoint)
+- [deploymentsList](docs/sdks/deployments/README.md#list)
+- [runGetRunRunRunIdGet](docs/sdks/run/README.md#getrunrunrunidget)
+- [runQueue](docs/sdks/run/README.md#queue)
+- [runStream](docs/sdks/run/README.md#stream)
+- [runSync](docs/sdks/run/README.md#sync)
+- [sessionCancel](docs/sdks/session/README.md#cancel)
+- [sessionCreate](docs/sdks/session/README.md#create)
+- [sessionGet](docs/sdks/session/README.md#get)
+- [sessionList](docs/sdks/session/README.md#list)
 
 
 </details>

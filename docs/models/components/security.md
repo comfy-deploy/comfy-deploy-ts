@@ -6,7 +6,7 @@
 import { Security } from "comfydeploy/models/components";
 
 let value: Security = {
-  bearerAuth: "<value>",
+  bearer: "<value>",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: Security = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `bearerAuth`       | *string*           | :heavy_check_mark: | N/A                |
+| `bearer`           | *string*           | :heavy_check_mark: | N/A                |

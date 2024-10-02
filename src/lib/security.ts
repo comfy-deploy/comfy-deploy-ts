@@ -200,7 +200,7 @@ export function resolveGlobalSecurity(
       {
         fieldName: "Authorization",
         type: "http:bearer",
-        value: security?.bearerAuth,
+        value: security?.bearer,
       },
     ],
   );
