@@ -1,5 +1,15 @@
 # Versions
 
+## Example Usage
+
+```typescript
+import { Versions } from "comfydeploy/models/operations";
+
+let value: Versions = {
+  id: "<id>",
+  version: 2728.22,
+};
+```
 
 ## Fields
 

@@ -1,12 +1,15 @@
 # RunOrigin
 
+## Example Usage
+
+```typescript
+import { RunOrigin } from "comfydeploy/models/operations";
+
+let value: RunOrigin = "public-template";
+```
 
 ## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `Manual`         | manual           |
-| `Api`            | api              |
-| `PublicShare`    | public-share     |
-| `PublicTemplate` | public-template  |
-| `Workspace`      | workspace        |
+```typescript
+"manual" | "api" | "public-share" | "public-template" | "workspace"
+```

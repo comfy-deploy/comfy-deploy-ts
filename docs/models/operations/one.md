@@ -1,10 +1,15 @@
 # One
 
+## Example Usage
+
+```typescript
+import { One } from "comfydeploy/models/operations";
+
+let value: One = "copy";
+```
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `Copy`     | copy       |
-| `Unzip`    | unzip      |
-| `GitClone` | git-clone  |
+```typescript
+"copy" | "unzip" | "git-clone"
+```

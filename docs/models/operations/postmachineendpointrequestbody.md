@@ -1,5 +1,15 @@
 # PostMachineEndpointRequestBody
 
+## Example Usage
+
+```typescript
+import { PostMachineEndpointRequestBody } from "comfydeploy/models/operations";
+
+let value: PostMachineEndpointRequestBody = {
+  machineId: "<id>",
+  type: "<value>",
+};
+```
 
 ## Fields
 

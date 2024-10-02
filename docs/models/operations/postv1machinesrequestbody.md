@@ -1,5 +1,12 @@
 # PostV1MachinesRequestBody
 
+## Example Usage
+
+```typescript
+import { PostV1MachinesRequestBody } from "comfydeploy/models/operations";
+
+let value: PostV1MachinesRequestBody = {};
+```
 
 ## Fields
 

@@ -1,22 +1,23 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: b75a2f87a8e112a48e4c7f038bbf36d7
+  docChecksum: cc4fba92ed674954d2bd4ca192d8627d
   docVersion: 0.0.1
-  speakeasyVersion: 1.366.0
-  generationVersion: 2.396.0
-  releaseVersion: 0.0.19-beta.30
-  configChecksum: a091f5276f409f814f09262041406100
+  speakeasyVersion: 1.405.6
+  generationVersion: 2.428.1
+  releaseVersion: 0.0.19
+  configChecksum: 62c4a233068d8722103f9536cc748331
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.7
-    core: 3.13.1
+    constsAndDefaults: 0.1.11
+    core: 3.18.1
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
+    enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.1
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
@@ -30,46 +31,180 @@ features:
     unions: 2.85.7
     webhooks: 1.0.0
 generatedFiles:
-  - src/funcs/runGet.ts
-  - src/funcs/runCreate.ts
-  - src/funcs/filesGetUploadUrl.ts
-  - src/funcs/websocketGet.ts
-  - src/funcs/comfyuiGetAuthResponseRequestId.ts
-  - src/funcs/comfyuiPostWorkflow.ts
-  - src/funcs/comfyuiGetWorkflowVersionVersionId.ts
-  - src/funcs/comfyuiGetWorkflowId.ts
-  - src/funcs/workflowsPostMachineEndpoint.ts
-  - src/funcs/workflowsGetAll.ts
-  - src/funcs/workflowsCreate.ts
-  - src/funcs/workflowsGet.ts
-  - src/funcs/workflowsGetOutputs.ts
-  - src/funcs/deploymentGetInputDefinition.ts
-  - src/funcs/deploymentGet.ts
-  - src/funcs/machinePostGpuEvent.ts
-  - src/funcs/machineListEvents.ts
-  - src/funcs/machineGetV1Machines.ts
-  - src/funcs/machinePostV1Machines.ts
-  - src/funcs/machineGetV1MachinesMachineId.ts
-  - src/sdk/run.ts
-  - src/sdk/files.ts
-  - src/sdk/websocket.ts
-  - src/sdk/comfyui.ts
-  - src/sdk/workflows.ts
-  - src/sdk/deployment.ts
-  - src/sdk/machine.ts
-  - src/sdk/sdk.ts
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
   - .eslintrc.cjs
+  - .gitattributes
   - .npmignore
+  - CONTRIBUTING.md
   - FUNCTIONS.md
   - RUNTIMES.md
+  - USAGE.md
+  - docs/lib/utils/retryconfig.md
+  - docs/models/components/security.md
+  - docs/models/errors/getauthresponserequestidresponsebody.md
+  - docs/models/errors/getdeploymentidinputsresponsebody.md
+  - docs/models/errors/getdeploymentresponsebody.md
+  - docs/models/errors/getmachinemachineideventsresponsebody.md
+  - docs/models/errors/getrunresponsebody.md
+  - docs/models/errors/getrunrunresponsebody.md
+  - docs/models/errors/getuploadurlresponsebody.md
+  - docs/models/errors/getv1machinesmachineidresponsebody.md
+  - docs/models/errors/getv1machinesresponsebody.md
+  - docs/models/errors/getv1workflowsresponsebody.md
+  - docs/models/errors/getv1workflowsworkflowidoutputsresponsebody.md
+  - docs/models/errors/getv1workflowsworkflowidresponsebody.md
+  - docs/models/errors/getwebsocketdeploymentidresponsebody.md
+  - docs/models/errors/getworkflowidresponsebody.md
+  - docs/models/errors/getworkflowversionversionidresponsebody.md
+  - docs/models/errors/postgpueventresponsebody.md
+  - docs/models/errors/postmachineendpointresponsebody.md
+  - docs/models/errors/postrunresponsebody.md
+  - docs/models/errors/postv1machinesresponsebody.md
+  - docs/models/errors/postv1workflowsresponsebody.md
+  - docs/models/errors/postworkflowresponsebody.md
+  - docs/models/operations/classtype.md
+  - docs/models/operations/customnodes.md
+  - docs/models/operations/data.md
+  - docs/models/operations/defaultvalue.md
+  - docs/models/operations/dependencies.md
+  - docs/models/operations/environment.md
+  - docs/models/operations/eventtype.md
+  - docs/models/operations/fields.md
+  - docs/models/operations/files.md
+  - docs/models/operations/getauthresponserequestidcomfyuiresponsebody.md
+  - docs/models/operations/getauthresponserequestidrequest.md
+  - docs/models/operations/getauthresponserequestidresponse.md
+  - docs/models/operations/getauthresponserequestidresponsebody.md
+  - docs/models/operations/getdeploymentclasstype.md
+  - docs/models/operations/getdeploymentdefaultvalue.md
+  - docs/models/operations/getdeploymentidinputsrequest.md
+  - docs/models/operations/getdeploymentrequest.md
+  - docs/models/operations/getdeploymentresponsebody.md
+  - docs/models/operations/getmachinemachineideventsgpu.md
+  - docs/models/operations/getmachinemachineideventsrequest.md
+  - docs/models/operations/getmachinemachineideventsresponsebody.md
+  - docs/models/operations/getrunfiles.md
+  - docs/models/operations/getrungpu.md
+  - docs/models/operations/getrunrequest.md
+  - docs/models/operations/getrunresponsebody.md
+  - docs/models/operations/getrunstatus.md
+  - docs/models/operations/getrunworkflowapi.md
+  - docs/models/operations/getuploadurlrequest.md
+  - docs/models/operations/getuploadurlresponsebody.md
+  - docs/models/operations/getv1machinesmachineidrequest.md
+  - docs/models/operations/getv1machinesmachineidresponsebody.md
+  - docs/models/operations/getv1machinesrequest.md
+  - docs/models/operations/getv1machinesresponsebody.md
+  - docs/models/operations/getv1workflowsrequest.md
+  - docs/models/operations/getv1workflowsresponsebody.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsoutputs.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsrequest.md
+  - docs/models/operations/getv1workflowsworkflowidoutputsresponsebody.md
+  - docs/models/operations/getv1workflowsworkflowidrequest.md
+  - docs/models/operations/getv1workflowsworkflowidresponsebody.md
+  - docs/models/operations/getv1workflowsworkflowidversions.md
+  - docs/models/operations/getwebsocketdeploymentidrequest.md
+  - docs/models/operations/getwebsocketdeploymentidresponsebody.md
+  - docs/models/operations/getworkflowidrequest.md
+  - docs/models/operations/getworkflowidresponsebody.md
+  - docs/models/operations/getworkflowversionversionidrequest.md
+  - docs/models/operations/getworkflowversionversionidresponsebody.md
+  - docs/models/operations/gifs.md
+  - docs/models/operations/gitcustomnodes.md
+  - docs/models/operations/gpu.md
+  - docs/models/operations/gpuprovider.md
+  - docs/models/operations/gputype.md
+  - docs/models/operations/images.md
+  - docs/models/operations/inputs.md
+  - docs/models/operations/inputsdefinition.md
+  - docs/models/operations/installtype.md
+  - docs/models/operations/machines.md
+  - docs/models/operations/machinetype.md
+  - docs/models/operations/models.md
+  - docs/models/operations/node.md
+  - docs/models/operations/one.md
+  - docs/models/operations/origin.md
+  - docs/models/operations/outputs.md
+  - docs/models/operations/postgpueventrequestbody.md
+  - docs/models/operations/postgpueventresponsebody.md
+  - docs/models/operations/postmachineendpointrequestbody.md
+  - docs/models/operations/postmachineendpointresponsebody.md
+  - docs/models/operations/postrunrequestbody.md
+  - docs/models/operations/postrunresponsebody.md
+  - docs/models/operations/postv1machinesgpu.md
+  - docs/models/operations/postv1machinesrequestbody.md
+  - docs/models/operations/postv1machinesresponsebody.md
+  - docs/models/operations/postv1machinesstatus.md
+  - docs/models/operations/postv1machinestype.md
+  - docs/models/operations/postv1workflowsrequestbody.md
+  - docs/models/operations/postv1workflowsresponsebody.md
+  - docs/models/operations/postworkflowrequestbody.md
+  - docs/models/operations/postworkflowresponsebody.md
+  - docs/models/operations/providertype.md
+  - docs/models/operations/queryparamrunorigin.md
+  - docs/models/operations/responsebody.md
+  - docs/models/operations/runlog.md
+  - docs/models/operations/runorigin.md
+  - docs/models/operations/snapshot.md
+  - docs/models/operations/status.md
+  - docs/models/operations/type.md
+  - docs/models/operations/user.md
+  - docs/models/operations/versions.md
+  - docs/models/operations/webhookstatus.md
+  - docs/models/operations/workflowapi.md
+  - docs/models/operations/workflowinputs.md
+  - docs/models/operations/workflowjson.md
+  - docs/models/operations/wsgpu.md
+  - docs/models/operations/wsgputype.md
+  - docs/models/webhooks/data.md
+  - docs/models/webhooks/files.md
+  - docs/models/webhooks/gifs.md
+  - docs/models/webhooks/images.md
+  - docs/models/webhooks/outputs.md
+  - docs/models/webhooks/runupdatesrequestbody.md
+  - docs/models/webhooks/status.md
+  - docs/sdks/comfydeploy/README.md
+  - docs/sdks/comfyui/README.md
+  - docs/sdks/deployment/README.md
+  - docs/sdks/files/README.md
+  - docs/sdks/machine/README.md
+  - docs/sdks/run/README.md
+  - docs/sdks/websocket/README.md
+  - docs/sdks/workflows/README.md
   - jsr.json
   - package.json
   - src/core.ts
+  - src/funcs/comfyuiGetAuthResponseRequestId.ts
+  - src/funcs/comfyuiGetWorkflowId.ts
+  - src/funcs/comfyuiGetWorkflowVersionVersionId.ts
+  - src/funcs/comfyuiPostWorkflow.ts
+  - src/funcs/deploymentGet.ts
+  - src/funcs/deploymentGetInputDefinition.ts
+  - src/funcs/filesGetUploadUrl.ts
+  - src/funcs/machineGetV1Machines.ts
+  - src/funcs/machineGetV1MachinesMachineId.ts
+  - src/funcs/machineListEvents.ts
+  - src/funcs/machinePostGpuEvent.ts
+  - src/funcs/machinePostV1Machines.ts
+  - src/funcs/runCreate.ts
+  - src/funcs/runGet.ts
+  - src/funcs/websocketGet.ts
+  - src/funcs/workflowsCreate.ts
+  - src/funcs/workflowsGet.ts
+  - src/funcs/workflowsGetAll.ts
+  - src/funcs/workflowsGetOutputs.ts
+  - src/funcs/workflowsPostMachineEndpoint.ts
+  - src/hooks/hooks.ts
+  - src/hooks/index.ts
+  - src/hooks/types.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
   - src/lib/dlv.ts
   - src/lib/encodings.ts
+  - src/lib/files.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
   - src/lib/logger.ts
@@ -80,10 +215,64 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
-  - src/sdk/index.ts
+  - src/models/components/index.ts
+  - src/models/components/security.ts
+  - src/models/errors/getauthresponserequestid.ts
+  - src/models/errors/getdeployment.ts
+  - src/models/errors/getdeploymentidinputs.ts
+  - src/models/errors/getmachinemachineidevents.ts
+  - src/models/errors/getrun.ts
+  - src/models/errors/getuploadurl.ts
+  - src/models/errors/getv1machines.ts
+  - src/models/errors/getv1machinesmachineid.ts
+  - src/models/errors/getv1workflows.ts
+  - src/models/errors/getv1workflowsworkflowid.ts
+  - src/models/errors/getv1workflowsworkflowidoutputs.ts
+  - src/models/errors/getwebsocketdeploymentid.ts
+  - src/models/errors/getworkflowid.ts
+  - src/models/errors/getworkflowversionversionid.ts
   - src/models/errors/httpclienterrors.ts
+  - src/models/errors/index.ts
+  - src/models/errors/postgpuevent.ts
+  - src/models/errors/postmachineendpoint.ts
+  - src/models/errors/postrun.ts
+  - src/models/errors/postv1machines.ts
+  - src/models/errors/postv1workflows.ts
+  - src/models/errors/postworkflow.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
+  - src/models/operations/getauthresponserequestid.ts
+  - src/models/operations/getdeployment.ts
+  - src/models/operations/getdeploymentidinputs.ts
+  - src/models/operations/getmachinemachineidevents.ts
+  - src/models/operations/getrun.ts
+  - src/models/operations/getuploadurl.ts
+  - src/models/operations/getv1machines.ts
+  - src/models/operations/getv1machinesmachineid.ts
+  - src/models/operations/getv1workflows.ts
+  - src/models/operations/getv1workflowsworkflowid.ts
+  - src/models/operations/getv1workflowsworkflowidoutputs.ts
+  - src/models/operations/getwebsocketdeploymentid.ts
+  - src/models/operations/getworkflowid.ts
+  - src/models/operations/getworkflowversionversionid.ts
+  - src/models/operations/index.ts
+  - src/models/operations/postgpuevent.ts
+  - src/models/operations/postmachineendpoint.ts
+  - src/models/operations/postrun.ts
+  - src/models/operations/postv1machines.ts
+  - src/models/operations/postv1workflows.ts
+  - src/models/operations/postworkflow.ts
+  - src/models/webhooks/index.ts
+  - src/models/webhooks/runupdates.ts
+  - src/sdk/comfyui.ts
+  - src/sdk/deployment.ts
+  - src/sdk/files.ts
+  - src/sdk/index.ts
+  - src/sdk/machine.ts
+  - src/sdk/run.ts
+  - src/sdk/sdk.ts
+  - src/sdk/websocket.ts
+  - src/sdk/workflows.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
@@ -91,187 +280,188 @@ generatedFiles:
   - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
+  - src/types/streams.ts
   - tsconfig.json
-  - src/models/operations/getrun.ts
-  - src/models/operations/postrun.ts
-  - src/models/operations/getuploadurl.ts
-  - src/models/operations/getwebsocketdeploymentid.ts
-  - src/models/operations/getauthresponserequestid.ts
-  - src/models/operations/postworkflow.ts
-  - src/models/operations/getworkflowversionversionid.ts
-  - src/models/operations/getworkflowid.ts
-  - src/models/operations/postmachineendpoint.ts
-  - src/models/operations/getv1workflows.ts
-  - src/models/operations/postv1workflows.ts
-  - src/models/operations/getv1workflowsworkflowid.ts
-  - src/models/operations/getv1workflowsworkflowidoutputs.ts
-  - src/models/operations/getdeploymentidinputs.ts
-  - src/models/operations/getdeployment.ts
-  - src/models/operations/postgpuevent.ts
-  - src/models/operations/getmachinemachineidevents.ts
-  - src/models/operations/getv1machines.ts
-  - src/models/operations/postv1machines.ts
-  - src/models/operations/getv1machinesmachineid.ts
-  - src/models/errors/getrun.ts
-  - src/models/errors/postrun.ts
-  - src/models/errors/getuploadurl.ts
-  - src/models/errors/getwebsocketdeploymentid.ts
-  - src/models/errors/getauthresponserequestid.ts
-  - src/models/errors/postworkflow.ts
-  - src/models/errors/getworkflowversionversionid.ts
-  - src/models/errors/getworkflowid.ts
-  - src/models/errors/postmachineendpoint.ts
-  - src/models/errors/getv1workflows.ts
-  - src/models/errors/postv1workflows.ts
-  - src/models/errors/getv1workflowsworkflowid.ts
-  - src/models/errors/getv1workflowsworkflowidoutputs.ts
-  - src/models/errors/getdeploymentidinputs.ts
-  - src/models/errors/getdeployment.ts
-  - src/models/errors/postgpuevent.ts
-  - src/models/errors/getmachinemachineidevents.ts
-  - src/models/errors/getv1machines.ts
-  - src/models/errors/postv1machines.ts
-  - src/models/errors/getv1machinesmachineid.ts
-  - src/models/components/security.ts
-  - src/models/webhooks/runupdates.ts
-  - src/models/errors/index.ts
-  - src/models/operations/index.ts
-  - src/models/components/index.ts
-  - src/models/webhooks/index.ts
-  - docs/models/operations/getrunrequest.md
-  - docs/models/operations/workflowinputs.md
-  - docs/models/operations/getrunworkflowapi.md
-  - docs/models/operations/origin.md
-  - docs/models/operations/getrunstatus.md
-  - docs/models/operations/getrungpu.md
-  - docs/models/operations/machinetype.md
-  - docs/models/operations/runlog.md
-  - docs/models/operations/webhookstatus.md
-  - docs/models/operations/images.md
-  - docs/models/operations/getrunfiles.md
-  - docs/models/operations/gifs.md
-  - docs/models/operations/data.md
-  - docs/models/operations/outputs.md
-  - docs/models/operations/getrunresponsebody.md
-  - docs/models/operations/gpu.md
-  - docs/models/operations/runorigin.md
-  - docs/models/operations/inputs.md
-  - docs/models/operations/postrunrequestbody.md
-  - docs/models/operations/postrunresponsebody.md
-  - docs/models/operations/type.md
-  - docs/models/operations/getuploadurlrequest.md
-  - docs/models/operations/getuploadurlresponsebody.md
-  - docs/models/operations/getwebsocketdeploymentidrequest.md
-  - docs/models/operations/getwebsocketdeploymentidresponsebody.md
-  - docs/models/operations/getauthresponserequestidrequest.md
-  - docs/models/operations/getauthresponserequestidcomfyuiresponsebody.md
-  - docs/models/operations/getauthresponserequestidresponsebody.md
-  - docs/models/operations/getauthresponserequestidresponse.md
-  - docs/models/operations/workflowapi.md
-  - docs/models/operations/gitcustomnodes.md
-  - docs/models/operations/snapshot.md
-  - docs/models/operations/node.md
-  - docs/models/operations/one.md
-  - docs/models/operations/installtype.md
-  - docs/models/operations/customnodes.md
-  - docs/models/operations/models.md
-  - docs/models/operations/files.md
-  - docs/models/operations/dependencies.md
-  - docs/models/operations/postworkflowrequestbody.md
-  - docs/models/operations/postworkflowresponsebody.md
-  - docs/models/operations/getworkflowversionversionidrequest.md
-  - docs/models/operations/getworkflowversionversionidresponsebody.md
-  - docs/models/operations/getworkflowidrequest.md
-  - docs/models/operations/getworkflowidresponsebody.md
-  - docs/models/operations/postmachineendpointrequestbody.md
-  - docs/models/operations/postmachineendpointresponsebody.md
-  - docs/models/operations/getv1workflowsrequest.md
-  - docs/models/operations/user.md
-  - docs/models/operations/versions.md
-  - docs/models/operations/getv1workflowsresponsebody.md
-  - docs/models/operations/workflowjson.md
-  - docs/models/operations/postv1workflowsrequestbody.md
-  - docs/models/operations/postv1workflowsresponsebody.md
-  - docs/models/operations/getv1workflowsworkflowidrequest.md
-  - docs/models/operations/getv1workflowsworkflowidversions.md
-  - docs/models/operations/getv1workflowsworkflowidresponsebody.md
-  - docs/models/operations/queryparamrunorigin.md
-  - docs/models/operations/getv1workflowsworkflowidoutputsrequest.md
-  - docs/models/operations/getv1workflowsworkflowidoutputsoutputs.md
-  - docs/models/operations/getv1workflowsworkflowidoutputsresponsebody.md
-  - docs/models/operations/getdeploymentidinputsrequest.md
-  - docs/models/operations/defaultvalue.md
-  - docs/models/operations/responsebody.md
-  - docs/models/operations/environment.md
-  - docs/models/operations/getdeploymentrequest.md
-  - docs/models/operations/getdeploymentresponsebody.md
-  - docs/models/operations/gputype.md
-  - docs/models/operations/wsgputype.md
-  - docs/models/operations/eventtype.md
-  - docs/models/operations/gpuprovider.md
-  - docs/models/operations/postgpueventrequestbody.md
-  - docs/models/operations/postgpueventresponsebody.md
-  - docs/models/operations/status.md
-  - docs/models/operations/getmachinemachineideventsrequest.md
-  - docs/models/operations/getmachinemachineideventsgpu.md
-  - docs/models/operations/wsgpu.md
-  - docs/models/operations/providertype.md
-  - docs/models/operations/getmachinemachineideventsresponsebody.md
-  - docs/models/operations/fields.md
-  - docs/models/operations/getv1machinesrequest.md
-  - docs/models/operations/machines.md
-  - docs/models/operations/getv1machinesresponsebody.md
-  - docs/models/operations/postv1machinesrequestbody.md
-  - docs/models/operations/postv1machinestype.md
-  - docs/models/operations/postv1machinesstatus.md
-  - docs/models/operations/postv1machinesgpu.md
-  - docs/models/operations/postv1machinesresponsebody.md
-  - docs/models/operations/getv1machinesmachineidrequest.md
-  - docs/models/operations/getv1machinesmachineidresponsebody.md
-  - docs/models/errors/getrunrunresponsebody.md
-  - docs/models/errors/getrunresponsebody.md
-  - docs/models/errors/postrunresponsebody.md
-  - docs/models/errors/getuploadurlresponsebody.md
-  - docs/models/errors/getwebsocketdeploymentidresponsebody.md
-  - docs/models/errors/getauthresponserequestidresponsebody.md
-  - docs/models/errors/postworkflowresponsebody.md
-  - docs/models/errors/getworkflowversionversionidresponsebody.md
-  - docs/models/errors/getworkflowidresponsebody.md
-  - docs/models/errors/postmachineendpointresponsebody.md
-  - docs/models/errors/getv1workflowsresponsebody.md
-  - docs/models/errors/postv1workflowsresponsebody.md
-  - docs/models/errors/getv1workflowsworkflowidresponsebody.md
-  - docs/models/errors/getv1workflowsworkflowidoutputsresponsebody.md
-  - docs/models/errors/getdeploymentidinputsresponsebody.md
-  - docs/models/errors/getdeploymentresponsebody.md
-  - docs/models/errors/postgpueventresponsebody.md
-  - docs/models/errors/getmachinemachineideventsresponsebody.md
-  - docs/models/errors/getv1machinesresponsebody.md
-  - docs/models/errors/postv1machinesresponsebody.md
-  - docs/models/errors/getv1machinesmachineidresponsebody.md
-  - docs/models/components/security.md
-  - docs/models/webhooks/status.md
-  - docs/models/webhooks/images.md
-  - docs/models/webhooks/files.md
-  - docs/models/webhooks/gifs.md
-  - docs/models/webhooks/data.md
-  - docs/models/webhooks/outputs.md
-  - docs/models/webhooks/runupdatesrequestbody.md
-  - docs/sdks/comfydeploy/README.md
-  - docs/lib/utils/retryconfig.md
-  - docs/sdks/run/README.md
-  - docs/sdks/files/README.md
-  - docs/sdks/websocket/README.md
-  - docs/sdks/comfyui/README.md
-  - docs/sdks/workflows/README.md
-  - docs/sdks/deployment/README.md
-  - docs/sdks/machine/README.md
-  - USAGE.md
-  - .gitattributes
-  - .devcontainer/README.md
-  - .devcontainer/devcontainer.json
-  - .devcontainer/setup.sh
-  - src/hooks/hooks.ts
-  - src/hooks/types.ts
-  - src/hooks/index.ts
-  - CONTRIBUTING.md
+examples:
+  post_/run:
+    speakeasy-default-post-/run:
+      requestBody:
+        application/json: {"deployment_id": "d290f1ee-6c54-4b01-90e6-d701748f0851", "workflow_api": {}, "workflow_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "machine_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "inputs": {"input_text": "value1", "input_url": "https://example.png"}, "webhook": "https://example.com/webhook"}
+      responses:
+        "200":
+          application/json: {"run_id": "<id>"}
+        "500":
+          application/json: {"error": "<value>"}
+  get_/run:
+    speakeasy-default-get-/run:
+      parameters:
+        query:
+          run_id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "b888f774-3e7c-4135-a18c-6b985523c4bc", "workflow_version_id": "e50f7622-81da-484b-9c66-1c8a99c6b71b", "workflow_id": "ecd62b8f-7112-4aaf-90ab-4e43b4cca371", "workflow_api": {}, "machine_id": "f620807a-a1f8-4cf0-95d8-9d58ee381f6b", "origin": "public-template", "status": "failed", "ended_at": "<value>", "created_at": "<value>", "updated_at": "<value>", "queued_at": "<value>", "started_at": "<value>", "gpu_event_id": "<id>", "gpu": "A100", "machine_version": "<value>", "machine_type": "modal-serverless", "modal_function_call_id": "<id>", "user_id": "<id>", "org_id": "<id>", "live_status": "<value>", "progress": "7908.98", "is_realtime": true, "webhook": "<value>", "webhook_status": "not-started", "webhook_intermediate_status": false, "batch_id": "541c2936-8364-4a15-8f8d-7e75f5179e26", "favorite": false}
+        "400":
+          application/json: {"code": "400", "message": "Workflow not found"}
+        "500":
+          application/json: {"error": "<value>"}
+  get_/upload-url:
+    speakeasy-default-get-/upload-url:
+      parameters:
+        query:
+          type: "application/zip"
+          file_size: "<value>"
+      responses:
+        "200":
+          application/json: {"upload_url": "https://grouchy-help.com/", "file_id": "<id>", "download_url": "https://unripe-carnival.org"}
+        "500":
+          application/json: {"error": "<value>"}
+  get_/websocket/{deployment_id}:
+    speakeasy-default-get-/websocket/{deployment-id}:
+      parameters:
+        path:
+          deployment_id: "<id>"
+      responses:
+        "200":
+          application/json: {"ws_connection_url": "https://normal-making.name"}
+        "500":
+          application/json: {"error": "<value>"}
+  get_/auth-response/{request_id}:
+    speakeasy-default-get-/auth-response/{request-id}:
+      parameters:
+        path:
+          request_id: "<id>"
+      responses:
+        "200":
+          application/json: {"api_key": "<value>", "name": "<value>"}
+        "201":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  post_/workflow:
+    speakeasy-default-post-/workflow:
+      responses:
+        "200":
+          application/json: {"workflow_id": "<id>", "version": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  get_/workflow-version/{version_id}:
+    speakeasy-default-get-/workflow-version/{version-id}:
+      parameters:
+        path:
+          version_id: "<id>"
+      responses:
+        "200":
+          application/json: {"workflow_id": "18c3e38a-41c8-4a82-8e22-1037ba50ffad", "id": "49221c56-9f81-4727-80af-f9b9dd8b3184", "user_id": "<id>", "comment": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals", "version": "2031.28", "created_at": "<value>", "updated_at": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  get_/workflow/{id}:
+    speakeasy-default-get-/workflow/{id}:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"workflow_id": "1a66de7f-4b43-4bee-8fe5-9ac8a0d7382d", "id": "5c928a9c-b263-4251-84c5-4203212e66c8", "user_id": "<id>", "comment": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart", "version": "6888.66", "created_at": "<value>", "updated_at": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  post_/machine-endpoint:
+    speakeasy-default-post-/machine-endpoint:
+      responses:
+        "200":
+          application/json: {"url": "https://ample-hornet.net/", "gpu": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  post_/v1/workflows:
+    speakeasy-default-post-/v1-/workflows:
+      responses:
+        "200":
+          application/json: {"workflow_id": "<id>", "workflow_version": "4865.89"}
+        "400":
+          application/json: {"error": "<value>"}
+  get_/v1/workflows:
+    speakeasy-default-get-/v1-/workflows:
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "updated_at": "<value>", "name": "<value>", "selected_machine_id": "<id>", "count": "<value>", "user": {"name": "<value>"}, "versions": [], "deployments": ["<value>", "<value>"], "runs": ["<value>", "<value>"]}]
+        "400":
+          application/json: {"error": "<value>"}
+  get_/v1/workflows/{workflow_id}:
+    speakeasy-default-get-/v1-/workflows/{workflow-id}:
+      parameters:
+        path:
+          workflow_id: "<id>"
+      responses:
+        "200":
+          application/json: {"name": "<value>", "user_id": "<id>", "id": "<id>", "selected_machine_id": "<id>", "created_at": "<value>", "updated_at": "<value>", "versions": [{"workflow_id": "<id>", "id": "<id>", "comment": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design", "version": "5442.21", "snapshot": "<value>", "dependencies": "<value>", "created_at": "<value>", "updated_at": "<value>"}, {"workflow_id": "<id>", "id": "<id>", "comment": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design", "version": "9699.61", "snapshot": "<value>", "dependencies": "<value>", "created_at": "<value>", "updated_at": "<value>"}]}
+        "400":
+          application/json: {"error": "<value>"}
+  get_/v1/workflows/{workflow_id}/outputs:
+    speakeasy-default-get-/v1-/workflows/{workflow-id}/outputs:
+      parameters:
+        path:
+          workflow_id: "<id>"
+        query: {}
+      responses:
+        "200":
+          application/json: {"outputs": [{"fileURLs": [], "runID": "<id>", "duration": "8237.28"}, {"fileURLs": [], "runID": "<id>", "duration": "972.94"}], "total": "9206.99"}
+        "400":
+          application/json: {"error": "<value>"}
+  get_/deployment/{id}/inputs:
+    speakeasy-default-get-/deployment/{id}/inputs:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: []
+        "500":
+          application/json: {"error": "<value>"}
+  get_/deployment:
+    speakeasy-default-get-/deployment:
+      responses:
+        "200":
+          application/json: [{"deployment_id": "<id>", "name": "<value>", "inputs_definition": [{"class_type": "ComfyUIDeployExternalCheckpoint", "input_id": "<id>", "default_value": "9699.61"}, {"class_type": "ComfyUIDeployExternalLora", "input_id": "<id>", "default_value": "<value>"}]}, {"deployment_id": "<id>", "name": "<value>", "inputs_definition": [{"class_type": "ComfyUIDeployExternalImage", "input_id": "<id>", "default_value": "4381.42"}]}]
+        "500":
+          application/json: {"error": "<value>"}
+  post_/gpu_event:
+    speakeasy-default-post-/gpu-event:
+      responses:
+        "200":
+          application/json: {"event_id": "<id>"}
+        "500":
+          application/json: {"error": "<value>"}
+  get_/machine/{machine_id}/events:
+    speakeasy-default-get-/machine/{machine-id}/events:
+      parameters:
+        path:
+          machine_id: "<id>"
+        query:
+          status: "running"
+      responses:
+        "200":
+          application/json: [{"id": "95799d1b-edd0-4c0e-a1d3-010ce3cc1e04", "user_id": "<id>", "org_id": "<id>", "machine_id": "d7813cc7-077d-4ac0-b7f0-5857b2395280", "start_time": "<value>", "end_time": "<value>", "gpu": "A100-80GB", "ws_gpu": "4090", "providerType": "modal", "created_at": "<value>", "updated_at": "<value>"}, {"id": "1099d6b0-a3e4-4c50-8ddc-f4defb2125fa", "user_id": "<id>", "org_id": "<id>", "machine_id": "f8d2dabd-efba-4bbc-8eb9-0f142c06e103", "start_time": "<value>", "end_time": "<value>", "gpu": "T4", "ws_gpu": "4090", "providerType": "modal", "created_at": "<value>", "updated_at": "<value>"}]
+        "500":
+          application/json: {"error": "<value>"}
+  post_/v1/machines:
+    speakeasy-default-post-/v1-/machines:
+      responses:
+        "200":
+          application/json: {"id": "4b8e6e5d-945d-463b-b46d-280ac9d91b76", "user_id": "<id>", "name": "<value>", "org_id": "<id>", "endpoint": "<value>", "created_at": "<value>", "updated_at": "<value>", "disabled": false, "type": "comfy-deploy-serverless", "status": "building", "machine_version": "<value>", "machine_builder_version": "<value>", "models": ["<value>"], "gpu": "A10G", "pod_id": "<id>", "base_docker_image": "<value>", "allow_concurrent_inputs": "9770.39", "concurrency_limit": "3323.33", "legacy_mode": false, "ws_timeout": "4549.14", "run_timeout": "3174.11", "idle_timeout": "2005.68", "build_machine_instance_id": "<id>", "build_log": "<value>", "modal_app_id": "<id>", "target_workflow_id": "b695400a-6dbd-49ac-91e0-3f2062c22433", "install_custom_node_with_gpu": false, "deleted": true, "keep_warm": "5717.52", "allow_background_volume_commits": false, "gpu_workspace": false}
+        "400":
+          application/json: {"error": "<value>"}
+  get_/v1/machines:
+    speakeasy-default-get-/v1-/machines:
+      responses:
+        "200":
+          application/json: {"machines": [{"id": "<id>", "endpoints": ["<value>", "<value>", "<value>"]}, {"id": "<id>", "endpoints": ["<value>", "<value>", "<value>"]}, {"id": "<id>", "endpoints": []}], "total": "890.92"}
+        "400":
+          application/json: {"error": "<value>"}
+  get_/v1/machines/{machine_id}:
+    speakeasy-default-get-/v1-/machines/{machine-id}:
+      parameters:
+        path:
+          machine_id: "<id>"
+        query: {}
+      responses:
+        "400":
+          application/json: {"error": "<value>"}

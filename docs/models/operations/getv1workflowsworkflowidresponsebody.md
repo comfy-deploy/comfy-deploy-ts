@@ -2,6 +2,33 @@
 
 Specific workflow retrieved successfully
 
+## Example Usage
+
+```typescript
+import { GetV1WorkflowsWorkflowIdResponseBody } from "comfydeploy/models/operations";
+
+let value: GetV1WorkflowsWorkflowIdResponseBody = {
+  name: "<value>",
+  userId: "<id>",
+  id: "<id>",
+  selectedMachineId: "<id>",
+  createdAt: "<value>",
+  updatedAt: "<value>",
+  versions: [
+    {
+      workflowId: "<id>",
+      id: "<id>",
+      comment:
+        "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+      version: 7997.96,
+      snapshot: "<value>",
+      dependencies: "<value>",
+      createdAt: "<value>",
+      updatedAt: "<value>",
+    },
+  ],
+};
+```
 
 ## Fields
 

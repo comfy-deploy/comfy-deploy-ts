@@ -1,9 +1,15 @@
 # Fields
 
+## Example Usage
+
+```typescript
+import { Fields } from "comfydeploy/models/operations";
+
+let value: Fields = "minimal";
+```
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `Full`    | full      |
-| `Minimal` | minimal   |
+```typescript
+"full" | "minimal"
+```

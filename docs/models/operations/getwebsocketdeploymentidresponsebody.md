@@ -2,6 +2,15 @@
 
 Workflow queued
 
+## Example Usage
+
+```typescript
+import { GetWebsocketDeploymentIdResponseBody } from "comfydeploy/models/operations";
+
+let value: GetWebsocketDeploymentIdResponseBody = {
+  wsConnectionUrl: "https://wealthy-redesign.info/",
+};
+```
 
 ## Fields
 

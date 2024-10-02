@@ -2,6 +2,23 @@
 
 Machines retrieved successfully
 
+## Example Usage
+
+```typescript
+import { GetV1MachinesResponseBody } from "comfydeploy/models/operations";
+
+let value: GetV1MachinesResponseBody = {
+  machines: [
+    {
+      id: "<id>",
+      endpoints: [
+        "<value>",
+      ],
+    },
+  ],
+  total: 7505.95,
+};
+```
 
 ## Fields
 

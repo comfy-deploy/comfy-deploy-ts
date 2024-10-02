@@ -2,6 +2,24 @@
 
 Specific workflow retrieved successfully
 
+## Example Usage
+
+```typescript
+import { GetV1WorkflowsWorkflowIdOutputsResponseBody } from "comfydeploy/models/operations";
+
+let value: GetV1WorkflowsWorkflowIdOutputsResponseBody = {
+  outputs: [
+    {
+      fileURLs: [
+        "<value>",
+      ],
+      runID: "<id>",
+      duration: 3068.10,
+    },
+  ],
+  total: 5775.43,
+};
+```
 
 ## Fields
 

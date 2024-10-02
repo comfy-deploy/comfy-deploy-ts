@@ -8,16 +8,20 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Files extends ClientSDK {
-    /**
-     * Upload any files to the storage
-     *
-     * @remarks
-     * Usually when you run something, you want to upload a file, image etc.
-     */
-    async getUploadUrl(
-        request: operations.GetUploadUrlRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetUploadUrlResponseBody> {
-        return unwrapAsync(filesGetUploadUrl(this, request, options));
-    }
+  /**
+   * Upload any files to the storage
+   *
+   * @remarks
+   * Usually when you run something, you want to upload a file, image etc.
+   */
+  async getUploadUrl(
+    request: operations.GetUploadUrlRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetUploadUrlResponseBody> {
+    return unwrapAsync(filesGetUploadUrl(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -1,9 +1,15 @@
 # Status
 
+## Example Usage
+
+```typescript
+import { Status } from "comfydeploy/models/operations";
+
+let value: Status = "completed";
+```
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `Running`   | running     |
-| `Completed` | completed   |
+```typescript
+"running" | "completed"
+```

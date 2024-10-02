@@ -1,5 +1,12 @@
 # PostV1WorkflowsRequestBody
 
+## Example Usage
+
+```typescript
+import { PostV1WorkflowsRequestBody } from "comfydeploy/models/operations";
+
+let value: PostV1WorkflowsRequestBody = {};
+```
 
 ## Fields
 

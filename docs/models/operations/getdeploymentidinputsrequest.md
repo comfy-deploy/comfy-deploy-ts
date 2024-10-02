@@ -1,5 +1,14 @@
 # GetDeploymentIdInputsRequest
 
+## Example Usage
+
+```typescript
+import { GetDeploymentIdInputsRequest } from "comfydeploy/models/operations";
+
+let value: GetDeploymentIdInputsRequest = {
+  id: "<id>",
+};
+```
 
 ## Fields
 

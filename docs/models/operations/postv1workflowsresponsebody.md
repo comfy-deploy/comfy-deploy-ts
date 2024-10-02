@@ -2,6 +2,16 @@
 
 Workflow created successfully
 
+## Example Usage
+
+```typescript
+import { PostV1WorkflowsResponseBody } from "comfydeploy/models/operations";
+
+let value: PostV1WorkflowsResponseBody = {
+  workflowId: "<id>",
+  workflowVersion: 5876.00,
+};
+```
 
 ## Fields
 

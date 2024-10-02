@@ -2,6 +2,15 @@
 
 Workflow queued
 
+## Example Usage
+
+```typescript
+import { PostRunResponseBody } from "comfydeploy/models/operations";
+
+let value: PostRunResponseBody = {
+  runId: "<id>",
+};
+```
 
 ## Fields
 

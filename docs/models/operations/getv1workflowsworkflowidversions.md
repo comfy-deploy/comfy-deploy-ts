@@ -1,5 +1,22 @@
 # GetV1WorkflowsWorkflowIdVersions
 
+## Example Usage
+
+```typescript
+import { GetV1WorkflowsWorkflowIdVersions } from "comfydeploy/models/operations";
+
+let value: GetV1WorkflowsWorkflowIdVersions = {
+  workflowId: "<id>",
+  id: "<id>",
+  comment:
+    "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+  version: 4598.56,
+  snapshot: "<value>",
+  dependencies: "<value>",
+  createdAt: "<value>",
+  updatedAt: "<value>",
+};
+```
 
 ## Fields
 

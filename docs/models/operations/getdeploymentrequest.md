@@ -1,5 +1,12 @@
 # GetDeploymentRequest
 
+## Example Usage
+
+```typescript
+import { GetDeploymentRequest } from "comfydeploy/models/operations";
+
+let value: GetDeploymentRequest = {};
+```
 
 ## Fields
 

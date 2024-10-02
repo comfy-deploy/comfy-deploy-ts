@@ -1,16 +1,15 @@
 # Status
 
+## Example Usage
+
+```typescript
+import { Status } from "comfydeploy/models/webhooks";
+
+let value: Status = "success";
+```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `NotStarted` | not-started  |
-| `Running`    | running      |
-| `Uploading`  | uploading    |
-| `Success`    | success      |
-| `Failed`     | failed       |
-| `Started`    | started      |
-| `Queued`     | queued       |
-| `Timeout`    | timeout      |
-| `Cancelled`  | cancelled    |
+```typescript
+"not-started" | "running" | "uploading" | "success" | "failed" | "started" | "queued" | "timeout" | "cancelled"
+```

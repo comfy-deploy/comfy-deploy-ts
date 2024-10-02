@@ -1,5 +1,37 @@
 # Dependencies
 
+## Example Usage
+
+```typescript
+import { Dependencies } from "comfydeploy/models/operations";
+
+let value: Dependencies = {
+  comfyui: "<value>",
+  missingNodes: [
+    "<value>",
+  ],
+  customNodes: {
+    "key": {
+      name: "<value>",
+      url: "https://delectable-airmail.com/",
+    },
+  },
+  models: {
+    "key": [
+      {
+        name: "<value>",
+      },
+    ],
+  },
+  files: {
+    "key": [
+      {
+        name: "<value>",
+      },
+    ],
+  },
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # Files
 
+## Example Usage
+
+```typescript
+import { Files } from "comfydeploy/models/operations";
+
+let value: Files = {
+  name: "<value>",
+};
+```
 
 ## Fields
 

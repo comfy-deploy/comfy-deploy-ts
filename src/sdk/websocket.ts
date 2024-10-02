@@ -8,13 +8,17 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Websocket extends ClientSDK {
-    /**
-     * Get a websocket url for a specific deployment
-     */
-    async get(
-        request: operations.GetWebsocketDeploymentIdRequest,
-        options?: RequestOptions
-    ): Promise<operations.GetWebsocketDeploymentIdResponseBody> {
-        return unwrapAsync(websocketGet(this, request, options));
-    }
+  /**
+   * Get a websocket url for a specific deployment
+   */
+  async get(
+    request: operations.GetWebsocketDeploymentIdRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetWebsocketDeploymentIdResponseBody> {
+    return unwrapAsync(websocketGet(
+      this,
+      request,
+      options,
+    ));
+  }
 }

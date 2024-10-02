@@ -2,6 +2,13 @@
 
 Error when uploading the workflow
 
+## Example Usage
+
+```typescript
+import { GetWorkflowVersionVersionIdResponseBody } from "comfydeploy/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

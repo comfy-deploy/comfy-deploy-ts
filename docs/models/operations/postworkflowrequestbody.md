@@ -1,5 +1,32 @@
 # PostWorkflowRequestBody
 
+## Example Usage
+
+```typescript
+import { PostWorkflowRequestBody } from "comfydeploy/models/operations";
+
+let value: PostWorkflowRequestBody = {
+  workflowApi: {
+    "key": {
+      inputs: {
+        "key": "<value>",
+      },
+    },
+  },
+  snapshot: {
+    comfyui: "<value>",
+    gitCustomNodes: {
+      "key": {
+        hash: "<value>",
+        disabled: false,
+      },
+    },
+    fileCustomNodes: [
+      "<value>",
+    ],
+  },
+};
+```
 
 ## Fields
 

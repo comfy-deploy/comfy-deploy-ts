@@ -6,12 +6,17 @@
 ### `operations.GetAuthResponseRequestIdResponseBody`
 
 ```typescript
-const value: operations.GetAuthResponseRequestIdResponseBody = /* values here */
+const value: operations.GetAuthResponseRequestIdResponseBody = {
+  apiKey: "<value>",
+  name: "<value>",
+};
 ```
 
 ### `operations.GetAuthResponseRequestIdComfyuiResponseBody`
 
 ```typescript
-const value: operations.GetAuthResponseRequestIdComfyuiResponseBody = /* values here */
+const value: operations.GetAuthResponseRequestIdComfyuiResponseBody = {
+  message: "<value>",
+};
 ```
 

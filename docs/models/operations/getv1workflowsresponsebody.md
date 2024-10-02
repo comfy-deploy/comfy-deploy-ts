@@ -1,5 +1,33 @@
 # GetV1WorkflowsResponseBody
 
+## Example Usage
+
+```typescript
+import { GetV1WorkflowsResponseBody } from "comfydeploy/models/operations";
+
+let value: GetV1WorkflowsResponseBody = {
+  id: "<id>",
+  updatedAt: "<value>",
+  name: "<value>",
+  selectedMachineId: "<id>",
+  count: "<value>",
+  user: {
+    name: "<value>",
+  },
+  versions: [
+    {
+      id: "<id>",
+      version: 3708.53,
+    },
+  ],
+  deployments: [
+    "<value>",
+  ],
+  runs: [
+    "<value>",
+  ],
+};
+```
 
 ## Fields
 

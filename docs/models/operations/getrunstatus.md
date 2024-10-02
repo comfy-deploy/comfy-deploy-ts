@@ -1,16 +1,15 @@
 # GetRunStatus
 
+## Example Usage
+
+```typescript
+import { GetRunStatus } from "comfydeploy/models/operations";
+
+let value: GetRunStatus = "started";
+```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `NotStarted` | not-started  |
-| `Running`    | running      |
-| `Uploading`  | uploading    |
-| `Success`    | success      |
-| `Failed`     | failed       |
-| `Started`    | started      |
-| `Queued`     | queued       |
-| `Timeout`    | timeout      |
-| `Cancelled`  | cancelled    |
+```typescript
+"not-started" | "running" | "uploading" | "success" | "failed" | "started" | "queued" | "timeout" | "cancelled"
+```

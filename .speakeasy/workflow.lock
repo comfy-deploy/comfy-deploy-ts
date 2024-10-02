@@ -1,9 +1,9 @@
-speakeasyVersion: 1.366.0
+speakeasyVersion: 1.405.6
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:cb24d91b4d4fdd18ffd6edd971ac802b97c46c06d38da77ef73f5d4d5e3bf804
-        sourceBlobDigest: sha256:44c41ae8938283249ad8d855166f46becefc454c4c85ca42cee87cbd0a26d3e6
+        sourceRevisionDigest: sha256:cd344abedc9bc1e1a9268ae74db5ab131817d216bb23f1a9672907597861dc75
+        sourceBlobDigest: sha256:7bf0dca3d339da468f4f927e4ab68b9b1c5ad0063af5682bf4cd9a82fdbfe577
         tags:
             - latest
 targets:
@@ -12,15 +12,13 @@ targets:
         sourceNamespace: comfydeploy-api
         sourceRevisionDigest: sha256:d73615c135cb6a657032725013f5462880b56eef7adc0d75ebed76d806f1d904
         sourceBlobDigest: sha256:cb58cc3dd51f13f4dadf7853d8361f94a97efaa25e26045d869fdc28dc65a7e7
-        outLocation: /github/workspace/repo
     comfydeploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:cb24d91b4d4fdd18ffd6edd971ac802b97c46c06d38da77ef73f5d4d5e3bf804
-        sourceBlobDigest: sha256:44c41ae8938283249ad8d855166f46becefc454c4c85ca42cee87cbd0a26d3e6
+        sourceRevisionDigest: sha256:cd344abedc9bc1e1a9268ae74db5ab131817d216bb23f1a9672907597861dc75
+        sourceBlobDigest: sha256:7bf0dca3d339da468f4f927e4ab68b9b1c5ad0063af5682bf4cd9a82fdbfe577
         codeSamplesNamespace: code-samples-typescript-comfydeploy
-        codeSamplesRevisionDigest: sha256:78f73f901ac752bfc154f6f14f8ce21abf1e4e541e23633d100e3b465ad3c72f
-        outLocation: /Users/bennykok/Documents/GitHub/comfy-deploy-ts
+        codeSamplesRevisionDigest: sha256:f1483da413ea7d99a5761c024ac9610dcd15683eac2481e3954e32e8d20d79a0
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

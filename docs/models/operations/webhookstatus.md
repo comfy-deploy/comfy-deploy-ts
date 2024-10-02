@@ -1,11 +1,15 @@
 # WebhookStatus
 
+## Example Usage
+
+```typescript
+import { WebhookStatus } from "comfydeploy/models/operations";
+
+let value: WebhookStatus = "running";
+```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `Success`    | success      |
-| `Failed`     | failed       |
-| `NotStarted` | not-started  |
-| `Running`    | running      |
+```typescript
+"success" | "failed" | "not-started" | "running"
+```

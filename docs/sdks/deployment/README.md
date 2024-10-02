@@ -1,6 +1,8 @@
 # Deployment
 (*deployment*)
 
+## Overview
+
 ### Available Operations
 
 * [getInputDefinition](#getinputdefinition) - Get comfyui workflow inputs definition
@@ -25,12 +27,11 @@ async function run() {
   });
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -58,7 +59,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -73,16 +74,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.ResponseBody[]](../../models/.md)\>**
+
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
+| Error Type                               | Status Code                              | Content Type                             |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | errors.GetDeploymentIdInputsResponseBody | 500                                      | application/json                         |
-| errors.SDKError                          | 4xx-5xx                                  | */*                                      |
+| errors.SDKError                          | 4XX, 5XX                                 | \*/\*                                    |
 
 ## get
 
@@ -101,12 +102,11 @@ async function run() {
   const result = await comfyDeploy.deployment.get({});
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
 ```
-
 
 ### Standalone function
 
@@ -132,7 +132,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -147,13 +147,13 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.GetDeploymentResponseBody[]](../../models/.md)\>**
+
 ### Errors
 
-| Error Object                     | Status Code                      | Content Type                     |
+| Error Type                       | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
 | errors.GetDeploymentResponseBody | 500                              | application/json                 |
-| errors.SDKError                  | 4xx-5xx                          | */*                              |
+| errors.SDKError                  | 4XX, 5XX                         | \*/\*                            |

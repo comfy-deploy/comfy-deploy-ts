@@ -1,12 +1,15 @@
 # Origin
 
+## Example Usage
+
+```typescript
+import { Origin } from "comfydeploy/models/operations";
+
+let value: Origin = "public-share";
+```
 
 ## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `Manual`         | manual           |
-| `Api`            | api              |
-| `PublicShare`    | public-share     |
-| `PublicTemplate` | public-template  |
-| `Workspace`      | workspace        |
+```typescript
+"manual" | "api" | "public-share" | "public-template" | "workspace"
+```

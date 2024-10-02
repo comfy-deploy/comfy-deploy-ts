@@ -1,5 +1,14 @@
 # GetV1MachinesMachineIdRequest
 
+## Example Usage
+
+```typescript
+import { GetV1MachinesMachineIdRequest } from "comfydeploy/models/operations";
+
+let value: GetV1MachinesMachineIdRequest = {
+  machineId: "<id>",
+};
+```
 
 ## Fields
 

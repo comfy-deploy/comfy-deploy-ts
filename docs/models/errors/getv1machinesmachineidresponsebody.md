@@ -2,6 +2,13 @@
 
 Error in retrieving the specific machine
 
+## Example Usage
+
+```typescript
+import { GetV1MachinesMachineIdResponseBody } from "comfydeploy/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

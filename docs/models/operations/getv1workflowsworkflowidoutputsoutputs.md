@@ -1,5 +1,18 @@
 # GetV1WorkflowsWorkflowIdOutputsOutputs
 
+## Example Usage
+
+```typescript
+import { GetV1WorkflowsWorkflowIdOutputsOutputs } from "comfydeploy/models/operations";
+
+let value: GetV1WorkflowsWorkflowIdOutputsOutputs = {
+  fileURLs: [
+    "<value>",
+  ],
+  runID: "<id>",
+  duration: 5188.35,
+};
+```
 
 ## Fields
 

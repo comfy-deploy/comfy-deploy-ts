@@ -2,6 +2,47 @@
 
 Machine created successfully
 
+## Example Usage
+
+```typescript
+import { PostV1MachinesResponseBody } from "comfydeploy/models/operations";
+
+let value: PostV1MachinesResponseBody = {
+  id: "8684b65d-e035-4dff-8e4f-31f3b0be465b",
+  userId: "<id>",
+  name: "<value>",
+  orgId: "<id>",
+  endpoint: "<value>",
+  createdAt: "<value>",
+  updatedAt: "<value>",
+  disabled: false,
+  type: "comfy-deploy-serverless",
+  status: "building",
+  machineVersion: "<value>",
+  machineBuilderVersion: "<value>",
+  models: [
+    "<value>",
+  ],
+  gpu: "A10G",
+  podId: "<id>",
+  baseDockerImage: "<value>",
+  allowConcurrentInputs: 1718.53,
+  concurrencyLimit: 4492.92,
+  legacyMode: false,
+  wsTimeout: 3044.68,
+  runTimeout: 8391.89,
+  idleTimeout: 2377.42,
+  buildMachineInstanceId: "<id>",
+  buildLog: "<value>",
+  modalAppId: "<id>",
+  targetWorkflowId: "8fadfcbf-f714-4262-996e-f849e6847638",
+  installCustomNodeWithGpu: false,
+  deleted: false,
+  keepWarm: 3730.35,
+  allowBackgroundVolumeCommits: false,
+  gpuWorkspace: false,
+};
+```
 
 ## Fields
 

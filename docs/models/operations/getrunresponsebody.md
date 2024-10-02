@@ -2,6 +2,43 @@
 
 Retrieve the output
 
+## Example Usage
+
+```typescript
+import { GetRunResponseBody } from "comfydeploy/models/operations";
+
+let value: GetRunResponseBody = {
+  id: "c7c1a2f8-64c7-4909-999f-a56b0aa32559",
+  workflowVersionId: "f132a473-21a2-435d-81d1-f7f9b0414156",
+  workflowInputs: {},
+  workflowId: "b94819e5-a2b4-4290-9d0a-4bf39993f7db",
+  workflowApi: {},
+  machineId: "d6e9ebb8-fa69-404a-b496-24999aa6e56e",
+  origin: "public-template",
+  status: "not-started",
+  endedAt: "<value>",
+  createdAt: "<value>",
+  updatedAt: "<value>",
+  queuedAt: "<value>",
+  startedAt: "<value>",
+  gpuEventId: "<id>",
+  gpu: "H100",
+  machineVersion: "<value>",
+  machineType: "workspace",
+  modalFunctionCallId: "<id>",
+  userId: "<id>",
+  orgId: "<id>",
+  runLog: {},
+  liveStatus: "<value>",
+  progress: 9988.47,
+  isRealtime: false,
+  webhook: "<value>",
+  webhookStatus: "success",
+  webhookIntermediateStatus: false,
+  batchId: "d291dc96-1b7b-4dfd-a05b-28030c35eb02",
+  favorite: false,
+};
+```
 
 ## Fields
 
@@ -34,4 +71,6 @@ Retrieve the output
 | `webhook`                                                                             | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |                                                                                       |
 | `webhookStatus`                                                                       | [operations.WebhookStatus](../../models/operations/webhookstatus.md)                  | :heavy_check_mark:                                                                    | N/A                                                                                   |                                                                                       |
 | `webhookIntermediateStatus`                                                           | *boolean*                                                                             | :heavy_check_mark:                                                                    | N/A                                                                                   |                                                                                       |
+| `batchId`                                                                             | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |                                                                                       |
+| `favorite`                                                                            | *boolean*                                                                             | :heavy_check_mark:                                                                    | N/A                                                                                   |                                                                                       |
 | `outputs`                                                                             | [operations.Outputs](../../models/operations/outputs.md)[]                            | :heavy_minus_sign:                                                                    | N/A                                                                                   |                                                                                       |

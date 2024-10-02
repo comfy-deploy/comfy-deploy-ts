@@ -1,5 +1,23 @@
 # Snapshot
 
+## Example Usage
+
+```typescript
+import { Snapshot } from "comfydeploy/models/operations";
+
+let value: Snapshot = {
+  comfyui: "<value>",
+  gitCustomNodes: {
+    "key": {
+      hash: "<value>",
+      disabled: false,
+    },
+  },
+  fileCustomNodes: [
+    "<value>",
+  ],
+};
+```
 
 ## Fields
 
