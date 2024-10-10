@@ -16,7 +16,12 @@ export type WorkflowRunRequestExecutionMode = ClosedEnum<
   typeof WorkflowRunRequestExecutionMode
 >;
 
-export type WorkflowRunRequestInputs = {};
+export type WorkflowRunRequestInputs =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 export type WorkflowApiJson = {};
 
@@ -24,7 +29,10 @@ export type Workflow = {};
 
 export type WorkflowRunRequest = {
   executionMode?: WorkflowRunRequestExecutionMode | null | undefined;
-  inputs?: WorkflowRunRequestInputs | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhookIntermediateStatus?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -66,17 +74,34 @@ export const WorkflowRunRequestInputs$inboundSchema: z.ZodType<
   WorkflowRunRequestInputs,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /** @internal */
-export type WorkflowRunRequestInputs$Outbound = {};
+export type WorkflowRunRequestInputs$Outbound =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 /** @internal */
 export const WorkflowRunRequestInputs$outboundSchema: z.ZodType<
   WorkflowRunRequestInputs$Outbound,
   z.ZodTypeDef,
   WorkflowRunRequestInputs
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -159,8 +184,17 @@ export const WorkflowRunRequest$inboundSchema: z.ZodType<
 > = z.object({
   execution_mode: z.nullable(WorkflowRunRequestExecutionMode$inboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => WorkflowRunRequestInputs$inboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhook_intermediate_status: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),
@@ -187,7 +221,10 @@ export const WorkflowRunRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type WorkflowRunRequest$Outbound = {
   execution_mode?: string | null | undefined;
-  inputs?: WorkflowRunRequestInputs$Outbound | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhook_intermediate_status?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -208,8 +245,17 @@ export const WorkflowRunRequest$outboundSchema: z.ZodType<
 > = z.object({
   executionMode: z.nullable(WorkflowRunRequestExecutionMode$outboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => WorkflowRunRequestInputs$outboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhookIntermediateStatus: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),

@@ -14,11 +14,14 @@ export const ExecutionMode = {
 } as const;
 export type ExecutionMode = ClosedEnum<typeof ExecutionMode>;
 
-export type Inputs = {};
+export type Inputs = string | number | number | boolean | Array<any>;
 
 export type WorkflowRunVersionRequest = {
   executionMode?: ExecutionMode | null | undefined;
-  inputs?: Inputs | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhookIntermediateStatus?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -55,17 +58,29 @@ export namespace ExecutionMode$ {
 
 /** @internal */
 export const Inputs$inboundSchema: z.ZodType<Inputs, z.ZodTypeDef, unknown> = z
-  .object({});
+  .union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
 
 /** @internal */
-export type Inputs$Outbound = {};
+export type Inputs$Outbound = string | number | number | boolean | Array<any>;
 
 /** @internal */
 export const Inputs$outboundSchema: z.ZodType<
   Inputs$Outbound,
   z.ZodTypeDef,
   Inputs
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -87,7 +102,17 @@ export const WorkflowRunVersionRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   execution_mode: z.nullable(ExecutionMode$inboundSchema).optional(),
-  inputs: z.nullable(z.lazy(() => Inputs$inboundSchema)).optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhook_intermediate_status: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),
@@ -111,7 +136,10 @@ export const WorkflowRunVersionRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type WorkflowRunVersionRequest$Outbound = {
   execution_mode?: string | null | undefined;
-  inputs?: Inputs$Outbound | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhook_intermediate_status?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -129,7 +157,17 @@ export const WorkflowRunVersionRequest$outboundSchema: z.ZodType<
   WorkflowRunVersionRequest
 > = z.object({
   executionMode: z.nullable(ExecutionMode$outboundSchema).optional(),
-  inputs: z.nullable(z.lazy(() => Inputs$outboundSchema)).optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhookIntermediateStatus: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),

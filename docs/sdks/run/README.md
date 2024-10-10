@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [getRunRunRunIdGet](#getrunrunrunidget) - Get Run
+* [get](#get) - Get Run
 * [queue](#queue) - Queue a workflow
 * [sync](#sync) - Run a workflow in sync
 * [stream](#stream) - Run a workflow in stream
 
-## getRunRunRunIdGet
+## get
 
 Get Run
 
@@ -24,7 +24,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   });
 
@@ -41,7 +41,7 @@ The standalone function version of this method:
 
 ```typescript
 import { ComfyDeployCore } from "comfydeploy/core.js";
-import { runGetRunRunRunIdGet } from "comfydeploy/funcs/runGetRunRunRunIdGet.js";
+import { runGet } from "comfydeploy/funcs/runGet.js";
 
 // Use `ComfyDeployCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -50,7 +50,7 @@ const comfyDeploy = new ComfyDeployCore({
 });
 
 async function run() {
-  const res = await runGetRunRunRunIdGet(comfyDeploy, {
+  const res = await runGet(comfyDeploy, {
     runId: "<id>",
   });
 
@@ -103,7 +103,10 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.queue({
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -148,7 +151,10 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runQueue(comfyDeploy, {
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -218,7 +224,10 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.sync({
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -263,7 +272,10 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runSync(comfyDeploy, {
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -333,7 +345,10 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.stream({
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -380,7 +395,11 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runStream(comfyDeploy, {
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "num_inference_steps": 30,
+      "prompt": "A futuristic cityscape",
+      "seed": 123456,
+    },
     webhook: "https://myapp.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",

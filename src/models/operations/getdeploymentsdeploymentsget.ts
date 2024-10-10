@@ -6,7 +6,7 @@ import * as z from "zod";
 import * as components from "../components/index.js";
 
 export type GetDeploymentsDeploymentsGetRequest = {
-  environment: components.DeploymentEnvironment;
+  environment?: components.DeploymentEnvironment | null | undefined;
 };
 
 /** @internal */
@@ -15,12 +15,13 @@ export const GetDeploymentsDeploymentsGetRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  environment: components.DeploymentEnvironment$inboundSchema,
+  environment: z.nullable(components.DeploymentEnvironment$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
 export type GetDeploymentsDeploymentsGetRequest$Outbound = {
-  environment: string;
+  environment?: string | null | undefined;
 };
 
 /** @internal */
@@ -29,7 +30,8 @@ export const GetDeploymentsDeploymentsGetRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentsDeploymentsGetRequest
 > = z.object({
-  environment: components.DeploymentEnvironment$outboundSchema,
+  environment: z.nullable(components.DeploymentEnvironment$outboundSchema)
+    .optional(),
 });
 
 /**

@@ -7,7 +7,10 @@ import { WorkflowRunVersionRequest } from "comfydeploy/models/components";
 
 let value: WorkflowRunVersionRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "prompt": "A beautiful landscape",
+    "seed": 42,
+  },
   webhook: "https://example.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -25,7 +28,7 @@ let value: WorkflowRunVersionRequest = {
     ],
   },
   isNativeRun: true,
-  workflowVersionId: "fb438036-5749-4d18-b2b6-92275fcbe189",
+  workflowVersionId: "43803657-49d1-482b-8692-275fcbe189f4",
 };
 ```
 
@@ -34,7 +37,7 @@ let value: WorkflowRunVersionRequest = {
 | Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `executionMode`                                                                                  | [components.ExecutionMode](../../models/components/executionmode.md)                             | :heavy_minus_sign:                                                                               | N/A                                                                                              | async                                                                                            |
-| `inputs`                                                                                         | [components.Inputs](../../models/components/inputs.md)                                           | :heavy_minus_sign:                                                                               | N/A                                                                                              | {<br/>"prompt": "A beautiful landscape",<br/>"seed": 42<br/>}                                    |
+| `inputs`                                                                                         | Record<string, *components.Inputs*>                                                              | :heavy_minus_sign:                                                                               | N/A                                                                                              | {<br/>"prompt": "A beautiful landscape",<br/>"seed": 42<br/>}                                    |
 | `webhook`                                                                                        | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              | https://example.com/webhook                                                                      |
 | `webhookIntermediateStatus`                                                                      | *boolean*                                                                                        | :heavy_minus_sign:                                                                               | N/A                                                                                              | true                                                                                             |
 | `origin`                                                                                         | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              | manual                                                                                           |

@@ -8,7 +8,10 @@
 ```typescript
 const value: components.WorkflowRunVersionRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "prompt": "A beautiful landscape",
+    "seed": 42,
+  },
   webhook: "https://example.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -26,7 +29,7 @@ const value: components.WorkflowRunVersionRequest = {
     ],
   },
   isNativeRun: true,
-  workflowVersionId: "b521368c-f119-4bde-8f66-2aad17932d07",
+  workflowVersionId: "8eb0beb2-725e-4e45-a9f2-4d7e2855765e",
 };
 ```
 
@@ -35,7 +38,11 @@ const value: components.WorkflowRunVersionRequest = {
 ```typescript
 const value: components.WorkflowRunRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "num_inference_steps": 30,
+    "prompt": "A futuristic cityscape",
+    "seed": 123456,
+  },
   webhook: "https://myapp.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -63,7 +70,10 @@ const value: components.WorkflowRunRequest = {
 ```typescript
 const value: components.DeploymentRunRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "prompt": "A beautiful landscape",
+    "seed": 42,
+  },
   webhook: "https://example.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -81,7 +91,7 @@ const value: components.DeploymentRunRequest = {
     ],
   },
   isNativeRun: true,
-  deploymentId: "7f6d1466-a5ba-4669-b1da-b816650b19ba",
+  deploymentId: "b49cc5cb-2d77-4799-b7da-66c530ee1521",
 };
 ```
 

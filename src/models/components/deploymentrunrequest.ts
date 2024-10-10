@@ -16,11 +16,19 @@ export type DeploymentRunRequestExecutionMode = ClosedEnum<
   typeof DeploymentRunRequestExecutionMode
 >;
 
-export type DeploymentRunRequestInputs = {};
+export type DeploymentRunRequestInputs =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 export type DeploymentRunRequest = {
   executionMode?: DeploymentRunRequestExecutionMode | null | undefined;
-  inputs?: DeploymentRunRequestInputs | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhookIntermediateStatus?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -60,17 +68,34 @@ export const DeploymentRunRequestInputs$inboundSchema: z.ZodType<
   DeploymentRunRequestInputs,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /** @internal */
-export type DeploymentRunRequestInputs$Outbound = {};
+export type DeploymentRunRequestInputs$Outbound =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 /** @internal */
 export const DeploymentRunRequestInputs$outboundSchema: z.ZodType<
   DeploymentRunRequestInputs$Outbound,
   z.ZodTypeDef,
   DeploymentRunRequestInputs
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -93,8 +118,17 @@ export const DeploymentRunRequest$inboundSchema: z.ZodType<
 > = z.object({
   execution_mode: z.nullable(DeploymentRunRequestExecutionMode$inboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => DeploymentRunRequestInputs$inboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhook_intermediate_status: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),
@@ -116,7 +150,10 @@ export const DeploymentRunRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type DeploymentRunRequest$Outbound = {
   execution_mode?: string | null | undefined;
-  inputs?: DeploymentRunRequestInputs$Outbound | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhook_intermediate_status?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -134,8 +171,17 @@ export const DeploymentRunRequest$outboundSchema: z.ZodType<
 > = z.object({
   executionMode: z.nullable(DeploymentRunRequestExecutionMode$outboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => DeploymentRunRequestInputs$outboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhookIntermediateStatus: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),

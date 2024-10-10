@@ -9,14 +9,14 @@ import { CreateRunSyncRunSyncPostRunUpdateWebhookRequestBodyWebhookPostBody } fr
 
 let value: CreateRunSyncRunSyncPostRunUpdateWebhookRequestBodyWebhookPostBody =
   {
-    status: "not-started",
+    status: "uploading",
     liveStatus: "<value>",
-    progress: 4246.63,
+    progress: 9536.76,
     runId: "<id>",
     outputs: {
-      runId: "19391fe6-3470-4a66-acbf-5ec594d1326b",
-      createdAt: new Date("2023-06-19T11:50:16.852Z"),
-      updatedAt: new Date("2022-01-01T14:21:39.818Z"),
+      runId: "91470673-9c39-4afc-8d72-f271ffb54428",
+      createdAt: new Date("2022-12-14T03:17:00.431Z"),
+      updatedAt: new Date("2023-11-18T20:53:13.717Z"),
     },
   };
 ```

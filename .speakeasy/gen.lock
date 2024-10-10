@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: d34151fa90e63b231d797a2470327578
+  docChecksum: 63ed8c6ee882d664b494a4bd76c171a1
   docVersion: 1.0.0
-  speakeasyVersion: 1.406.0
-  generationVersion: 2.429.0
-  releaseVersion: 2.0.0-beta.30
-  configChecksum: 84f9ca870526ee3ac83e36a3e82692e1
+  speakeasyVersion: 1.414.1
+  generationVersion: 2.437.1
+  releaseVersion: 2.0.0-beta.31
+  configChecksum: 75ef2281cbacb459110f98c9093b5e74
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -31,6 +31,7 @@ features:
     sdkHooks: 0.1.0
     serverEvents: 0.1.4
     unions: 2.85.7
+    uploadStreams: 0.1.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -48,29 +49,49 @@ generatedFiles:
   - docs/models/callbacks/createrunsyncrunsyncpostrunupdatewebhookrequestbodywebhookpostbody.md
   - docs/models/components/apiroutestypesworkflowrunoutputmodel1.md
   - docs/models/components/apiroutestypesworkflowrunoutputmodel2.md
+  - docs/models/components/bodyuploadfilefileuploadpost.md
+  - docs/models/components/createdynamicsessionbody.md
   - docs/models/components/createrunresponse.md
   - docs/models/components/createsessionbody.md
+  - docs/models/components/createsessionresponse.md
+  - docs/models/components/customnode.md
   - docs/models/components/data.md
+  - docs/models/components/defaultvalue.md
+  - docs/models/components/deletesessionresponse.md
+  - docs/models/components/dependencies.md
+  - docs/models/components/dependencygraph.md
   - docs/models/components/deploymentenvironment.md
   - docs/models/components/deploymentmodel.md
   - docs/models/components/deploymentrunrequest.md
   - docs/models/components/deploymentrunrequestexecutionmode.md
   - docs/models/components/deploymentrunrequestinputs.md
+  - docs/models/components/depsbody.md
   - docs/models/components/event.md
   - docs/models/components/eventupdate.md
   - docs/models/components/eventupdateevent.md
   - docs/models/components/eventupdateeventevent.md
   - docs/models/components/executionmode.md
+  - docs/models/components/filet.md
+  - docs/models/components/fileuploadresponse.md
+  - docs/models/components/gpueventmodel.md
+  - docs/models/components/gpuprovidertype.md
+  - docs/models/components/inputmodel.md
   - docs/models/components/inputs.md
   - docs/models/components/loc.md
   - docs/models/components/logdatacontent.md
   - docs/models/components/logupdateevent.md
+  - docs/models/components/machinegpu.md
+  - docs/models/components/maxvalue.md
   - docs/models/components/mediaitem.md
+  - docs/models/components/minvalue.md
   - docs/models/components/nodemeta.md
   - docs/models/components/runstream.md
   - docs/models/components/security.md
+  - docs/models/components/session.md
   - docs/models/components/shareoptions.md
   - docs/models/components/showcasemedia.md
+  - docs/models/components/snapshot.md
+  - docs/models/components/step.md
   - docs/models/components/validationerror.md
   - docs/models/components/workflow.md
   - docs/models/components/workflowapi.md
@@ -86,25 +107,31 @@ generatedFiles:
   - docs/models/components/workflowrunstatus.md
   - docs/models/components/workflowrunversionrequest.md
   - docs/models/components/workflowrunwebhookresponse.md
+  - docs/models/components/workflowwithname.md
+  - docs/models/components/workspacegpu.md
   - docs/models/errors/httpvalidationerror.md
   - docs/models/operations/createrunqueuerunqueuepostdata.md
   - docs/models/operations/createrunstreamrunstreampostdata.md
   - docs/models/operations/createrunsyncrunsyncpostdata.md
-  - docs/models/operations/createsessionmachinemachineidsessionpostrequest.md
   - docs/models/operations/deletesessionsessionsessioniddeleterequest.md
   - docs/models/operations/getdeploymentsdeploymentsgetrequest.md
-  - docs/models/operations/getmachinesessionsmachinemachineidsessionsgetrequest.md
+  - docs/models/operations/getmachinesessionssessionsgetrequest.md
   - docs/models/operations/getrunrunrunidgetrequest.md
   - docs/models/operations/getsessionsessionsessionidgetrequest.md
+  - docs/sdks/beta/README.md
   - docs/sdks/comfydeploy/README.md
   - docs/sdks/deployments/README.md
+  - docs/sdks/file/README.md
   - docs/sdks/run/README.md
   - docs/sdks/session/README.md
   - jsr.json
   - package.json
   - src/core.ts
+  - src/funcs/betaCreateDynamic.ts
+  - src/funcs/betaGenerateDockerSteps.ts
   - src/funcs/deploymentsList.ts
-  - src/funcs/runGetRunRunRunIdGet.ts
+  - src/funcs/fileUpload.ts
+  - src/funcs/runGet.ts
   - src/funcs/runQueue.ts
   - src/funcs/runStream.ts
   - src/funcs/runSync.ts
@@ -138,19 +165,32 @@ generatedFiles:
   - src/models/callbacks/index.ts
   - src/models/components/apiroutestypesworkflowrunoutputmodel1.ts
   - src/models/components/apiroutestypesworkflowrunoutputmodel2.ts
+  - src/models/components/bodyuploadfilefileuploadpost.ts
+  - src/models/components/createdynamicsessionbody.ts
   - src/models/components/createrunresponse.ts
   - src/models/components/createsessionbody.ts
+  - src/models/components/createsessionresponse.ts
+  - src/models/components/customnode.ts
+  - src/models/components/deletesessionresponse.ts
+  - src/models/components/dependencygraph.ts
   - src/models/components/deploymentenvironment.ts
   - src/models/components/deploymentmodel.ts
   - src/models/components/deploymentrunrequest.ts
+  - src/models/components/depsbody.ts
   - src/models/components/eventupdate.ts
   - src/models/components/eventupdateevent.ts
+  - src/models/components/fileuploadresponse.ts
+  - src/models/components/gpueventmodel.ts
+  - src/models/components/gpuprovidertype.ts
   - src/models/components/index.ts
+  - src/models/components/inputmodel.ts
   - src/models/components/logdatacontent.ts
   - src/models/components/logupdateevent.ts
+  - src/models/components/machinegpu.ts
   - src/models/components/mediaitem.ts
   - src/models/components/runstream.ts
   - src/models/components/security.ts
+  - src/models/components/session.ts
   - src/models/components/validationerror.ts
   - src/models/components/workflowrunmodel.ts
   - src/models/components/workflowrunoutput.ts
@@ -158,6 +198,8 @@ generatedFiles:
   - src/models/components/workflowrunstatus.ts
   - src/models/components/workflowrunversionrequest.ts
   - src/models/components/workflowrunwebhookresponse.ts
+  - src/models/components/workflowwithname.ts
+  - src/models/components/workspacegpu.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/httpvalidationerror.ts
   - src/models/errors/index.ts
@@ -166,14 +208,15 @@ generatedFiles:
   - src/models/operations/createrunqueuerunqueuepost.ts
   - src/models/operations/createrunstreamrunstreampost.ts
   - src/models/operations/createrunsyncrunsyncpost.ts
-  - src/models/operations/createsessionmachinemachineidsessionpost.ts
   - src/models/operations/deletesessionsessionsessioniddelete.ts
   - src/models/operations/getdeploymentsdeploymentsget.ts
-  - src/models/operations/getmachinesessionsmachinemachineidsessionsget.ts
+  - src/models/operations/getmachinesessionssessionsget.ts
   - src/models/operations/getrunrunrunidget.ts
   - src/models/operations/getsessionsessionsessionidget.ts
   - src/models/operations/index.ts
+  - src/sdk/beta.ts
   - src/sdk/deployments.ts
+  - src/sdk/file.ts
   - src/sdk/index.ts
   - src/sdk/run.ts
   - src/sdk/sdk.ts
@@ -395,7 +438,7 @@ examples:
           session_id: "<id>"
       responses:
         "200":
-          application/json: "<value>"
+          application/json: {"session_id": "<id>", "url": "https://normal-making.name"}
         "422": {}
   delete_session_session__session_id__delete:
     speakeasy-default-delete-session-session-session-id-delete:
@@ -404,7 +447,7 @@ examples:
           session_id: "<id>"
       responses:
         "200":
-          application/json: "<value>"
+          application/json: {"success": true}
         "422": {}
   get_machine_sessions_machine__machine_id__sessions_get:
     speakeasy-default-get-machine-sessions-machine-machine-id-sessions-get:
@@ -431,7 +474,7 @@ examples:
           environment: "staging"
       responses:
         "200":
-          application/json: [{"id": "5275df01-fd80-4b75-bddf-8d5b16e28e85", "user_id": "<id>", "org_id": "<id>", "workflow_version_id": "9f9d875f-d666-401c-a5d8-e20dcfc5ca50", "workflow_id": "979474c9-42c5-4e68-968b-b0d39041b592", "machine_id": "777b9f36-4a74-48d5-b472-7d0146dcf248", "share_slug": "<value>", "description": "runway cone however wiggly too when scary", "environment": "public-share", "created_at": "2024-02-20T19:41:14.664Z", "updated_at": "2022-01-24T00:25:46.271Z"}, {"id": "461bb356-9656-45b2-9232-305b6bf03c58", "user_id": "<id>", "org_id": "<id>", "workflow_version_id": "22b8f724-b660-4346-b549-0e91f582795e", "workflow_id": "6ed60187-afb3-411d-8c20-f765bf04da90", "machine_id": "64bff373-1d49-42ff-8c8e-4687ad116e9b", "share_slug": "<value>", "description": "as corrupt lyre ideal eulogise", "environment": "production", "created_at": "2022-03-24T17:56:31.778Z", "updated_at": "2023-11-22T07:18:08.338Z"}]
+          application/json: [{"id": "5275df01-fd80-4b75-bddf-8d5b16e28e85", "user_id": "<id>", "org_id": "<id>", "workflow_version_id": "9f9d875f-d666-401c-a5d8-e20dcfc5ca50", "workflow_id": "979474c9-42c5-4e68-968b-b0d39041b592", "machine_id": "777b9f36-4a74-48d5-b472-7d0146dcf248", "share_slug": "<value>", "description": "runway cone however wiggly too when scary", "environment": "public-share", "created_at": "2024-02-20T19:41:14.664Z", "updated_at": "2022-01-24T00:25:46.271Z", "workflow": {"id": "c8a232aa-0b11-4b8a-b005-71e9e705d0e6", "name": "<value>"}}, {"id": "461bb356-9656-45b2-9232-305b6bf03c58", "user_id": "<id>", "org_id": "<id>", "workflow_version_id": "22b8f724-b660-4346-b549-0e91f582795e", "workflow_id": "6ed60187-afb3-411d-8c20-f765bf04da90", "machine_id": "64bff373-1d49-42ff-8c8e-4687ad116e9b", "share_slug": "<value>", "description": "as corrupt lyre ideal eulogise", "environment": "production", "created_at": "2022-03-24T17:56:31.778Z", "updated_at": "2023-11-22T07:18:08.338Z", "workflow": {"id": "21e27667-18d6-4d46-812e-0aee1b9ddf12", "name": "<value>"}}]
         "422": {}
   create_run_queue_run_post:
     speakeasy-default-create-run-queue-run-post:
@@ -444,7 +487,7 @@ examples:
   create_run_queue_run_queue_post:
     speakeasy-default-create-run-queue-run-queue-post:
       requestBody:
-        application/json: {"execution_mode": "async", "webhook": "https://example.com/webhook", "webhook_intermediate_status": true, "origin": "manual", "batch_number": 5, "batch_input_params": {"input_number": [1, 2, 3], "input_text": ["apple", "banana", "cherry"]}, "is_native_run": true, "workflow_version_id": "3ec31b24-d0d3-4298-9ffa-c74003017b70"}
+        application/json: {"execution_mode": "async", "inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://example.com/webhook", "webhook_intermediate_status": true, "origin": "manual", "batch_number": 5, "batch_input_params": {"input_number": [1, 2, 3], "input_text": ["apple", "banana", "cherry"]}, "is_native_run": true, "workflow_version_id": "3ec31b24-d0d3-4298-9ffa-c74003017b70"}
       responses:
         "200":
           application/json: {"run_id": "312c491e-eee1-46d4-bb64-574d03253718"}
@@ -452,7 +495,7 @@ examples:
   create_run_sync_run_sync_post:
     speakeasy-default-create-run-sync-run-sync-post:
       requestBody:
-        application/json: {"execution_mode": "async", "webhook": "https://example.com/webhook", "webhook_intermediate_status": true, "origin": "manual", "batch_number": 5, "batch_input_params": {"input_number": [1, 2, 3], "input_text": ["apple", "banana", "cherry"]}, "is_native_run": true, "deployment_id": "0897be30-8085-4c96-83b5-09c0142ddd3a"}
+        application/json: {"execution_mode": "async", "inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://example.com/webhook", "webhook_intermediate_status": true, "origin": "manual", "batch_number": 5, "batch_input_params": {"input_number": [1, 2, 3], "input_text": ["apple", "banana", "cherry"]}, "is_native_run": true, "deployment_id": "0897be30-8085-4c96-83b5-09c0142ddd3a"}
       responses:
         "200":
           application/json: [{"id": "74537c27-c77e-45f3-8db2-d51ced44fce8", "run_id": "d5253d2c-82da-4a97-9dcb-069d07b91839", "data": {}, "created_at": "2024-04-05T14:07:57.915Z", "updated_at": "2024-05-11T21:07:16.644Z"}]
@@ -460,4 +503,45 @@ examples:
   create_run_stream_run_stream_post:
     speakeasy-default-create-run-stream-run-stream-post:
       requestBody:
-        application/json: {"execution_mode": "async", "webhook": "https://example.com/webhook", "webhook_intermediate_status": true, "origin": "manual", "batch_number": 5, "batch_input_params": {"input_number": [1, 2, 3], "input_text": ["apple", "banana", "cherry"]}, "is_native_run": true, "deployment_id": "41f69f97-08c7-43e9-a00c-844065577d45"}
+        application/json: {"execution_mode": "async", "inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://example.com/webhook", "webhook_intermediate_status": true, "origin": "manual", "batch_number": 5, "batch_input_params": {"input_number": [1, 2, 3], "input_text": ["apple", "banana", "cherry"]}, "is_native_run": true, "deployment_id": "41f69f97-08c7-43e9-a00c-844065577d45"}
+  get_machine_sessions_sessions_get:
+    speakeasy-default-get-machine-sessions-sessions-get:
+      parameters:
+        query:
+          machine_id: "<id>"
+      responses:
+        "200":
+          application/json: [{"id": "8a232aa0-b11b-48a0-8057-1e9e705d0e6e", "user_id": "<id>", "org_id": "<id>", "machine_id": "1e276671-8d6d-4461-b2e0-aee1b9ddf121", "start_time": "2024-05-01T20:38:29.097Z", "end_time": "2022-06-05T08:58:03.644Z", "gpu": "A100", "gpu_provider": "runpod"}, {"id": "c8104fb4-51a7-40cf-8c8f-e07fbc60ab96", "user_id": "<id>", "org_id": "<id>", "machine_id": "d5611ff6-573e-40a6-a233-1ad7c07cc481", "start_time": "2023-09-15T02:22:04.749Z", "end_time": "2022-04-20T19:52:18.966Z", "gpu": "L4", "gpu_provider": "modal"}, {"id": "6ebd834b-7d8c-4223-a6e0-85944ebceb27", "user_id": "<id>", "org_id": "<id>", "machine_id": "d4753d0a-17c4-478e-9329-a9ec97938e1a", "start_time": "2022-09-28T14:04:50.967Z", "end_time": "2022-01-03T14:26:00.039Z", "gpu": "H100", "gpu_provider": "modal"}]
+        "422": {}
+  create_session_session_post:
+    speakeasy-default-create-session-session-post:
+      requestBody:
+        application/json: {"machine_id": "<id>"}
+      responses:
+        "200":
+          application/json: {"session_id": "7a621cf0-21cd-49cf-8540-3315211a509a"}
+        "422": {}
+  convert_to_docker_steps_deps_post:
+    speakeasy-default-convert-to-docker-steps-deps-post:
+      requestBody:
+        application/json: {"docker_command_steps": "<value>"}
+      responses:
+        "200":
+          application/json: "<value>"
+        "422": {}
+  create_dynamic_session_session_dynamic_post:
+    speakeasy-default-create-dynamic-session-session-dynamic-post:
+      requestBody:
+        application/json: {"machine_id": "<id>", "dependencies": ["Stability-AI/ComfyUI-SAI_API@1793086", "cubiq/ComfyUI_IPAdapter_plus@b188a6c"]}
+      responses:
+        "200":
+          application/json: {"session_id": "bfae60ec-4ce1-40f5-b20e-ea8fb6c02617"}
+        "422": {}
+  upload_file_file_upload_post:
+    speakeasy-default-upload-file-file-upload-post:
+      requestBody:
+        multipart/form-data: {"file": {}}
+      responses:
+        "200":
+          application/json: {"message": "File uploaded successfully", "file_id": "img_1a2b3c4d5e6f7g8h", "file_name": "example_image.jpg", "file_url": "https://your-bucket.s3.your-region.amazonaws.com/inputs/img_1a2b3c4d5e6f7g8h.jpg"}
+        "422": {}

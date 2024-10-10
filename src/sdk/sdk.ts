@@ -3,7 +3,9 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Beta } from "./beta.js";
 import { Deployments } from "./deployments.js";
+import { FileT } from "./file.js";
 import { Run } from "./run.js";
 import { Session } from "./session.js";
 
@@ -18,8 +20,18 @@ export class ComfyDeploy extends ClientSDK {
     return (this._session ??= new Session(this._options));
   }
 
+  private _beta?: Beta;
+  get beta(): Beta {
+    return (this._beta ??= new Beta(this._options));
+  }
+
   private _deployments?: Deployments;
   get deployments(): Deployments {
     return (this._deployments ??= new Deployments(this._options));
+  }
+
+  private _file?: FileT;
+  get file(): FileT {
+    return (this._file ??= new FileT(this._options));
   }
 }

@@ -6,12 +6,12 @@
 import { MediaItem } from "comfydeploy/models/components";
 
 let value: MediaItem = {
-  url: "https://animated-velocity.info",
+  url: "https://important-travel.com/",
   type: "<value>",
   filename: "example.file",
   isPublic: false,
   subfolder: "<value>",
-  uploadDuration: 3567.07,
+  uploadDuration: 9453.02,
 };
 ```
 

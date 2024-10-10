@@ -9,6 +9,18 @@ import {
   DeploymentEnvironment$inboundSchema,
   DeploymentEnvironment$outboundSchema,
 } from "./deploymentenvironment.js";
+import {
+  InputModel,
+  InputModel$inboundSchema,
+  InputModel$Outbound,
+  InputModel$outboundSchema,
+} from "./inputmodel.js";
+import {
+  WorkflowWithName,
+  WorkflowWithName$inboundSchema,
+  WorkflowWithName$Outbound,
+  WorkflowWithName$outboundSchema,
+} from "./workflowwithname.js";
 
 export type ShareOptions = {};
 
@@ -28,6 +40,8 @@ export type DeploymentModel = {
   environment: DeploymentEnvironment;
   createdAt: Date;
   updatedAt: Date;
+  workflow: WorkflowWithName;
+  inputTypes?: Array<InputModel> | null | undefined;
 };
 
 /** @internal */
@@ -109,6 +123,8 @@ export const DeploymentModel$inboundSchema: z.ZodType<
   environment: DeploymentEnvironment$inboundSchema,
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  workflow: WorkflowWithName$inboundSchema,
+  input_types: z.nullable(z.array(InputModel$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "user_id": "userId",
@@ -121,6 +137,7 @@ export const DeploymentModel$inboundSchema: z.ZodType<
     "showcase_media": "showcaseMedia",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
+    "input_types": "inputTypes",
   });
 });
 
@@ -139,6 +156,8 @@ export type DeploymentModel$Outbound = {
   environment: string;
   created_at: string;
   updated_at: string;
+  workflow: WorkflowWithName$Outbound;
+  input_types?: Array<InputModel$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -160,6 +179,8 @@ export const DeploymentModel$outboundSchema: z.ZodType<
   environment: DeploymentEnvironment$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()),
   updatedAt: z.date().transform(v => v.toISOString()),
+  workflow: WorkflowWithName$outboundSchema,
+  inputTypes: z.nullable(z.array(InputModel$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     userId: "user_id",
@@ -172,6 +193,7 @@ export const DeploymentModel$outboundSchema: z.ZodType<
     showcaseMedia: "showcase_media",
     createdAt: "created_at",
     updatedAt: "updated_at",
+    inputTypes: "input_types",
   });
 });
 
