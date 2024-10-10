@@ -6,22 +6,22 @@
 import { ApiRoutesTypesWorkflowRunOutputModel2 } from "comfydeploy/models/components";
 
 let value: ApiRoutesTypesWorkflowRunOutputModel2 = {
-  id: "47ab462c-0bcc-4459-a453-70c1849fa068",
-  runId: "a426f2e8-7e7b-46eb-bb5c-a32cf79d7f9d",
+  id: "2c0bcc45-9453-470c-8184-9fa0688a426f",
+  runId: "e87e7b6e-bb5c-4a32-9cf7-9d7f9ded2a61",
   data: {
     "key": [
       {
-        url: "https://curly-ostrich.info",
+        url: "https://thin-almighty.org/",
         type: "<value>",
         filename: "example.file",
         isPublic: false,
         subfolder: "<value>",
-        uploadDuration: 627.13,
+        uploadDuration: 3553.69,
       },
     ],
   },
-  createdAt: new Date("2023-04-10T17:44:39.673Z"),
-  updatedAt: new Date("2022-10-11T12:25:32.503Z"),
+  createdAt: new Date("2023-01-26T22:49:04.962Z"),
+  updatedAt: new Date("2022-01-18T21:30:17.764Z"),
 };
 ```
 

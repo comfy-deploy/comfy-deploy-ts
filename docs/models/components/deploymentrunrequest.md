@@ -7,7 +7,10 @@ import { DeploymentRunRequest } from "comfydeploy/models/components";
 
 let value: DeploymentRunRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "prompt": "A beautiful landscape",
+    "seed": 42,
+  },
   webhook: "https://example.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -25,7 +28,7 @@ let value: DeploymentRunRequest = {
     ],
   },
   isNativeRun: true,
-  deploymentId: "4310eac4-917f-4e5f-a3ff-cad4d9052f77",
+  deploymentId: "c4917fe5-f3ff-4cad-84d9-052f77a52d38",
 };
 ```
 
@@ -34,7 +37,7 @@ let value: DeploymentRunRequest = {
 | Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
 | `executionMode`                                                                                              | [components.DeploymentRunRequestExecutionMode](../../models/components/deploymentrunrequestexecutionmode.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          | async                                                                                                        |
-| `inputs`                                                                                                     | [components.DeploymentRunRequestInputs](../../models/components/deploymentrunrequestinputs.md)               | :heavy_minus_sign:                                                                                           | N/A                                                                                                          | {<br/>"prompt": "A beautiful landscape",<br/>"seed": 42<br/>}                                                |
+| `inputs`                                                                                                     | Record<string, *components.DeploymentRunRequestInputs*>                                                      | :heavy_minus_sign:                                                                                           | N/A                                                                                                          | {<br/>"prompt": "A beautiful landscape",<br/>"seed": 42<br/>}                                                |
 | `webhook`                                                                                                    | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          | https://example.com/webhook                                                                                  |
 | `webhookIntermediateStatus`                                                                                  | *boolean*                                                                                                    | :heavy_minus_sign:                                                                                           | N/A                                                                                                          | true                                                                                                         |
 | `origin`                                                                                                     | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          | manual                                                                                                       |

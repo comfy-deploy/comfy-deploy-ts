@@ -9,14 +9,14 @@ import { CreateRunStreamRunStreamPostRunUpdateWebhookRequestBodyWebhookPostBody 
 
 let value:
   CreateRunStreamRunStreamPostRunUpdateWebhookRequestBodyWebhookPostBody = {
-    status: "success",
+    status: "queued",
     liveStatus: "<value>",
-    progress: 635.54,
+    progress: 242.73,
     runId: "<id>",
     outputs: {
-      runId: "3e3dc291-bac7-4e04-bb62-1d7eb658eb0b",
-      createdAt: new Date("2024-02-18T15:49:41.873Z"),
-      updatedAt: new Date("2022-07-13T23:57:36.282Z"),
+      runId: "6ad7f407-4d34-4cb8-8b60-0810fd20f42b",
+      createdAt: new Date("2022-10-18T01:20:34.893Z"),
+      updatedAt: new Date("2024-12-04T16:53:25.686Z"),
     },
   };
 ```

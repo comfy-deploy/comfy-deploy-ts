@@ -9,14 +9,14 @@ import { CreateRunQueueRunQueuePostRunUpdateWebhookRequestBodyWebhookPostBody } 
 
 let value:
   CreateRunQueueRunQueuePostRunUpdateWebhookRequestBodyWebhookPostBody = {
-    status: "cancelled",
+    status: "failed",
     liveStatus: "<value>",
-    progress: 5207.61,
+    progress: 9998.09,
     runId: "<id>",
     outputs: {
-      runId: "4e5035d7-75ef-4f6f-8ca3-32e477cd26dd",
-      createdAt: new Date("2022-06-21T09:30:27.391Z"),
-      updatedAt: new Date("2022-11-30T09:38:32.582Z"),
+      runId: "38449ecb-8e7d-4d3c-b053-8b18f3a907b0",
+      createdAt: new Date("2023-07-25T00:13:17.699Z"),
+      updatedAt: new Date("2022-02-03T14:30:29.574Z"),
     },
   };
 ```

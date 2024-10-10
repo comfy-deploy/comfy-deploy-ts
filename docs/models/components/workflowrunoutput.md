@@ -6,9 +6,9 @@
 import { WorkflowRunOutput } from "comfydeploy/models/components";
 
 let value: WorkflowRunOutput = {
-  runId: "52d3831d-ffec-4516-9320-b0c211a368db",
-  createdAt: new Date("2022-05-25T02:31:24.789Z"),
-  updatedAt: new Date("2022-03-02T16:33:58.047Z"),
+  runId: "1dffec51-6320-4b0c-a211-a368db420447",
+  createdAt: new Date("2024-02-02T09:43:54.200Z"),
+  updatedAt: new Date("2022-11-07T17:40:47.066Z"),
 };
 ```
 

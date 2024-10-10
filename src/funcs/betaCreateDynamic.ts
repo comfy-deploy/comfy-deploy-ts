@@ -3,7 +3,7 @@
  */
 
 import { ComfyDeployCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -20,19 +20,18 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Run
+ * Create Dynamic Session
  */
-export async function runGetRunRunRunIdGet(
+export async function betaCreateDynamic(
   client: ComfyDeployCore,
-  request: operations.GetRunRunRunIdGetRequest,
+  request: components.CreateDynamicSessionBody,
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.WorkflowRunModel,
+    components.CreateSessionResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -45,32 +44,26 @@ export async function runGetRunRunRunIdGet(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetRunRunRunIdGetRequest$outboundSchema.parse(value),
+    (value) => components.CreateDynamicSessionBody$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return parsed;
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const pathParams = {
-    run_id: encodeSimple("run_id", payload.run_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/run/{run_id}")(pathParams);
+  const path = pathToFunc("/session/dynamic")();
 
   const headers = new Headers({
+    "Content-Type": "application/json",
     Accept: "application/json",
   });
 
   const secConfig = await extractSecurity(client._options.bearer);
   const securityInput = secConfig == null ? {} : { bearer: secConfig };
   const context = {
-    operationID: "get_run_run__run_id__get",
+    operationID: "create_dynamic_session_session_dynamic_post",
     oAuth2Scopes: [],
     securitySource: client._options.bearer,
   };
@@ -78,7 +71,7 @@ export async function runGetRunRunRunIdGet(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "POST",
     path: path,
     headers: headers,
     body: body,
@@ -106,7 +99,7 @@ export async function runGetRunRunRunIdGet(
   };
 
   const [result] = await M.match<
-    components.WorkflowRunModel,
+    components.CreateSessionResponse,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -116,7 +109,7 @@ export async function runGetRunRunRunIdGet(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.WorkflowRunModel$inboundSchema),
+    M.json(200, components.CreateSessionResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

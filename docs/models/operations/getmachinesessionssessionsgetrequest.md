@@ -1,11 +1,11 @@
-# GetMachineSessionsMachineMachineIdSessionsGetRequest
+# GetMachineSessionsSessionsGetRequest
 
 ## Example Usage
 
 ```typescript
-import { GetMachineSessionsMachineMachineIdSessionsGetRequest } from "comfydeploy/models/operations";
+import { GetMachineSessionsSessionsGetRequest } from "comfydeploy/models/operations";
 
-let value: GetMachineSessionsMachineMachineIdSessionsGetRequest = {
+let value: GetMachineSessionsSessionsGetRequest = {
   machineId: "<id>",
 };
 ```

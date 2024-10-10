@@ -7,7 +7,7 @@ import { LogDataContent } from "comfydeploy/models/components";
 
 let value: LogDataContent = {
   logs: "<value>",
-  timestamp: new Date("2023-03-16T18:43:47.673Z"),
+  timestamp: new Date("2022-12-25T01:32:23.978Z"),
 };
 ```
 
