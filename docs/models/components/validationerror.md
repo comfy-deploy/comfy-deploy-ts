@@ -7,7 +7,7 @@ import { ValidationError } from "comfydeploy/models/components";
 
 let value: ValidationError = {
   loc: [
-    "<value>",
+    990339,
   ],
   msg: "<value>",
   type: "<value>",

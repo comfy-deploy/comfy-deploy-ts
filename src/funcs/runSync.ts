@@ -36,7 +36,7 @@ export async function runSync(
   options?: RequestOptions,
 ): Promise<
   Result<
-    Array<components.ApiRoutesTypesWorkflowRunOutputModel2>,
+    Array<components.WorkflowRunOutputModel>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -68,12 +68,20 @@ export async function runSync(
 
   const secConfig = await extractSecurity(client._options.bearer);
   const securityInput = secConfig == null ? {} : { bearer: secConfig };
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "create_run_sync_run_sync_post",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.bearer,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
@@ -91,9 +99,8 @@ export async function runSync(
   const doResult = await client._do(req, {
     context,
     errorCodes: ["422", "4XX", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;
@@ -105,7 +112,7 @@ export async function runSync(
   };
 
   const [result] = await M.match<
-    Array<components.ApiRoutesTypesWorkflowRunOutputModel2>,
+    Array<components.WorkflowRunOutputModel>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -115,10 +122,7 @@ export async function runSync(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      z.array(components.ApiRoutesTypesWorkflowRunOutputModel2$inboundSchema),
-    ),
+    M.json(200, z.array(components.WorkflowRunOutputModel$inboundSchema)),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

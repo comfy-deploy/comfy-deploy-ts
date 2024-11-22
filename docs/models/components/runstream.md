@@ -17,7 +17,7 @@ const value: components.EventUpdateEvent = {
 const value: components.LogUpdateEvent = {
   data: {
     logs: "<value>",
-    timestamp: new Date("2022-01-18T21:30:17.764Z"),
+    timestamp: new Date("2024-01-07T13:32:43.889Z"),
   },
 };
 ```

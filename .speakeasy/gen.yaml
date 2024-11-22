@@ -14,8 +14,9 @@ generation:
     requestResponseComponentNamesFeb2024: true
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
-  version: 2.0.0-beta.30
+  version: 2.0.0-beta.60
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -23,6 +24,7 @@ typescript:
   additionalPackageJSON: {}
   author: comfydeploy
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: body-first

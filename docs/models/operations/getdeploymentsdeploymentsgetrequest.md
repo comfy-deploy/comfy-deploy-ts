@@ -5,13 +5,11 @@
 ```typescript
 import { GetDeploymentsDeploymentsGetRequest } from "comfydeploy/models/operations";
 
-let value: GetDeploymentsDeploymentsGetRequest = {
-  environment: "public-share",
-};
+let value: GetDeploymentsDeploymentsGetRequest = {};
 ```
 
 ## Fields
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `environment`                                                                        | [components.DeploymentEnvironment](../../models/components/deploymentenvironment.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `environment`                                                                        | [components.DeploymentEnvironment](../../models/components/deploymentenvironment.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |

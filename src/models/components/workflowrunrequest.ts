@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const WorkflowRunRequestExecutionMode = {
   Async: "async",
@@ -16,7 +19,12 @@ export type WorkflowRunRequestExecutionMode = ClosedEnum<
   typeof WorkflowRunRequestExecutionMode
 >;
 
-export type WorkflowRunRequestInputs = {};
+export type WorkflowRunRequestInputs =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 export type WorkflowApiJson = {};
 
@@ -24,7 +32,10 @@ export type Workflow = {};
 
 export type WorkflowRunRequest = {
   executionMode?: WorkflowRunRequestExecutionMode | null | undefined;
-  inputs?: WorkflowRunRequestInputs | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhookIntermediateStatus?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -34,6 +45,7 @@ export type WorkflowRunRequest = {
    */
   batchInputParams?: { [k: string]: Array<any> } | null | undefined;
   isNativeRun?: boolean | null | undefined;
+  gpuEventId?: string | null | undefined;
   workflowId: string;
   workflowApiJson: WorkflowApiJson;
   workflow?: Workflow | null | undefined;
@@ -66,17 +78,34 @@ export const WorkflowRunRequestInputs$inboundSchema: z.ZodType<
   WorkflowRunRequestInputs,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /** @internal */
-export type WorkflowRunRequestInputs$Outbound = {};
+export type WorkflowRunRequestInputs$Outbound =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 /** @internal */
 export const WorkflowRunRequestInputs$outboundSchema: z.ZodType<
   WorkflowRunRequestInputs$Outbound,
   z.ZodTypeDef,
   WorkflowRunRequestInputs
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -89,6 +118,24 @@ export namespace WorkflowRunRequestInputs$ {
   export const outboundSchema = WorkflowRunRequestInputs$outboundSchema;
   /** @deprecated use `WorkflowRunRequestInputs$Outbound` instead. */
   export type Outbound = WorkflowRunRequestInputs$Outbound;
+}
+
+export function workflowRunRequestInputsToJSON(
+  workflowRunRequestInputs: WorkflowRunRequestInputs,
+): string {
+  return JSON.stringify(
+    WorkflowRunRequestInputs$outboundSchema.parse(workflowRunRequestInputs),
+  );
+}
+
+export function workflowRunRequestInputsFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowRunRequestInputs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowRunRequestInputs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowRunRequestInputs' from JSON`,
+  );
 }
 
 /** @internal */
@@ -121,6 +168,22 @@ export namespace WorkflowApiJson$ {
   export type Outbound = WorkflowApiJson$Outbound;
 }
 
+export function workflowApiJsonToJSON(
+  workflowApiJson: WorkflowApiJson,
+): string {
+  return JSON.stringify(WorkflowApiJson$outboundSchema.parse(workflowApiJson));
+}
+
+export function workflowApiJsonFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowApiJson, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowApiJson$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowApiJson' from JSON`,
+  );
+}
+
 /** @internal */
 export const Workflow$inboundSchema: z.ZodType<
   Workflow,
@@ -151,6 +214,20 @@ export namespace Workflow$ {
   export type Outbound = Workflow$Outbound;
 }
 
+export function workflowToJSON(workflow: Workflow): string {
+  return JSON.stringify(Workflow$outboundSchema.parse(workflow));
+}
+
+export function workflowFromJSON(
+  jsonString: string,
+): SafeParseResult<Workflow, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Workflow$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Workflow' from JSON`,
+  );
+}
+
 /** @internal */
 export const WorkflowRunRequest$inboundSchema: z.ZodType<
   WorkflowRunRequest,
@@ -159,14 +236,24 @@ export const WorkflowRunRequest$inboundSchema: z.ZodType<
 > = z.object({
   execution_mode: z.nullable(WorkflowRunRequestExecutionMode$inboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => WorkflowRunRequestInputs$inboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhook_intermediate_status: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),
   batch_number: z.nullable(z.number().int()).optional(),
   batch_input_params: z.nullable(z.record(z.array(z.any()))).optional(),
   is_native_run: z.nullable(z.boolean()).optional(),
+  gpu_event_id: z.nullable(z.string()).optional(),
   workflow_id: z.string(),
   workflow_api_json: z.lazy(() => WorkflowApiJson$inboundSchema),
   workflow: z.nullable(z.lazy(() => Workflow$inboundSchema)).optional(),
@@ -178,6 +265,7 @@ export const WorkflowRunRequest$inboundSchema: z.ZodType<
     "batch_number": "batchNumber",
     "batch_input_params": "batchInputParams",
     "is_native_run": "isNativeRun",
+    "gpu_event_id": "gpuEventId",
     "workflow_id": "workflowId",
     "workflow_api_json": "workflowApiJson",
     "machine_id": "machineId",
@@ -187,13 +275,17 @@ export const WorkflowRunRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type WorkflowRunRequest$Outbound = {
   execution_mode?: string | null | undefined;
-  inputs?: WorkflowRunRequestInputs$Outbound | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhook_intermediate_status?: boolean | null | undefined;
   origin?: string | null | undefined;
   batch_number?: number | null | undefined;
   batch_input_params?: { [k: string]: Array<any> } | null | undefined;
   is_native_run?: boolean | null | undefined;
+  gpu_event_id?: string | null | undefined;
   workflow_id: string;
   workflow_api_json: WorkflowApiJson$Outbound;
   workflow?: Workflow$Outbound | null | undefined;
@@ -208,14 +300,24 @@ export const WorkflowRunRequest$outboundSchema: z.ZodType<
 > = z.object({
   executionMode: z.nullable(WorkflowRunRequestExecutionMode$outboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => WorkflowRunRequestInputs$outboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhookIntermediateStatus: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),
   batchNumber: z.nullable(z.number().int()).optional(),
   batchInputParams: z.nullable(z.record(z.array(z.any()))).optional(),
   isNativeRun: z.nullable(z.boolean()).optional(),
+  gpuEventId: z.nullable(z.string()).optional(),
   workflowId: z.string(),
   workflowApiJson: z.lazy(() => WorkflowApiJson$outboundSchema),
   workflow: z.nullable(z.lazy(() => Workflow$outboundSchema)).optional(),
@@ -227,6 +329,7 @@ export const WorkflowRunRequest$outboundSchema: z.ZodType<
     batchNumber: "batch_number",
     batchInputParams: "batch_input_params",
     isNativeRun: "is_native_run",
+    gpuEventId: "gpu_event_id",
     workflowId: "workflow_id",
     workflowApiJson: "workflow_api_json",
     machineId: "machine_id",
@@ -244,4 +347,22 @@ export namespace WorkflowRunRequest$ {
   export const outboundSchema = WorkflowRunRequest$outboundSchema;
   /** @deprecated use `WorkflowRunRequest$Outbound` instead. */
   export type Outbound = WorkflowRunRequest$Outbound;
+}
+
+export function workflowRunRequestToJSON(
+  workflowRunRequest: WorkflowRunRequest,
+): string {
+  return JSON.stringify(
+    WorkflowRunRequest$outboundSchema.parse(workflowRunRequest),
+  );
+}
+
+export function workflowRunRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowRunRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowRunRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowRunRequest' from JSON`,
+  );
 }

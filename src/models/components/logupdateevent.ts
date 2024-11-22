@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LogDataContent,
   LogDataContent$inboundSchema,
@@ -88,4 +91,18 @@ export namespace LogUpdateEvent$ {
   export const outboundSchema = LogUpdateEvent$outboundSchema;
   /** @deprecated use `LogUpdateEvent$Outbound` instead. */
   export type Outbound = LogUpdateEvent$Outbound;
+}
+
+export function logUpdateEventToJSON(logUpdateEvent: LogUpdateEvent): string {
+  return JSON.stringify(LogUpdateEvent$outboundSchema.parse(logUpdateEvent));
+}
+
+export function logUpdateEventFromJSON(
+  jsonString: string,
+): SafeParseResult<LogUpdateEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LogUpdateEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LogUpdateEvent' from JSON`,
+  );
 }

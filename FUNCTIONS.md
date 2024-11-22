@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { ComfyDeployCore } from "comfydeploy/core.js";
-import { runGetRunRunRunIdGet } from "comfydeploy/funcs/runGetRunRunRunIdGet.js";
+import { runGet } from "comfydeploy/funcs/runGet.js";
 import { SDKValidationError } from "comfydeploy/models/errors/sdkvalidationerror.js";
 
 // Use `ComfyDeployCore` for best tree-shaking performance.
@@ -30,7 +30,7 @@ const comfyDeploy = new ComfyDeployCore({
 });
 
 async function run() {
-  const res = await runGetRunRunRunIdGet(comfyDeploy, {
+  const res = await runGet(comfyDeploy, {
     runId: "<id>",
   });
 

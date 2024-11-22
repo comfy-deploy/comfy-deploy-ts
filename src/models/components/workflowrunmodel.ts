@@ -4,23 +4,22 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  ApiRoutesTypesWorkflowRunOutputModel1,
-  ApiRoutesTypesWorkflowRunOutputModel1$inboundSchema,
-  ApiRoutesTypesWorkflowRunOutputModel1$Outbound,
-  ApiRoutesTypesWorkflowRunOutputModel1$outboundSchema,
-} from "./apiroutestypesworkflowrunoutputmodel1.js";
-
-export type WorkflowInputs = {};
-
-export type WorkflowApi = {};
+  WorkflowRunOutputModel,
+  WorkflowRunOutputModel$inboundSchema,
+  WorkflowRunOutputModel$Outbound,
+  WorkflowRunOutputModel$outboundSchema,
+} from "./workflowrunoutputmodel.js";
 
 export type WorkflowRunModel = {
   id: string;
   workflowVersionId: string | null;
-  workflowInputs: WorkflowInputs | null;
+  workflowInputs?: any | null | undefined;
   workflowId: string;
-  workflowApi: WorkflowApi | null;
+  workflowApi?: any | null | undefined;
   machineId: string | null;
   origin: string;
   status: string;
@@ -42,73 +41,13 @@ export type WorkflowRunModel = {
   webhook: string | null;
   webhookStatus: string | null;
   webhookIntermediateStatus?: boolean | undefined;
-  outputs?: Array<ApiRoutesTypesWorkflowRunOutputModel1> | undefined;
+  outputs?: Array<WorkflowRunOutputModel> | undefined;
   number: number;
   duration: number | null;
   coldStartDuration: number | null;
   coldStartDurationTotal: number | null;
   runDuration: number | null;
 };
-
-/** @internal */
-export const WorkflowInputs$inboundSchema: z.ZodType<
-  WorkflowInputs,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type WorkflowInputs$Outbound = {};
-
-/** @internal */
-export const WorkflowInputs$outboundSchema: z.ZodType<
-  WorkflowInputs$Outbound,
-  z.ZodTypeDef,
-  WorkflowInputs
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkflowInputs$ {
-  /** @deprecated use `WorkflowInputs$inboundSchema` instead. */
-  export const inboundSchema = WorkflowInputs$inboundSchema;
-  /** @deprecated use `WorkflowInputs$outboundSchema` instead. */
-  export const outboundSchema = WorkflowInputs$outboundSchema;
-  /** @deprecated use `WorkflowInputs$Outbound` instead. */
-  export type Outbound = WorkflowInputs$Outbound;
-}
-
-/** @internal */
-export const WorkflowApi$inboundSchema: z.ZodType<
-  WorkflowApi,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type WorkflowApi$Outbound = {};
-
-/** @internal */
-export const WorkflowApi$outboundSchema: z.ZodType<
-  WorkflowApi$Outbound,
-  z.ZodTypeDef,
-  WorkflowApi
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkflowApi$ {
-  /** @deprecated use `WorkflowApi$inboundSchema` instead. */
-  export const inboundSchema = WorkflowApi$inboundSchema;
-  /** @deprecated use `WorkflowApi$outboundSchema` instead. */
-  export const outboundSchema = WorkflowApi$outboundSchema;
-  /** @deprecated use `WorkflowApi$Outbound` instead. */
-  export type Outbound = WorkflowApi$Outbound;
-}
 
 /** @internal */
 export const WorkflowRunModel$inboundSchema: z.ZodType<
@@ -118,9 +57,9 @@ export const WorkflowRunModel$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   workflow_version_id: z.nullable(z.string()),
-  workflow_inputs: z.nullable(z.lazy(() => WorkflowInputs$inboundSchema)),
+  workflow_inputs: z.nullable(z.any()).optional(),
   workflow_id: z.string(),
-  workflow_api: z.nullable(z.lazy(() => WorkflowApi$inboundSchema)),
+  workflow_api: z.nullable(z.any()).optional(),
   machine_id: z.nullable(z.string()),
   origin: z.string(),
   status: z.string(),
@@ -148,8 +87,7 @@ export const WorkflowRunModel$inboundSchema: z.ZodType<
   webhook: z.nullable(z.string()),
   webhook_status: z.nullable(z.string()),
   webhook_intermediate_status: z.boolean().default(false),
-  outputs: z.array(ApiRoutesTypesWorkflowRunOutputModel1$inboundSchema)
-    .optional(),
+  outputs: z.array(WorkflowRunOutputModel$inboundSchema).optional(),
   number: z.number().int(),
   duration: z.nullable(z.number()),
   cold_start_duration: z.nullable(z.number()),
@@ -187,9 +125,9 @@ export const WorkflowRunModel$inboundSchema: z.ZodType<
 export type WorkflowRunModel$Outbound = {
   id: string;
   workflow_version_id: string | null;
-  workflow_inputs: WorkflowInputs$Outbound | null;
+  workflow_inputs?: any | null | undefined;
   workflow_id: string;
-  workflow_api: WorkflowApi$Outbound | null;
+  workflow_api?: any | null | undefined;
   machine_id: string | null;
   origin: string;
   status: string;
@@ -211,7 +149,7 @@ export type WorkflowRunModel$Outbound = {
   webhook: string | null;
   webhook_status: string | null;
   webhook_intermediate_status: boolean;
-  outputs?: Array<ApiRoutesTypesWorkflowRunOutputModel1$Outbound> | undefined;
+  outputs?: Array<WorkflowRunOutputModel$Outbound> | undefined;
   number: number;
   duration: number | null;
   cold_start_duration: number | null;
@@ -227,9 +165,9 @@ export const WorkflowRunModel$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   workflowVersionId: z.nullable(z.string()),
-  workflowInputs: z.nullable(z.lazy(() => WorkflowInputs$outboundSchema)),
+  workflowInputs: z.nullable(z.any()).optional(),
   workflowId: z.string(),
-  workflowApi: z.nullable(z.lazy(() => WorkflowApi$outboundSchema)),
+  workflowApi: z.nullable(z.any()).optional(),
   machineId: z.nullable(z.string()),
   origin: z.string(),
   status: z.string(),
@@ -251,8 +189,7 @@ export const WorkflowRunModel$outboundSchema: z.ZodType<
   webhook: z.nullable(z.string()),
   webhookStatus: z.nullable(z.string()),
   webhookIntermediateStatus: z.boolean().default(false),
-  outputs: z.array(ApiRoutesTypesWorkflowRunOutputModel1$outboundSchema)
-    .optional(),
+  outputs: z.array(WorkflowRunOutputModel$outboundSchema).optional(),
   number: z.number().int(),
   duration: z.nullable(z.number()),
   coldStartDuration: z.nullable(z.number()),
@@ -297,4 +234,22 @@ export namespace WorkflowRunModel$ {
   export const outboundSchema = WorkflowRunModel$outboundSchema;
   /** @deprecated use `WorkflowRunModel$Outbound` instead. */
   export type Outbound = WorkflowRunModel$Outbound;
+}
+
+export function workflowRunModelToJSON(
+  workflowRunModel: WorkflowRunModel,
+): string {
+  return JSON.stringify(
+    WorkflowRunModel$outboundSchema.parse(workflowRunModel),
+  );
+}
+
+export function workflowRunModelFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowRunModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowRunModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowRunModel' from JSON`,
+  );
 }

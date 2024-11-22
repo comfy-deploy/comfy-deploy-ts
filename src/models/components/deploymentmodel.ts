@@ -4,11 +4,32 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DeploymentEnvironment,
   DeploymentEnvironment$inboundSchema,
   DeploymentEnvironment$outboundSchema,
 } from "./deploymentenvironment.js";
+import {
+  InputModel,
+  InputModel$inboundSchema,
+  InputModel$Outbound,
+  InputModel$outboundSchema,
+} from "./inputmodel.js";
+import {
+  OutputModel,
+  OutputModel$inboundSchema,
+  OutputModel$Outbound,
+  OutputModel$outboundSchema,
+} from "./outputmodel.js";
+import {
+  WorkflowWithName,
+  WorkflowWithName$inboundSchema,
+  WorkflowWithName$Outbound,
+  WorkflowWithName$outboundSchema,
+} from "./workflowwithname.js";
 
 export type ShareOptions = {};
 
@@ -28,6 +49,9 @@ export type DeploymentModel = {
   environment: DeploymentEnvironment;
   createdAt: Date;
   updatedAt: Date;
+  workflow: WorkflowWithName;
+  inputTypes?: Array<InputModel> | null | undefined;
+  outputTypes?: Array<OutputModel> | null | undefined;
 };
 
 /** @internal */
@@ -60,6 +84,20 @@ export namespace ShareOptions$ {
   export type Outbound = ShareOptions$Outbound;
 }
 
+export function shareOptionsToJSON(shareOptions: ShareOptions): string {
+  return JSON.stringify(ShareOptions$outboundSchema.parse(shareOptions));
+}
+
+export function shareOptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<ShareOptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ShareOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ShareOptions' from JSON`,
+  );
+}
+
 /** @internal */
 export const ShowcaseMedia$inboundSchema: z.ZodType<
   ShowcaseMedia,
@@ -90,6 +128,20 @@ export namespace ShowcaseMedia$ {
   export type Outbound = ShowcaseMedia$Outbound;
 }
 
+export function showcaseMediaToJSON(showcaseMedia: ShowcaseMedia): string {
+  return JSON.stringify(ShowcaseMedia$outboundSchema.parse(showcaseMedia));
+}
+
+export function showcaseMediaFromJSON(
+  jsonString: string,
+): SafeParseResult<ShowcaseMedia, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ShowcaseMedia$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ShowcaseMedia' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeploymentModel$inboundSchema: z.ZodType<
   DeploymentModel,
@@ -109,6 +161,9 @@ export const DeploymentModel$inboundSchema: z.ZodType<
   environment: DeploymentEnvironment$inboundSchema,
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  workflow: WorkflowWithName$inboundSchema,
+  input_types: z.nullable(z.array(InputModel$inboundSchema)).optional(),
+  output_types: z.nullable(z.array(OutputModel$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "user_id": "userId",
@@ -121,6 +176,8 @@ export const DeploymentModel$inboundSchema: z.ZodType<
     "showcase_media": "showcaseMedia",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
+    "input_types": "inputTypes",
+    "output_types": "outputTypes",
   });
 });
 
@@ -139,6 +196,9 @@ export type DeploymentModel$Outbound = {
   environment: string;
   created_at: string;
   updated_at: string;
+  workflow: WorkflowWithName$Outbound;
+  input_types?: Array<InputModel$Outbound> | null | undefined;
+  output_types?: Array<OutputModel$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -160,6 +220,9 @@ export const DeploymentModel$outboundSchema: z.ZodType<
   environment: DeploymentEnvironment$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()),
   updatedAt: z.date().transform(v => v.toISOString()),
+  workflow: WorkflowWithName$outboundSchema,
+  inputTypes: z.nullable(z.array(InputModel$outboundSchema)).optional(),
+  outputTypes: z.nullable(z.array(OutputModel$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     userId: "user_id",
@@ -172,6 +235,8 @@ export const DeploymentModel$outboundSchema: z.ZodType<
     showcaseMedia: "showcase_media",
     createdAt: "created_at",
     updatedAt: "updated_at",
+    inputTypes: "input_types",
+    outputTypes: "output_types",
   });
 });
 
@@ -186,4 +251,20 @@ export namespace DeploymentModel$ {
   export const outboundSchema = DeploymentModel$outboundSchema;
   /** @deprecated use `DeploymentModel$Outbound` instead. */
   export type Outbound = DeploymentModel$Outbound;
+}
+
+export function deploymentModelToJSON(
+  deploymentModel: DeploymentModel,
+): string {
+  return JSON.stringify(DeploymentModel$outboundSchema.parse(deploymentModel));
+}
+
+export function deploymentModelFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentModel' from JSON`,
+  );
 }

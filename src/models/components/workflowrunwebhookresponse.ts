@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type WorkflowRunWebhookResponse = {
   status: string;
@@ -42,4 +45,22 @@ export namespace WorkflowRunWebhookResponse$ {
   export const outboundSchema = WorkflowRunWebhookResponse$outboundSchema;
   /** @deprecated use `WorkflowRunWebhookResponse$Outbound` instead. */
   export type Outbound = WorkflowRunWebhookResponse$Outbound;
+}
+
+export function workflowRunWebhookResponseToJSON(
+  workflowRunWebhookResponse: WorkflowRunWebhookResponse,
+): string {
+  return JSON.stringify(
+    WorkflowRunWebhookResponse$outboundSchema.parse(workflowRunWebhookResponse),
+  );
+}
+
+export function workflowRunWebhookResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkflowRunWebhookResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkflowRunWebhookResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkflowRunWebhookResponse' from JSON`,
+  );
 }

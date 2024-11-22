@@ -4,12 +4,13 @@
 
 import * as z from "zod";
 import { ComfyDeployCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
+import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -28,11 +29,11 @@ import { Result } from "../types/fp.js";
  */
 export async function sessionList(
   client: ComfyDeployCore,
-  request: operations.GetMachineSessionsMachineMachineIdSessionsGetRequest,
+  request: operations.GetMachineSessionsSessionsGetRequest,
   options?: RequestOptions,
 ): Promise<
   Result<
-    any,
+    Array<components.GPUEventModel>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -46,9 +47,9 @@ export async function sessionList(
   const parsed = safeParse(
     request,
     (value) =>
-      operations
-        .GetMachineSessionsMachineMachineIdSessionsGetRequest$outboundSchema
-        .parse(value),
+      operations.GetMachineSessionsSessionsGetRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -57,14 +58,11 @@ export async function sessionList(
   const payload = parsed.value;
   const body = null;
 
-  const pathParams = {
-    machine_id: encodeSimple("machine_id", payload.machine_id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
+  const path = pathToFunc("/sessions")();
 
-  const path = pathToFunc("/machine/{machine_id}/sessions")(pathParams);
+  const query = encodeFormQuery({
+    "machine_id": payload.machine_id,
+  });
 
   const headers = new Headers({
     Accept: "application/json",
@@ -72,18 +70,27 @@ export async function sessionList(
 
   const secConfig = await extractSecurity(client._options.bearer);
   const securityInput = secConfig == null ? {} : { bearer: secConfig };
-  const context = {
-    operationID: "get_machine_sessions_machine__machine_id__sessions_get",
-    oAuth2Scopes: [],
-    securitySource: client._options.bearer,
-  };
   const requestSecurity = resolveGlobalSecurity(securityInput);
+
+  const context = {
+    operationID: "get_machine_sessions_sessions_get",
+    oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
+    securitySource: client._options.bearer,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  };
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -95,9 +102,8 @@ export async function sessionList(
   const doResult = await client._do(req, {
     context,
     errorCodes: ["422", "4XX", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;
@@ -109,7 +115,7 @@ export async function sessionList(
   };
 
   const [result] = await M.match<
-    any,
+    Array<components.GPUEventModel>,
     | errors.HTTPValidationError
     | SDKError
     | SDKValidationError
@@ -119,7 +125,7 @@ export async function sessionList(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, z.any()),
+    M.json(200, z.array(components.GPUEventModel$inboundSchema)),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });

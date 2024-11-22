@@ -4,12 +4,21 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  MachineGPU,
+  MachineGPU$inboundSchema,
+  MachineGPU$outboundSchema,
+} from "./machinegpu.js";
 
 export type CreateSessionBody = {
+  machineId: string;
   /**
    * The GPU to use
    */
-  gpu?: string | null | undefined;
+  gpu?: MachineGPU | null | undefined;
   /**
    * The timeout in minutes
    */
@@ -17,7 +26,7 @@ export type CreateSessionBody = {
   /**
    * Whether to create the session asynchronously
    */
-  asyncCreation?: boolean | undefined;
+  waitForServer?: boolean | undefined;
 };
 
 /** @internal */
@@ -26,20 +35,23 @@ export const CreateSessionBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  gpu: z.nullable(z.string()).optional(),
+  machine_id: z.string(),
+  gpu: z.nullable(MachineGPU$inboundSchema).optional(),
   timeout: z.nullable(z.number().int()).optional(),
-  async_creation: z.boolean().default(false),
+  wait_for_server: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
-    "async_creation": "asyncCreation",
+    "machine_id": "machineId",
+    "wait_for_server": "waitForServer",
   });
 });
 
 /** @internal */
 export type CreateSessionBody$Outbound = {
+  machine_id: string;
   gpu?: string | null | undefined;
   timeout?: number | null | undefined;
-  async_creation: boolean;
+  wait_for_server: boolean;
 };
 
 /** @internal */
@@ -48,12 +60,14 @@ export const CreateSessionBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateSessionBody
 > = z.object({
-  gpu: z.nullable(z.string()).optional(),
+  machineId: z.string(),
+  gpu: z.nullable(MachineGPU$outboundSchema).optional(),
   timeout: z.nullable(z.number().int()).optional(),
-  asyncCreation: z.boolean().default(false),
+  waitForServer: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
-    asyncCreation: "async_creation",
+    machineId: "machine_id",
+    waitForServer: "wait_for_server",
   });
 });
 
@@ -68,4 +82,22 @@ export namespace CreateSessionBody$ {
   export const outboundSchema = CreateSessionBody$outboundSchema;
   /** @deprecated use `CreateSessionBody$Outbound` instead. */
   export type Outbound = CreateSessionBody$Outbound;
+}
+
+export function createSessionBodyToJSON(
+  createSessionBody: CreateSessionBody,
+): string {
+  return JSON.stringify(
+    CreateSessionBody$outboundSchema.parse(createSessionBody),
+  );
+}
+
+export function createSessionBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateSessionBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateSessionBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateSessionBody' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetSessionSessionSessionIdGetRequest = {
   sessionId: string;
@@ -53,4 +56,25 @@ export namespace GetSessionSessionSessionIdGetRequest$ {
     GetSessionSessionSessionIdGetRequest$outboundSchema;
   /** @deprecated use `GetSessionSessionSessionIdGetRequest$Outbound` instead. */
   export type Outbound = GetSessionSessionSessionIdGetRequest$Outbound;
+}
+
+export function getSessionSessionSessionIdGetRequestToJSON(
+  getSessionSessionSessionIdGetRequest: GetSessionSessionSessionIdGetRequest,
+): string {
+  return JSON.stringify(
+    GetSessionSessionSessionIdGetRequest$outboundSchema.parse(
+      getSessionSessionSessionIdGetRequest,
+    ),
+  );
+}
+
+export function getSessionSessionSessionIdGetRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetSessionSessionSessionIdGetRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetSessionSessionSessionIdGetRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSessionSessionSessionIdGetRequest' from JSON`,
+  );
 }

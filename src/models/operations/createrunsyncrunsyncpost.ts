@@ -3,10 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateRunSyncRunSyncPostData =
   | components.DeploymentRunRequest
+  | components.ModelRunRequest
   | components.WorkflowRunVersionRequest
   | components.WorkflowRunRequest;
 
@@ -17,6 +21,7 @@ export const CreateRunSyncRunSyncPostData$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   components.DeploymentRunRequest$inboundSchema,
+  components.ModelRunRequest$inboundSchema,
   components.WorkflowRunVersionRequest$inboundSchema,
   components.WorkflowRunRequest$inboundSchema,
 ]);
@@ -24,6 +29,7 @@ export const CreateRunSyncRunSyncPostData$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateRunSyncRunSyncPostData$Outbound =
   | components.DeploymentRunRequest$Outbound
+  | components.ModelRunRequest$Outbound
   | components.WorkflowRunVersionRequest$Outbound
   | components.WorkflowRunRequest$Outbound;
 
@@ -34,6 +40,7 @@ export const CreateRunSyncRunSyncPostData$outboundSchema: z.ZodType<
   CreateRunSyncRunSyncPostData
 > = z.union([
   components.DeploymentRunRequest$outboundSchema,
+  components.ModelRunRequest$outboundSchema,
   components.WorkflowRunVersionRequest$outboundSchema,
   components.WorkflowRunRequest$outboundSchema,
 ]);
@@ -49,4 +56,24 @@ export namespace CreateRunSyncRunSyncPostData$ {
   export const outboundSchema = CreateRunSyncRunSyncPostData$outboundSchema;
   /** @deprecated use `CreateRunSyncRunSyncPostData$Outbound` instead. */
   export type Outbound = CreateRunSyncRunSyncPostData$Outbound;
+}
+
+export function createRunSyncRunSyncPostDataToJSON(
+  createRunSyncRunSyncPostData: CreateRunSyncRunSyncPostData,
+): string {
+  return JSON.stringify(
+    CreateRunSyncRunSyncPostData$outboundSchema.parse(
+      createRunSyncRunSyncPostData,
+    ),
+  );
+}
+
+export function createRunSyncRunSyncPostDataFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRunSyncRunSyncPostData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRunSyncRunSyncPostData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRunSyncRunSyncPostData' from JSON`,
+  );
 }

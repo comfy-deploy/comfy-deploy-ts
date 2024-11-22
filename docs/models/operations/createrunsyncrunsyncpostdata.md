@@ -8,7 +8,10 @@
 ```typescript
 const value: components.WorkflowRunVersionRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "prompt": "A beautiful landscape",
+    "seed": 42,
+  },
   webhook: "https://example.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -26,7 +29,8 @@ const value: components.WorkflowRunVersionRequest = {
     ],
   },
   isNativeRun: true,
-  workflowVersionId: "b521368c-f119-4bde-8f66-2aad17932d07",
+  gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+  workflowVersionId: "35d775ef-f6fc-4a33-92e4-77cd26dd1241",
 };
 ```
 
@@ -35,7 +39,11 @@ const value: components.WorkflowRunVersionRequest = {
 ```typescript
 const value: components.WorkflowRunRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "num_inference_steps": 30,
+    "prompt": "A futuristic cityscape",
+    "seed": 123456,
+  },
   webhook: "https://myapp.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -53,6 +61,7 @@ const value: components.WorkflowRunRequest = {
     ],
   },
   isNativeRun: true,
+  gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
   workflowId: "12345678-1234-5678-1234-567812345678",
   workflowApiJson: {},
 };
@@ -63,7 +72,10 @@ const value: components.WorkflowRunRequest = {
 ```typescript
 const value: components.DeploymentRunRequest = {
   executionMode: "async",
-  inputs: {},
+  inputs: {
+    "prompt": "A beautiful landscape",
+    "seed": 42,
+  },
   webhook: "https://example.com/webhook",
   webhookIntermediateStatus: true,
   origin: "manual",
@@ -81,7 +93,39 @@ const value: components.DeploymentRunRequest = {
     ],
   },
   isNativeRun: true,
-  deploymentId: "7f6d1466-a5ba-4669-b1da-b816650b19ba",
+  gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+  deploymentId: "19391fe6-3470-4a66-acbf-5ec594d1326b",
+};
+```
+
+### `components.ModelRunRequest`
+
+```typescript
+const value: components.ModelRunRequest = {
+  executionMode: "async",
+  inputs: {
+    "prompt": "A beautiful landscape",
+    "seed": 42,
+  },
+  webhook: "https://example.com/webhook",
+  webhookIntermediateStatus: true,
+  origin: "manual",
+  batchNumber: 5,
+  batchInputParams: {
+    "input_number": [
+      1,
+      2,
+      3,
+    ],
+    "input_text": [
+      "apple",
+      "banana",
+      "cherry",
+    ],
+  },
+  isNativeRun: true,
+  gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+  modelId: "<id>",
 };
 ```
 

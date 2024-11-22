@@ -3,7 +3,10 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EventUpdate,
   EventUpdate$inboundSchema,
@@ -89,4 +92,22 @@ export namespace EventUpdateEvent$ {
   export const outboundSchema = EventUpdateEvent$outboundSchema;
   /** @deprecated use `EventUpdateEvent$Outbound` instead. */
   export type Outbound = EventUpdateEvent$Outbound;
+}
+
+export function eventUpdateEventToJSON(
+  eventUpdateEvent: EventUpdateEvent,
+): string {
+  return JSON.stringify(
+    EventUpdateEvent$outboundSchema.parse(eventUpdateEvent),
+  );
+}
+
+export function eventUpdateEventFromJSON(
+  jsonString: string,
+): SafeParseResult<EventUpdateEvent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EventUpdateEvent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EventUpdateEvent' from JSON`,
+  );
 }

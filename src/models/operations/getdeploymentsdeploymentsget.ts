@@ -3,10 +3,13 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDeploymentsDeploymentsGetRequest = {
-  environment: components.DeploymentEnvironment;
+  environment?: components.DeploymentEnvironment | null | undefined;
 };
 
 /** @internal */
@@ -15,12 +18,13 @@ export const GetDeploymentsDeploymentsGetRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  environment: components.DeploymentEnvironment$inboundSchema,
+  environment: z.nullable(components.DeploymentEnvironment$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
 export type GetDeploymentsDeploymentsGetRequest$Outbound = {
-  environment: string;
+  environment?: string | null | undefined;
 };
 
 /** @internal */
@@ -29,7 +33,8 @@ export const GetDeploymentsDeploymentsGetRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetDeploymentsDeploymentsGetRequest
 > = z.object({
-  environment: components.DeploymentEnvironment$outboundSchema,
+  environment: z.nullable(components.DeploymentEnvironment$outboundSchema)
+    .optional(),
 });
 
 /**
@@ -45,4 +50,25 @@ export namespace GetDeploymentsDeploymentsGetRequest$ {
     GetDeploymentsDeploymentsGetRequest$outboundSchema;
   /** @deprecated use `GetDeploymentsDeploymentsGetRequest$Outbound` instead. */
   export type Outbound = GetDeploymentsDeploymentsGetRequest$Outbound;
+}
+
+export function getDeploymentsDeploymentsGetRequestToJSON(
+  getDeploymentsDeploymentsGetRequest: GetDeploymentsDeploymentsGetRequest,
+): string {
+  return JSON.stringify(
+    GetDeploymentsDeploymentsGetRequest$outboundSchema.parse(
+      getDeploymentsDeploymentsGetRequest,
+    ),
+  );
+}
+
+export function getDeploymentsDeploymentsGetRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsDeploymentsGetRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentsDeploymentsGetRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsDeploymentsGetRequest' from JSON`,
+  );
 }

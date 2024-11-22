@@ -3,10 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateRunStreamRunStreamPostData =
   | components.DeploymentRunRequest
+  | components.ModelRunRequest
   | components.WorkflowRunVersionRequest
   | components.WorkflowRunRequest;
 
@@ -17,6 +21,7 @@ export const CreateRunStreamRunStreamPostData$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   components.DeploymentRunRequest$inboundSchema,
+  components.ModelRunRequest$inboundSchema,
   components.WorkflowRunVersionRequest$inboundSchema,
   components.WorkflowRunRequest$inboundSchema,
 ]);
@@ -24,6 +29,7 @@ export const CreateRunStreamRunStreamPostData$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateRunStreamRunStreamPostData$Outbound =
   | components.DeploymentRunRequest$Outbound
+  | components.ModelRunRequest$Outbound
   | components.WorkflowRunVersionRequest$Outbound
   | components.WorkflowRunRequest$Outbound;
 
@@ -34,6 +40,7 @@ export const CreateRunStreamRunStreamPostData$outboundSchema: z.ZodType<
   CreateRunStreamRunStreamPostData
 > = z.union([
   components.DeploymentRunRequest$outboundSchema,
+  components.ModelRunRequest$outboundSchema,
   components.WorkflowRunVersionRequest$outboundSchema,
   components.WorkflowRunRequest$outboundSchema,
 ]);
@@ -49,4 +56,24 @@ export namespace CreateRunStreamRunStreamPostData$ {
   export const outboundSchema = CreateRunStreamRunStreamPostData$outboundSchema;
   /** @deprecated use `CreateRunStreamRunStreamPostData$Outbound` instead. */
   export type Outbound = CreateRunStreamRunStreamPostData$Outbound;
+}
+
+export function createRunStreamRunStreamPostDataToJSON(
+  createRunStreamRunStreamPostData: CreateRunStreamRunStreamPostData,
+): string {
+  return JSON.stringify(
+    CreateRunStreamRunStreamPostData$outboundSchema.parse(
+      createRunStreamRunStreamPostData,
+    ),
+  );
+}
+
+export function createRunStreamRunStreamPostDataFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRunStreamRunStreamPostData, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRunStreamRunStreamPostData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRunStreamRunStreamPostData' from JSON`,
+  );
 }

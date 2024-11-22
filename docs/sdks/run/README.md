@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [getRunRunRunIdGet](#getrunrunrunidget) - Get Run
+* [get](#get) - Get Run
 * [queue](#queue) - Queue a workflow
 * [sync](#sync) - Run a workflow in sync
 * [stream](#stream) - Run a workflow in stream
 
-## getRunRunRunIdGet
+## get
 
 Get Run
 
@@ -24,7 +24,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   });
 
@@ -41,7 +41,7 @@ The standalone function version of this method:
 
 ```typescript
 import { ComfyDeployCore } from "comfydeploy/core.js";
-import { runGetRunRunRunIdGet } from "comfydeploy/funcs/runGetRunRunRunIdGet.js";
+import { runGet } from "comfydeploy/funcs/runGet.js";
 
 // Use `ComfyDeployCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -50,7 +50,7 @@ const comfyDeploy = new ComfyDeployCore({
 });
 
 async function run() {
-  const res = await runGetRunRunRunIdGet(comfyDeploy, {
+  const res = await runGet(comfyDeploy, {
     runId: "<id>",
   });
 
@@ -103,7 +103,10 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.queue({
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -121,6 +124,7 @@ async function run() {
       ],
     },
     isNativeRun: true,
+    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     workflowVersionId: "3ec31b24-d0d3-4298-9ffa-c74003017b70",
   });
 
@@ -148,7 +152,10 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runQueue(comfyDeploy, {
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -166,6 +173,7 @@ async function run() {
       ],
     },
     isNativeRun: true,
+    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     workflowVersionId: "41c76928-a496-4990-bd93-9d3bc0f64bb4",
   });
 
@@ -218,7 +226,10 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.sync({
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -236,7 +247,8 @@ async function run() {
       ],
     },
     isNativeRun: true,
-    deploymentId: "0897be30-8085-4c96-83b5-09c0142ddd3a",
+    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+    modelId: "<id>",
   });
 
   // Handle the result
@@ -263,8 +275,12 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runSync(comfyDeploy, {
     executionMode: "async",
-    inputs: {},
-    webhook: "https://example.com/webhook",
+    inputs: {
+      "num_inference_steps": 30,
+      "prompt": "A futuristic cityscape",
+      "seed": 123456,
+    },
+    webhook: "https://myapp.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
     batchNumber: 5,
@@ -281,7 +297,9 @@ async function run() {
       ],
     },
     isNativeRun: true,
-    workflowVersionId: "537c27c7-7e5f-43db-92d5-1ced44fce80d",
+    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+    workflowId: "12345678-1234-5678-1234-567812345678",
+    workflowApiJson: {},
   });
 
   if (!res.ok) {
@@ -308,7 +326,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ApiRoutesTypesWorkflowRunOutputModel2[]](../../models/.md)\>**
+**Promise\<[components.WorkflowRunOutputModel[]](../../models/.md)\>**
 
 ### Errors
 
@@ -333,7 +351,10 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.stream({
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -351,7 +372,8 @@ async function run() {
       ],
     },
     isNativeRun: true,
-    deploymentId: "41f69f97-08c7-43e9-a00c-844065577d45",
+    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+    modelId: "<id>",
   });
 
   for await (const event of result) {
@@ -380,8 +402,11 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runStream(comfyDeploy, {
     executionMode: "async",
-    inputs: {},
-    webhook: "https://myapp.com/webhook",
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
+    webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
     batchNumber: 5,
@@ -398,8 +423,8 @@ async function run() {
       ],
     },
     isNativeRun: true,
-    workflowId: "12345678-1234-5678-1234-567812345678",
-    workflowApiJson: {},
+    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+    workflowVersionId: "f69f9708-c73e-4900-9c84-4065577d4588",
   });
 
   if (!res.ok) {

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteSessionSessionSessionIdDeleteRequest = {
   sessionId: string;
@@ -52,4 +55,31 @@ export namespace DeleteSessionSessionSessionIdDeleteRequest$ {
     DeleteSessionSessionSessionIdDeleteRequest$outboundSchema;
   /** @deprecated use `DeleteSessionSessionSessionIdDeleteRequest$Outbound` instead. */
   export type Outbound = DeleteSessionSessionSessionIdDeleteRequest$Outbound;
+}
+
+export function deleteSessionSessionSessionIdDeleteRequestToJSON(
+  deleteSessionSessionSessionIdDeleteRequest:
+    DeleteSessionSessionSessionIdDeleteRequest,
+): string {
+  return JSON.stringify(
+    DeleteSessionSessionSessionIdDeleteRequest$outboundSchema.parse(
+      deleteSessionSessionSessionIdDeleteRequest,
+    ),
+  );
+}
+
+export function deleteSessionSessionSessionIdDeleteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteSessionSessionSessionIdDeleteRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteSessionSessionSessionIdDeleteRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteSessionSessionSessionIdDeleteRequest' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EventUpdateEvent,
   EventUpdateEvent$inboundSchema,
@@ -72,4 +75,18 @@ export namespace RunStream$ {
   export const outboundSchema = RunStream$outboundSchema;
   /** @deprecated use `RunStream$Outbound` instead. */
   export type Outbound = RunStream$Outbound;
+}
+
+export function runStreamToJSON(runStream: RunStream): string {
+  return JSON.stringify(RunStream$outboundSchema.parse(runStream));
+}
+
+export function runStreamFromJSON(
+  jsonString: string,
+): SafeParseResult<RunStream, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RunStream$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RunStream' from JSON`,
+  );
 }

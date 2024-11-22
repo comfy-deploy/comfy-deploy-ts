@@ -1,14 +1,21 @@
 # Data
 
-## Example Usage
+
+## Supported Types
+
+### `components.MediaItem`
 
 ```typescript
-import { Data } from "comfydeploy/models/components";
-
-let value: Data = {};
+const value: components.MediaItem = {
+  url: "https://concrete-equal.name/",
+  type: "<value>",
+  filename: "example.file",
+};
 ```
 
-## Fields
+### `string`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: string = "<value>";
+```
+

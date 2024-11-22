@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LogDataContent = {
   logs: string;
@@ -49,4 +52,18 @@ export namespace LogDataContent$ {
   export const outboundSchema = LogDataContent$outboundSchema;
   /** @deprecated use `LogDataContent$Outbound` instead. */
   export type Outbound = LogDataContent$Outbound;
+}
+
+export function logDataContentToJSON(logDataContent: LogDataContent): string {
+  return JSON.stringify(LogDataContent$outboundSchema.parse(logDataContent));
+}
+
+export function logDataContentFromJSON(
+  jsonString: string,
+): SafeParseResult<LogDataContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LogDataContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LogDataContent' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type EventUpdate = {
   event?: string | null | undefined;
@@ -46,4 +49,18 @@ export namespace EventUpdate$ {
   export const outboundSchema = EventUpdate$outboundSchema;
   /** @deprecated use `EventUpdate$Outbound` instead. */
   export type Outbound = EventUpdate$Outbound;
+}
+
+export function eventUpdateToJSON(eventUpdate: EventUpdate): string {
+  return JSON.stringify(EventUpdate$outboundSchema.parse(eventUpdate));
+}
+
+export function eventUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<EventUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EventUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EventUpdate' from JSON`,
+  );
 }

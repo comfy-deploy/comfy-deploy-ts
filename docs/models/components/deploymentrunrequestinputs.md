@@ -1,14 +1,37 @@
 # DeploymentRunRequestInputs
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { DeploymentRunRequestInputs } from "comfydeploy/models/components";
-
-let value: DeploymentRunRequestInputs = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 799203;
+```
+
+### `number`
+
+```typescript
+const value: number = 6304.48;
+```
+
+### `boolean`
+
+```typescript
+const value: boolean = false;
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "<value>",
+];
+```
+

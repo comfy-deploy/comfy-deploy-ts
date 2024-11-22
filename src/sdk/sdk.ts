@@ -4,6 +4,8 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Deployments } from "./deployments.js";
+import { FileT } from "./file.js";
+import { Models } from "./models.js";
 import { Run } from "./run.js";
 import { Session } from "./session.js";
 
@@ -21,5 +23,15 @@ export class ComfyDeploy extends ClientSDK {
   private _deployments?: Deployments;
   get deployments(): Deployments {
     return (this._deployments ??= new Deployments(this._options));
+  }
+
+  private _file?: FileT;
+  get file(): FileT {
+    return (this._file ??= new FileT(this._options));
+  }
+
+  private _models?: Models;
+  get models(): Models {
+    return (this._models ??= new Models(this._options));
   }
 }

@@ -1,14 +1,37 @@
 # Inputs
 
-## Example Usage
+
+## Supported Types
+
+### `string`
 
 ```typescript
-import { Inputs } from "comfydeploy/models/components";
-
-let value: Inputs = {};
+const value: string = "<value>";
 ```
 
-## Fields
+### `number`
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+```typescript
+const value: number = 517379;
+```
+
+### `number`
+
+```typescript
+const value: number = 1320.68;
+```
+
+### `boolean`
+
+```typescript
+const value: boolean = false;
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = [
+  "<value>",
+];
+```
+

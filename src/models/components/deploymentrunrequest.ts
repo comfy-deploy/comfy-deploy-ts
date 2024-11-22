@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const DeploymentRunRequestExecutionMode = {
   Async: "async",
@@ -16,11 +19,19 @@ export type DeploymentRunRequestExecutionMode = ClosedEnum<
   typeof DeploymentRunRequestExecutionMode
 >;
 
-export type DeploymentRunRequestInputs = {};
+export type DeploymentRunRequestInputs =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 export type DeploymentRunRequest = {
   executionMode?: DeploymentRunRequestExecutionMode | null | undefined;
-  inputs?: DeploymentRunRequestInputs | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhookIntermediateStatus?: boolean | null | undefined;
   origin?: string | null | undefined;
@@ -30,6 +41,7 @@ export type DeploymentRunRequest = {
    */
   batchInputParams?: { [k: string]: Array<any> } | null | undefined;
   isNativeRun?: boolean | null | undefined;
+  gpuEventId?: string | null | undefined;
   deploymentId: string;
 };
 
@@ -60,17 +72,34 @@ export const DeploymentRunRequestInputs$inboundSchema: z.ZodType<
   DeploymentRunRequestInputs,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /** @internal */
-export type DeploymentRunRequestInputs$Outbound = {};
+export type DeploymentRunRequestInputs$Outbound =
+  | string
+  | number
+  | number
+  | boolean
+  | Array<any>;
 
 /** @internal */
 export const DeploymentRunRequestInputs$outboundSchema: z.ZodType<
   DeploymentRunRequestInputs$Outbound,
   z.ZodTypeDef,
   DeploymentRunRequestInputs
-> = z.object({});
+> = z.union([
+  z.string(),
+  z.number().int(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -85,6 +114,24 @@ export namespace DeploymentRunRequestInputs$ {
   export type Outbound = DeploymentRunRequestInputs$Outbound;
 }
 
+export function deploymentRunRequestInputsToJSON(
+  deploymentRunRequestInputs: DeploymentRunRequestInputs,
+): string {
+  return JSON.stringify(
+    DeploymentRunRequestInputs$outboundSchema.parse(deploymentRunRequestInputs),
+  );
+}
+
+export function deploymentRunRequestInputsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentRunRequestInputs, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentRunRequestInputs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentRunRequestInputs' from JSON`,
+  );
+}
+
 /** @internal */
 export const DeploymentRunRequest$inboundSchema: z.ZodType<
   DeploymentRunRequest,
@@ -93,14 +140,24 @@ export const DeploymentRunRequest$inboundSchema: z.ZodType<
 > = z.object({
   execution_mode: z.nullable(DeploymentRunRequestExecutionMode$inboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => DeploymentRunRequestInputs$inboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhook_intermediate_status: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),
   batch_number: z.nullable(z.number().int()).optional(),
   batch_input_params: z.nullable(z.record(z.array(z.any()))).optional(),
   is_native_run: z.nullable(z.boolean()).optional(),
+  gpu_event_id: z.nullable(z.string()).optional(),
   deployment_id: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -109,6 +166,7 @@ export const DeploymentRunRequest$inboundSchema: z.ZodType<
     "batch_number": "batchNumber",
     "batch_input_params": "batchInputParams",
     "is_native_run": "isNativeRun",
+    "gpu_event_id": "gpuEventId",
     "deployment_id": "deploymentId",
   });
 });
@@ -116,13 +174,17 @@ export const DeploymentRunRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type DeploymentRunRequest$Outbound = {
   execution_mode?: string | null | undefined;
-  inputs?: DeploymentRunRequestInputs$Outbound | null | undefined;
+  inputs?:
+    | { [k: string]: string | number | number | boolean | Array<any> }
+    | null
+    | undefined;
   webhook?: string | null | undefined;
   webhook_intermediate_status?: boolean | null | undefined;
   origin?: string | null | undefined;
   batch_number?: number | null | undefined;
   batch_input_params?: { [k: string]: Array<any> } | null | undefined;
   is_native_run?: boolean | null | undefined;
+  gpu_event_id?: string | null | undefined;
   deployment_id: string;
 };
 
@@ -134,14 +196,24 @@ export const DeploymentRunRequest$outboundSchema: z.ZodType<
 > = z.object({
   executionMode: z.nullable(DeploymentRunRequestExecutionMode$outboundSchema)
     .optional(),
-  inputs: z.nullable(z.lazy(() => DeploymentRunRequestInputs$outboundSchema))
-    .optional(),
+  inputs: z.nullable(
+    z.record(
+      z.union([
+        z.string(),
+        z.number().int(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ),
+  ).optional(),
   webhook: z.nullable(z.string()).optional(),
   webhookIntermediateStatus: z.nullable(z.boolean()).optional(),
   origin: z.nullable(z.string()).optional(),
   batchNumber: z.nullable(z.number().int()).optional(),
   batchInputParams: z.nullable(z.record(z.array(z.any()))).optional(),
   isNativeRun: z.nullable(z.boolean()).optional(),
+  gpuEventId: z.nullable(z.string()).optional(),
   deploymentId: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -150,6 +222,7 @@ export const DeploymentRunRequest$outboundSchema: z.ZodType<
     batchNumber: "batch_number",
     batchInputParams: "batch_input_params",
     isNativeRun: "is_native_run",
+    gpuEventId: "gpu_event_id",
     deploymentId: "deployment_id",
   });
 });
@@ -165,4 +238,22 @@ export namespace DeploymentRunRequest$ {
   export const outboundSchema = DeploymentRunRequest$outboundSchema;
   /** @deprecated use `DeploymentRunRequest$Outbound` instead. */
   export type Outbound = DeploymentRunRequest$Outbound;
+}
+
+export function deploymentRunRequestToJSON(
+  deploymentRunRequest: DeploymentRunRequest,
+): string {
+  return JSON.stringify(
+    DeploymentRunRequest$outboundSchema.parse(deploymentRunRequest),
+  );
+}
+
+export function deploymentRunRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<DeploymentRunRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeploymentRunRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeploymentRunRequest' from JSON`,
+  );
 }

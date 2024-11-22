@@ -31,6 +31,7 @@ ComfyDeploy API: API for ComfyDeploy
 * [Available Resources and Operations](#available-resources-and-operations)
 * [Standalone functions](#standalone-functions)
 * [Server-sent event streaming](#server-sent-event-streaming)
+* [File uploads](#file-uploads)
 * [Retries](#retries)
 * [Error Handling](#error-handling)
 * [Server Selection](#server-selection)
@@ -91,7 +92,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   });
 
@@ -115,9 +116,17 @@ run();
 
 * [list](docs/sdks/deployments/README.md#list) - Get Deployments
 
+### [file](docs/sdks/file/README.md)
+
+* [upload](docs/sdks/file/README.md#upload) - Upload File
+
+### [models](docs/sdks/models/README.md)
+
+* [publicModelsModelsGet](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+
 ### [run](docs/sdks/run/README.md)
 
-* [getRunRunRunIdGet](docs/sdks/run/README.md#getrunrunrunidget) - Get Run
+* [get](docs/sdks/run/README.md#get) - Get Run
 * [queue](docs/sdks/run/README.md#queue) - Queue a workflow
 * [sync](docs/sdks/run/README.md#sync) - Run a workflow in sync
 * [stream](docs/sdks/run/README.md#stream) - Run a workflow in stream
@@ -151,7 +160,10 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.stream({
     executionMode: "async",
-    inputs: {},
+    inputs: {
+      "prompt": "A beautiful landscape",
+      "seed": 42,
+    },
     webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
     origin: "manual",
@@ -169,7 +181,8 @@ async function run() {
       ],
     },
     isNativeRun: true,
-    deploymentId: "41f69f97-08c7-43e9-a00c-844065577d45",
+    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
+    modelId: "<id>",
   });
 
   for await (const event of result) {
@@ -186,6 +199,42 @@ run();
 [mdn-for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
 <!-- End Server-sent event streaming [eventstream] -->
 
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
+>
+> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
+> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
+> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
+> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+import { openAsBlob } from "node:fs";
+
+const comfyDeploy = new ComfyDeploy({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await comfyDeploy.file.upload({
+    file: await openAsBlob("example.file"),
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End File uploads [file-upload] -->
+
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -200,7 +249,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   }, {
     retries: {
@@ -242,7 +291,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   });
 
@@ -270,12 +319,12 @@ If a HTTP request fails, an operation my also throw an error from the `models/er
 | InvalidRequestError                                  | Any input used to create a request is invalid        |
 | UnexpectedClientError                                | Unrecognised or unexpected error                     |
 
-In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `getRunRunRunIdGet` method may throw the following errors:
+In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `get` method may throw the following errors:
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.HTTPValidationError | 422                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                 | Status Code | Content Type     |
+| -------------------------- | ----------- | ---------------- |
+| errors.HTTPValidationError | 422         | application/json |
+| errors.SDKError            | 4XX, 5XX    | \*/\*            |
 
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
@@ -291,7 +340,7 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   let result;
   try {
-    result = await comfyDeploy.run.getRunRunRunIdGet({
+    result = await comfyDeploy.run.get({
       runId: "<id>",
     });
 
@@ -330,13 +379,15 @@ Validation errors can also occur when either method arguments or data returned f
 
 ### Select Server by Index
 
-You can override the default server globally by passing a server index to the `serverIdx` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.comfydeploy.com/api` | None |
-| 1 | `https://staging.api.comfydeploy.com/api` | None |
-| 2 | `http://localhost:3011/api` | None |
+| #   | Server                                    |
+| --- | ----------------------------------------- |
+| 0   | `https://api.comfydeploy.com/api`         |
+| 1   | `https://staging.api.comfydeploy.com/api` |
+| 2   | `http://localhost:3011/api`               |
+
+#### Example
 
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
@@ -347,7 +398,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   });
 
@@ -359,11 +410,9 @@ run();
 
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
-
+The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { ComfyDeploy } from "comfydeploy";
 
@@ -373,7 +422,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   });
 
@@ -442,9 +491,9 @@ const sdk = new ComfyDeploy({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `bearer`    | http        | HTTP Bearer |
+| Name     | Type | Scheme      |
+| -------- | ---- | ----------- |
+| `bearer` | http | HTTP Bearer |
 
 To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
@@ -455,7 +504,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.getRunRunRunIdGet({
+  const result = await comfyDeploy.run.get({
     runId: "<id>",
   });
 
@@ -483,16 +532,17 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [deploymentsList](docs/sdks/deployments/README.md#list)
-- [runGetRunRunRunIdGet](docs/sdks/run/README.md#getrunrunrunidget)
-- [runQueue](docs/sdks/run/README.md#queue)
-- [runStream](docs/sdks/run/README.md#stream)
-- [runSync](docs/sdks/run/README.md#sync)
-- [sessionCancel](docs/sdks/session/README.md#cancel)
-- [sessionCreate](docs/sdks/session/README.md#create)
-- [sessionGet](docs/sdks/session/README.md#get)
-- [sessionList](docs/sdks/session/README.md#list)
-
+- [`deploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
+- [`fileUpload`](docs/sdks/file/README.md#upload) - Upload File
+- [`modelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+- [`runGet`](docs/sdks/run/README.md#get) - Get Run
+- [`runQueue`](docs/sdks/run/README.md#queue) - Queue a workflow
+- [`runStream`](docs/sdks/run/README.md#stream) - Run a workflow in stream
+- [`runSync`](docs/sdks/run/README.md#sync) - Run a workflow in sync
+- [`sessionCancel`](docs/sdks/session/README.md#cancel) - Delete Session
+- [`sessionCreate`](docs/sdks/session/README.md#create) - Create Session
+- [`sessionGet`](docs/sdks/session/README.md#get) - Get Session
+- [`sessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

@@ -8,43 +8,49 @@ actions:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "get_deployments_deployments_get"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.deployments.list({\n    environment: \"private-share\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/machine/{machine_id}/session"]["post"]
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.deployments.list({});\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/file/upload"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "create_session_machine__machine_id__session_post"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.session.create({\n    machineId: \"<id>\",\n    createSessionBody: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/machine/{machine_id}/sessions"]["get"]
+          "label": "upload_file_file_upload_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\nimport { openAsBlob } from \"node:fs\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.file.upload({\n    file: await openAsBlob(\"example.file\"),\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/models"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "get_machine_sessions_machine__machine_id__sessions_get"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.session.list({\n    machineId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "label": "public_models_models_get"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.models.publicModelsModelsGet();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/run/queue"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "create_run_queue_run_queue_post"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.queue({\n    executionMode: \"async\",\n    inputs: {},\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    workflowVersionId: \"3ec31b24-d0d3-4298-9ffa-c74003017b70\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.queue({\n    executionMode: \"async\",\n    inputs: {\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    gpuEventId: \"123e4567-e89b-12d3-a456-426614174000\",\n    workflowVersionId: \"3ec31b24-d0d3-4298-9ffa-c74003017b70\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/run/stream"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "create_run_stream_run_stream_post"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.stream({\n    executionMode: \"async\",\n    inputs: {},\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    deploymentId: \"41f69f97-08c7-43e9-a00c-844065577d45\",\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.stream({\n    executionMode: \"async\",\n    inputs: {\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    gpuEventId: \"123e4567-e89b-12d3-a456-426614174000\",\n    modelId: \"<id>\",\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();"
   - target: $["paths"]["/run/sync"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "create_run_sync_run_sync_post"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.sync({\n    executionMode: \"async\",\n    inputs: {},\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    deploymentId: \"0897be30-8085-4c96-83b5-09c0142ddd3a\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.sync({\n    executionMode: \"async\",\n    inputs: {\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    gpuEventId: \"123e4567-e89b-12d3-a456-426614174000\",\n    modelId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/run/{run_id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "get_run_run__run_id__get"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.getRunRunRunIdGet({\n    runId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.get({\n    runId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/session"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "create_session_session_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.session.create({\n    machineId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/session/{session_id}"]["delete"]
     update:
       "x-codeSamples":
@@ -57,3 +63,9 @@ actions:
         - "lang": "typescript"
           "label": "get_session_session__session_id__get"
           "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.session.get({\n    sessionId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/sessions"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "get_machine_sessions_sessions_get"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.session.list({\n    machineId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"

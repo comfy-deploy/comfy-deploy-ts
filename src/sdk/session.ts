@@ -7,6 +7,7 @@ import { sessionCreate } from "../funcs/sessionCreate.js";
 import { sessionGet } from "../funcs/sessionGet.js";
 import { sessionList } from "../funcs/sessionList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -17,7 +18,7 @@ export class Session extends ClientSDK {
   async get(
     request: operations.GetSessionSessionSessionIdGetRequest,
     options?: RequestOptions,
-  ): Promise<any> {
+  ): Promise<components.Session> {
     return unwrapAsync(sessionGet(
       this,
       request,
@@ -31,7 +32,7 @@ export class Session extends ClientSDK {
   async cancel(
     request: operations.DeleteSessionSessionSessionIdDeleteRequest,
     options?: RequestOptions,
-  ): Promise<any> {
+  ): Promise<components.DeleteSessionResponse> {
     return unwrapAsync(sessionCancel(
       this,
       request,
@@ -43,9 +44,9 @@ export class Session extends ClientSDK {
    * Get Machine Sessions
    */
   async list(
-    request: operations.GetMachineSessionsMachineMachineIdSessionsGetRequest,
+    request: operations.GetMachineSessionsSessionsGetRequest,
     options?: RequestOptions,
-  ): Promise<any> {
+  ): Promise<Array<components.GPUEventModel>> {
     return unwrapAsync(sessionList(
       this,
       request,
@@ -57,9 +58,9 @@ export class Session extends ClientSDK {
    * Create Session
    */
   async create(
-    request: operations.CreateSessionMachineMachineIdSessionPostRequest,
+    request: components.CreateSessionBody,
     options?: RequestOptions,
-  ): Promise<any> {
+  ): Promise<components.CreateSessionResponse> {
     return unwrapAsync(sessionCreate(
       this,
       request,

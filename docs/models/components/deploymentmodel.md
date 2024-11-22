@@ -6,19 +6,24 @@
 import { DeploymentModel } from "comfydeploy/models/components";
 
 let value: DeploymentModel = {
-  id: "e1fd7539-0061-4434-a201-9ff62a7f1c43",
+  id: "ff62a7f1-c43a-43a8-9684-b65de035dffe",
   userId: "<id>",
   orgId: "<id>",
-  workflowVersionId: "3a8684b6-5de0-435d-9ffe-4f31f3b0be46",
-  workflowId: "b3274d38-fadf-4cbf-9f71-426296ef849e",
-  machineId: "84763845-8c5e-4d04-8715-ba9b35ae840b",
+  workflowVersionId: "f31f3b0b-e465-4b32-974d-38fadfcbff71",
+  workflowId: "26296ef8-49e6-4847-a638-458c5ed04715",
+  machineId: "a9b35ae8-40b0-458e-a160-594319baf0a9",
   shareSlug: "<value>",
-  description: "ponder unibody scarcely legging of",
+  description:
+    "bus questioningly topsail diligently thigh arraign into defenseless geez burgeon",
   shareOptions: {},
   showcaseMedia: {},
-  environment: "staging",
-  createdAt: new Date("2024-12-10T17:10:47.327Z"),
-  updatedAt: new Date("2024-08-13T11:27:07.082Z"),
+  environment: "production",
+  createdAt: new Date("2023-10-10T18:22:17.762Z"),
+  updatedAt: new Date("2023-12-24T10:58:40.496Z"),
+  workflow: {
+    id: "6f5badfe-cb52-4136-b8cf-119bdef662aa",
+    name: "<value>",
+  },
 };
 ```
 
@@ -39,3 +44,6 @@ let value: DeploymentModel = {
 | `environment`                                                                                 | [components.DeploymentEnvironment](../../models/components/deploymentenvironment.md)          | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `workflow`                                                                                    | [components.WorkflowWithName](../../models/components/workflowwithname.md)                    | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `inputTypes`                                                                                  | [components.InputModel](../../models/components/inputmodel.md)[]                              | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `outputTypes`                                                                                 | [components.OutputModel](../../models/components/outputmodel.md)[]                            | :heavy_minus_sign:                                                                            | N/A                                                                                           |
