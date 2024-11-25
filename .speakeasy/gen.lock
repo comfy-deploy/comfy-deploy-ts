@@ -3,10 +3,10 @@ id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
   docChecksum: 3c14fd733cc56c428df563792b366024
   docVersion: 1.0.0
-  speakeasyVersion: 1.443.0
+  speakeasyVersion: 1.444.3
   generationVersion: 2.461.4
-  releaseVersion: 2.0.0-beta.60
-  configChecksum: 48415973aa0e741a67c6713a3e2f4d41
+  releaseVersion: 2.0.0-beta.61
+  configChecksum: 2c3b2c515d24e8b30586c6c40dd21677
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
