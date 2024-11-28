@@ -30,7 +30,7 @@ const value: components.WorkflowRunVersionRequest = {
   },
   isNativeRun: true,
   gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
-  workflowVersionId: "70613e3d-c291-4bac-b7e0-4b621d7eb658",
+  workflowVersionId: "b0beb272-5ee4-459f-924d-7e2855765ebb",
 };
 ```
 
@@ -38,30 +38,12 @@ const value: components.WorkflowRunVersionRequest = {
 
 ```typescript
 const value: components.WorkflowRunRequest = {
-  executionMode: "async",
   inputs: {
     "num_inference_steps": 30,
     "prompt": "A futuristic cityscape",
     "seed": 123456,
   },
   webhook: "https://myapp.com/webhook",
-  webhookIntermediateStatus: true,
-  origin: "manual",
-  batchNumber: 5,
-  batchInputParams: {
-    "input_number": [
-      1,
-      2,
-      3,
-    ],
-    "input_text": [
-      "apple",
-      "banana",
-      "cherry",
-    ],
-  },
-  isNativeRun: true,
-  gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
   workflowId: "12345678-1234-5678-1234-567812345678",
   workflowApiJson: {},
 };
@@ -94,7 +76,7 @@ const value: components.DeploymentRunRequest = {
   },
   isNativeRun: true,
   gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
-  deploymentId: "b0beb272-5ee4-459f-924d-7e2855765ebb",
+  deploymentId: "9cc5cb2d-7779-497d-ba66-c530ee1521e0",
 };
 ```
 
