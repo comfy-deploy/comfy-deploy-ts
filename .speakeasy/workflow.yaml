@@ -4,7 +4,6 @@ sources:
     comfydeploy-api:
         inputs:
             - location: https://staging.api.comfydeploy.com/openapi.json
-            # - location: http://localhost:3011/openapi.json
         registry:
             location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/comfydeploy-api
 targets:

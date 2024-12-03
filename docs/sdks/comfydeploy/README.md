@@ -3,3 +3,5 @@
 ## Overview
 
 ComfyDeploy API: API for ComfyDeploy
+
+### Available Operations

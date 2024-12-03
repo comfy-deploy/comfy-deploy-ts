@@ -274,30 +274,12 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await runSync(comfyDeploy, {
-    executionMode: "async",
     inputs: {
       "num_inference_steps": 30,
       "prompt": "A futuristic cityscape",
       "seed": 123456,
     },
     webhook: "https://myapp.com/webhook",
-    webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     workflowId: "12345678-1234-5678-1234-567812345678",
     workflowApiJson: {},
   });

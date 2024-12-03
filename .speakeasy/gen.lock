@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: 3c14fd733cc56c428df563792b366024
+  docChecksum: a09f79e2d94aa9eabf8f095a9c1cc990
   docVersion: 1.0.0
-  speakeasyVersion: 1.443.0
-  generationVersion: 2.461.4
-  releaseVersion: 2.0.0-beta.60
-  configChecksum: 48415973aa0e741a67c6713a3e2f4d41
+  speakeasyVersion: 1.449.0
+  generationVersion: 2.467.4
+  releaseVersion: 2.0.0-beta.61
+  configChecksum: 70850710aeee931bb6f37fc66b8eee1b
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     callbacks: 1.0.0
     constsAndDefaults: 0.1.11
-    core: 3.18.6
+    core: 3.18.7
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.0
     enumUnions: 0.1.0
@@ -30,7 +30,6 @@ features:
     retries: 2.83.0
     sdkHooks: 0.2.0
     serverEvents: 0.1.5
-    tests: 0.7.0
     unions: 2.85.8
     uploadStreams: 0.1.0
     webhooks: 1.0.0
@@ -83,9 +82,11 @@ generatedFiles:
   - docs/models/components/modelrunrequest.md
   - docs/models/components/modelrunrequestexecutionmode.md
   - docs/models/components/modelrunrequestinputs.md
+  - docs/models/components/modelsearchquery.md
   - docs/models/components/modelwithmetadata.md
   - docs/models/components/outputmodel.md
   - docs/models/components/runstream.md
+  - docs/models/components/searchmodelsresponse.md
   - docs/models/components/security.md
   - docs/models/components/session.md
   - docs/models/components/shareoptions.md
@@ -115,11 +116,13 @@ generatedFiles:
   - docs/models/operations/getmachinesessionssessionsgetrequest.md
   - docs/models/operations/getrunrunrunidgetrequest.md
   - docs/models/operations/getsessionsessionsessionidgetrequest.md
+  - docs/models/operations/searchsearchmodelgetrequest.md
   - docs/sdks/comfydeploy/README.md
   - docs/sdks/deployments/README.md
   - docs/sdks/file/README.md
   - docs/sdks/models/README.md
   - docs/sdks/run/README.md
+  - docs/sdks/search/README.md
   - docs/sdks/session/README.md
   - jsr.json
   - package.json
@@ -131,6 +134,7 @@ generatedFiles:
   - src/funcs/runQueue.ts
   - src/funcs/runStream.ts
   - src/funcs/runSync.ts
+  - src/funcs/searchSearchSearchModelGet.ts
   - src/funcs/sessionCancel.ts
   - src/funcs/sessionCreate.ts
   - src/funcs/sessionGet.ts
@@ -177,9 +181,11 @@ generatedFiles:
   - src/models/components/modelinput.ts
   - src/models/components/modeloutput.ts
   - src/models/components/modelrunrequest.ts
+  - src/models/components/modelsearchquery.ts
   - src/models/components/modelwithmetadata.ts
   - src/models/components/outputmodel.ts
   - src/models/components/runstream.ts
+  - src/models/components/searchmodelsresponse.ts
   - src/models/components/security.ts
   - src/models/components/session.ts
   - src/models/components/validationerror.ts
@@ -206,12 +212,14 @@ generatedFiles:
   - src/models/operations/getrunrunrunidget.ts
   - src/models/operations/getsessionsessionsessionidget.ts
   - src/models/operations/index.ts
+  - src/models/operations/searchsearchmodelget.ts
   - src/sdk/deployments.ts
   - src/sdk/file.ts
   - src/sdk/index.ts
   - src/sdk/models.ts
   - src/sdk/run.ts
   - src/sdk/sdk.ts
+  - src/sdk/search.ts
   - src/sdk/session.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
@@ -545,3 +553,13 @@ examples:
       responses:
         "200":
           application/json: [{"id": "<id>", "name": "<value>", "inputs": [{"input_id": "<id>", "class_type": "ComfyUIDeployExternalEnum", "required": false}, {"input_id": "<id>", "class_type": "<value>", "required": false}], "outputs": [{"class_type": "ComfyDeployStdOutputImage", "output_id": "<id>"}]}, {"id": "<id>", "name": "<value>", "inputs": [{"input_id": "<id>", "class_type": "ComfyUIDeployExternalNumberInt", "required": false}, {"input_id": "<id>", "class_type": "ComfyUIDeployExternalTextAny", "required": true}], "outputs": [{"class_type": "ComfyDeployStdOutputImage", "output_id": "<id>"}, {"class_type": "ComfyDeployStdOutputAny", "output_id": "<id>"}]}, {"id": "<id>", "name": "<value>", "inputs": [{"input_id": "<id>", "class_type": "ComfyUIDeployExternalText", "required": false}, {"input_id": "<id>", "class_type": "ComfyUIDeployExternalCheckpoint", "required": true}, {"input_id": "<id>", "class_type": "ComfyUIDeployExternalTextAny", "required": false}], "outputs": []}]
+  search_search_model_get:
+    speakeasy-default-search-search-model-get:
+      parameters:
+        query:
+          query: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "422": {}
+generatedTests: {}
