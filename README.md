@@ -24,20 +24,26 @@ ComfyDeploy API: API for ComfyDeploy
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [comfy-deploy](#comfy-deploy)
+  * [🏗 **Welcome to your new SDK!** 🏗](#welcome-to-your-new-sdk)
+  * [SDK Installation](#sdk-installation)
+  * [Requirements](#requirements)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Server-sent event streaming](#server-sent-event-streaming)
+  * [File uploads](#file-uploads)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Standalone functions](#standalone-functions)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Server-sent event streaming](#server-sent-event-streaming)
-* [File uploads](#file-uploads)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -130,6 +136,10 @@ run();
 * [queue](docs/sdks/run/README.md#queue) - Queue a workflow
 * [sync](docs/sdks/run/README.md#sync) - Run a workflow in sync
 * [stream](docs/sdks/run/README.md#stream) - Run a workflow in stream
+
+### [search](docs/sdks/search/README.md)
+
+* [searchSearchModelGet](docs/sdks/search/README.md#searchsearchmodelget) - Search
 
 ### [session](docs/sdks/session/README.md)
 
@@ -539,6 +549,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`runQueue`](docs/sdks/run/README.md#queue) - Queue a workflow
 - [`runStream`](docs/sdks/run/README.md#stream) - Run a workflow in stream
 - [`runSync`](docs/sdks/run/README.md#sync) - Run a workflow in sync
+- [`searchSearchSearchModelGet`](docs/sdks/search/README.md#searchsearchmodelget) - Search
 - [`sessionCancel`](docs/sdks/session/README.md#cancel) - Delete Session
 - [`sessionCreate`](docs/sdks/session/README.md#create) - Create Session
 - [`sessionGet`](docs/sdks/session/README.md#get) - Get Session
