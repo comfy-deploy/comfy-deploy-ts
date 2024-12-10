@@ -6,22 +6,21 @@
 import { DeploymentModel } from "comfydeploy/models/components";
 
 let value: DeploymentModel = {
-  id: "ff62a7f1-c43a-43a8-9684-b65de035dffe",
+  id: "0f55026e-1fd7-4539-a006-14342019ff62",
   userId: "<id>",
   orgId: "<id>",
-  workflowVersionId: "f31f3b0b-e465-4b32-974d-38fadfcbff71",
-  workflowId: "26296ef8-49e6-4847-a638-458c5ed04715",
-  machineId: "a9b35ae8-40b0-458e-a160-594319baf0a9",
+  workflowVersionId: "7f1c43a3-a868-44b6-85de-035dffe4f31f",
+  workflowId: "b0be465b-3274-4d38-9fad-fcbff7142629",
+  machineId: "ef849e68-4763-4845-98c5-ed04715ba9b3",
   shareSlug: "<value>",
-  description:
-    "bus questioningly topsail diligently thigh arraign into defenseless geez burgeon",
+  description: "gastropod ponder unibody scarcely legging of tough well",
   shareOptions: {},
   showcaseMedia: {},
   environment: "production",
-  createdAt: new Date("2023-10-10T18:22:17.762Z"),
-  updatedAt: new Date("2023-12-24T10:58:40.496Z"),
+  createdAt: new Date("2022-06-25T20:56:27.257Z"),
+  updatedAt: new Date("2024-08-29T09:21:28.573Z"),
   workflow: {
-    id: "6f5badfe-cb52-4136-b8cf-119bdef662aa",
+    id: "7e2a71b3-000e-4bea-a84f-576f25a19743",
     name: "<value>",
   },
 };
