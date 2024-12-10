@@ -8,17 +8,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  MachineGPU,
-  MachineGPU$inboundSchema,
-  MachineGPU$outboundSchema,
-} from "./machinegpu.js";
+  ApiRoutesTypesMachineGpu2,
+  ApiRoutesTypesMachineGpu2$inboundSchema,
+  ApiRoutesTypesMachineGpu2$outboundSchema,
+} from "./apiroutestypesmachinegpu2.js";
 
 export type CreateSessionBody = {
   machineId: string;
   /**
    * The GPU to use
    */
-  gpu?: MachineGPU | null | undefined;
+  gpu?: ApiRoutesTypesMachineGpu2 | null | undefined;
   /**
    * The timeout in minutes
    */
@@ -36,7 +36,7 @@ export const CreateSessionBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   machine_id: z.string(),
-  gpu: z.nullable(MachineGPU$inboundSchema).optional(),
+  gpu: z.nullable(ApiRoutesTypesMachineGpu2$inboundSchema).optional(),
   timeout: z.nullable(z.number().int()).optional(),
   wait_for_server: z.boolean().default(false),
 }).transform((v) => {
@@ -61,7 +61,7 @@ export const CreateSessionBody$outboundSchema: z.ZodType<
   CreateSessionBody
 > = z.object({
   machineId: z.string(),
-  gpu: z.nullable(MachineGPU$outboundSchema).optional(),
+  gpu: z.nullable(ApiRoutesTypesMachineGpu2$outboundSchema).optional(),
   timeout: z.nullable(z.number().int()).optional(),
   waitForServer: z.boolean().default(false),
 }).transform((v) => {
