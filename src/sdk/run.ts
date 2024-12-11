@@ -11,8 +11,20 @@ import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+import { Deployment } from "./deployment.js";
+import { Workflow } from "./workflow.js";
 
 export class Run extends ClientSDK {
+  private _deployment?: Deployment;
+  get deployment(): Deployment {
+    return (this._deployment ??= new Deployment(this._options));
+  }
+
+  private _workflow?: Workflow;
+  get workflow(): Workflow {
+    return (this._workflow ??= new Workflow(this._options));
+  }
+
   /**
    * Get Run
    */
@@ -32,6 +44,8 @@ export class Run extends ClientSDK {
    *
    * @remarks
    * Create a new workflow run with the given parameters. This function sets up the run and initiates the execution process. For callback information, see [Callbacks](#tag/callbacks/POST/\{callback_url\}).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async queue(
     request: operations.CreateRunQueueRunQueuePostData,
@@ -49,6 +63,8 @@ export class Run extends ClientSDK {
    *
    * @remarks
    * Create a new workflow run with the given parameters. This function sets up the run and initiates the execution process. For callback information, see [Callbacks](#tag/callbacks/POST/\{callback_url\}).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async sync(
     request: operations.CreateRunSyncRunSyncPostData,
@@ -66,6 +82,8 @@ export class Run extends ClientSDK {
    *
    * @remarks
    * Create a new workflow run with the given parameters. This function sets up the run and initiates the execution process. For callback information, see [Callbacks](#tag/callbacks/POST/\{callback_url\}).
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async stream(
     request: operations.CreateRunStreamRunStreamPostData,

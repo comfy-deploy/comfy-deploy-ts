@@ -12,6 +12,6 @@ let value: CreateRunResponse = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `runId`            | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `runId`                                                       | *string*                                                      | :heavy_check_mark:                                            | The ID of the run, use this to get the run status and outputs |
