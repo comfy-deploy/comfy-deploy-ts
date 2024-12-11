@@ -9,90 +9,58 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const DeploymentRunRequestExecutionMode = {
-  Async: "async",
-  Sync: "sync",
-  SyncFirstResult: "sync_first_result",
-  Stream: "stream",
-} as const;
-export type DeploymentRunRequestExecutionMode = ClosedEnum<
-  typeof DeploymentRunRequestExecutionMode
->;
+export type Inputs = string | number | number | boolean | Array<any>;
 
-export type DeploymentRunRequestInputs =
-  | string
-  | number
-  | number
-  | boolean
-  | Array<any>;
+/**
+ * The GPU to override the machine's default GPU
+ */
+export const Gpu = {
+  T4: "T4",
+  L4: "L4",
+  A10G: "A10G",
+  A100: "A100",
+  A10080Gb: "A100-80GB",
+  H100: "H100",
+} as const;
+/**
+ * The GPU to override the machine's default GPU
+ */
+export type Gpu = ClosedEnum<typeof Gpu>;
 
 export type DeploymentRunRequest = {
-  executionMode?: DeploymentRunRequestExecutionMode | null | undefined;
+  /**
+   * The inputs to the workflow
+   */
   inputs?:
     | { [k: string]: string | number | number | boolean | Array<any> }
-    | null
     | undefined;
-  webhook?: string | null | undefined;
-  webhookIntermediateStatus?: boolean | null | undefined;
-  origin?: string | null | undefined;
-  batchNumber?: number | null | undefined;
+  webhook?: string | undefined;
+  webhookIntermediateStatus?: boolean | undefined;
   /**
-   * Optional dictionary of batch input parameters. Keys are input names, values are lists of inputs.
+   * The GPU to override the machine's default GPU
    */
-  batchInputParams?: { [k: string]: Array<any> } | null | undefined;
-  isNativeRun?: boolean | null | undefined;
-  gpuEventId?: string | null | undefined;
+  gpu?: Gpu | undefined;
   deploymentId: string;
 };
 
 /** @internal */
-export const DeploymentRunRequestExecutionMode$inboundSchema: z.ZodNativeEnum<
-  typeof DeploymentRunRequestExecutionMode
-> = z.nativeEnum(DeploymentRunRequestExecutionMode);
+export const Inputs$inboundSchema: z.ZodType<Inputs, z.ZodTypeDef, unknown> = z
+  .union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
 
 /** @internal */
-export const DeploymentRunRequestExecutionMode$outboundSchema: z.ZodNativeEnum<
-  typeof DeploymentRunRequestExecutionMode
-> = DeploymentRunRequestExecutionMode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeploymentRunRequestExecutionMode$ {
-  /** @deprecated use `DeploymentRunRequestExecutionMode$inboundSchema` instead. */
-  export const inboundSchema = DeploymentRunRequestExecutionMode$inboundSchema;
-  /** @deprecated use `DeploymentRunRequestExecutionMode$outboundSchema` instead. */
-  export const outboundSchema =
-    DeploymentRunRequestExecutionMode$outboundSchema;
-}
+export type Inputs$Outbound = string | number | number | boolean | Array<any>;
 
 /** @internal */
-export const DeploymentRunRequestInputs$inboundSchema: z.ZodType<
-  DeploymentRunRequestInputs,
+export const Inputs$outboundSchema: z.ZodType<
+  Inputs$Outbound,
   z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type DeploymentRunRequestInputs$Outbound =
-  | string
-  | number
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const DeploymentRunRequestInputs$outboundSchema: z.ZodType<
-  DeploymentRunRequestInputs$Outbound,
-  z.ZodTypeDef,
-  DeploymentRunRequestInputs
+  Inputs
 > = z.union([
   z.string(),
   z.number().int(),
@@ -105,31 +73,45 @@ export const DeploymentRunRequestInputs$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DeploymentRunRequestInputs$ {
-  /** @deprecated use `DeploymentRunRequestInputs$inboundSchema` instead. */
-  export const inboundSchema = DeploymentRunRequestInputs$inboundSchema;
-  /** @deprecated use `DeploymentRunRequestInputs$outboundSchema` instead. */
-  export const outboundSchema = DeploymentRunRequestInputs$outboundSchema;
-  /** @deprecated use `DeploymentRunRequestInputs$Outbound` instead. */
-  export type Outbound = DeploymentRunRequestInputs$Outbound;
+export namespace Inputs$ {
+  /** @deprecated use `Inputs$inboundSchema` instead. */
+  export const inboundSchema = Inputs$inboundSchema;
+  /** @deprecated use `Inputs$outboundSchema` instead. */
+  export const outboundSchema = Inputs$outboundSchema;
+  /** @deprecated use `Inputs$Outbound` instead. */
+  export type Outbound = Inputs$Outbound;
 }
 
-export function deploymentRunRequestInputsToJSON(
-  deploymentRunRequestInputs: DeploymentRunRequestInputs,
-): string {
-  return JSON.stringify(
-    DeploymentRunRequestInputs$outboundSchema.parse(deploymentRunRequestInputs),
-  );
+export function inputsToJSON(inputs: Inputs): string {
+  return JSON.stringify(Inputs$outboundSchema.parse(inputs));
 }
 
-export function deploymentRunRequestInputsFromJSON(
+export function inputsFromJSON(
   jsonString: string,
-): SafeParseResult<DeploymentRunRequestInputs, SDKValidationError> {
+): SafeParseResult<Inputs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeploymentRunRequestInputs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeploymentRunRequestInputs' from JSON`,
+    (x) => Inputs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Inputs' from JSON`,
   );
+}
+
+/** @internal */
+export const Gpu$inboundSchema: z.ZodNativeEnum<typeof Gpu> = z.nativeEnum(Gpu);
+
+/** @internal */
+export const Gpu$outboundSchema: z.ZodNativeEnum<typeof Gpu> =
+  Gpu$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Gpu$ {
+  /** @deprecated use `Gpu$inboundSchema` instead. */
+  export const inboundSchema = Gpu$inboundSchema;
+  /** @deprecated use `Gpu$outboundSchema` instead. */
+  export const outboundSchema = Gpu$outboundSchema;
 }
 
 /** @internal */
@@ -138,53 +120,34 @@ export const DeploymentRunRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  execution_mode: z.nullable(DeploymentRunRequestExecutionMode$inboundSchema)
-    .optional(),
-  inputs: z.nullable(
-    z.record(
-      z.union([
-        z.string(),
-        z.number().int(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ),
+  inputs: z.record(
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
   ).optional(),
-  webhook: z.nullable(z.string()).optional(),
-  webhook_intermediate_status: z.nullable(z.boolean()).optional(),
-  origin: z.nullable(z.string()).optional(),
-  batch_number: z.nullable(z.number().int()).optional(),
-  batch_input_params: z.nullable(z.record(z.array(z.any()))).optional(),
-  is_native_run: z.nullable(z.boolean()).optional(),
-  gpu_event_id: z.nullable(z.string()).optional(),
+  webhook: z.string().optional(),
+  webhook_intermediate_status: z.boolean().default(false),
+  gpu: Gpu$inboundSchema.optional(),
   deployment_id: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "execution_mode": "executionMode",
     "webhook_intermediate_status": "webhookIntermediateStatus",
-    "batch_number": "batchNumber",
-    "batch_input_params": "batchInputParams",
-    "is_native_run": "isNativeRun",
-    "gpu_event_id": "gpuEventId",
     "deployment_id": "deploymentId",
   });
 });
 
 /** @internal */
 export type DeploymentRunRequest$Outbound = {
-  execution_mode?: string | null | undefined;
   inputs?:
     | { [k: string]: string | number | number | boolean | Array<any> }
-    | null
     | undefined;
-  webhook?: string | null | undefined;
-  webhook_intermediate_status?: boolean | null | undefined;
-  origin?: string | null | undefined;
-  batch_number?: number | null | undefined;
-  batch_input_params?: { [k: string]: Array<any> } | null | undefined;
-  is_native_run?: boolean | null | undefined;
-  gpu_event_id?: string | null | undefined;
+  webhook?: string | undefined;
+  webhook_intermediate_status: boolean;
+  gpu?: string | undefined;
   deployment_id: string;
 };
 
@@ -194,35 +157,22 @@ export const DeploymentRunRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeploymentRunRequest
 > = z.object({
-  executionMode: z.nullable(DeploymentRunRequestExecutionMode$outboundSchema)
-    .optional(),
-  inputs: z.nullable(
-    z.record(
-      z.union([
-        z.string(),
-        z.number().int(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ),
+  inputs: z.record(
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
   ).optional(),
-  webhook: z.nullable(z.string()).optional(),
-  webhookIntermediateStatus: z.nullable(z.boolean()).optional(),
-  origin: z.nullable(z.string()).optional(),
-  batchNumber: z.nullable(z.number().int()).optional(),
-  batchInputParams: z.nullable(z.record(z.array(z.any()))).optional(),
-  isNativeRun: z.nullable(z.boolean()).optional(),
-  gpuEventId: z.nullable(z.string()).optional(),
+  webhook: z.string().optional(),
+  webhookIntermediateStatus: z.boolean().default(false),
+  gpu: Gpu$outboundSchema.optional(),
   deploymentId: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    executionMode: "execution_mode",
     webhookIntermediateStatus: "webhook_intermediate_status",
-    batchNumber: "batch_number",
-    batchInputParams: "batch_input_params",
-    isNativeRun: "is_native_run",
-    gpuEventId: "gpu_event_id",
     deploymentId: "deployment_id",
   });
 });

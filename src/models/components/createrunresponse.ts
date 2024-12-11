@@ -9,6 +9,9 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateRunResponse = {
+  /**
+   * The ID of the run, use this to get the run status and outputs
+   */
   runId: string;
 };
 

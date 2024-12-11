@@ -19,25 +19,44 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 <!-- Start Summary [summary] -->
 ## Summary
 
-ComfyDeploy API: API for ComfyDeploy
+ComfyDeploy API: 
+### Overview
+
+Welcome to the ComfyDeploy API!
+
+To create a run thru the API, use the [queue run endpoint](#tag/run/POST/run/deployment/queue).
+
+Check out the [get run endpoint](#tag/run/GET/run/{run_id}), for getting the status and output of a run.
+
+### Authentication
+
+To authenticate your requests, include your API key in the `Authorization` header as a bearer token. Make sure to generate an API key in the [API Keys section of your ComfyDeploy account](https://www.comfydeploy.com/api-keys).
+
+###
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [comfy-deploy](#comfy-deploy)
+  * [🏗 **Welcome to your new SDK!** 🏗](#welcome-to-your-new-sdk)
+  * [SDK Installation](#sdk-installation)
+  * [Requirements](#requirements)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Server-sent event streaming](#server-sent-event-streaming)
+  * [File uploads](#file-uploads)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Custom HTTP Client](#custom-http-client)
+  * [Authentication](#authentication)
+  * [Standalone functions](#standalone-functions)
+  * [Debugging](#debugging)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [Requirements](#requirements)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Standalone functions](#standalone-functions)
-* [Server-sent event streaming](#server-sent-event-streaming)
-* [File uploads](#file-uploads)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Custom HTTP Client](#custom-http-client)
-* [Authentication](#authentication)
-* [Debugging](#debugging)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -127,9 +146,25 @@ run();
 ### [run](docs/sdks/run/README.md)
 
 * [get](docs/sdks/run/README.md#get) - Get Run
-* [queue](docs/sdks/run/README.md#queue) - Queue a workflow
-* [sync](docs/sdks/run/README.md#sync) - Run a workflow in sync
-* [stream](docs/sdks/run/README.md#stream) - Run a workflow in stream
+* [~~queue~~](docs/sdks/run/README.md#queue) - Queue a workflow :warning: **Deprecated**
+* [~~sync~~](docs/sdks/run/README.md#sync) - Run a workflow in sync :warning: **Deprecated**
+* [~~stream~~](docs/sdks/run/README.md#stream) - Run a workflow in stream :warning: **Deprecated**
+
+#### [run.deployment](docs/sdks/deployment/README.md)
+
+* [queue](docs/sdks/deployment/README.md#queue) - Deployment - Queue
+* [sync](docs/sdks/deployment/README.md#sync) - Deployment - Sync
+* [stream](docs/sdks/deployment/README.md#stream) - Deployment - Stream
+
+#### [run.workflow](docs/sdks/workflow/README.md)
+
+* [queue](docs/sdks/workflow/README.md#queue) - Workflow - Queue
+* [sync](docs/sdks/workflow/README.md#sync) - Workflow - Sync
+* [stream](docs/sdks/workflow/README.md#stream) - Workflow - Stream
+
+### [search](docs/sdks/search/README.md)
+
+* [searchSearchModelGet](docs/sdks/search/README.md#searchsearchmodelget) - Search
 
 ### [session](docs/sdks/session/README.md)
 
@@ -158,31 +193,14 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.stream({
-    executionMode: "async",
+  const result = await comfyDeploy.run.deployment.stream({
     inputs: {
+      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
-    webhook: "https://example.com/webhook",
-    webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
-    modelId: "<id>",
+    webhook: "https://myapp.com/webhook",
+    deploymentId: "15e79589-12c9-453c-a41a-348fdd7de957",
   });
 
   for await (const event of result) {
@@ -535,14 +553,21 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`deploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
 - [`fileUpload`](docs/sdks/file/README.md#upload) - Upload File
 - [`modelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+- [`runDeploymentQueue`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
+- [`runDeploymentStream`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
+- [`runDeploymentSync`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
 - [`runGet`](docs/sdks/run/README.md#get) - Get Run
-- [`runQueue`](docs/sdks/run/README.md#queue) - Queue a workflow
-- [`runStream`](docs/sdks/run/README.md#stream) - Run a workflow in stream
-- [`runSync`](docs/sdks/run/README.md#sync) - Run a workflow in sync
+- [`runWorkflowQueue`](docs/sdks/workflow/README.md#queue) - Workflow - Queue
+- [`runWorkflowStream`](docs/sdks/workflow/README.md#stream) - Workflow - Stream
+- [`runWorkflowSync`](docs/sdks/workflow/README.md#sync) - Workflow - Sync
+- [`searchSearchSearchModelGet`](docs/sdks/search/README.md#searchsearchmodelget) - Search
 - [`sessionCancel`](docs/sdks/session/README.md#cancel) - Delete Session
 - [`sessionCreate`](docs/sdks/session/README.md#create) - Create Session
 - [`sessionGet`](docs/sdks/session/README.md#get) - Get Session
 - [`sessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
+- ~~[`runQueue`](docs/sdks/run/README.md#queue)~~ - Queue a workflow :warning: **Deprecated**
+- ~~[`runStream`](docs/sdks/run/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
+- ~~[`runSync`](docs/sdks/run/README.md#sync)~~ - Run a workflow in sync :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

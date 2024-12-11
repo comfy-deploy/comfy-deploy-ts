@@ -5,7 +5,7 @@
 ```typescript
 import { ModelOutputClassType } from "comfydeploy/models/components";
 
-let value: ModelOutputClassType = "ComfyDeployStdOutputImage";
+let value: ModelOutputClassType = "ComfyDeployStdOutputAny";
 ```
 
 ## Values
