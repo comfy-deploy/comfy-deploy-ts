@@ -7,6 +7,7 @@ import { Deployments } from "./deployments.js";
 import { FileT } from "./file.js";
 import { Models } from "./models.js";
 import { Run } from "./run.js";
+import { Search } from "./search.js";
 import { Session } from "./session.js";
 
 export class ComfyDeploy extends ClientSDK {
@@ -33,5 +34,10 @@ export class ComfyDeploy extends ClientSDK {
   private _models?: Models;
   get models(): Models {
     return (this._models ??= new Models(this._options));
+  }
+
+  private _search?: Search;
+  get search(): Search {
+    return (this._search ??= new Search(this._options));
   }
 }

@@ -10,3 +10,4 @@ export * from "./getdeploymentsdeploymentsget.js";
 export * from "./getmachinesessionssessionsget.js";
 export * from "./getrunrunrunidget.js";
 export * from "./getsessionsessionsessionidget.js";
+export * from "./searchsearchmodelget.js";

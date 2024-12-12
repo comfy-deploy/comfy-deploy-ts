@@ -9,16 +9,6 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const WorkflowRunRequestExecutionMode = {
-  Async: "async",
-  Sync: "sync",
-  SyncFirstResult: "sync_first_result",
-  Stream: "stream",
-} as const;
-export type WorkflowRunRequestExecutionMode = ClosedEnum<
-  typeof WorkflowRunRequestExecutionMode
->;
-
 export type WorkflowRunRequestInputs =
   | string
   | number
@@ -26,52 +16,44 @@ export type WorkflowRunRequestInputs =
   | boolean
   | Array<any>;
 
+/**
+ * The GPU to override the machine's default GPU
+ */
+export const WorkflowRunRequestGpu = {
+  T4: "T4",
+  L4: "L4",
+  A10G: "A10G",
+  A100: "A100",
+  A10080Gb: "A100-80GB",
+  H100: "H100",
+} as const;
+/**
+ * The GPU to override the machine's default GPU
+ */
+export type WorkflowRunRequestGpu = ClosedEnum<typeof WorkflowRunRequestGpu>;
+
 export type WorkflowApiJson = {};
 
 export type Workflow = {};
 
 export type WorkflowRunRequest = {
-  executionMode?: WorkflowRunRequestExecutionMode | null | undefined;
+  /**
+   * The inputs to the workflow
+   */
   inputs?:
     | { [k: string]: string | number | number | boolean | Array<any> }
-    | null
     | undefined;
-  webhook?: string | null | undefined;
-  webhookIntermediateStatus?: boolean | null | undefined;
-  origin?: string | null | undefined;
-  batchNumber?: number | null | undefined;
+  webhook?: string | undefined;
+  webhookIntermediateStatus?: boolean | undefined;
   /**
-   * Optional dictionary of batch input parameters. Keys are input names, values are lists of inputs.
+   * The GPU to override the machine's default GPU
    */
-  batchInputParams?: { [k: string]: Array<any> } | null | undefined;
-  isNativeRun?: boolean | null | undefined;
-  gpuEventId?: string | null | undefined;
+  gpu?: WorkflowRunRequestGpu | undefined;
   workflowId: string;
   workflowApiJson: WorkflowApiJson;
-  workflow?: Workflow | null | undefined;
-  machineId?: string | null | undefined;
+  workflow?: Workflow | undefined;
+  machineId?: string | undefined;
 };
-
-/** @internal */
-export const WorkflowRunRequestExecutionMode$inboundSchema: z.ZodNativeEnum<
-  typeof WorkflowRunRequestExecutionMode
-> = z.nativeEnum(WorkflowRunRequestExecutionMode);
-
-/** @internal */
-export const WorkflowRunRequestExecutionMode$outboundSchema: z.ZodNativeEnum<
-  typeof WorkflowRunRequestExecutionMode
-> = WorkflowRunRequestExecutionMode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkflowRunRequestExecutionMode$ {
-  /** @deprecated use `WorkflowRunRequestExecutionMode$inboundSchema` instead. */
-  export const inboundSchema = WorkflowRunRequestExecutionMode$inboundSchema;
-  /** @deprecated use `WorkflowRunRequestExecutionMode$outboundSchema` instead. */
-  export const outboundSchema = WorkflowRunRequestExecutionMode$outboundSchema;
-}
 
 /** @internal */
 export const WorkflowRunRequestInputs$inboundSchema: z.ZodType<
@@ -136,6 +118,27 @@ export function workflowRunRequestInputsFromJSON(
     (x) => WorkflowRunRequestInputs$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'WorkflowRunRequestInputs' from JSON`,
   );
+}
+
+/** @internal */
+export const WorkflowRunRequestGpu$inboundSchema: z.ZodNativeEnum<
+  typeof WorkflowRunRequestGpu
+> = z.nativeEnum(WorkflowRunRequestGpu);
+
+/** @internal */
+export const WorkflowRunRequestGpu$outboundSchema: z.ZodNativeEnum<
+  typeof WorkflowRunRequestGpu
+> = WorkflowRunRequestGpu$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WorkflowRunRequestGpu$ {
+  /** @deprecated use `WorkflowRunRequestGpu$inboundSchema` instead. */
+  export const inboundSchema = WorkflowRunRequestGpu$inboundSchema;
+  /** @deprecated use `WorkflowRunRequestGpu$outboundSchema` instead. */
+  export const outboundSchema = WorkflowRunRequestGpu$outboundSchema;
 }
 
 /** @internal */
@@ -234,38 +237,25 @@ export const WorkflowRunRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  execution_mode: z.nullable(WorkflowRunRequestExecutionMode$inboundSchema)
-    .optional(),
-  inputs: z.nullable(
-    z.record(
-      z.union([
-        z.string(),
-        z.number().int(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ),
+  inputs: z.record(
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
   ).optional(),
-  webhook: z.nullable(z.string()).optional(),
-  webhook_intermediate_status: z.nullable(z.boolean()).optional(),
-  origin: z.nullable(z.string()).optional(),
-  batch_number: z.nullable(z.number().int()).optional(),
-  batch_input_params: z.nullable(z.record(z.array(z.any()))).optional(),
-  is_native_run: z.nullable(z.boolean()).optional(),
-  gpu_event_id: z.nullable(z.string()).optional(),
+  webhook: z.string().optional(),
+  webhook_intermediate_status: z.boolean().default(false),
+  gpu: WorkflowRunRequestGpu$inboundSchema.optional(),
   workflow_id: z.string(),
   workflow_api_json: z.lazy(() => WorkflowApiJson$inboundSchema),
-  workflow: z.nullable(z.lazy(() => Workflow$inboundSchema)).optional(),
-  machine_id: z.nullable(z.string()).optional(),
+  workflow: z.lazy(() => Workflow$inboundSchema).optional(),
+  machine_id: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "execution_mode": "executionMode",
     "webhook_intermediate_status": "webhookIntermediateStatus",
-    "batch_number": "batchNumber",
-    "batch_input_params": "batchInputParams",
-    "is_native_run": "isNativeRun",
-    "gpu_event_id": "gpuEventId",
     "workflow_id": "workflowId",
     "workflow_api_json": "workflowApiJson",
     "machine_id": "machineId",
@@ -274,22 +264,16 @@ export const WorkflowRunRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type WorkflowRunRequest$Outbound = {
-  execution_mode?: string | null | undefined;
   inputs?:
     | { [k: string]: string | number | number | boolean | Array<any> }
-    | null
     | undefined;
-  webhook?: string | null | undefined;
-  webhook_intermediate_status?: boolean | null | undefined;
-  origin?: string | null | undefined;
-  batch_number?: number | null | undefined;
-  batch_input_params?: { [k: string]: Array<any> } | null | undefined;
-  is_native_run?: boolean | null | undefined;
-  gpu_event_id?: string | null | undefined;
+  webhook?: string | undefined;
+  webhook_intermediate_status: boolean;
+  gpu?: string | undefined;
   workflow_id: string;
   workflow_api_json: WorkflowApiJson$Outbound;
-  workflow?: Workflow$Outbound | null | undefined;
-  machine_id?: string | null | undefined;
+  workflow?: Workflow$Outbound | undefined;
+  machine_id?: string | undefined;
 };
 
 /** @internal */
@@ -298,38 +282,25 @@ export const WorkflowRunRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WorkflowRunRequest
 > = z.object({
-  executionMode: z.nullable(WorkflowRunRequestExecutionMode$outboundSchema)
-    .optional(),
-  inputs: z.nullable(
-    z.record(
-      z.union([
-        z.string(),
-        z.number().int(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ),
+  inputs: z.record(
+    z.union([
+      z.string(),
+      z.number().int(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
   ).optional(),
-  webhook: z.nullable(z.string()).optional(),
-  webhookIntermediateStatus: z.nullable(z.boolean()).optional(),
-  origin: z.nullable(z.string()).optional(),
-  batchNumber: z.nullable(z.number().int()).optional(),
-  batchInputParams: z.nullable(z.record(z.array(z.any()))).optional(),
-  isNativeRun: z.nullable(z.boolean()).optional(),
-  gpuEventId: z.nullable(z.string()).optional(),
+  webhook: z.string().optional(),
+  webhookIntermediateStatus: z.boolean().default(false),
+  gpu: WorkflowRunRequestGpu$outboundSchema.optional(),
   workflowId: z.string(),
   workflowApiJson: z.lazy(() => WorkflowApiJson$outboundSchema),
-  workflow: z.nullable(z.lazy(() => Workflow$outboundSchema)).optional(),
-  machineId: z.nullable(z.string()).optional(),
+  workflow: z.lazy(() => Workflow$outboundSchema).optional(),
+  machineId: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    executionMode: "execution_mode",
     webhookIntermediateStatus: "webhook_intermediate_status",
-    batchNumber: "batch_number",
-    batchInputParams: "batch_input_params",
-    isNativeRun: "is_native_run",
-    gpuEventId: "gpu_event_id",
     workflowId: "workflow_id",
     workflowApiJson: "workflow_api_json",
     machineId: "machine_id",

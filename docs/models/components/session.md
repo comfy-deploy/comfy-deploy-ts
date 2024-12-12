@@ -8,7 +8,7 @@ import { Session } from "comfydeploy/models/components";
 let value: Session = {
   sessionId: "<id>",
   gpuEventId: "<id>",
-  url: "https://torn-railway.biz",
+  url: "https://confused-slipper.biz/",
 };
 ```
 

@@ -6,7 +6,7 @@
 import { ModelOutput } from "comfydeploy/models/components";
 
 let value: ModelOutput = {
-  classType: "ComfyDeployStdOutputAny",
+  classType: "ComfyDeployStdOutputImage",
   outputId: "<id>",
 };
 ```

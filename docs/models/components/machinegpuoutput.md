@@ -1,11 +1,11 @@
-# MachineGPU
+# MachineGPUOutput
 
 ## Example Usage
 
 ```typescript
-import { MachineGPU } from "comfydeploy/models/components";
+import { MachineGPUOutput } from "comfydeploy/models/components";
 
-let value: MachineGPU = "A100";
+let value: MachineGPUOutput = "H100";
 ```
 
 ## Values

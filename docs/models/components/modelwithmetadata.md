@@ -17,7 +17,7 @@ let value: ModelWithMetadata = {
   ],
   outputs: [
     {
-      classType: "ComfyDeployStdOutputAny",
+      classType: "ComfyDeployStdOutputImage",
       outputId: "<id>",
     },
   ],

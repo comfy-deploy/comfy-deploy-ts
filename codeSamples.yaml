@@ -21,30 +21,54 @@ actions:
         - "lang": "typescript"
           "label": "public_models_models_get"
           "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.models.publicModelsModelsGet();\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/run/queue"]["post"]
+  - target: $["paths"]["/run/deployment/queue"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "create_run_queue_run_queue_post"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.queue({\n    executionMode: \"async\",\n    inputs: {\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    gpuEventId: \"123e4567-e89b-12d3-a456-426614174000\",\n    workflowVersionId: \"3ec31b24-d0d3-4298-9ffa-c74003017b70\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
-  - target: $["paths"]["/run/stream"]["post"]
+          "label": "queue_deployment_run_run_deployment_queue_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.deployment.queue({\n    inputs: {\n      \"num_inference_steps\": 30,\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://myapp.com/webhook\",\n    deploymentId: \"15e79589-12c9-453c-a41a-348fdd7de957\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/run/deployment/stream"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "create_run_stream_run_stream_post"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.stream({\n    executionMode: \"async\",\n    inputs: {\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    gpuEventId: \"123e4567-e89b-12d3-a456-426614174000\",\n    modelId: \"<id>\",\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();"
-  - target: $["paths"]["/run/sync"]["post"]
+          "label": "create_run_deployment_stream_run_deployment_stream_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.deployment.stream({\n    inputs: {\n      \"num_inference_steps\": 30,\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://myapp.com/webhook\",\n    deploymentId: \"15e79589-12c9-453c-a41a-348fdd7de957\",\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/run/deployment/sync"]["post"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
-          "label": "create_run_sync_run_sync_post"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.sync({\n    executionMode: \"async\",\n    inputs: {\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://example.com/webhook\",\n    webhookIntermediateStatus: true,\n    origin: \"manual\",\n    batchNumber: 5,\n    batchInputParams: {\n      \"input_number\": [\n        1,\n        2,\n        3,\n      ],\n      \"input_text\": [\n        \"apple\",\n        \"banana\",\n        \"cherry\",\n      ],\n    },\n    isNativeRun: true,\n    gpuEventId: \"123e4567-e89b-12d3-a456-426614174000\",\n    modelId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "label": "sync_deployment_run_run_deployment_sync_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.deployment.sync({\n    inputs: {\n      \"num_inference_steps\": 30,\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://myapp.com/webhook\",\n    deploymentId: \"15e79589-12c9-453c-a41a-348fdd7de957\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/run/workflow/queue"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "queue_workflow_run_run_workflow_queue_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.workflow.queue({\n    inputs: {\n      \"num_inference_steps\": 30,\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://myapp.com/webhook\",\n    workflowId: \"12345678-1234-5678-1234-567812345678\",\n    workflowApiJson: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/run/workflow/stream"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "create_run_workflow_stream_run_workflow_stream_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.workflow.stream({\n    inputs: {\n      \"num_inference_steps\": 30,\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://myapp.com/webhook\",\n    workflowId: \"12345678-1234-5678-1234-567812345678\",\n    workflowApiJson: {},\n  });\n\n  for await (const event of result) {\n    // Handle the event\n    console.log(event);\n  }\n}\n\nrun();"
+  - target: $["paths"]["/run/workflow/sync"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "sync_workflow_run_run_workflow_sync_post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.workflow.sync({\n    inputs: {\n      \"num_inference_steps\": 30,\n      \"prompt\": \"A beautiful landscape\",\n      \"seed\": 42,\n    },\n    webhook: \"https://myapp.com/webhook\",\n    workflowId: \"12345678-1234-5678-1234-567812345678\",\n    workflowApiJson: {},\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/run/{run_id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "typescript"
           "label": "get_run_run__run_id__get"
-          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.get({\n    runId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.run.get({\n    runId: \"b888f774-3e7c-4135-a18c-6b985523c4bc\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["/search/model"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "search_search_model_get"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.search.searchSearchModelGet({\n    query: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
   - target: $["paths"]["/session"]["post"]
     update:
       "x-codeSamples":
@@ -69,3 +93,9 @@ actions:
         - "lang": "typescript"
           "label": "get_machine_sessions_sessions_get"
           "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy({\n  bearer: \"<YOUR_BEARER_TOKEN_HERE>\",\n});\n\nasync function run() {\n  const result = await comfyDeploy.session.list({\n    machineId: \"<id>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"
+  - target: $["paths"]["{$request.body#/webhook}"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "typescript"
+          "label": "run_update__request_body__webhook__post"
+          "source": "import { ComfyDeploy } from \"comfydeploy\";\n\nconst comfyDeploy = new ComfyDeploy();\n\nasync function run() {\n  const result = await comfyDeploy.callbacks.runUpdateRequestBodyWebhookPost({\n    runId: \"<id>\",\n    status: \"success\",\n    liveStatus: \"<value>\",\n  });\n\n  // Handle the result\n  console.log(result);\n}\n\nrun();"

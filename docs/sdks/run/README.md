@@ -6,9 +6,9 @@
 ### Available Operations
 
 * [get](#get) - Get Run
-* [queue](#queue) - Queue a workflow
-* [sync](#sync) - Run a workflow in sync
-* [stream](#stream) - Run a workflow in stream
+* [~~queue~~](#queue) - Queue a workflow :warning: **Deprecated**
+* [~~sync~~](#sync) - Run a workflow in sync :warning: **Deprecated**
+* [~~stream~~](#stream) - Run a workflow in stream :warning: **Deprecated**
 
 ## get
 
@@ -87,9 +87,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## queue
+## ~~queue~~
 
 Create a new workflow run with the given parameters. This function sets up the run and initiates the execution process. For callback information, see [Callbacks](#tag/callbacks/POST/\{callback_url\}).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -102,29 +104,11 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.queue({
-    executionMode: "async",
     inputs: {
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
-    webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     workflowVersionId: "3ec31b24-d0d3-4298-9ffa-c74003017b70",
   });
 
@@ -151,29 +135,11 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await runQueue(comfyDeploy, {
-    executionMode: "async",
     inputs: {
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
-    webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     workflowVersionId: "41c76928-a496-4990-bd93-9d3bc0f64bb4",
   });
 
@@ -210,9 +176,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## sync
+## ~~sync~~
 
 Create a new workflow run with the given parameters. This function sets up the run and initiates the execution process. For callback information, see [Callbacks](#tag/callbacks/POST/\{callback_url\}).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -225,29 +193,11 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.sync({
-    executionMode: "async",
     inputs: {
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
-    webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     modelId: "<id>",
   });
 
@@ -274,30 +224,12 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await runSync(comfyDeploy, {
-    executionMode: "async",
     inputs: {
       "num_inference_steps": 30,
       "prompt": "A futuristic cityscape",
       "seed": 123456,
     },
     webhook: "https://myapp.com/webhook",
-    webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     workflowId: "12345678-1234-5678-1234-567812345678",
     workflowApiJson: {},
   });
@@ -335,9 +267,11 @@ run();
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## stream
+## ~~stream~~
 
 Create a new workflow run with the given parameters. This function sets up the run and initiates the execution process. For callback information, see [Callbacks](#tag/callbacks/POST/\{callback_url\}).
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -350,29 +284,11 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.stream({
-    executionMode: "async",
     inputs: {
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
-    webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     modelId: "<id>",
   });
 
@@ -401,29 +317,11 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await runStream(comfyDeploy, {
-    executionMode: "async",
     inputs: {
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
-    webhook: "https://example.com/webhook",
     webhookIntermediateStatus: true,
-    origin: "manual",
-    batchNumber: 5,
-    batchInputParams: {
-      "input_number": [
-        1,
-        2,
-        3,
-      ],
-      "input_text": [
-        "apple",
-        "banana",
-        "cherry",
-      ],
-    },
-    isNativeRun: true,
-    gpuEventId: "123e4567-e89b-12d3-a456-426614174000",
     workflowVersionId: "f69f9708-c73e-4900-9c84-4065577d4588",
   });
 
