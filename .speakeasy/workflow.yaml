@@ -14,3 +14,5 @@ targets:
             output: codeSamples.yaml
             registry:
                 location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/code-samples-typescript-comfydeploy
+            labelOverride:
+                fixedValue: SDK (TypeScript)

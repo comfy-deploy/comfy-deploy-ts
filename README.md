@@ -44,6 +44,7 @@ To authenticate your requests, include your API key in the `Authorization` heade
   * [Requirements](#requirements)
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
   * [Server-sent event streaming](#server-sent-event-streaming)
   * [File uploads](#file-uploads)
   * [Retries](#retries)
@@ -68,24 +69,32 @@ The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https
 
 ```bash
 npm add comfydeploy
+# Install optional peer dependencies if you plan to use React hooks
+npm add @tanstack/react-query react react-dom
 ```
 
 ### PNPM
 
 ```bash
 pnpm add comfydeploy
+# Install optional peer dependencies if you plan to use React hooks
+pnpm add @tanstack/react-query react react-dom
 ```
 
 ### Bun
 
 ```bash
 bun add comfydeploy
+# Install optional peer dependencies if you plan to use React hooks
+bun add @tanstack/react-query react react-dom
 ```
 
 ### Yarn
 
 ```bash
 yarn add comfydeploy zod
+# Install optional peer dependencies if you plan to use React hooks
+yarn add @tanstack/react-query react react-dom
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -175,6 +184,50 @@ run();
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
+
+<!-- Start React hooks with TanStack Query [react-query] -->
+## React hooks with TanStack Query
+
+React hooks built on [TanStack Query][tanstack-query] are included in this SDK.
+These hooks and the utility functions provided alongside them can be used to
+build rich applications that pull data from the API using one of the most
+popular asynchronous state management library.
+
+[tanstack-query]: https://tanstack.com/query/v5/docs/framework/react/overview
+
+To learn about this feature and how to get started, check
+[REACT_QUERY.md](./REACT_QUERY.md).
+
+> [!WARNING]
+>
+> This feature is currently in **preview** and is subject to breaking changes
+> within the current major version of the SDK as we gather user feedback on it.
+
+<details>
+
+<summary>Available React hooks</summary>
+
+- [`useDeploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
+- [`useFileUploadMutation`](docs/sdks/file/README.md#upload) - Upload File
+- [`useModelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+- [`useRunDeploymentQueueMutation`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
+- [`useRunDeploymentStreamMutation`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
+- [`useRunDeploymentSyncMutation`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
+- [`useRunGet`](docs/sdks/run/README.md#get) - Get Run
+- [`useRunWorkflowQueueMutation`](docs/sdks/workflow/README.md#queue) - Workflow - Queue
+- [`useRunWorkflowStreamMutation`](docs/sdks/workflow/README.md#stream) - Workflow - Stream
+- [`useRunWorkflowSyncMutation`](docs/sdks/workflow/README.md#sync) - Workflow - Sync
+- [`useSearchSearchSearchModelGet`](docs/sdks/search/README.md#searchsearchmodelget) - Search
+- [`useSessionCancelMutation`](docs/sdks/session/README.md#cancel) - Delete Session
+- [`useSessionCreateMutation`](docs/sdks/session/README.md#create) - Create Session
+- [`useSessionGet`](docs/sdks/session/README.md#get) - Get Session
+- [`useSessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
+- ~~[`useRunQueueMutation`](docs/sdks/run/README.md#queue)~~ - Queue a workflow :warning: **Deprecated**
+- ~~[`useRunStreamMutation`](docs/sdks/run/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
+- ~~[`useRunSyncMutation`](docs/sdks/run/README.md#sync)~~ - Run a workflow in sync :warning: **Deprecated**
+
+</details>
+<!-- End React hooks with TanStack Query [react-query] -->
 
 <!-- Start Server-sent event streaming [eventstream] -->
 ## Server-sent event streaming

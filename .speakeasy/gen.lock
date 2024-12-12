@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: e1e14b09b64cfc24def877a0390dcc9b
+  docChecksum: 415a940405fe32f83891ef4d924fb14f
   docVersion: V2
-  speakeasyVersion: 1.453.8
-  generationVersion: 2.474.15
-  releaseVersion: 2.0.0-beta.63
-  configChecksum: 9afc862f48da3bb42d312529aaca70e8
+  speakeasyVersion: 1.454.0
+  generationVersion: 2.477.0
+  releaseVersion: 2.0.0-beta.65
+  configChecksum: 1880391f71623bb86f60042d629c853c
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -28,6 +28,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.0
+    reactQueryHooks: 0.2.2
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
@@ -44,6 +45,7 @@ generatedFiles:
   - .npmignore
   - CONTRIBUTING.md
   - FUNCTIONS.md
+  - REACT_QUERY.md
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
@@ -225,6 +227,27 @@ generatedFiles:
   - src/models/operations/getsessionsessionsessionidget.ts
   - src/models/operations/index.ts
   - src/models/operations/searchsearchmodelget.ts
+  - src/react-query/_context.tsx
+  - src/react-query/_types.ts
+  - src/react-query/deploymentsList.ts
+  - src/react-query/fileUpload.ts
+  - src/react-query/index.ts
+  - src/react-query/modelsPublicModelsModelsGet.ts
+  - src/react-query/runDeploymentQueue.ts
+  - src/react-query/runDeploymentStream.ts
+  - src/react-query/runDeploymentSync.ts
+  - src/react-query/runGet.ts
+  - src/react-query/runQueue.ts
+  - src/react-query/runStream.ts
+  - src/react-query/runSync.ts
+  - src/react-query/runWorkflowQueue.ts
+  - src/react-query/runWorkflowStream.ts
+  - src/react-query/runWorkflowSync.ts
+  - src/react-query/searchSearchSearchModelGet.ts
+  - src/react-query/sessionCancel.ts
+  - src/react-query/sessionCreate.ts
+  - src/react-query/sessionGet.ts
+  - src/react-query/sessionList.ts
   - src/sdk/deployment.ts
   - src/sdk/deployments.ts
   - src/sdk/file.ts
