@@ -1,11 +1,12 @@
-speakeasyVersion: 1.454.0
+speakeasyVersion: 1.454.2
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:c0fc61896c872ec7bf46fd2c011b2e301fa370346e1447ac1971ff34418ad7c3
+        sourceRevisionDigest: sha256:3cb57cd31553f594a266e19aff0338844a7bfe96bde5640fef451c41b89468a2
         sourceBlobDigest: sha256:447550907eae85e360049cddd8f3b480b3ba32ca591d127106d59d0496ddd005
         tags:
             - latest
+            - speakeasy-sdk-regen-1728000330
             - V2
 targets:
     comfy-deploy:
@@ -16,10 +17,10 @@ targets:
     comfydeploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:c0fc61896c872ec7bf46fd2c011b2e301fa370346e1447ac1971ff34418ad7c3
+        sourceRevisionDigest: sha256:3cb57cd31553f594a266e19aff0338844a7bfe96bde5640fef451c41b89468a2
         sourceBlobDigest: sha256:447550907eae85e360049cddd8f3b480b3ba32ca591d127106d59d0496ddd005
         codeSamplesNamespace: code-samples-typescript-comfydeploy
-        codeSamplesRevisionDigest: sha256:19d6f641424e351c3411564abeb0d43824889017ecb2f76e284b7618bf541572
+        codeSamplesRevisionDigest: sha256:0e85ad13cb204513149cf4b02fcf0485357c11f84704729d8e378a7a36f9669b
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
