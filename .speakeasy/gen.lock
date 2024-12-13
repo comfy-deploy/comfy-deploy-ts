@@ -3,10 +3,10 @@ id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
   docChecksum: 415a940405fe32f83891ef4d924fb14f
   docVersion: V2
-  speakeasyVersion: 1.454.0
-  generationVersion: 2.477.0
-  releaseVersion: 2.0.0-beta.65
-  configChecksum: 1880391f71623bb86f60042d629c853c
+  speakeasyVersion: 1.454.2
+  generationVersion: 2.477.4
+  releaseVersion: 2.0.0-beta.69
+  configChecksum: 6433bef148f31c694630e0fc375de57a
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -122,6 +122,7 @@ generatedFiles:
   - docs/models/operations/getrunrunrunidgetrequest.md
   - docs/models/operations/getsessionsessionsessionidgetrequest.md
   - docs/models/operations/searchsearchmodelgetrequest.md
+  - docs/sdks/callbacks/README.md
   - docs/sdks/comfydeploy/README.md
   - docs/sdks/deployment/README.md
   - docs/sdks/deployments/README.md
@@ -134,6 +135,7 @@ generatedFiles:
   - jsr.json
   - package.json
   - src/core.ts
+  - src/funcs/callbacksRunUpdateRequestBodyWebhookPost.ts
   - src/funcs/deploymentsList.ts
   - src/funcs/fileUpload.ts
   - src/funcs/modelsPublicModelsModelsGet.ts
@@ -152,6 +154,7 @@ generatedFiles:
   - src/funcs/sessionCreate.ts
   - src/funcs/sessionGet.ts
   - src/funcs/sessionList.ts
+  - src/funcs/validateWebhook.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -248,6 +251,7 @@ generatedFiles:
   - src/react-query/sessionCreate.ts
   - src/react-query/sessionGet.ts
   - src/react-query/sessionList.ts
+  - src/sdk/callbacks.ts
   - src/sdk/deployment.ts
   - src/sdk/deployments.ts
   - src/sdk/file.ts
