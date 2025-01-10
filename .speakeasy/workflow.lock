@@ -2,7 +2,7 @@ speakeasyVersion: 1.467.1
 sources:
     comfydeploy-api:
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:2ca524e057ed65ce606ac248747b3af8f8a200baaa13cb80bffa309137ae86ab
+        sourceRevisionDigest: sha256:0b6d7eba4ccf3e0cbf3b1af7146fca6c5fd70ec720079f7597a08471b4f5b0b7
         sourceBlobDigest: sha256:dd5a33c131323ad92d376de6b70b56b32476e3662e860b45fa0bbfeb9ffe853a
         tags:
             - latest
@@ -16,10 +16,10 @@ targets:
     comfydeploy:
         source: comfydeploy-api
         sourceNamespace: comfydeploy-api
-        sourceRevisionDigest: sha256:2ca524e057ed65ce606ac248747b3af8f8a200baaa13cb80bffa309137ae86ab
+        sourceRevisionDigest: sha256:0b6d7eba4ccf3e0cbf3b1af7146fca6c5fd70ec720079f7597a08471b4f5b0b7
         sourceBlobDigest: sha256:dd5a33c131323ad92d376de6b70b56b32476e3662e860b45fa0bbfeb9ffe853a
         codeSamplesNamespace: code-samples-typescript-comfydeploy
-        codeSamplesRevisionDigest: sha256:1369303eea15fbea6a94806fcf1e6ecf9fbeaccdac4d6447502ad98ff44e88ab
+        codeSamplesRevisionDigest: sha256:76deace2690b8d2d47122800a298737bb54b7a07dd44a6335ba1233e3a559768
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
