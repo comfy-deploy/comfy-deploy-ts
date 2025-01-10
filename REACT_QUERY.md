@@ -126,7 +126,6 @@ export function Example() {
 
         mutate({
           inputs: {
-            "num_inference_steps": 30,
             "prompt": "A beautiful landscape",
             "seed": 42,
           },

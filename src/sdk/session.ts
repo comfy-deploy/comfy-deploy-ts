@@ -3,9 +3,8 @@
  */
 
 import { sessionCancel } from "../funcs/sessionCancel.js";
-import { sessionCreate } from "../funcs/sessionCreate.js";
 import { sessionGet } from "../funcs/sessionGet.js";
-import { sessionList } from "../funcs/sessionList.js";
+import { sessionIncreaseTimeout } from "../funcs/sessionIncreaseTimeout.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -41,27 +40,13 @@ export class Session extends ClientSDK {
   }
 
   /**
-   * Get Machine Sessions
+   * Increase Timeout
    */
-  async list(
-    request: operations.GetMachineSessionsSessionsGetRequest,
+  async increaseTimeout(
+    request: components.IncreaseTimeoutBody,
     options?: RequestOptions,
-  ): Promise<Array<components.GPUEventModel>> {
-    return unwrapAsync(sessionList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create Session
-   */
-  async create(
-    request: components.CreateSessionBody,
-    options?: RequestOptions,
-  ): Promise<components.CreateSessionResponse> {
-    return unwrapAsync(sessionCreate(
+  ): Promise<any> {
+    return unwrapAsync(sessionIncreaseTimeout(
       this,
       request,
       options,

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: e1e14b09b64cfc24def877a0390dcc9b
+  docChecksum: 605ab4fb0061445a48d7e0daab340c9d
   docVersion: V2
-  speakeasyVersion: 1.454.2
-  generationVersion: 2.477.4
-  releaseVersion: 2.0.0-beta.73
-  configChecksum: de750b4efa73216a67f0800037b3bc41
+  speakeasyVersion: 1.467.1
+  generationVersion: 2.492.3
+  releaseVersion: 2.0.0-beta.78
+  configChecksum: 49319710702d410cb2b7067d2311c1be
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -15,13 +15,13 @@ features:
     additionalDependencies: 0.1.0
     callbacks: 1.0.0
     constsAndDefaults: 0.1.11
-    core: 3.18.9
+    core: 3.18.12
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    globalSecurity: 2.82.11
+    globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -35,7 +35,7 @@ features:
     serverEvents: 0.1.5
     unions: 2.85.8
     uploadStreams: 0.1.0
-    webhooks: 1.2.0
+    webhooks: 1.4.1
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -50,14 +50,20 @@ generatedFiles:
   - USAGE.md
   - docs/lib/utils/retryconfig.md
   - docs/models/components/apiroutestypesmachinegpu2.md
+  - docs/models/components/assetresponse.md
+  - docs/models/components/bodyuploadassetfileassetsuploadpost.md
+  - docs/models/components/bodyuploadassetfileassetsuploadpostfile.md
   - docs/models/components/bodyuploadfilefileuploadpost.md
+  - docs/models/components/cancelfunctionbody.md
   - docs/models/components/classtype.md
+  - docs/models/components/createfolderrequest.md
   - docs/models/components/createrunresponse.md
   - docs/models/components/createsessionbody.md
   - docs/models/components/createsessionresponse.md
   - docs/models/components/data.md
   - docs/models/components/defaultvalue.md
   - docs/models/components/deletesessionresponse.md
+  - docs/models/components/deploymentcreate.md
   - docs/models/components/deploymentenvironment.md
   - docs/models/components/deploymentmodel.md
   - docs/models/components/deploymentrunrequest.md
@@ -70,6 +76,7 @@ generatedFiles:
   - docs/models/components/gpu.md
   - docs/models/components/gpueventmodel.md
   - docs/models/components/gpuprovidertype.md
+  - docs/models/components/increasetimeoutbody.md
   - docs/models/components/inputmodel.md
   - docs/models/components/inputs.md
   - docs/models/components/loc.md
@@ -113,48 +120,62 @@ generatedFiles:
   - docs/models/components/workflowwithname.md
   - docs/models/components/workspacegpu.md
   - docs/models/errors/httpvalidationerror.md
+  - docs/models/operations/cancelrunrunrunidcancelpostrequest.md
   - docs/models/operations/createrunqueuerunqueuepostdata.md
   - docs/models/operations/createrunstreamrunstreampostdata.md
   - docs/models/operations/createrunsyncrunsyncpostdata.md
+  - docs/models/operations/deleteassetassetsassetiddeleterequest.md
   - docs/models/operations/deletesessionsessionsessioniddeleterequest.md
+  - docs/models/operations/getassetassetsassetidgetrequest.md
   - docs/models/operations/getdeploymentsdeploymentsgetrequest.md
   - docs/models/operations/getmachinesessionssessionsgetrequest.md
   - docs/models/operations/getrunrunrunidgetrequest.md
   - docs/models/operations/getsessionsessionsessionidgetrequest.md
+  - docs/models/operations/listassetsassetsgetrequest.md
   - docs/models/operations/searchsearchmodelgetrequest.md
-  - docs/sdks/callbacks/README.md
+  - docs/models/operations/uploadassetfileassetsuploadpostrequest.md
   - docs/sdks/comfydeploy/README.md
-  - docs/sdks/deployment/README.md
+  - docs/sdks/deploymentruns/README.md
   - docs/sdks/deployments/README.md
-  - docs/sdks/file/README.md
+  - docs/sdks/files/README.md
   - docs/sdks/models/README.md
   - docs/sdks/run/README.md
+  - docs/sdks/rundeployment/README.md
+  - docs/sdks/runs/README.md
+  - docs/sdks/runworkflow/README.md
   - docs/sdks/search/README.md
   - docs/sdks/session/README.md
-  - docs/sdks/workflow/README.md
+  - docs/sdks/sessions/README.md
+  - docs/sdks/workflowruns/README.md
   - jsr.json
   - package.json
   - src/core.ts
-  - src/funcs/callbacksRunUpdateRequestBodyWebhookPost.ts
+  - src/funcs/deploymentRunsSync.ts
+  - src/funcs/deploymentsCreate.ts
   - src/funcs/deploymentsList.ts
-  - src/funcs/fileUpload.ts
-  - src/funcs/modelsPublicModelsModelsGet.ts
+  - src/funcs/filesCreateFolder.ts
+  - src/funcs/filesDelete.ts
+  - src/funcs/filesGet.ts
+  - src/funcs/filesList.ts
+  - src/funcs/filesUpload.ts
+  - src/funcs/filesUploadFile.ts
+  - src/funcs/modelsList.ts
   - src/funcs/runDeploymentQueue.ts
   - src/funcs/runDeploymentStream.ts
-  - src/funcs/runDeploymentSync.ts
   - src/funcs/runGet.ts
   - src/funcs/runQueue.ts
-  - src/funcs/runStream.ts
   - src/funcs/runSync.ts
   - src/funcs/runWorkflowQueue.ts
-  - src/funcs/runWorkflowStream.ts
   - src/funcs/runWorkflowSync.ts
-  - src/funcs/searchSearchSearchModelGet.ts
+  - src/funcs/runsCancel.ts
+  - src/funcs/runsStream.ts
+  - src/funcs/searchModel.ts
   - src/funcs/sessionCancel.ts
-  - src/funcs/sessionCreate.ts
   - src/funcs/sessionGet.ts
-  - src/funcs/sessionList.ts
-  - src/funcs/validateWebhook.ts
+  - src/funcs/sessionIncreaseTimeout.ts
+  - src/funcs/sessionsCreate.ts
+  - src/funcs/sessionsList.ts
+  - src/funcs/workflowRunsStream.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -176,11 +197,16 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/models/components/apiroutestypesmachinegpu2.ts
+  - src/models/components/assetresponse.ts
+  - src/models/components/bodyuploadassetfileassetsuploadpost.ts
   - src/models/components/bodyuploadfilefileuploadpost.ts
+  - src/models/components/cancelfunctionbody.ts
+  - src/models/components/createfolderrequest.ts
   - src/models/components/createrunresponse.ts
   - src/models/components/createsessionbody.ts
   - src/models/components/createsessionresponse.ts
   - src/models/components/deletesessionresponse.ts
+  - src/models/components/deploymentcreate.ts
   - src/models/components/deploymentenvironment.ts
   - src/models/components/deploymentmodel.ts
   - src/models/components/deploymentrunrequest.ts
@@ -189,6 +215,7 @@ generatedFiles:
   - src/models/components/fileuploadresponse.ts
   - src/models/components/gpueventmodel.ts
   - src/models/components/gpuprovidertype.ts
+  - src/models/components/increasetimeoutbody.ts
   - src/models/components/index.ts
   - src/models/components/inputmodel.ts
   - src/models/components/logdatacontent.ts
@@ -220,48 +247,64 @@ generatedFiles:
   - src/models/errors/index.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
+  - src/models/operations/cancelrunrunrunidcancelpost.ts
   - src/models/operations/createrunqueuerunqueuepost.ts
   - src/models/operations/createrunstreamrunstreampost.ts
   - src/models/operations/createrunsyncrunsyncpost.ts
+  - src/models/operations/deleteassetassetsassetiddelete.ts
   - src/models/operations/deletesessionsessionsessioniddelete.ts
+  - src/models/operations/getassetassetsassetidget.ts
   - src/models/operations/getdeploymentsdeploymentsget.ts
   - src/models/operations/getmachinesessionssessionsget.ts
   - src/models/operations/getrunrunrunidget.ts
   - src/models/operations/getsessionsessionsessionidget.ts
   - src/models/operations/index.ts
+  - src/models/operations/listassetsassetsget.ts
   - src/models/operations/searchsearchmodelget.ts
+  - src/models/operations/uploadassetfileassetsuploadpost.ts
   - src/react-query/_context.tsx
   - src/react-query/_types.ts
+  - src/react-query/deploymentRunsSync.ts
+  - src/react-query/deploymentsCreate.ts
   - src/react-query/deploymentsList.ts
-  - src/react-query/fileUpload.ts
+  - src/react-query/filesCreateFolder.ts
+  - src/react-query/filesDelete.ts
+  - src/react-query/filesGet.ts
+  - src/react-query/filesList.ts
+  - src/react-query/filesUpload.ts
+  - src/react-query/filesUploadFile.ts
   - src/react-query/index.ts
-  - src/react-query/modelsPublicModelsModelsGet.ts
+  - src/react-query/modelsList.ts
   - src/react-query/runDeploymentQueue.ts
   - src/react-query/runDeploymentStream.ts
-  - src/react-query/runDeploymentSync.ts
   - src/react-query/runGet.ts
   - src/react-query/runQueue.ts
-  - src/react-query/runStream.ts
   - src/react-query/runSync.ts
   - src/react-query/runWorkflowQueue.ts
-  - src/react-query/runWorkflowStream.ts
   - src/react-query/runWorkflowSync.ts
-  - src/react-query/searchSearchSearchModelGet.ts
+  - src/react-query/runsCancel.ts
+  - src/react-query/runsStream.ts
+  - src/react-query/searchModel.ts
   - src/react-query/sessionCancel.ts
-  - src/react-query/sessionCreate.ts
   - src/react-query/sessionGet.ts
-  - src/react-query/sessionList.ts
-  - src/sdk/callbacks.ts
-  - src/sdk/deployment.ts
+  - src/react-query/sessionIncreaseTimeout.ts
+  - src/react-query/sessionsCreate.ts
+  - src/react-query/sessionsList.ts
+  - src/react-query/workflowRunsStream.ts
+  - src/sdk/deploymentruns.ts
   - src/sdk/deployments.ts
-  - src/sdk/file.ts
+  - src/sdk/files.ts
   - src/sdk/index.ts
   - src/sdk/models.ts
   - src/sdk/run.ts
+  - src/sdk/rundeployment.ts
+  - src/sdk/runs.ts
+  - src/sdk/runworkflow.ts
   - src/sdk/sdk.ts
   - src/sdk/search.ts
   - src/sdk/session.ts
-  - src/sdk/workflow.ts
+  - src/sdk/sessions.ts
+  - src/sdk/workflowruns.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts
@@ -464,7 +507,8 @@ examples:
       responses:
         "200":
           application/json: {"id": "b47ee88e-040f-4bd7-ae8f-4a29b2b11172", "workflow_version_id": "21c978b2-6be7-45e2-bc76-236473dbe9a7", "workflow_inputs": "<value>", "workflow_id": "d5f37919-24da-4841-a2e1-3185f77e61ec", "workflow_api": "<value>", "machine_id": "e1327209-7644-45be-8e9c-b327ccb598b2", "origin": "<value>", "status": "<value>", "created_at": "2023-09-22T06:11:55.168Z", "updated_at": "2023-02-07T00:20:17.538Z", "gpu_event_id": "<id>", "gpu": "<value>", "machine_version": "<value>", "machine_type": "<value>", "modal_function_call_id": "<id>", "user_id": "<id>", "org_id": "<id>", "live_status": "<value>", "webhook": "<value>", "webhook_status": "<value>", "number": 911907, "duration": "158.56", "cold_start_duration": "9563.34", "cold_start_duration_total": "1165.41", "run_duration": "6388.72"}
-        "422": {}
+        "422":
+          application/json: {}
   create_run_all_run_post:
     speakeasy-default-create-run-all-run-post:
       requestBody:
@@ -480,8 +524,9 @@ examples:
           session_id: "<id>"
       responses:
         "200":
-          application/json: {"session_id": "<id>", "gpu_event_id": "<id>", "url": "https://normal-making.name"}
-        "422": {}
+          application/json: {"session_id": "<id>", "gpu_event_id": "<id>", "url": "https://normal-making.name", "gpu": "<value>", "created_at": "2025-02-06T13:54:48.821Z", "timeout": 558834, "machine_id": "<id>"}
+        "422":
+          application/json: {}
   delete_session_session__session_id__delete:
     speakeasy-default-delete-session-session-session-id-delete:
       parameters:
@@ -490,7 +535,8 @@ examples:
       responses:
         "200":
           application/json: {"success": true}
-        "422": {}
+        "422":
+          application/json: {}
   get_machine_sessions_machine__machine_id__sessions_get:
     speakeasy-default-get-machine-sessions-machine-machine-id-sessions-get:
       parameters:
@@ -517,7 +563,8 @@ examples:
       responses:
         "200":
           application/json: [{"id": "5275df01-fd80-4b75-bddf-8d5b16e28e85", "user_id": "<id>", "org_id": "<id>", "workflow_version_id": "9f9d875f-d666-401c-a5d8-e20dcfc5ca50", "workflow_id": "979474c9-42c5-4e68-968b-b0d39041b592", "machine_id": "777b9f36-4a74-48d5-b472-7d0146dcf248", "share_slug": "<value>", "description": "runway cone however wiggly too when scary", "environment": "public-share", "created_at": "2024-02-20T19:41:14.664Z", "updated_at": "2022-01-24T00:25:46.271Z", "workflow": {"id": "c8a232aa-0b11-4b8a-b005-71e9e705d0e6", "name": "<value>"}}, {"id": "461bb356-9656-45b2-9232-305b6bf03c58", "user_id": "<id>", "org_id": "<id>", "workflow_version_id": "22b8f724-b660-4346-b549-0e91f582795e", "workflow_id": "6ed60187-afb3-411d-8c20-f765bf04da90", "machine_id": "64bff373-1d49-42ff-8c8e-4687ad116e9b", "share_slug": "<value>", "description": "as corrupt lyre ideal eulogise", "environment": "production", "created_at": "2022-03-24T17:56:31.778Z", "updated_at": "2023-11-22T07:18:08.338Z", "workflow": {"id": "21e27667-18d6-4d46-812e-0aee1b9ddf12", "name": "<value>"}}]
-        "422": {}
+        "422":
+          application/json: {}
   create_run_queue_run_post:
     speakeasy-default-create-run-queue-run-post:
       requestBody:
@@ -533,7 +580,8 @@ examples:
       responses:
         "200":
           application/json: {"run_id": "312c491e-eee1-46d4-bb64-574d03253718"}
-        "422": {}
+        "422":
+          application/json: {}
   create_run_sync_run_sync_post:
     speakeasy-default-create-run-sync-run-sync-post:
       requestBody:
@@ -541,11 +589,16 @@ examples:
       responses:
         "200":
           application/json: [{"id": "74537c27-c77e-45f3-8db2-d51ced44fce8", "run_id": "d5253d2c-82da-4a97-9dcb-069d07b91839", "data": {}, "node_meta": "<value>", "created_at": "2024-04-05T14:07:57.915Z", "updated_at": "2024-05-11T21:07:16.644Z"}]
-        "422": {}
+        "422":
+          application/json: {}
   create_run_stream_run_stream_post:
     speakeasy-default-create-run-stream-run-stream-post:
       requestBody:
         application/json: {"inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook_intermediate_status": true, "model_id": "<id>"}
+      responses:
+        "422":
+          application/json: {}
+        "200": {}
   create_session_session_post:
     speakeasy-default-create-session-session-post:
       parameters:
@@ -556,7 +609,8 @@ examples:
       responses:
         "200":
           application/json: {"session_id": "7a621cf0-21cd-49cf-8540-3315211a509a"}
-        "422": {}
+        "422":
+          application/json: {}
   get_machine_sessions_sessions_get:
     speakeasy-default-get-machine-sessions-sessions-get:
       parameters:
@@ -565,7 +619,8 @@ examples:
       responses:
         "200":
           application/json: [{"id": "8a232aa0-b11b-48a0-8057-1e9e705d0e6e", "user_id": "<id>", "org_id": "<id>", "machine_id": "1e276671-8d6d-4461-b2e0-aee1b9ddf121", "start_time": "2024-05-01T20:38:29.097Z", "end_time": "2022-06-05T08:58:03.644Z", "gpu": "A100", "gpu_provider": "comfy-deploy"}, {"id": "c8104fb4-51a7-40cf-8c8f-e07fbc60ab96", "user_id": "<id>", "org_id": "<id>", "machine_id": "d5611ff6-573e-40a6-a233-1ad7c07cc481", "start_time": "2023-09-15T02:22:04.749Z", "end_time": "2022-04-20T19:52:18.966Z", "gpu": "L4", "gpu_provider": "modal"}, {"id": "6ebd834b-7d8c-4223-a6e0-85944ebceb27", "user_id": "<id>", "org_id": "<id>", "machine_id": "d4753d0a-17c4-478e-9329-a9ec97938e1a", "start_time": "2022-09-28T14:04:50.967Z", "end_time": "2022-01-03T14:26:00.039Z", "gpu": "H100", "gpu_provider": "comfy-deploy"}]
-        "422": {}
+        "422":
+          application/json: {}
   upload_file_file_upload_post:
     speakeasy-default-upload-file-file-upload-post:
       requestBody:
@@ -573,7 +628,8 @@ examples:
       responses:
         "200":
           application/json: {"message": "File uploaded successfully", "file_id": "img_1a2b3c4d5e6f7g8h", "file_name": "example_image.jpg", "file_url": "https://your-bucket.s3.your-region.amazonaws.com/inputs/img_1a2b3c4d5e6f7g8h.jpg"}
-        "422": {}
+        "422":
+          application/json: {}
   convert_to_docker_steps_deps_post:
     speakeasy-default-convert-to-docker-steps-deps-post:
       requestBody:
@@ -598,43 +654,55 @@ examples:
   create_run_deployment_stream_run_deployment_stream_post:
     speakeasy-default-create-run-deployment-stream-run-deployment-stream-post:
       requestBody:
-        application/json: {"inputs": {"num_inference_steps": 30, "prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "deployment_id": "15e79589-12c9-453c-a41a-348fdd7de957"}
+        application/json: {"inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "deployment_id": "15e79589-12c9-453c-a41a-348fdd7de957"}
+      responses:
+        "422":
+          application/json: {}
+        "200": {}
   create_run_workflow_stream_run_workflow_stream_post:
     speakeasy-default-create-run-workflow-stream-run-workflow-stream-post:
       requestBody:
-        application/json: {"inputs": {"num_inference_steps": 30, "prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "workflow_id": "12345678-1234-5678-1234-567812345678"}
+        application/json: {"inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "workflow_id": "12345678-1234-5678-1234-567812345678"}
+      responses:
+        "422":
+          application/json: {}
+        "200": {}
   queue_deployment_run_run_deployment_queue_post:
     speakeasy-default-queue-deployment-run-run-deployment-queue-post:
       requestBody:
-        application/json: {"inputs": {"num_inference_steps": 30, "prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "deployment_id": "15e79589-12c9-453c-a41a-348fdd7de957"}
+        application/json: {"inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "deployment_id": "15e79589-12c9-453c-a41a-348fdd7de957"}
       responses:
         "200":
           application/json: {"run_id": "03ec31b2-4d0d-4329-88ff-ac74003017b7"}
-        "422": {}
+        "422":
+          application/json: {}
   sync_deployment_run_run_deployment_sync_post:
     speakeasy-default-sync-deployment-run-run-deployment-sync-post:
       requestBody:
-        application/json: {"inputs": {"num_inference_steps": 30, "prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "deployment_id": "15e79589-12c9-453c-a41a-348fdd7de957"}
+        application/json: {"inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "deployment_id": "15e79589-12c9-453c-a41a-348fdd7de957"}
       responses:
         "200":
           application/json: [{"id": "0897be30-8085-4c96-83b5-09c0142ddd3a", "run_id": "74537c27-c77e-45f3-8db2-d51ced44fce8", "data": {"key": [{"url": "https://excellent-someplace.com/", "type": "<value>", "filename": "example.file"}], "key1": ["<value>", {"url": "https://quixotic-pacemaker.name", "type": "<value>", "filename": "example.file"}, {"url": "https://stupendous-reboot.com", "type": "<value>", "filename": "example.file"}], "key2": ["<value>"]}, "node_meta": "<value>", "created_at": "2024-06-15T03:39:15.085Z", "updated_at": "2022-01-07T17:33:50.101Z"}, {"id": "7b918394-ccd6-4006-bce6-e9d017d70eb9", "run_id": "65e87a7a-7857-4bfb-b41e-75104e9739c5", "data": {"key": []}, "node_meta": "<value>", "created_at": "2022-08-28T07:34:17.021Z", "updated_at": "2023-05-08T07:06:17.977Z"}, {"id": "9f9cc0e7-be8b-46e8-8cb1-c6a768b8af61", "run_id": "a6bac807-9573-4ae1-9a78-99edf52381d0", "data": {"key": [{"url": "https://regal-pillbox.name/", "type": "<value>", "filename": "example.file"}, "<value>"], "key1": [{"url": "https://amused-completion.com/", "type": "<value>", "filename": "example.file"}, {"url": "https://stingy-pulse.org/", "type": "<value>", "filename": "example.file"}, {"url": "https://productive-populist.net/", "type": "<value>", "filename": "example.file"}], "key2": ["<value>"]}, "node_meta": "<value>", "created_at": "2023-09-03T10:46:05.380Z", "updated_at": "2024-02-13T08:26:26.046Z"}]
-        "422": {}
+        "422":
+          application/json: {}
   queue_workflow_run_run_workflow_queue_post:
     speakeasy-default-queue-workflow-run-run-workflow-queue-post:
       requestBody:
-        application/json: {"inputs": {"num_inference_steps": 30, "prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "workflow_id": "12345678-1234-5678-1234-567812345678"}
+        application/json: {"inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "workflow_id": "12345678-1234-5678-1234-567812345678"}
       responses:
         "200":
           application/json: {"run_id": "03ec31b2-4d0d-4329-88ff-ac74003017b7"}
-        "422": {}
+        "422":
+          application/json: {}
   sync_workflow_run_run_workflow_sync_post:
     speakeasy-default-sync-workflow-run-run-workflow-sync-post:
       requestBody:
-        application/json: {"inputs": {"num_inference_steps": 30, "prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "workflow_id": "12345678-1234-5678-1234-567812345678"}
+        application/json: {"inputs": {"prompt": "A beautiful landscape", "seed": 42}, "webhook": "https://myapp.com/webhook", "workflow_id": "12345678-1234-5678-1234-567812345678"}
       responses:
         "200":
           application/json: [{"id": "0897be30-8085-4c96-83b5-09c0142ddd3a", "run_id": "74537c27-c77e-45f3-8db2-d51ced44fce8", "data": {"key": [{"url": "https://excellent-someplace.com/", "type": "<value>", "filename": "example.file"}], "key1": ["<value>", {"url": "https://quixotic-pacemaker.name", "type": "<value>", "filename": "example.file"}, {"url": "https://stupendous-reboot.com", "type": "<value>", "filename": "example.file"}], "key2": ["<value>"]}, "node_meta": "<value>", "created_at": "2024-06-15T03:39:15.085Z", "updated_at": "2022-01-07T17:33:50.101Z"}, {"id": "7b918394-ccd6-4006-bce6-e9d017d70eb9", "run_id": "65e87a7a-7857-4bfb-b41e-75104e9739c5", "data": {"key": []}, "node_meta": "<value>", "created_at": "2022-08-28T07:34:17.021Z", "updated_at": "2023-05-08T07:06:17.977Z"}, {"id": "9f9cc0e7-be8b-46e8-8cb1-c6a768b8af61", "run_id": "a6bac807-9573-4ae1-9a78-99edf52381d0", "data": {"key": [{"url": "https://regal-pillbox.name/", "type": "<value>", "filename": "example.file"}, "<value>"], "key1": [{"url": "https://amused-completion.com/", "type": "<value>", "filename": "example.file"}, {"url": "https://stingy-pulse.org/", "type": "<value>", "filename": "example.file"}, {"url": "https://productive-populist.net/", "type": "<value>", "filename": "example.file"}], "key2": ["<value>"]}, "node_meta": "<value>", "created_at": "2023-09-03T10:46:05.380Z", "updated_at": "2024-02-13T08:26:26.046Z"}]
-        "422": {}
+        "422":
+          application/json: {}
   search_search_model_get:
     speakeasy-default-search-search-model-get:
       parameters:
@@ -643,7 +711,8 @@ examples:
       responses:
         "200":
           application/json: {}
-        "422": {}
+        "422":
+          application/json: {}
   run_update__request_body__webhook__post:
     speakeasy-default-run-update-request-body-webhook-post:
       requestBody:
@@ -651,5 +720,81 @@ examples:
       responses:
         "200":
           application/json: {"status": "<value>"}
-        "422": {}
+        "422":
+          application/json: {}
+  cancel_run_run__run_id__cancel_post:
+    speakeasy-default-cancel-run-run-run-id-cancel-post:
+      parameters:
+        path:
+          run_id: "<id>"
+      requestBody:
+        application/json: {"function_id": "<id>"}
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
+  increase_timeout_session_increase_timeout_post:
+    speakeasy-default-increase-timeout-session-increase-timeout-post:
+      requestBody:
+        application/json: {"machine_id": "<id>", "session_id": "d1cbd355-89fb-45f4-9778-6137629fc60d", "timeout": 465465, "gpu": "<value>"}
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
+  create_deployment_deployment_post:
+    speakeasy-default-create-deployment-deployment-post:
+      requestBody:
+        application/json: {"workflow_version_id": "<id>", "workflow_id": "<id>", "machine_id": "<id>", "environment": "<value>"}
+      responses:
+        "200":
+          application/json: {"id": "7a621cf0-21cd-49cf-8540-3315211a509a", "user_id": "<id>", "org_id": "<id>", "workflow_version_id": "080a8e77-4c2b-4ecc-9376-91775e024985", "workflow_id": "13de0ee8-03d5-46a1-adf9-436bfd394947", "machine_id": "8bc19d4c-51e9-49df-9f42-acbeff61bc52", "share_slug": "<value>", "description": "formula other gosh carouse", "environment": "staging", "created_at": "2024-02-24T22:31:50.589Z", "updated_at": "2024-09-18T22:12:00.266Z"}
+        "422":
+          application/json: {}
+  create_folder_assets_folder_post:
+    speakeasy-default-create-folder-assets-folder-post:
+      requestBody:
+        application/json: {"name": "<value>"}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "<value>", "is_folder": true, "path": "/boot", "created_at": "2024-05-12T23:47:53.128Z", "updated_at": "2025-02-08T02:30:03.351Z"}
+        "422":
+          application/json: {}
+  list_assets_assets_get:
+    speakeasy-default-list-assets-assets-get:
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "name": "<value>", "is_folder": false, "path": "/sbin", "created_at": "2025-12-25T17:21:49.793Z", "updated_at": "2025-01-18T10:50:56.287Z"}, {"id": "<id>", "name": "<value>", "is_folder": true, "path": "/etc/ppp", "created_at": "2025-12-04T16:54:21.906Z", "updated_at": "2025-04-01T12:23:51.277Z"}]
+        "422":
+          application/json: {}
+  delete_asset_assets__asset_id__delete:
+    speakeasy-default-delete-asset-assets-asset-id-delete:
+      parameters:
+        path:
+          asset_id: "<id>"
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
+  get_asset_assets__asset_id__get:
+    speakeasy-default-get-asset-assets-asset-id-get:
+      parameters:
+        path:
+          asset_id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "<value>", "is_folder": true, "path": "/lost+found", "created_at": "2024-01-07T09:26:38.024Z", "updated_at": "2025-09-14T11:53:46.680Z"}
+        "422":
+          application/json: {}
+  upload_asset_file_assets_upload_post:
+    speakeasy-default-upload-asset-file-assets-upload-post:
+      requestBody:
+        multipart/form-data: {"file": {}}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "<value>", "is_folder": false, "path": "/dev", "created_at": "2023-03-10T03:20:38.050Z", "updated_at": "2025-09-25T00:29:12.832Z"}
+        "422":
+          application/json: {}
 generatedTests: {}

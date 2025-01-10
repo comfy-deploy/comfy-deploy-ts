@@ -49,7 +49,7 @@ export function useRunDeploymentStreamMutation(
 }
 
 export function mutationKeyRunDeploymentStream(): MutationKey {
-  return ["comfydeploy", "deployment", "stream"];
+  return ["comfydeploy", "runDeployment", "stream"];
 }
 
 export function buildRunDeploymentStreamMutation(

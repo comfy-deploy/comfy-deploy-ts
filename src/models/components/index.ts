@@ -3,11 +3,16 @@
  */
 
 export * from "./apiroutestypesmachinegpu2.js";
+export * from "./assetresponse.js";
+export * from "./bodyuploadassetfileassetsuploadpost.js";
 export * from "./bodyuploadfilefileuploadpost.js";
+export * from "./cancelfunctionbody.js";
+export * from "./createfolderrequest.js";
 export * from "./createrunresponse.js";
 export * from "./createsessionbody.js";
 export * from "./createsessionresponse.js";
 export * from "./deletesessionresponse.js";
+export * from "./deploymentcreate.js";
 export * from "./deploymentenvironment.js";
 export * from "./deploymentmodel.js";
 export * from "./deploymentrunrequest.js";
@@ -16,6 +21,7 @@ export * from "./eventupdateevent.js";
 export * from "./fileuploadresponse.js";
 export * from "./gpueventmodel.js";
 export * from "./gpuprovidertype.js";
+export * from "./increasetimeoutbody.js";
 export * from "./inputmodel.js";
 export * from "./logdatacontent.js";
 export * from "./logupdateevent.js";

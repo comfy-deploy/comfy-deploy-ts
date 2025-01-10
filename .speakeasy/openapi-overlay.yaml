@@ -1,0 +1,11 @@
+overlay: 1.0.0
+info:
+  title: Overlay to apply to the ComfyDeploy API
+  version: 0.0.1
+actions:
+  - target: $
+    update:
+      x-speakeasy-webhooks:
+        security:
+          type: custom
+          consumerShouldProvideSecret: false

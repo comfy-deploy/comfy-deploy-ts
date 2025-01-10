@@ -8,7 +8,7 @@ import { LogUpdateEvent } from "comfydeploy/models/components";
 let value: LogUpdateEvent = {
   data: {
     logs: "<value>",
-    timestamp: new Date("2023-06-30T03:22:56.921Z"),
+    timestamp: new Date("2024-06-29T03:22:56.921Z"),
   },
 };
 ```

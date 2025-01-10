@@ -48,7 +48,7 @@ export function useRunWorkflowQueueMutation(
 }
 
 export function mutationKeyRunWorkflowQueue(): MutationKey {
-  return ["comfydeploy", "workflow", "queue"];
+  return ["comfydeploy", "runWorkflow", "queue"];
 }
 
 export function buildRunWorkflowQueueMutation(

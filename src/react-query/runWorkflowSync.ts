@@ -50,7 +50,7 @@ export function useRunWorkflowSyncMutation(
 }
 
 export function mutationKeyRunWorkflowSync(): MutationKey {
-  return ["comfydeploy", "workflow", "sync"];
+  return ["comfydeploy", "runWorkflow", "sync"];
 }
 
 export function buildRunWorkflowSyncMutation(
