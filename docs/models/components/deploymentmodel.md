@@ -6,23 +6,21 @@
 import { DeploymentModel } from "comfydeploy/models/components";
 
 let value: DeploymentModel = {
-  id: "0f55026e-1fd7-4539-a006-14342019ff62",
+  id: "c43a3a86-84b6-45de-a035-dffe4f31f3b0",
   userId: "<id>",
   orgId: "<id>",
-  workflowVersionId: "7f1c43a3-a868-44b6-85de-035dffe4f31f",
-  workflowId: "b0be465b-3274-4d38-9fad-fcbff7142629",
-  machineId: "ef849e68-4763-4845-98c5-ed04715ba9b3",
+  workflowVersionId: "e465b327-4d38-4fad-afcb-ff71426296ef",
+  workflowId: "49e68476-3845-48c5-aed0-4715ba9b35ae",
+  machineId: "40b058e1-6059-4431-89ba-f0a99f0bd85c",
   shareSlug: "<value>",
-  description: "gastropod ponder unibody scarcely legging of tough well",
+  description: "sunbathe like joyously coast blindly evince",
   shareOptions: {},
-  showcaseMedia: {},
-  environment: "production",
-  createdAt: new Date("2022-06-25T20:56:27.257Z"),
-  updatedAt: new Date("2024-08-29T09:21:28.573Z"),
-  workflow: {
-    id: "7e2a71b3-000e-4bea-a84f-576f25a19743",
-    name: "<value>",
-  },
+  showcaseMedia: [
+    {},
+  ],
+  environment: "private-share",
+  createdAt: new Date("2024-02-01T23:01:15.623Z"),
+  updatedAt: new Date("2024-05-30T19:56:59.856Z"),
 };
 ```
 
@@ -39,10 +37,10 @@ let value: DeploymentModel = {
 | `shareSlug`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `description`                                                                                 | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `shareOptions`                                                                                | [components.ShareOptions](../../models/components/shareoptions.md)                            | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `showcaseMedia`                                                                               | [components.ShowcaseMedia](../../models/components/showcasemedia.md)                          | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `showcaseMedia`                                                                               | [components.ShowcaseMedia](../../models/components/showcasemedia.md)[]                        | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `environment`                                                                                 | [components.DeploymentEnvironment](../../models/components/deploymentenvironment.md)          | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `workflow`                                                                                    | [components.WorkflowWithName](../../models/components/workflowwithname.md)                    | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `workflow`                                                                                    | [components.WorkflowWithName](../../models/components/workflowwithname.md)                    | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `inputTypes`                                                                                  | [components.InputModel](../../models/components/inputmodel.md)[]                              | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `outputTypes`                                                                                 | [components.OutputModel](../../models/components/outputmodel.md)[]                            | :heavy_minus_sign:                                                                            | N/A                                                                                           |

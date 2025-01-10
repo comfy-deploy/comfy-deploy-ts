@@ -45,11 +45,11 @@ export type DeploymentModel = {
   shareSlug: string | null;
   description: string | null;
   shareOptions: ShareOptions | null;
-  showcaseMedia: ShowcaseMedia | null;
+  showcaseMedia: Array<ShowcaseMedia> | null;
   environment: DeploymentEnvironment;
   createdAt: Date;
   updatedAt: Date;
-  workflow: WorkflowWithName;
+  workflow?: WorkflowWithName | null | undefined;
   inputTypes?: Array<InputModel> | null | undefined;
   outputTypes?: Array<OutputModel> | null | undefined;
 };
@@ -157,11 +157,13 @@ export const DeploymentModel$inboundSchema: z.ZodType<
   share_slug: z.nullable(z.string()),
   description: z.nullable(z.string()),
   share_options: z.nullable(z.lazy(() => ShareOptions$inboundSchema)),
-  showcase_media: z.nullable(z.lazy(() => ShowcaseMedia$inboundSchema)),
+  showcase_media: z.nullable(
+    z.array(z.lazy(() => ShowcaseMedia$inboundSchema)),
+  ),
   environment: DeploymentEnvironment$inboundSchema,
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  workflow: WorkflowWithName$inboundSchema,
+  workflow: z.nullable(WorkflowWithName$inboundSchema).optional(),
   input_types: z.nullable(z.array(InputModel$inboundSchema)).optional(),
   output_types: z.nullable(z.array(OutputModel$inboundSchema)).optional(),
 }).transform((v) => {
@@ -192,11 +194,11 @@ export type DeploymentModel$Outbound = {
   share_slug: string | null;
   description: string | null;
   share_options: ShareOptions$Outbound | null;
-  showcase_media: ShowcaseMedia$Outbound | null;
+  showcase_media: Array<ShowcaseMedia$Outbound> | null;
   environment: string;
   created_at: string;
   updated_at: string;
-  workflow: WorkflowWithName$Outbound;
+  workflow?: WorkflowWithName$Outbound | null | undefined;
   input_types?: Array<InputModel$Outbound> | null | undefined;
   output_types?: Array<OutputModel$Outbound> | null | undefined;
 };
@@ -216,11 +218,13 @@ export const DeploymentModel$outboundSchema: z.ZodType<
   shareSlug: z.nullable(z.string()),
   description: z.nullable(z.string()),
   shareOptions: z.nullable(z.lazy(() => ShareOptions$outboundSchema)),
-  showcaseMedia: z.nullable(z.lazy(() => ShowcaseMedia$outboundSchema)),
+  showcaseMedia: z.nullable(
+    z.array(z.lazy(() => ShowcaseMedia$outboundSchema)),
+  ),
   environment: DeploymentEnvironment$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()),
   updatedAt: z.date().transform(v => v.toISOString()),
-  workflow: WorkflowWithName$outboundSchema,
+  workflow: z.nullable(WorkflowWithName$outboundSchema).optional(),
   inputTypes: z.nullable(z.array(InputModel$outboundSchema)).optional(),
   outputTypes: z.nullable(z.array(OutputModel$outboundSchema)).optional(),
 }).transform((v) => {

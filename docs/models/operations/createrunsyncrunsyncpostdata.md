@@ -12,7 +12,7 @@ const value: components.WorkflowRunVersionRequest = {
     "seed": 42,
   },
   webhookIntermediateStatus: true,
-  workflowVersionId: "5cce0e6e-bfc5-4865-b47a-48120f0291eb",
+  workflowVersionId: "c723685c-ce0e-46eb-8fc5-86547a48120f",
 };
 ```
 

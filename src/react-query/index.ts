@@ -5,9 +5,16 @@
 export { ComfyDeployProvider, useComfyDeployContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./deploymentsCreate.js";
 export * from "./deploymentsList.js";
+export * from "./fileCreateFolderAssetsFolderPost.js";
+export * from "./fileDeleteAssetAssetsAssetIdDelete.js";
+export * from "./fileGetAssetAssetsAssetIdGet.js";
+export * from "./fileListAssetsAssetsGet.js";
 export * from "./fileUpload.js";
+export * from "./fileUploadAssetFileAssetsUploadPost.js";
 export * from "./modelsPublicModelsModelsGet.js";
+export * from "./runCancelRunRunRunIdCancelPost.js";
 export * from "./runDeploymentQueue.js";
 export * from "./runDeploymentStream.js";
 export * from "./runDeploymentSync.js";
@@ -22,4 +29,5 @@ export * from "./searchSearchSearchModelGet.js";
 export * from "./sessionCancel.js";
 export * from "./sessionCreate.js";
 export * from "./sessionGet.js";
+export * from "./sessionIncreaseTimeoutSessionIncreaseTimeoutPost.js";
 export * from "./sessionList.js";

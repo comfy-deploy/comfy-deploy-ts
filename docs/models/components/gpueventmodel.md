@@ -6,13 +6,13 @@
 import { GPUEventModel } from "comfydeploy/models/components";
 
 let value: GPUEventModel = {
-  id: "831dffec-5163-420b-90c2-11a368db4204",
+  id: "1dffec51-6320-4b0c-a211-a368db420447",
   userId: "<id>",
   orgId: "<id>",
-  machineId: "7ab462c0-bcc4-4594-a537-0c1849fa0688",
-  startTime: new Date("2022-11-01T05:53:15.917Z"),
-  endTime: new Date("2022-05-22T05:32:53.930Z"),
-  gpu: "L4",
+  machineId: "b462c0bc-c459-4453-870c-1849fa0688a4",
+  startTime: new Date("2024-03-06T08:56:27.585Z"),
+  endTime: new Date("2025-11-14T05:17:46.077Z"),
+  gpu: "T4",
   gpuProvider: "comfy-deploy",
 };
 ```

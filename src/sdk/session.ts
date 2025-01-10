@@ -5,6 +5,7 @@
 import { sessionCancel } from "../funcs/sessionCancel.js";
 import { sessionCreate } from "../funcs/sessionCreate.js";
 import { sessionGet } from "../funcs/sessionGet.js";
+import { sessionIncreaseTimeoutSessionIncreaseTimeoutPost } from "../funcs/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.js";
 import { sessionList } from "../funcs/sessionList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -48,6 +49,20 @@ export class Session extends ClientSDK {
     options?: RequestOptions,
   ): Promise<Array<components.GPUEventModel>> {
     return unwrapAsync(sessionList(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Increase Timeout
+   */
+  async increaseTimeoutSessionIncreaseTimeoutPost(
+    request: components.IncreaseTimeoutBody,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(sessionIncreaseTimeoutSessionIncreaseTimeoutPost(
       this,
       request,
       options,

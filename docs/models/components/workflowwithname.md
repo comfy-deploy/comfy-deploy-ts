@@ -6,7 +6,7 @@
 import { WorkflowWithName } from "comfydeploy/models/components";
 
 let value: WorkflowWithName = {
-  id: "a6f5badf-ecb5-4213-a68c-f119bdef662a",
+  id: "438575f2-159a-46f5-8bad-fecb521368cf",
   name: "<value>",
 };
 ```

@@ -6,8 +6,9 @@ import { ComfyDeployCore } from "../core.js";
 import * as components from "../models/components/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { ERR, Result } from "../types/fp.js";
+import { WebhookAuthenticationError } from "../types/webhooks.js";
 
-export async function validateWebhook(_client: ComfyDeployCore, {
+export async function validateWebhook(client: ComfyDeployCore, {
   request: rawRequest,
 }: {
   request: {
@@ -16,12 +17,23 @@ export async function validateWebhook(_client: ComfyDeployCore, {
     url: string;
     headers: Record<string, string> | Headers;
   } | Request;
-}): Promise<Result<components.WorkflowRunWebhookBody, SDKValidationError>> {
+}): Promise<
+  Result<
+    components.WorkflowRunWebhookBody,
+    SDKValidationError | WebhookAuthenticationError
+  >
+> {
   const request = normalizeRequest(rawRequest);
+  const verifyResult = await client._verifyWebhook({ request });
+  if (!verifyResult.ok) {
+    return verifyResult;
+  }
   const knownSchemas = [components.workflowRunWebhookBodyFromJSON];
 
+  const jsonString = await request.text();
+
   for (const schema of knownSchemas) {
-    const ret = schema(await request.text());
+    const ret = schema(jsonString);
     if (ret.ok) {
       return ret;
     }
@@ -30,8 +42,8 @@ export async function validateWebhook(_client: ComfyDeployCore, {
   return ERR(
     new SDKValidationError(
       "No matching schema found for the given webhook payload",
-      "",
-      request.body,
+      jsonString,
+      jsonString,
     ),
   );
 }

@@ -3,6 +3,142 @@ info:
   title: CodeSamples overlay for typescript target
   version: 0.0.0
 actions:
+  - target: $["paths"]["/assets"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.file.listAssetsAssetsGet({});
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/assets/folder"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.file.createFolderAssetsFolderPost({
+                name: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/assets/upload"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+            import { openAsBlob } from "node:fs";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.file.uploadAssetFileAssetsUploadPost({
+                bodyUploadAssetFileAssetsUploadPost: {
+                  file: await openAsBlob("example.file"),
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/assets/{asset_id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.file.deleteAssetAssetsAssetIdDelete({
+                assetId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/assets/{asset_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.file.getAssetAssetsAssetIdGet({
+                assetId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/deployment"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.deployments.create({
+                workflowVersionId: "<id>",
+                workflowId: "<id>",
+                machineId: "<id>",
+                environment: "<value>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/deployments"]["get"]
     update:
       x-codeSamples:
@@ -81,7 +217,6 @@ actions:
             async function run() {
               const result = await comfyDeploy.run.deployment.queue({
                 inputs: {
-                  "num_inference_steps": 30,
                   "prompt": "A beautiful landscape",
                   "seed": 42,
                 },
@@ -109,7 +244,6 @@ actions:
             async function run() {
               const result = await comfyDeploy.run.deployment.stream({
                 inputs: {
-                  "num_inference_steps": 30,
                   "prompt": "A beautiful landscape",
                   "seed": 42,
                 },
@@ -139,7 +273,6 @@ actions:
             async function run() {
               const result = await comfyDeploy.run.deployment.sync({
                 inputs: {
-                  "num_inference_steps": 30,
                   "prompt": "A beautiful landscape",
                   "seed": 42,
                 },
@@ -167,7 +300,6 @@ actions:
             async function run() {
               const result = await comfyDeploy.run.workflow.queue({
                 inputs: {
-                  "num_inference_steps": 30,
                   "prompt": "A beautiful landscape",
                   "seed": 42,
                 },
@@ -196,7 +328,6 @@ actions:
             async function run() {
               const result = await comfyDeploy.run.workflow.stream({
                 inputs: {
-                  "num_inference_steps": 30,
                   "prompt": "A beautiful landscape",
                   "seed": 42,
                 },
@@ -227,7 +358,6 @@ actions:
             async function run() {
               const result = await comfyDeploy.run.workflow.sync({
                 inputs: {
-                  "num_inference_steps": 30,
                   "prompt": "A beautiful landscape",
                   "seed": 42,
                 },
@@ -256,6 +386,31 @@ actions:
             async function run() {
               const result = await comfyDeploy.run.get({
                 runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/run/{run_id}/cancel"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.run.cancelRunRunRunIdCancelPost({
+                runId: "<id>",
+                cancelFunctionBody: {
+                  functionId: "<id>",
+                },
               });
 
               // Handle the result
@@ -300,6 +455,31 @@ actions:
             async function run() {
               const result = await comfyDeploy.session.create({
                 machineId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/session/increase-timeout"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: SDK (TypeScript)
+          source: |-
+            import { ComfyDeploy } from "comfydeploy";
+
+            const comfyDeploy = new ComfyDeploy({
+              bearer: "<YOUR_BEARER_TOKEN_HERE>",
+            });
+
+            async function run() {
+              const result = await comfyDeploy.session.increaseTimeoutSessionIncreaseTimeoutPost({
+                machineId: "<id>",
+                sessionId: "d1cbd355-89fb-45f4-9778-6137629fc60d",
+                timeout: 465465,
+                gpu: "<value>",
               });
 
               // Handle the result

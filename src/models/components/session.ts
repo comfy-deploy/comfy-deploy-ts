@@ -12,6 +12,10 @@ export type Session = {
   sessionId: string;
   gpuEventId: string;
   url: string;
+  gpu: string;
+  createdAt: Date;
+  timeout: number;
+  machineId: string;
 };
 
 /** @internal */
@@ -20,10 +24,18 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     session_id: z.string(),
     gpu_event_id: z.string(),
     url: z.string(),
+    gpu: z.string(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    timeout: z.number().int(),
+    machine_id: z.string(),
   }).transform((v) => {
     return remap$(v, {
       "session_id": "sessionId",
       "gpu_event_id": "gpuEventId",
+      "created_at": "createdAt",
+      "machine_id": "machineId",
     });
   });
 
@@ -32,6 +44,10 @@ export type Session$Outbound = {
   session_id: string;
   gpu_event_id: string;
   url: string;
+  gpu: string;
+  created_at: string;
+  timeout: number;
+  machine_id: string;
 };
 
 /** @internal */
@@ -43,10 +59,16 @@ export const Session$outboundSchema: z.ZodType<
   sessionId: z.string(),
   gpuEventId: z.string(),
   url: z.string(),
+  gpu: z.string(),
+  createdAt: z.date().transform(v => v.toISOString()),
+  timeout: z.number().int(),
+  machineId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
     gpuEventId: "gpu_event_id",
+    createdAt: "created_at",
+    machineId: "machine_id",
   });
 });
 
