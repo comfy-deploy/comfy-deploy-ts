@@ -1,8 +1,15 @@
 import { ComfyDeploy } from "comfy-deploy";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const sdk = new ComfyDeploy();
 
-const jwkPrivateString = `{ "kty": "EC", "x": "idPvhh1C1DP-aA3IFcUP2g9iahyP8whNRyqeQC91lhQ", "y": "UQv7b5DSF1h_0ZHTtc3r1ifCp5PvRCfjd54u8wbfkX8", "crv": "P-256", "d": "xISIPnpnKK9R_fSranf6Y_-tBJnbuCe1tkMgqNIN-bY", "kid": "88f72139-a9d2-44d0-af17-42a03558718a", "alg": "ES256" }`;
+const jwkPrivateString = process.env["JWK_PRIVATE_KEY"];
+
+if (!jwkPrivateString) {
+  throw new Error("JWK_PRIVATE_KEY is not set");
+}
 
 const data = await sdk.callbacks.runUpdateRequestBodyWebhookPost(
   {
