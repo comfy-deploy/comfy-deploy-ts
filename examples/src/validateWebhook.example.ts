@@ -1,5 +1,5 @@
 import { ComfyDeploy } from "comfy-deploy";
-import { petCreatedToJSON } from "comfy-deploy/models/components/petcreated.js";
+import { workflowRunWebhookBodyToJSON } from "../../models/components/workflowrunwebhookbody.js";
 
 const sdk = new ComfyDeploy();
 
@@ -7,7 +7,11 @@ const sdk = new ComfyDeploy();
 const exampleFakeRequest = new Request(
   "https://example.com/my-webhook-handler",
   {
-    body: petCreatedToJSON({ type: "pet.created", pet: { id: "dog" } }),
+    body: workflowRunWebhookBodyToJSON({
+      runId: "123",
+      status: "success",
+      liveStatus: "success",
+    }),
     method: "POST",
   }
 );
@@ -17,11 +21,3 @@ const data = await sdk.validateWebhook({
 });
 
 console.log(data);
-
-if (data.type === "pet.created") {
-  console.log("Pet created", data.pet);
-}
-
-if (data.type === "pet.deleted") {
-  console.log("Pet deleted", data.id);
-}

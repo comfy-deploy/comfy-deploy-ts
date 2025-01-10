@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sdk": "file:../",
+    "comfy-deploy": "file:../",
     "dotenv": "^16.4.5"
   },
   "devDependencies": {

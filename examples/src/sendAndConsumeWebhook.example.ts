@@ -1,16 +1,16 @@
-import { APIError } from "comfy-deploy/models/errors/apierror.js";
+import { SDKError } from "comfy-deploy/models/errors/sdkerror.js";
 import { ComfyDeploy } from "comfy-deploy";
 import { HTTPClient } from "comfy-deploy/lib/http.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // You can generate your own here https://gist.github.com/mfbx9da4/9fb911e9b24dfba00445ff128b59493f
-const jwkPrivateString = `{
-  "crv": "Ed25519",
-  "d": "GYy0e8x8fOrdsUVuA2CLiIB3RKZUctVynhS5dXv6tiY",
-  "x": "qD7X8DrHfg0UuYstKt3FPBGqGBqY3N4lGwn9xX-nnXE",
-  "kty": "OKP",
-  "kid": "4b901935-5a56-4891-be18-a0a29cc9d35e",
-  "alg": "EdDSA"
-}`;
+const jwkPrivateString = process.env["JWK_PRIVATE_KEY"];
+
+if (!jwkPrivateString) {
+  throw new Error("JWK_PRIVATE_KEY is not set");
+}
 
 const httpClient = new HTTPClient();
 let lastRequest: Request | undefined;
@@ -21,19 +21,20 @@ httpClient.addHook("beforeRequest", (request) => {
 
 const sdk = new ComfyDeploy({ httpClient });
 
-await sdk
-  .sendPetCreated(
+await sdk.callbacks
+  .runUpdateRequestBodyWebhookPost(
     {
       url: "https://example.com/my-webhook-handler",
       secret: jwkPrivateString,
     },
     {
-      type: "pet.created",
-      pet: { id: "dog" },
+      runId: "123",
+      status: "success",
+      liveStatus: "success",
     }
   )
   .catch((e) => {
-    if (!(e instanceof APIError)) throw e;
+    if (!(e instanceof SDKError)) throw e;
   });
 
 if (!lastRequest) {
