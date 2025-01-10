@@ -140,67 +140,55 @@ run();
 <summary>Available methods</summary>
 
 
-### [deploymentRuns](docs/sdks/deploymentruns/README.md)
-
-* [sync](docs/sdks/deploymentruns/README.md#sync) - Deployment - Sync
-
 ### [deployments](docs/sdks/deployments/README.md)
 
 * [create](docs/sdks/deployments/README.md#create) - Create Deployment
 * [list](docs/sdks/deployments/README.md#list) - Get Deployments
 
-### [files](docs/sdks/files/README.md)
+### [file](docs/sdks/file/README.md)
 
-* [uploadFile](docs/sdks/files/README.md#uploadfile) - Upload File
-* [createFolder](docs/sdks/files/README.md#createfolder) - Create Folder
-* [list](docs/sdks/files/README.md#list) - List Assets
-* [delete](docs/sdks/files/README.md#delete) - Delete Asset
-* [get](docs/sdks/files/README.md#get) - Get Asset
-* [upload](docs/sdks/files/README.md#upload) - Upload Asset File
+* [upload](docs/sdks/file/README.md#upload) - Upload File
+* [createFolderAssetsFolderPost](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
+* [listAssetsAssetsGet](docs/sdks/file/README.md#listassetsassetsget) - List Assets
+* [deleteAssetAssetsAssetIdDelete](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
+* [getAssetAssetsAssetIdGet](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
+* [uploadAssetFileAssetsUploadPost](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
 
 ### [models](docs/sdks/models/README.md)
 
-* [list](docs/sdks/models/README.md#list) - Public Models
+* [publicModelsModelsGet](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
 
 ### [run](docs/sdks/run/README.md)
 
 * [get](docs/sdks/run/README.md#get) - Get Run
 * [~~queue~~](docs/sdks/run/README.md#queue) - Queue a workflow :warning: **Deprecated**
 * [~~sync~~](docs/sdks/run/README.md#sync) - Run a workflow in sync :warning: **Deprecated**
+* [~~stream~~](docs/sdks/run/README.md#stream) - Run a workflow in stream :warning: **Deprecated**
+* [cancelRunRunRunIdCancelPost](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
 
-### [runDeployment](docs/sdks/rundeployment/README.md)
+#### [run.deployment](docs/sdks/deployment/README.md)
 
-* [queue](docs/sdks/rundeployment/README.md#queue) - Deployment - Queue
-* [stream](docs/sdks/rundeployment/README.md#stream) - Deployment - Stream
+* [queue](docs/sdks/deployment/README.md#queue) - Deployment - Queue
+* [sync](docs/sdks/deployment/README.md#sync) - Deployment - Sync
+* [stream](docs/sdks/deployment/README.md#stream) - Deployment - Stream
 
-### [runs](docs/sdks/runs/README.md)
+#### [run.workflow](docs/sdks/workflow/README.md)
 
-* [~~stream~~](docs/sdks/runs/README.md#stream) - Run a workflow in stream :warning: **Deprecated**
-* [cancel](docs/sdks/runs/README.md#cancel) - Cancel Run
-
-### [runWorkflow](docs/sdks/runworkflow/README.md)
-
-* [queue](docs/sdks/runworkflow/README.md#queue) - Workflow - Queue
-* [sync](docs/sdks/runworkflow/README.md#sync) - Workflow - Sync
+* [queue](docs/sdks/workflow/README.md#queue) - Workflow - Queue
+* [sync](docs/sdks/workflow/README.md#sync) - Workflow - Sync
+* [stream](docs/sdks/workflow/README.md#stream) - Workflow - Stream
 
 ### [search](docs/sdks/search/README.md)
 
-* [model](docs/sdks/search/README.md#model) - Search
+* [searchSearchModelGet](docs/sdks/search/README.md#searchsearchmodelget) - Search
 
 ### [session](docs/sdks/session/README.md)
 
 * [get](docs/sdks/session/README.md#get) - Get Session
 * [cancel](docs/sdks/session/README.md#cancel) - Delete Session
-* [increaseTimeout](docs/sdks/session/README.md#increasetimeout) - Increase Timeout
-
-### [sessions](docs/sdks/sessions/README.md)
-
-* [list](docs/sdks/sessions/README.md#list) - Get Machine Sessions
-* [create](docs/sdks/sessions/README.md#create) - Create Session
-
-### [workflowRuns](docs/sdks/workflowruns/README.md)
-
-* [stream](docs/sdks/workflowruns/README.md#stream) - Workflow - Stream
+* [list](docs/sdks/session/README.md#list) - Get Machine Sessions
+* [increaseTimeoutSessionIncreaseTimeoutPost](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
+* [create](docs/sdks/session/README.md#create) - Create Session
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -227,31 +215,31 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
-- [`useDeploymentRunsSyncMutation`](docs/sdks/deploymentruns/README.md#sync) - Deployment - Sync
 - [`useDeploymentsCreateMutation`](docs/sdks/deployments/README.md#create) - Create Deployment
 - [`useDeploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
-- [`useFilesCreateFolderMutation`](docs/sdks/files/README.md#createfolder) - Create Folder
-- [`useFilesDeleteMutation`](docs/sdks/files/README.md#delete) - Delete Asset
-- [`useFilesGet`](docs/sdks/files/README.md#get) - Get Asset
-- [`useFilesList`](docs/sdks/files/README.md#list) - List Assets
-- [`useFilesUploadFileMutation`](docs/sdks/files/README.md#uploadfile) - Upload File
-- [`useFilesUploadMutation`](docs/sdks/files/README.md#upload) - Upload Asset File
-- [`useModelsList`](docs/sdks/models/README.md#list) - Public Models
-- [`useRunDeploymentQueueMutation`](docs/sdks/rundeployment/README.md#queue) - Deployment - Queue
-- [`useRunDeploymentStreamMutation`](docs/sdks/rundeployment/README.md#stream) - Deployment - Stream
+- [`useFileCreateFolderAssetsFolderPostMutation`](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
+- [`useFileDeleteAssetAssetsAssetIdDeleteMutation`](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
+- [`useFileGetAssetAssetsAssetIdGet`](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
+- [`useFileListAssetsAssetsGet`](docs/sdks/file/README.md#listassetsassetsget) - List Assets
+- [`useFileUploadAssetFileAssetsUploadPostMutation`](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
+- [`useFileUploadMutation`](docs/sdks/file/README.md#upload) - Upload File
+- [`useModelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+- [`useRunCancelRunRunRunIdCancelPostMutation`](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
+- [`useRunDeploymentQueueMutation`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
+- [`useRunDeploymentStreamMutation`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
+- [`useRunDeploymentSyncMutation`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
 - [`useRunGet`](docs/sdks/run/README.md#get) - Get Run
-- [`useRunsCancelMutation`](docs/sdks/runs/README.md#cancel) - Cancel Run
-- [`useRunWorkflowQueueMutation`](docs/sdks/runworkflow/README.md#queue) - Workflow - Queue
-- [`useRunWorkflowSyncMutation`](docs/sdks/runworkflow/README.md#sync) - Workflow - Sync
-- [`useSearchModel`](docs/sdks/search/README.md#model) - Search
+- [`useRunWorkflowQueueMutation`](docs/sdks/workflow/README.md#queue) - Workflow - Queue
+- [`useRunWorkflowStreamMutation`](docs/sdks/workflow/README.md#stream) - Workflow - Stream
+- [`useRunWorkflowSyncMutation`](docs/sdks/workflow/README.md#sync) - Workflow - Sync
+- [`useSearchSearchSearchModelGet`](docs/sdks/search/README.md#searchsearchmodelget) - Search
 - [`useSessionCancelMutation`](docs/sdks/session/README.md#cancel) - Delete Session
+- [`useSessionCreateMutation`](docs/sdks/session/README.md#create) - Create Session
 - [`useSessionGet`](docs/sdks/session/README.md#get) - Get Session
-- [`useSessionIncreaseTimeoutMutation`](docs/sdks/session/README.md#increasetimeout) - Increase Timeout
-- [`useSessionsCreateMutation`](docs/sdks/sessions/README.md#create) - Create Session
-- [`useSessionsList`](docs/sdks/sessions/README.md#list) - Get Machine Sessions
-- [`useWorkflowRunsStreamMutation`](docs/sdks/workflowruns/README.md#stream) - Workflow - Stream
+- [`useSessionIncreaseTimeoutSessionIncreaseTimeoutPostMutation`](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
+- [`useSessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
 - ~~[`useRunQueueMutation`](docs/sdks/run/README.md#queue)~~ - Queue a workflow :warning: **Deprecated**
-- ~~[`useRunsStreamMutation`](docs/sdks/runs/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
+- ~~[`useRunStreamMutation`](docs/sdks/run/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
 - ~~[`useRunSyncMutation`](docs/sdks/run/README.md#sync)~~ - Run a workflow in sync :warning: **Deprecated**
 
 </details>
@@ -274,7 +262,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.runDeployment.stream({
+  const result = await comfyDeploy.run.deployment.stream({
     inputs: {
       "prompt": "A beautiful landscape",
       "seed": 42,
@@ -320,7 +308,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.files.uploadFile({
+  const result = await comfyDeploy.file.upload({
     file: await openAsBlob("example.file"),
   });
 
@@ -632,31 +620,31 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`deploymentRunsSync`](docs/sdks/deploymentruns/README.md#sync) - Deployment - Sync
 - [`deploymentsCreate`](docs/sdks/deployments/README.md#create) - Create Deployment
 - [`deploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
-- [`filesCreateFolder`](docs/sdks/files/README.md#createfolder) - Create Folder
-- [`filesDelete`](docs/sdks/files/README.md#delete) - Delete Asset
-- [`filesGet`](docs/sdks/files/README.md#get) - Get Asset
-- [`filesList`](docs/sdks/files/README.md#list) - List Assets
-- [`filesUpload`](docs/sdks/files/README.md#upload) - Upload Asset File
-- [`filesUploadFile`](docs/sdks/files/README.md#uploadfile) - Upload File
-- [`modelsList`](docs/sdks/models/README.md#list) - Public Models
-- [`runDeploymentQueue`](docs/sdks/rundeployment/README.md#queue) - Deployment - Queue
-- [`runDeploymentStream`](docs/sdks/rundeployment/README.md#stream) - Deployment - Stream
+- [`fileCreateFolderAssetsFolderPost`](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
+- [`fileDeleteAssetAssetsAssetIdDelete`](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
+- [`fileGetAssetAssetsAssetIdGet`](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
+- [`fileListAssetsAssetsGet`](docs/sdks/file/README.md#listassetsassetsget) - List Assets
+- [`fileUpload`](docs/sdks/file/README.md#upload) - Upload File
+- [`fileUploadAssetFileAssetsUploadPost`](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
+- [`modelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+- [`runCancelRunRunRunIdCancelPost`](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
+- [`runDeploymentQueue`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
+- [`runDeploymentStream`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
+- [`runDeploymentSync`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
 - [`runGet`](docs/sdks/run/README.md#get) - Get Run
-- [`runsCancel`](docs/sdks/runs/README.md#cancel) - Cancel Run
-- [`runWorkflowQueue`](docs/sdks/runworkflow/README.md#queue) - Workflow - Queue
-- [`runWorkflowSync`](docs/sdks/runworkflow/README.md#sync) - Workflow - Sync
-- [`searchModel`](docs/sdks/search/README.md#model) - Search
+- [`runWorkflowQueue`](docs/sdks/workflow/README.md#queue) - Workflow - Queue
+- [`runWorkflowStream`](docs/sdks/workflow/README.md#stream) - Workflow - Stream
+- [`runWorkflowSync`](docs/sdks/workflow/README.md#sync) - Workflow - Sync
+- [`searchSearchSearchModelGet`](docs/sdks/search/README.md#searchsearchmodelget) - Search
 - [`sessionCancel`](docs/sdks/session/README.md#cancel) - Delete Session
+- [`sessionCreate`](docs/sdks/session/README.md#create) - Create Session
 - [`sessionGet`](docs/sdks/session/README.md#get) - Get Session
-- [`sessionIncreaseTimeout`](docs/sdks/session/README.md#increasetimeout) - Increase Timeout
-- [`sessionsCreate`](docs/sdks/sessions/README.md#create) - Create Session
-- [`sessionsList`](docs/sdks/sessions/README.md#list) - Get Machine Sessions
-- [`workflowRunsStream`](docs/sdks/workflowruns/README.md#stream) - Workflow - Stream
+- [`sessionIncreaseTimeoutSessionIncreaseTimeoutPost`](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
+- [`sessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
 - ~~[`runQueue`](docs/sdks/run/README.md#queue)~~ - Queue a workflow :warning: **Deprecated**
-- ~~[`runsStream`](docs/sdks/runs/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
+- ~~[`runStream`](docs/sdks/run/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
 - ~~[`runSync`](docs/sdks/run/README.md#sync)~~ - Run a workflow in sync :warning: **Deprecated**
 
 </details>

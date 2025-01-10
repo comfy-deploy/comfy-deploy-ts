@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: 605ab4fb0061445a48d7e0daab340c9d
+  docChecksum: 0bbd4ff86331c70eeff1b8b29deedbde
   docVersion: V2
   speakeasyVersion: 1.467.1
   generationVersion: 2.492.3
-  releaseVersion: 2.0.0-beta.78
-  configChecksum: 49319710702d410cb2b7067d2311c1be
+  releaseVersion: 2.0.0-beta.79
+  configChecksum: 4dba63f324adc0169f84969523993be4
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
@@ -135,47 +135,43 @@ generatedFiles:
   - docs/models/operations/searchsearchmodelgetrequest.md
   - docs/models/operations/uploadassetfileassetsuploadpostrequest.md
   - docs/sdks/comfydeploy/README.md
-  - docs/sdks/deploymentruns/README.md
+  - docs/sdks/deployment/README.md
   - docs/sdks/deployments/README.md
-  - docs/sdks/files/README.md
+  - docs/sdks/file/README.md
   - docs/sdks/models/README.md
   - docs/sdks/run/README.md
-  - docs/sdks/rundeployment/README.md
-  - docs/sdks/runs/README.md
-  - docs/sdks/runworkflow/README.md
   - docs/sdks/search/README.md
   - docs/sdks/session/README.md
-  - docs/sdks/sessions/README.md
-  - docs/sdks/workflowruns/README.md
+  - docs/sdks/workflow/README.md
   - jsr.json
   - package.json
   - src/core.ts
-  - src/funcs/deploymentRunsSync.ts
   - src/funcs/deploymentsCreate.ts
   - src/funcs/deploymentsList.ts
-  - src/funcs/filesCreateFolder.ts
-  - src/funcs/filesDelete.ts
-  - src/funcs/filesGet.ts
-  - src/funcs/filesList.ts
-  - src/funcs/filesUpload.ts
-  - src/funcs/filesUploadFile.ts
-  - src/funcs/modelsList.ts
+  - src/funcs/fileCreateFolderAssetsFolderPost.ts
+  - src/funcs/fileDeleteAssetAssetsAssetIdDelete.ts
+  - src/funcs/fileGetAssetAssetsAssetIdGet.ts
+  - src/funcs/fileListAssetsAssetsGet.ts
+  - src/funcs/fileUpload.ts
+  - src/funcs/fileUploadAssetFileAssetsUploadPost.ts
+  - src/funcs/modelsPublicModelsModelsGet.ts
+  - src/funcs/runCancelRunRunRunIdCancelPost.ts
   - src/funcs/runDeploymentQueue.ts
   - src/funcs/runDeploymentStream.ts
+  - src/funcs/runDeploymentSync.ts
   - src/funcs/runGet.ts
   - src/funcs/runQueue.ts
+  - src/funcs/runStream.ts
   - src/funcs/runSync.ts
   - src/funcs/runWorkflowQueue.ts
+  - src/funcs/runWorkflowStream.ts
   - src/funcs/runWorkflowSync.ts
-  - src/funcs/runsCancel.ts
-  - src/funcs/runsStream.ts
-  - src/funcs/searchModel.ts
+  - src/funcs/searchSearchSearchModelGet.ts
   - src/funcs/sessionCancel.ts
+  - src/funcs/sessionCreate.ts
   - src/funcs/sessionGet.ts
-  - src/funcs/sessionIncreaseTimeout.ts
-  - src/funcs/sessionsCreate.ts
-  - src/funcs/sessionsList.ts
-  - src/funcs/workflowRunsStream.ts
+  - src/funcs/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.ts
+  - src/funcs/sessionList.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -264,47 +260,43 @@ generatedFiles:
   - src/models/operations/uploadassetfileassetsuploadpost.ts
   - src/react-query/_context.tsx
   - src/react-query/_types.ts
-  - src/react-query/deploymentRunsSync.ts
   - src/react-query/deploymentsCreate.ts
   - src/react-query/deploymentsList.ts
-  - src/react-query/filesCreateFolder.ts
-  - src/react-query/filesDelete.ts
-  - src/react-query/filesGet.ts
-  - src/react-query/filesList.ts
-  - src/react-query/filesUpload.ts
-  - src/react-query/filesUploadFile.ts
+  - src/react-query/fileCreateFolderAssetsFolderPost.ts
+  - src/react-query/fileDeleteAssetAssetsAssetIdDelete.ts
+  - src/react-query/fileGetAssetAssetsAssetIdGet.ts
+  - src/react-query/fileListAssetsAssetsGet.ts
+  - src/react-query/fileUpload.ts
+  - src/react-query/fileUploadAssetFileAssetsUploadPost.ts
   - src/react-query/index.ts
-  - src/react-query/modelsList.ts
+  - src/react-query/modelsPublicModelsModelsGet.ts
+  - src/react-query/runCancelRunRunRunIdCancelPost.ts
   - src/react-query/runDeploymentQueue.ts
   - src/react-query/runDeploymentStream.ts
+  - src/react-query/runDeploymentSync.ts
   - src/react-query/runGet.ts
   - src/react-query/runQueue.ts
+  - src/react-query/runStream.ts
   - src/react-query/runSync.ts
   - src/react-query/runWorkflowQueue.ts
+  - src/react-query/runWorkflowStream.ts
   - src/react-query/runWorkflowSync.ts
-  - src/react-query/runsCancel.ts
-  - src/react-query/runsStream.ts
-  - src/react-query/searchModel.ts
+  - src/react-query/searchSearchSearchModelGet.ts
   - src/react-query/sessionCancel.ts
+  - src/react-query/sessionCreate.ts
   - src/react-query/sessionGet.ts
-  - src/react-query/sessionIncreaseTimeout.ts
-  - src/react-query/sessionsCreate.ts
-  - src/react-query/sessionsList.ts
-  - src/react-query/workflowRunsStream.ts
-  - src/sdk/deploymentruns.ts
+  - src/react-query/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.ts
+  - src/react-query/sessionList.ts
+  - src/sdk/deployment.ts
   - src/sdk/deployments.ts
-  - src/sdk/files.ts
+  - src/sdk/file.ts
   - src/sdk/index.ts
   - src/sdk/models.ts
   - src/sdk/run.ts
-  - src/sdk/rundeployment.ts
-  - src/sdk/runs.ts
-  - src/sdk/runworkflow.ts
   - src/sdk/sdk.ts
   - src/sdk/search.ts
   - src/sdk/session.ts
-  - src/sdk/sessions.ts
-  - src/sdk/workflowruns.ts
+  - src/sdk/workflow.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts
   - src/types/enums.ts

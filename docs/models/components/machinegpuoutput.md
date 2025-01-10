@@ -5,7 +5,7 @@
 ```typescript
 import { MachineGPUOutput } from "comfydeploy/models/components";
 
-let value: MachineGPUOutput = "H100";
+let value: MachineGPUOutput = "A10G";
 ```
 
 ## Values

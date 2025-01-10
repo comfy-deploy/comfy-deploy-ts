@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [list](#list) - Public Models
+* [publicModelsModelsGet](#publicmodelsmodelsget) - Public Models
 
-## list
+## publicModelsModelsGet
 
 Return a list of available public models with their input/output specifications
 
@@ -21,7 +21,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.models.list();
+  const result = await comfyDeploy.models.publicModelsModelsGet();
 
   // Handle the result
   console.log(result);
@@ -36,7 +36,7 @@ The standalone function version of this method:
 
 ```typescript
 import { ComfyDeployCore } from "comfydeploy/core.js";
-import { modelsList } from "comfydeploy/funcs/modelsList.js";
+import { modelsPublicModelsModelsGet } from "comfydeploy/funcs/modelsPublicModelsModelsGet.js";
 
 // Use `ComfyDeployCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -45,7 +45,7 @@ const comfyDeploy = new ComfyDeployCore({
 });
 
 async function run() {
-  const res = await modelsList(comfyDeploy);
+  const res = await modelsPublicModelsModelsGet(comfyDeploy);
 
   if (!res.ok) {
     throw res.error;
@@ -73,18 +73,18 @@ associated utilities.
 ```tsx
 import {
   // Query hooks for fetching data.
-  useModelsList,
-  useModelsListSuspense,
+  useModelsPublicModelsModelsGet,
+  useModelsPublicModelsModelsGetSuspense,
 
   // Utility for prefetching data during server-side rendering and in React
   // Server Components that will be immediately available to client components
   // using the hooks.
-  prefetchModelsList,
+  prefetchModelsPublicModelsModelsGet,
   
   // Utility to invalidate the query cache for this query in response to
   // mutations and other user actions.
-  invalidateAllModelsList,
-} from "comfydeploy/react-query/modelsList.js";
+  invalidateAllModelsPublicModelsModelsGet,
+} from "comfydeploy/react-query/modelsPublicModelsModelsGet.js";
 ```
 
 ### Parameters

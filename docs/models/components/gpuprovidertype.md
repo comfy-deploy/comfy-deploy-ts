@@ -5,7 +5,7 @@
 ```typescript
 import { GPUProviderType } from "comfydeploy/models/components";
 
-let value: GPUProviderType = "runpod";
+let value: GPUProviderType = "modal";
 ```
 
 ## Values

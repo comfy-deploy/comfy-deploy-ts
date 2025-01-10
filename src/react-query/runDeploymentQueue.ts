@@ -48,7 +48,7 @@ export function useRunDeploymentQueueMutation(
 }
 
 export function mutationKeyRunDeploymentQueue(): MutationKey {
-  return ["comfydeploy", "runDeployment", "queue"];
+  return ["comfydeploy", "deployment", "queue"];
 }
 
 export function buildRunDeploymentQueueMutation(

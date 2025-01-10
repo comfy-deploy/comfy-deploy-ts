@@ -7,8 +7,8 @@ import { IncreaseTimeoutBody } from "comfydeploy/models/components";
 
 let value: IncreaseTimeoutBody = {
   machineId: "<id>",
-  sessionId: "1dffec51-6320-4b0c-a211-a368db420447",
-  timeout: 695626,
+  sessionId: "e7b6ebb5-ca32-4cf7-89d7-f9ded2a6164d",
+  timeout: 958983,
   gpu: "<value>",
 };
 ```
