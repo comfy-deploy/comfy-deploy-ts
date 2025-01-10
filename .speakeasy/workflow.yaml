@@ -6,7 +6,6 @@ sources:
             - location: https://api.comfydeploy.com/openapi.json/with-no-code-samples
         overlays:
             - location: .speakeasy/openapi-overlay.yaml
-            - location: .speakeasy/speakeasy-modifications-overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/comfydeploy/comfydeploy/comfydeploy-api
 targets:
