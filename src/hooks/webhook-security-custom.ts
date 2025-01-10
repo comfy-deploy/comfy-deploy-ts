@@ -108,8 +108,7 @@ export class WebhookSecurity {
     const crypto = globalThis?.crypto?.subtle;
     this._assert(crypto, "Unable to sign webhook: missing SubtleCrypto");
     const digestBytes = await crypto.digest("SHA-256", bodyBytes);
-    const digestBase64 = bytesToBase64(new Uint8Array(digestBytes));
-    return `sha-256=:${digestBase64}:`;
+    return bytesToBase64(new Uint8Array(digestBytes));
   }
 
   private async _parsePrivateKey(secret: string) {
