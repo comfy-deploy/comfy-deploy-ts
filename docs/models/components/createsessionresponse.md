@@ -6,7 +6,7 @@
 import { CreateSessionResponse } from "comfydeploy/models/components";
 
 let value: CreateSessionResponse = {
-  sessionId: "87e7b6eb-b5ca-432c-9f79-d7f9ded2a616",
+  sessionId: "026e1fd7-5390-4061-b434-2019ff62a7f1",
 };
 ```
 

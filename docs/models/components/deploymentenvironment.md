@@ -5,11 +5,11 @@
 ```typescript
 import { DeploymentEnvironment } from "comfydeploy/models/components";
 
-let value: DeploymentEnvironment = "private-share";
+let value: DeploymentEnvironment = "staging";
 ```
 
 ## Values
 
 ```typescript
-"staging" | "production" | "public-share" | "private-share"
+"staging" | "production" | "public-share" | "private-share" | "preview"
 ```

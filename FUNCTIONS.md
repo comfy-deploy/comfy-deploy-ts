@@ -31,7 +31,7 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await runGet(comfyDeploy, {
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   switch (true) {

@@ -9,20 +9,16 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type WorkflowRunVersionRequestInputs =
-  | string
-  | number
-  | number
-  | boolean
-  | Array<any>;
+export type Inputs = string | number | number | boolean | Array<any>;
 
 /**
  * The GPU to override the machine's default GPU
  */
-export const WorkflowRunVersionRequestGpu = {
+export const Gpu = {
   T4: "T4",
   L4: "L4",
   A10G: "A10G",
+  L40S: "L40S",
   A100: "A100",
   A10080Gb: "A100-80GB",
   H100: "H100",
@@ -30,9 +26,7 @@ export const WorkflowRunVersionRequestGpu = {
 /**
  * The GPU to override the machine's default GPU
  */
-export type WorkflowRunVersionRequestGpu = ClosedEnum<
-  typeof WorkflowRunVersionRequestGpu
->;
+export type Gpu = ClosedEnum<typeof Gpu>;
 
 export type WorkflowRunVersionRequest = {
   /**
@@ -46,37 +40,29 @@ export type WorkflowRunVersionRequest = {
   /**
    * The GPU to override the machine's default GPU
    */
-  gpu?: WorkflowRunVersionRequestGpu | undefined;
+  gpu?: Gpu | undefined;
   workflowVersionId: string;
   machineId?: string | null | undefined;
 };
 
 /** @internal */
-export const WorkflowRunVersionRequestInputs$inboundSchema: z.ZodType<
-  WorkflowRunVersionRequestInputs,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.string(),
-  z.number().int(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
+export const Inputs$inboundSchema: z.ZodType<Inputs, z.ZodTypeDef, unknown> = z
+  .union([
+    z.string(),
+    z.number().int(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
 
 /** @internal */
-export type WorkflowRunVersionRequestInputs$Outbound =
-  | string
-  | number
-  | number
-  | boolean
-  | Array<any>;
+export type Inputs$Outbound = string | number | number | boolean | Array<any>;
 
 /** @internal */
-export const WorkflowRunVersionRequestInputs$outboundSchema: z.ZodType<
-  WorkflowRunVersionRequestInputs$Outbound,
+export const Inputs$outboundSchema: z.ZodType<
+  Inputs$Outbound,
   z.ZodTypeDef,
-  WorkflowRunVersionRequestInputs
+  Inputs
 > = z.union([
   z.string(),
   z.number().int(),
@@ -89,54 +75,45 @@ export const WorkflowRunVersionRequestInputs$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace WorkflowRunVersionRequestInputs$ {
-  /** @deprecated use `WorkflowRunVersionRequestInputs$inboundSchema` instead. */
-  export const inboundSchema = WorkflowRunVersionRequestInputs$inboundSchema;
-  /** @deprecated use `WorkflowRunVersionRequestInputs$outboundSchema` instead. */
-  export const outboundSchema = WorkflowRunVersionRequestInputs$outboundSchema;
-  /** @deprecated use `WorkflowRunVersionRequestInputs$Outbound` instead. */
-  export type Outbound = WorkflowRunVersionRequestInputs$Outbound;
+export namespace Inputs$ {
+  /** @deprecated use `Inputs$inboundSchema` instead. */
+  export const inboundSchema = Inputs$inboundSchema;
+  /** @deprecated use `Inputs$outboundSchema` instead. */
+  export const outboundSchema = Inputs$outboundSchema;
+  /** @deprecated use `Inputs$Outbound` instead. */
+  export type Outbound = Inputs$Outbound;
 }
 
-export function workflowRunVersionRequestInputsToJSON(
-  workflowRunVersionRequestInputs: WorkflowRunVersionRequestInputs,
-): string {
-  return JSON.stringify(
-    WorkflowRunVersionRequestInputs$outboundSchema.parse(
-      workflowRunVersionRequestInputs,
-    ),
-  );
+export function inputsToJSON(inputs: Inputs): string {
+  return JSON.stringify(Inputs$outboundSchema.parse(inputs));
 }
 
-export function workflowRunVersionRequestInputsFromJSON(
+export function inputsFromJSON(
   jsonString: string,
-): SafeParseResult<WorkflowRunVersionRequestInputs, SDKValidationError> {
+): SafeParseResult<Inputs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => WorkflowRunVersionRequestInputs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WorkflowRunVersionRequestInputs' from JSON`,
+    (x) => Inputs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Inputs' from JSON`,
   );
 }
 
 /** @internal */
-export const WorkflowRunVersionRequestGpu$inboundSchema: z.ZodNativeEnum<
-  typeof WorkflowRunVersionRequestGpu
-> = z.nativeEnum(WorkflowRunVersionRequestGpu);
+export const Gpu$inboundSchema: z.ZodNativeEnum<typeof Gpu> = z.nativeEnum(Gpu);
 
 /** @internal */
-export const WorkflowRunVersionRequestGpu$outboundSchema: z.ZodNativeEnum<
-  typeof WorkflowRunVersionRequestGpu
-> = WorkflowRunVersionRequestGpu$inboundSchema;
+export const Gpu$outboundSchema: z.ZodNativeEnum<typeof Gpu> =
+  Gpu$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace WorkflowRunVersionRequestGpu$ {
-  /** @deprecated use `WorkflowRunVersionRequestGpu$inboundSchema` instead. */
-  export const inboundSchema = WorkflowRunVersionRequestGpu$inboundSchema;
-  /** @deprecated use `WorkflowRunVersionRequestGpu$outboundSchema` instead. */
-  export const outboundSchema = WorkflowRunVersionRequestGpu$outboundSchema;
+export namespace Gpu$ {
+  /** @deprecated use `Gpu$inboundSchema` instead. */
+  export const inboundSchema = Gpu$inboundSchema;
+  /** @deprecated use `Gpu$outboundSchema` instead. */
+  export const outboundSchema = Gpu$outboundSchema;
 }
 
 /** @internal */
@@ -156,7 +133,7 @@ export const WorkflowRunVersionRequest$inboundSchema: z.ZodType<
   ).optional(),
   webhook: z.string().optional(),
   webhook_intermediate_status: z.boolean().default(false),
-  gpu: WorkflowRunVersionRequestGpu$inboundSchema.optional(),
+  gpu: Gpu$inboundSchema.optional(),
   workflow_version_id: z.string(),
   machine_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -196,7 +173,7 @@ export const WorkflowRunVersionRequest$outboundSchema: z.ZodType<
   ).optional(),
   webhook: z.string().optional(),
   webhookIntermediateStatus: z.boolean().default(false),
-  gpu: WorkflowRunVersionRequestGpu$outboundSchema.optional(),
+  gpu: Gpu$outboundSchema.optional(),
   workflowVersionId: z.string(),
   machineId: z.nullable(z.string()).optional(),
 }).transform((v) => {

@@ -19,6 +19,12 @@ import {
   InputModel$outboundSchema,
 } from "./inputmodel.js";
 import {
+  MachineWithName,
+  MachineWithName$inboundSchema,
+  MachineWithName$Outbound,
+  MachineWithName$outboundSchema,
+} from "./machinewithname.js";
+import {
   OutputModel,
   OutputModel$inboundSchema,
   OutputModel$Outbound,
@@ -35,6 +41,8 @@ export type ShareOptions = {};
 
 export type ShowcaseMedia = {};
 
+export type Version = {};
+
 export type DeploymentModel = {
   id: string;
   userId: string;
@@ -45,13 +53,25 @@ export type DeploymentModel = {
   shareSlug: string | null;
   description: string | null;
   shareOptions: ShareOptions | null;
-  showcaseMedia: ShowcaseMedia | null;
+  showcaseMedia: Array<ShowcaseMedia> | null;
   environment: DeploymentEnvironment;
   createdAt: Date;
   updatedAt: Date;
-  workflow: WorkflowWithName;
+  workflow?: WorkflowWithName | null | undefined;
+  version?: Version | null | undefined;
+  machine?: MachineWithName | null | undefined;
   inputTypes?: Array<InputModel> | null | undefined;
   outputTypes?: Array<OutputModel> | null | undefined;
+  dubLink?: string | null | undefined;
+  gpu?: string | null | undefined;
+  machineVersionId?: string | null | undefined;
+  modalImageId?: string | null | undefined;
+  concurrencyLimit?: number | null | undefined;
+  runTimeout?: number | null | undefined;
+  idleTimeout?: number | null | undefined;
+  keepWarm?: number | null | undefined;
+  activatedAt?: Date | null | undefined;
+  modalAppId?: string | null | undefined;
 };
 
 /** @internal */
@@ -143,6 +163,47 @@ export function showcaseMediaFromJSON(
 }
 
 /** @internal */
+export const Version$inboundSchema: z.ZodType<Version, z.ZodTypeDef, unknown> =
+  z.object({});
+
+/** @internal */
+export type Version$Outbound = {};
+
+/** @internal */
+export const Version$outboundSchema: z.ZodType<
+  Version$Outbound,
+  z.ZodTypeDef,
+  Version
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Version$ {
+  /** @deprecated use `Version$inboundSchema` instead. */
+  export const inboundSchema = Version$inboundSchema;
+  /** @deprecated use `Version$outboundSchema` instead. */
+  export const outboundSchema = Version$outboundSchema;
+  /** @deprecated use `Version$Outbound` instead. */
+  export type Outbound = Version$Outbound;
+}
+
+export function versionToJSON(version: Version): string {
+  return JSON.stringify(Version$outboundSchema.parse(version));
+}
+
+export function versionFromJSON(
+  jsonString: string,
+): SafeParseResult<Version, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Version$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Version' from JSON`,
+  );
+}
+
+/** @internal */
 export const DeploymentModel$inboundSchema: z.ZodType<
   DeploymentModel,
   z.ZodTypeDef,
@@ -157,13 +218,29 @@ export const DeploymentModel$inboundSchema: z.ZodType<
   share_slug: z.nullable(z.string()),
   description: z.nullable(z.string()),
   share_options: z.nullable(z.lazy(() => ShareOptions$inboundSchema)),
-  showcase_media: z.nullable(z.lazy(() => ShowcaseMedia$inboundSchema)),
+  showcase_media: z.nullable(
+    z.array(z.lazy(() => ShowcaseMedia$inboundSchema)),
+  ),
   environment: DeploymentEnvironment$inboundSchema,
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  workflow: WorkflowWithName$inboundSchema,
+  workflow: z.nullable(WorkflowWithName$inboundSchema).optional(),
+  version: z.nullable(z.lazy(() => Version$inboundSchema)).optional(),
+  machine: z.nullable(MachineWithName$inboundSchema).optional(),
   input_types: z.nullable(z.array(InputModel$inboundSchema)).optional(),
   output_types: z.nullable(z.array(OutputModel$inboundSchema)).optional(),
+  dub_link: z.nullable(z.string()).optional(),
+  gpu: z.nullable(z.string()).optional(),
+  machine_version_id: z.nullable(z.string()).optional(),
+  modal_image_id: z.nullable(z.string()).optional(),
+  concurrency_limit: z.nullable(z.number().int()).optional(),
+  run_timeout: z.nullable(z.number().int()).optional(),
+  idle_timeout: z.nullable(z.number().int()).optional(),
+  keep_warm: z.nullable(z.number().int()).optional(),
+  activated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
+  modal_app_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "user_id": "userId",
@@ -178,6 +255,15 @@ export const DeploymentModel$inboundSchema: z.ZodType<
     "updated_at": "updatedAt",
     "input_types": "inputTypes",
     "output_types": "outputTypes",
+    "dub_link": "dubLink",
+    "machine_version_id": "machineVersionId",
+    "modal_image_id": "modalImageId",
+    "concurrency_limit": "concurrencyLimit",
+    "run_timeout": "runTimeout",
+    "idle_timeout": "idleTimeout",
+    "keep_warm": "keepWarm",
+    "activated_at": "activatedAt",
+    "modal_app_id": "modalAppId",
   });
 });
 
@@ -192,13 +278,25 @@ export type DeploymentModel$Outbound = {
   share_slug: string | null;
   description: string | null;
   share_options: ShareOptions$Outbound | null;
-  showcase_media: ShowcaseMedia$Outbound | null;
+  showcase_media: Array<ShowcaseMedia$Outbound> | null;
   environment: string;
   created_at: string;
   updated_at: string;
-  workflow: WorkflowWithName$Outbound;
+  workflow?: WorkflowWithName$Outbound | null | undefined;
+  version?: Version$Outbound | null | undefined;
+  machine?: MachineWithName$Outbound | null | undefined;
   input_types?: Array<InputModel$Outbound> | null | undefined;
   output_types?: Array<OutputModel$Outbound> | null | undefined;
+  dub_link?: string | null | undefined;
+  gpu?: string | null | undefined;
+  machine_version_id?: string | null | undefined;
+  modal_image_id?: string | null | undefined;
+  concurrency_limit?: number | null | undefined;
+  run_timeout?: number | null | undefined;
+  idle_timeout?: number | null | undefined;
+  keep_warm?: number | null | undefined;
+  activated_at?: string | null | undefined;
+  modal_app_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -216,13 +314,27 @@ export const DeploymentModel$outboundSchema: z.ZodType<
   shareSlug: z.nullable(z.string()),
   description: z.nullable(z.string()),
   shareOptions: z.nullable(z.lazy(() => ShareOptions$outboundSchema)),
-  showcaseMedia: z.nullable(z.lazy(() => ShowcaseMedia$outboundSchema)),
+  showcaseMedia: z.nullable(
+    z.array(z.lazy(() => ShowcaseMedia$outboundSchema)),
+  ),
   environment: DeploymentEnvironment$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()),
   updatedAt: z.date().transform(v => v.toISOString()),
-  workflow: WorkflowWithName$outboundSchema,
+  workflow: z.nullable(WorkflowWithName$outboundSchema).optional(),
+  version: z.nullable(z.lazy(() => Version$outboundSchema)).optional(),
+  machine: z.nullable(MachineWithName$outboundSchema).optional(),
   inputTypes: z.nullable(z.array(InputModel$outboundSchema)).optional(),
   outputTypes: z.nullable(z.array(OutputModel$outboundSchema)).optional(),
+  dubLink: z.nullable(z.string()).optional(),
+  gpu: z.nullable(z.string()).optional(),
+  machineVersionId: z.nullable(z.string()).optional(),
+  modalImageId: z.nullable(z.string()).optional(),
+  concurrencyLimit: z.nullable(z.number().int()).optional(),
+  runTimeout: z.nullable(z.number().int()).optional(),
+  idleTimeout: z.nullable(z.number().int()).optional(),
+  keepWarm: z.nullable(z.number().int()).optional(),
+  activatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
+  modalAppId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     userId: "user_id",
@@ -237,6 +349,15 @@ export const DeploymentModel$outboundSchema: z.ZodType<
     updatedAt: "updated_at",
     inputTypes: "input_types",
     outputTypes: "output_types",
+    dubLink: "dub_link",
+    machineVersionId: "machine_version_id",
+    modalImageId: "modal_image_id",
+    concurrencyLimit: "concurrency_limit",
+    runTimeout: "run_timeout",
+    idleTimeout: "idle_timeout",
+    keepWarm: "keep_warm",
+    activatedAt: "activated_at",
+    modalAppId: "modal_app_id",
   });
 });
 

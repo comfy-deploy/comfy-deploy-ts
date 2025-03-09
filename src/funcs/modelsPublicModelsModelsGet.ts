@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { ComfyDeployCore } from "../core.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -18,6 +19,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -26,10 +28,10 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Return a list of available public models with their input/output specifications
  */
-export async function modelsPublicModelsModelsGet(
+export function modelsPublicModelsModelsGet(
   client: ComfyDeployCore,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     Array<components.ModelWithMetadata>,
     | SDKError
@@ -41,17 +43,42 @@ export async function modelsPublicModelsModelsGet(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    options,
+  ));
+}
+
+async function $do(
+  client: ComfyDeployCore,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      Array<components.ModelWithMetadata>,
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const path = pathToFunc("/models")();
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     Accept: "application/json",
-  });
+  }));
 
   const secConfig = await extractSecurity(client._options.bearer);
   const securityInput = secConfig == null ? {} : { bearer: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "public_models_models_get",
     oAuth2Scopes: [],
 
@@ -67,12 +94,13 @@ export async function modelsPublicModelsModelsGet(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
+    baseURL: options?.serverURL,
     path: path,
     headers: headers,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -83,7 +111,7 @@ export async function modelsPublicModelsModelsGet(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -98,11 +126,12 @@ export async function modelsPublicModelsModelsGet(
     | ConnectionError
   >(
     M.json(200, z.array(components.ModelWithMetadata$inboundSchema)),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response);
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

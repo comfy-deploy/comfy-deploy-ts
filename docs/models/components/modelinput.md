@@ -7,7 +7,7 @@ import { ModelInput } from "comfydeploy/models/components";
 
 let value: ModelInput = {
   inputId: "<id>",
-  classType: "<value>",
+  classType: "ComfyUIDeployExternalBoolean",
   required: false,
 };
 ```

@@ -3,7 +3,6 @@
  */
 
 import * as components from "../models/components/index.js";
-
 type OAuth2PasswordFlow = {
   username: string;
   password?: string | undefined;
@@ -117,7 +116,7 @@ export function resolveSecurity(
   ...options: SecurityInput[][]
 ): SecurityState | null {
   const state: SecurityState = {
-    basic: { username: "", password: "" },
+    basic: {},
     headers: {},
     queryParams: {},
     cookies: {},

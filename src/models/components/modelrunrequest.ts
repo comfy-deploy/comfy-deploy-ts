@@ -23,6 +23,7 @@ export const ModelRunRequestGpu = {
   T4: "T4",
   L4: "L4",
   A10G: "A10G",
+  L40S: "L40S",
   A100: "A100",
   A10080Gb: "A100-80GB",
   H100: "H100",

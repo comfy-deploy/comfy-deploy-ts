@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteSessionSessionSessionIdDeleteRequest = {
   sessionId: string;
+  waitForShutdown?: boolean | undefined;
 };
 
 /** @internal */
@@ -17,15 +18,18 @@ export const DeleteSessionSessionSessionIdDeleteRequest$inboundSchema:
   z.ZodType<DeleteSessionSessionSessionIdDeleteRequest, z.ZodTypeDef, unknown> =
     z.object({
       session_id: z.string(),
+      wait_for_shutdown: z.boolean().default(false),
     }).transform((v) => {
       return remap$(v, {
         "session_id": "sessionId",
+        "wait_for_shutdown": "waitForShutdown",
       });
     });
 
 /** @internal */
 export type DeleteSessionSessionSessionIdDeleteRequest$Outbound = {
   session_id: string;
+  wait_for_shutdown: boolean;
 };
 
 /** @internal */
@@ -36,9 +40,11 @@ export const DeleteSessionSessionSessionIdDeleteRequest$outboundSchema:
     DeleteSessionSessionSessionIdDeleteRequest
   > = z.object({
     sessionId: z.string(),
+    waitForShutdown: z.boolean().default(false),
   }).transform((v) => {
     return remap$(v, {
       sessionId: "session_id",
+      waitForShutdown: "wait_for_shutdown",
     });
   });
 

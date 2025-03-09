@@ -10,7 +10,6 @@ let value: ModelRunRequest = {
     "prompt": "A beautiful landscape",
     "seed": 42,
   },
-  webhookIntermediateStatus: true,
   modelId: "<id>",
 };
 ```

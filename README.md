@@ -99,6 +99,58 @@ yarn add @tanstack/react-query react react-dom
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
 ```
+
+
+
+### Model Context Protocol (MCP) Server
+
+This SDK is also an installable MCP server where the various SDK methods are
+exposed as tools that can be invoked by AI applications.
+
+> Node.js v20 or greater is required to run the MCP server.
+
+<details>
+<summary>Claude installation steps</summary>
+
+Add the following server definition to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "ComfyDeploy": {
+      "command": "npx",
+      "args": [
+        "-y", "--package", "comfydeploy",
+        "--",
+        "mcp", "start",
+        "--bearer", "..."
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Cursor installation steps</summary>
+
+Go to `Cursor Settings > Features > MCP Servers > Add new MCP server` and use the following settings:
+
+- Name: ComfyDeploy
+- Type: `command`
+- Command:
+```sh
+npx -y --package comfydeploy -- mcp start --bearer ... 
+```
+
+</details>
+
+For a full list of server arguments, run:
+
+```sh
+npx -y --package comfydeploy -- mcp start --help
+```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -121,7 +173,7 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -146,11 +198,22 @@ run();
 
 ### [deployments](docs/sdks/deployments/README.md)
 
+* [create](docs/sdks/deployments/README.md#create) - Create Deployment
+* [update](docs/sdks/deployments/README.md#update) - Update Deployment
+* [get](docs/sdks/deployments/README.md#get) - Get Deployment
 * [list](docs/sdks/deployments/README.md#list) - Get Deployments
+* [getShareDeploymentShareUsernameSlugGet](docs/sdks/deployments/README.md#getsharedeploymentshareusernameslugget) - Get Share Deployment
+* [getFeaturedDeploymentsDeploymentsFeaturedGet](docs/sdks/deployments/README.md#getfeatureddeploymentsdeploymentsfeaturedget) - Get Featured Deployments
+* [deactivate](docs/sdks/deployments/README.md#deactivate) - Deactivate Deployment
 
 ### [file](docs/sdks/file/README.md)
 
 * [upload](docs/sdks/file/README.md#upload) - Upload File
+* [createFolderAssetsFolderPost](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
+* [listAssetsAssetsGet](docs/sdks/file/README.md#listassetsassetsget) - List Assets
+* [deleteAssetAssetsAssetIdDelete](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
+* [getAssetAssetsAssetIdGet](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
+* [uploadAssetFileAssetsUploadPost](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
 
 ### [models](docs/sdks/models/README.md)
 
@@ -162,6 +225,7 @@ run();
 * [~~queue~~](docs/sdks/run/README.md#queue) - Queue a workflow :warning: **Deprecated**
 * [~~sync~~](docs/sdks/run/README.md#sync) - Run a workflow in sync :warning: **Deprecated**
 * [~~stream~~](docs/sdks/run/README.md#stream) - Run a workflow in stream :warning: **Deprecated**
+* [cancelRunRunRunIdCancelPost](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
 
 #### [run.deployment](docs/sdks/deployment/README.md)
 
@@ -184,7 +248,10 @@ run();
 * [get](docs/sdks/session/README.md#get) - Get Session
 * [cancel](docs/sdks/session/README.md#cancel) - Delete Session
 * [list](docs/sdks/session/README.md#list) - Get Machine Sessions
+* [increaseTimeoutSessionIncreaseTimeoutPost](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
+* [increaseTimeout2SessionSessionIdIncreaseTimeoutPost](docs/sdks/session/README.md#increasetimeout2sessionsessionidincreasetimeoutpost) - Increase Timeout 2
 * [create](docs/sdks/session/README.md#create) - Create Session
+* [snapshotSessionSessionSessionIdSnapshotPost](docs/sdks/session/README.md#snapshotsessionsessionsessionidsnapshotpost) - Snapshot Session
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -212,9 +279,21 @@ To learn about this feature and how to get started, check
 <summary>Available React hooks</summary>
 
 - [`useCallbacksRunUpdateRequestBodyWebhookPostMutation`](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Receive run status updates via webhook
+- [`useDeploymentsCreateMutation`](docs/sdks/deployments/README.md#create) - Create Deployment
+- [`useDeploymentsDeactivateMutation`](docs/sdks/deployments/README.md#deactivate) - Deactivate Deployment
+- [`useDeploymentsGet`](docs/sdks/deployments/README.md#get) - Get Deployment
+- [`useDeploymentsGetFeaturedDeploymentsDeploymentsFeaturedGet`](docs/sdks/deployments/README.md#getfeatureddeploymentsdeploymentsfeaturedget) - Get Featured Deployments
+- [`useDeploymentsGetShareDeploymentShareUsernameSlugGet`](docs/sdks/deployments/README.md#getsharedeploymentshareusernameslugget) - Get Share Deployment
 - [`useDeploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
+- [`useDeploymentsUpdateMutation`](docs/sdks/deployments/README.md#update) - Update Deployment
+- [`useFileCreateFolderAssetsFolderPostMutation`](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
+- [`useFileDeleteAssetAssetsAssetIdDeleteMutation`](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
+- [`useFileGetAssetAssetsAssetIdGet`](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
+- [`useFileListAssetsAssetsGet`](docs/sdks/file/README.md#listassetsassetsget) - List Assets
+- [`useFileUploadAssetFileAssetsUploadPostMutation`](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
 - [`useFileUploadMutation`](docs/sdks/file/README.md#upload) - Upload File
 - [`useModelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+- [`useRunCancelRunRunRunIdCancelPostMutation`](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
 - [`useRunDeploymentQueueMutation`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
 - [`useRunDeploymentStreamMutation`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
 - [`useRunDeploymentSyncMutation`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
@@ -226,7 +305,10 @@ To learn about this feature and how to get started, check
 - [`useSessionCancelMutation`](docs/sdks/session/README.md#cancel) - Delete Session
 - [`useSessionCreateMutation`](docs/sdks/session/README.md#create) - Create Session
 - [`useSessionGet`](docs/sdks/session/README.md#get) - Get Session
+- [`useSessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPostMutation`](docs/sdks/session/README.md#increasetimeout2sessionsessionidincreasetimeoutpost) - Increase Timeout 2
+- [`useSessionIncreaseTimeoutSessionIncreaseTimeoutPostMutation`](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
 - [`useSessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
+- [`useSessionSnapshotSessionSessionSessionIdSnapshotPostMutation`](docs/sdks/session/README.md#snapshotsessionsessionsessionidsnapshotpost) - Snapshot Session
 - ~~[`useRunQueueMutation`](docs/sdks/run/README.md#queue)~~ - Queue a workflow :warning: **Deprecated**
 - ~~[`useRunStreamMutation`](docs/sdks/run/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
 - ~~[`useRunSyncMutation`](docs/sdks/run/README.md#sync)~~ - Run a workflow in sync :warning: **Deprecated**
@@ -253,7 +335,6 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.deployment.stream({
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -326,7 +407,7 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   }, {
     retries: {
       strategy: "backoff",
@@ -368,7 +449,7 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -407,7 +488,7 @@ async function run() {
   let result;
   try {
     result = await comfyDeploy.run.get({
-      runId: "<id>",
+      runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
     });
 
     // Handle the result
@@ -459,11 +540,11 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                                    |
-| --- | ----------------------------------------- |
-| 0   | `https://api.comfydeploy.com/api`         |
-| 1   | `https://staging.api.comfydeploy.com/api` |
-| 2   | `http://localhost:3011/api`               |
+| #   | Server                                    | Description              |
+| --- | ----------------------------------------- | ------------------------ |
+| 0   | `https://api.comfydeploy.com/api`         | Production server        |
+| 1   | `https://staging.api.comfydeploy.com/api` | Staging server           |
+| 2   | `http://localhost:3011/api`               | Local development server |
 
 #### Example
 
@@ -477,7 +558,7 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -501,7 +582,7 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -583,7 +664,7 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -611,9 +692,21 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <summary>Available standalone functions</summary>
 
 - [`callbacksRunUpdateRequestBodyWebhookPost`](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Receive run status updates via webhook
+- [`deploymentsCreate`](docs/sdks/deployments/README.md#create) - Create Deployment
+- [`deploymentsDeactivate`](docs/sdks/deployments/README.md#deactivate) - Deactivate Deployment
+- [`deploymentsGet`](docs/sdks/deployments/README.md#get) - Get Deployment
+- [`deploymentsGetFeaturedDeploymentsDeploymentsFeaturedGet`](docs/sdks/deployments/README.md#getfeatureddeploymentsdeploymentsfeaturedget) - Get Featured Deployments
+- [`deploymentsGetShareDeploymentShareUsernameSlugGet`](docs/sdks/deployments/README.md#getsharedeploymentshareusernameslugget) - Get Share Deployment
 - [`deploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
+- [`deploymentsUpdate`](docs/sdks/deployments/README.md#update) - Update Deployment
+- [`fileCreateFolderAssetsFolderPost`](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
+- [`fileDeleteAssetAssetsAssetIdDelete`](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
+- [`fileGetAssetAssetsAssetIdGet`](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
+- [`fileListAssetsAssetsGet`](docs/sdks/file/README.md#listassetsassetsget) - List Assets
 - [`fileUpload`](docs/sdks/file/README.md#upload) - Upload File
+- [`fileUploadAssetFileAssetsUploadPost`](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
 - [`modelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
+- [`runCancelRunRunRunIdCancelPost`](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
 - [`runDeploymentQueue`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
 - [`runDeploymentStream`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
 - [`runDeploymentSync`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
@@ -625,7 +718,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`sessionCancel`](docs/sdks/session/README.md#cancel) - Delete Session
 - [`sessionCreate`](docs/sdks/session/README.md#create) - Create Session
 - [`sessionGet`](docs/sdks/session/README.md#get) - Get Session
+- [`sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost`](docs/sdks/session/README.md#increasetimeout2sessionsessionidincreasetimeoutpost) - Increase Timeout 2
+- [`sessionIncreaseTimeoutSessionIncreaseTimeoutPost`](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
 - [`sessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
+- [`sessionSnapshotSessionSessionSessionIdSnapshotPost`](docs/sdks/session/README.md#snapshotsessionsessionsessionidsnapshotpost) - Snapshot Session
 - ~~[`runQueue`](docs/sdks/run/README.md#queue)~~ - Queue a workflow :warning: **Deprecated**
 - ~~[`runStream`](docs/sdks/run/README.md#stream)~~ - Run a workflow in stream :warning: **Deprecated**
 - ~~[`runSync`](docs/sdks/run/README.md#sync)~~ - Run a workflow in sync :warning: **Deprecated**

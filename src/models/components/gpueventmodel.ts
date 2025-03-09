@@ -17,6 +17,11 @@ import {
   MachineGPUOutput$inboundSchema,
   MachineGPUOutput$outboundSchema,
 } from "./machinegpuoutput.js";
+import {
+  WorkspaceGPU,
+  WorkspaceGPU$inboundSchema,
+  WorkspaceGPU$outboundSchema,
+} from "./workspacegpu.js";
 
 export type GPUEventModel = {
   id: string;
@@ -26,7 +31,7 @@ export type GPUEventModel = {
   startTime: Date | null;
   endTime: Date | null;
   gpu: MachineGPUOutput | null;
-  wsGpu?: "4090" | null | undefined;
+  wsGpu: WorkspaceGPU | null;
   gpuProvider: GPUProviderType;
   createdAt?: Date | undefined;
   updatedAt?: Date | undefined;
@@ -55,7 +60,7 @@ export const GPUEventModel$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
   gpu: z.nullable(MachineGPUOutput$inboundSchema),
-  ws_gpu: z.nullable(z.literal("4090")).optional(),
+  ws_gpu: z.nullable(WorkspaceGPU$inboundSchema),
   gpu_provider: GPUProviderType$inboundSchema,
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
@@ -95,7 +100,7 @@ export type GPUEventModel$Outbound = {
   start_time: string | null;
   end_time: string | null;
   gpu: string | null;
-  ws_gpu: "4090" | null;
+  ws_gpu: string | null;
   gpu_provider: string;
   created_at?: string | undefined;
   updated_at?: string | undefined;
@@ -120,7 +125,7 @@ export const GPUEventModel$outboundSchema: z.ZodType<
   startTime: z.nullable(z.date().transform(v => v.toISOString())),
   endTime: z.nullable(z.date().transform(v => v.toISOString())),
   gpu: z.nullable(MachineGPUOutput$outboundSchema),
-  wsGpu: z.nullable(z.literal("4090").default("4090")),
+  wsGpu: z.nullable(WorkspaceGPU$outboundSchema),
   gpuProvider: GPUProviderType$outboundSchema,
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),

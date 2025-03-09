@@ -8,12 +8,12 @@ Step for number slider input types
 ### `number`
 
 ```typescript
-const value: number = 343392;
+const value: number = 351893;
 ```
 
 ### `number`
 
 ```typescript
-const value: number = 5910.27;
+const value: number = 7214.07;
 ```
 

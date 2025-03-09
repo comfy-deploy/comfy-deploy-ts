@@ -10,6 +10,7 @@ export const DeploymentEnvironment = {
   Production: "production",
   PublicShare: "public-share",
   PrivateShare: "private-share",
+  Preview: "preview",
 } as const;
 export type DeploymentEnvironment = ClosedEnum<typeof DeploymentEnvironment>;
 

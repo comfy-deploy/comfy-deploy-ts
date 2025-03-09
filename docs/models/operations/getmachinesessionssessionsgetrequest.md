@@ -5,13 +5,11 @@
 ```typescript
 import { GetMachineSessionsSessionsGetRequest } from "comfydeploy/models/operations";
 
-let value: GetMachineSessionsSessionsGetRequest = {
-  machineId: "<id>",
-};
+let value: GetMachineSessionsSessionsGetRequest = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `machineId`        | *string*           | :heavy_check_mark: | N/A                |
+| `machineId`        | *string*           | :heavy_minus_sign: | N/A                |

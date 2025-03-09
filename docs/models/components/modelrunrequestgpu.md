@@ -13,5 +13,5 @@ let value: ModelRunRequestGpu = "A10G";
 ## Values
 
 ```typescript
-"T4" | "L4" | "A10G" | "A100" | "A100-80GB" | "H100"
+"T4" | "L4" | "A10G" | "L40S" | "A100" | "A100-80GB" | "H100"
 ```

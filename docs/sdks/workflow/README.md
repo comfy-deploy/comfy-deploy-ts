@@ -25,7 +25,6 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.workflow.queue({
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -58,7 +57,6 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runWorkflowQueue(comfyDeploy, {
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -133,7 +131,6 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.workflow.sync({
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -166,7 +163,6 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runWorkflowSync(comfyDeploy, {
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -241,7 +237,6 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.workflow.stream({
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -276,7 +271,6 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runWorkflowStream(comfyDeploy, {
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },

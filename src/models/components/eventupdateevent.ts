@@ -4,7 +4,6 @@
 
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -14,36 +13,10 @@ import {
   EventUpdate$outboundSchema,
 } from "./eventupdate.js";
 
-export const EventUpdateEventEvent = {
-  EventUpdate: "event_update",
-} as const;
-export type EventUpdateEventEvent = ClosedEnum<typeof EventUpdateEventEvent>;
-
 export type EventUpdateEvent = {
   event?: "event_update" | undefined;
   data: EventUpdate;
 };
-
-/** @internal */
-export const EventUpdateEventEvent$inboundSchema: z.ZodNativeEnum<
-  typeof EventUpdateEventEvent
-> = z.nativeEnum(EventUpdateEventEvent);
-
-/** @internal */
-export const EventUpdateEventEvent$outboundSchema: z.ZodNativeEnum<
-  typeof EventUpdateEventEvent
-> = EventUpdateEventEvent$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventUpdateEventEvent$ {
-  /** @deprecated use `EventUpdateEventEvent$inboundSchema` instead. */
-  export const inboundSchema = EventUpdateEventEvent$inboundSchema;
-  /** @deprecated use `EventUpdateEventEvent$outboundSchema` instead. */
-  export const outboundSchema = EventUpdateEventEvent$outboundSchema;
-}
 
 /** @internal */
 export const EventUpdateEvent$inboundSchema: z.ZodType<
@@ -77,7 +50,7 @@ export const EventUpdateEvent$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EventUpdateEvent
 > = z.object({
-  event: z.literal("event_update").default("event_update"),
+  event: z.literal("event_update").default("event_update" as const),
   data: EventUpdate$outboundSchema,
 });
 

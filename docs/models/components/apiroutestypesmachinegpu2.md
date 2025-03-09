@@ -5,11 +5,11 @@
 ```typescript
 import { ApiRoutesTypesMachineGpu2 } from "comfydeploy/models/components";
 
-let value: ApiRoutesTypesMachineGpu2 = "A100-80GB";
+let value: ApiRoutesTypesMachineGpu2 = "L4";
 ```
 
 ## Values
 
 ```typescript
-"CPU" | "T4" | "L4" | "A10G" | "A100" | "A100-80GB" | "H100"
+"CPU" | "T4" | "L4" | "A10G" | "L40S" | "A100" | "A100-80GB" | "H100"
 ```

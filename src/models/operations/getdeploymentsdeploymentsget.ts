@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
@@ -10,6 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetDeploymentsDeploymentsGetRequest = {
   environment?: components.DeploymentEnvironment | null | undefined;
+  isFluid?: boolean | undefined;
 };
 
 /** @internal */
@@ -20,11 +22,17 @@ export const GetDeploymentsDeploymentsGetRequest$inboundSchema: z.ZodType<
 > = z.object({
   environment: z.nullable(components.DeploymentEnvironment$inboundSchema)
     .optional(),
+  is_fluid: z.boolean().default(false),
+}).transform((v) => {
+  return remap$(v, {
+    "is_fluid": "isFluid",
+  });
 });
 
 /** @internal */
 export type GetDeploymentsDeploymentsGetRequest$Outbound = {
   environment?: string | null | undefined;
+  is_fluid: boolean;
 };
 
 /** @internal */
@@ -35,6 +43,11 @@ export const GetDeploymentsDeploymentsGetRequest$outboundSchema: z.ZodType<
 > = z.object({
   environment: z.nullable(components.DeploymentEnvironment$outboundSchema)
     .optional(),
+  isFluid: z.boolean().default(false),
+}).transform((v) => {
+  return remap$(v, {
+    isFluid: "is_fluid",
+  });
 });
 
 /**

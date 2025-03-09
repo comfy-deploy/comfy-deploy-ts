@@ -11,7 +11,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export type Session = {
   sessionId: string;
   gpuEventId: string;
-  url: string;
+  url: string | null;
+  gpu: string;
+  createdAt: Date;
+  timeout: number | null;
+  timeoutEnd: Date | null;
+  machineId: string | null;
+  machineVersionId: string | null;
 };
 
 /** @internal */
@@ -19,11 +25,25 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
   z.object({
     session_id: z.string(),
     gpu_event_id: z.string(),
-    url: z.string(),
+    url: z.nullable(z.string()),
+    gpu: z.string(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    timeout: z.nullable(z.number().int()),
+    timeout_end: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    machine_id: z.nullable(z.string()),
+    machine_version_id: z.nullable(z.string()),
   }).transform((v) => {
     return remap$(v, {
       "session_id": "sessionId",
       "gpu_event_id": "gpuEventId",
+      "created_at": "createdAt",
+      "timeout_end": "timeoutEnd",
+      "machine_id": "machineId",
+      "machine_version_id": "machineVersionId",
     });
   });
 
@@ -31,7 +51,13 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
 export type Session$Outbound = {
   session_id: string;
   gpu_event_id: string;
-  url: string;
+  url: string | null;
+  gpu: string;
+  created_at: string;
+  timeout: number | null;
+  timeout_end: string | null;
+  machine_id: string | null;
+  machine_version_id: string | null;
 };
 
 /** @internal */
@@ -42,11 +68,21 @@ export const Session$outboundSchema: z.ZodType<
 > = z.object({
   sessionId: z.string(),
   gpuEventId: z.string(),
-  url: z.string(),
+  url: z.nullable(z.string()),
+  gpu: z.string(),
+  createdAt: z.date().transform(v => v.toISOString()),
+  timeout: z.nullable(z.number().int()),
+  timeoutEnd: z.nullable(z.date().transform(v => v.toISOString())),
+  machineId: z.nullable(z.string()),
+  machineVersionId: z.nullable(z.string()),
 }).transform((v) => {
   return remap$(v, {
     sessionId: "session_id",
     gpuEventId: "gpu_event_id",
+    createdAt: "created_at",
+    timeoutEnd: "timeout_end",
+    machineId: "machine_id",
+    machineVersionId: "machine_version_id",
   });
 });
 

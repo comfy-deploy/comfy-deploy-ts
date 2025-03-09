@@ -9,6 +9,7 @@
 * [~~queue~~](#queue) - Queue a workflow :warning: **Deprecated**
 * [~~sync~~](#sync) - Run a workflow in sync :warning: **Deprecated**
 * [~~stream~~](#stream) - Run a workflow in stream :warning: **Deprecated**
+* [cancelRunRunRunIdCancelPost](#cancelrunrunrunidcancelpost) - Cancel Run
 
 ## get
 
@@ -25,7 +26,7 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Handle the result
@@ -51,7 +52,7 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await runGet(comfyDeploy, {
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   if (!res.ok) {
@@ -168,7 +169,7 @@ async function run() {
       "seed": 42,
     },
     webhookIntermediateStatus: true,
-    workflowVersionId: "41c76928-a496-4990-bd93-9d3bc0f64bb4",
+    workflowVersionId: "3ec31b24-d0d3-4298-9ffa-c74003017b70",
   });
 
   if (!res.ok) {
@@ -270,13 +271,11 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runSync(comfyDeploy, {
     inputs: {
-      "num_inference_steps": 30,
-      "prompt": "A futuristic cityscape",
-      "seed": 123456,
+      "prompt": "A beautiful landscape",
+      "seed": 42,
     },
-    webhook: "https://myapp.com/webhook",
-    workflowId: "12345678-1234-5678-1234-567812345678",
-    workflowApiJson: {},
+    webhookIntermediateStatus: true,
+    modelId: "<id>",
   });
 
   if (!res.ok) {
@@ -384,7 +383,7 @@ async function run() {
       "seed": 42,
     },
     webhookIntermediateStatus: true,
-    workflowVersionId: "f69f9708-c73e-4900-9c84-4065577d4588",
+    modelId: "<id>",
   });
 
   if (!res.ok) {
@@ -431,6 +430,106 @@ import {
 ### Response
 
 **Promise\<[EventStream<components.RunStream>](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## cancelRunRunRunIdCancelPost
+
+Cancel Run
+
+### Example Usage
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+
+const comfyDeploy = new ComfyDeploy({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await comfyDeploy.run.cancelRunRunRunIdCancelPost({
+    runId: "<id>",
+    cancelFunctionBody: {
+      functionId: "<id>",
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { runCancelRunRunRunIdCancelPost } from "comfydeploy/funcs/runCancelRunRunRunIdCancelPost.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await runCancelRunRunRunIdCancelPost(comfyDeploy, {
+    runId: "<id>",
+    cancelFunctionBody: {
+      functionId: "<id>",
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useRunCancelRunRunRunIdCancelPostMutation
+} from "comfydeploy/react-query/runCancelRunRunRunIdCancelPost.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CancelRunRunRunIdCancelPostRequest](../../models/operations/cancelrunrunrunidcancelpostrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 

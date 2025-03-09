@@ -5,6 +5,7 @@
 import { ComfyDeployCore } from "../core.js";
 import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
+import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -18,6 +19,7 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 import { WebhookRecipient } from "../types/webhooks.js";
 
@@ -27,12 +29,12 @@ import { WebhookRecipient } from "../types/webhooks.js";
  * @remarks
  * This endpoint is called by the workflow runner to update the status of a run.
  */
-export async function callbacksRunUpdateRequestBodyWebhookPost(
+export function callbacksRunUpdateRequestBodyWebhookPost(
   client: ComfyDeployCore,
   recipient: WebhookRecipient,
   request: components.WorkflowRunWebhookBody,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.WorkflowRunWebhookResponse,
     | errors.HTTPValidationError
@@ -45,25 +47,55 @@ export async function callbacksRunUpdateRequestBodyWebhookPost(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    recipient,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: ComfyDeployCore,
+  recipient: WebhookRecipient,
+  request: components.WorkflowRunWebhookBody,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.WorkflowRunWebhookResponse,
+      | errors.HTTPValidationError
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) => components.WorkflowRunWebhookBody$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
   const baseURL = new URL(recipient.url);
   const path = "/";
 
-  const headers = new Headers({
+  const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-  });
+  }));
 
   const context = {
+    baseURL: baseURL ?? "",
     operationID: "run_update__request_body__webhook__post",
     oAuth2Scopes: [],
     webhookRecipient: recipient,
@@ -84,7 +116,7 @@ export async function callbacksRunUpdateRequestBodyWebhookPost(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -95,7 +127,7 @@ export async function callbacksRunUpdateRequestBodyWebhookPost(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -116,11 +148,12 @@ export async function callbacksRunUpdateRequestBodyWebhookPost(
   >(
     M.json(200, components.WorkflowRunWebhookResponse$inboundSchema),
     M.jsonErr(422, errors.HTTPValidationError$inboundSchema),
-    M.fail(["4XX", "5XX"]),
+    M.fail("4XX"),
+    M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }

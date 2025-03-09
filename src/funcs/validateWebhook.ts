@@ -20,8 +20,10 @@ export async function validateWebhook(_client: ComfyDeployCore, {
   const request = normalizeRequest(rawRequest);
   const knownSchemas = [components.workflowRunWebhookBodyFromJSON];
 
+  const jsonString = await request.text();
+
   for (const schema of knownSchemas) {
-    const ret = schema(await request.text());
+    const ret = schema(jsonString);
     if (ret.ok) {
       return ret;
     }
@@ -30,8 +32,8 @@ export async function validateWebhook(_client: ComfyDeployCore, {
   return ERR(
     new SDKValidationError(
       "No matching schema found for the given webhook payload",
-      "",
-      request.body,
+      jsonString,
+      jsonString,
     ),
   );
 }

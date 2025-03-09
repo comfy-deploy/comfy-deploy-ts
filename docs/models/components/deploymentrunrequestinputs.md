@@ -1,4 +1,4 @@
-# WorkflowRunVersionRequestInputs
+# DeploymentRunRequestInputs
 
 
 ## Supported Types
@@ -12,13 +12,13 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 517379;
+const value: number = 874288;
 ```
 
 ### `number`
 
 ```typescript
-const value: number = 1320.68;
+const value: number = 2930.2;
 ```
 
 ### `boolean`

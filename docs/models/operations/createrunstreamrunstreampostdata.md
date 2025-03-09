@@ -11,8 +11,7 @@ const value: components.WorkflowRunVersionRequest = {
     "prompt": "A beautiful landscape",
     "seed": 42,
   },
-  webhookIntermediateStatus: true,
-  workflowVersionId: "848e84e5-035d-4775-beff-6fca332e477c",
+  workflowVersionId: "613e3dc2-91ba-4c7e-804b-621d7eb658eb",
 };
 ```
 
@@ -53,7 +52,6 @@ const value: components.ModelRunRequest = {
     "prompt": "A beautiful landscape",
     "seed": 42,
   },
-  webhookIntermediateStatus: true,
   modelId: "<id>",
 };
 ```
