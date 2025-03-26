@@ -10,6 +10,9 @@ targets:
     comfydeploy:
         target: typescript
         source: comfydeploy-api
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             output: codeSamples.yaml
             registry:
