@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [get](#get) - Get Run
-* [cancelRunRunRunIdCancelPost](#cancelrunrunrunidcancelpost) - Cancel Run
+* [cancel](#cancel) - Cancel Run
 
 ## get
 
@@ -113,7 +113,7 @@ import {
 | errors.HTTPValidationError | 422                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## cancelRunRunRunIdCancelPost
+## cancel
 
 Cancel Run
 
@@ -127,7 +127,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.run.cancelRunRunRunIdCancelPost({
+  const result = await comfyDeploy.run.cancel({
     runId: "<id>",
   });
 
@@ -144,7 +144,7 @@ The standalone function version of this method:
 
 ```typescript
 import { ComfyDeployCore } from "comfydeploy/core.js";
-import { runCancelRunRunRunIdCancelPost } from "comfydeploy/funcs/runCancelRunRunRunIdCancelPost.js";
+import { runCancel } from "comfydeploy/funcs/runCancel.js";
 
 // Use `ComfyDeployCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -153,7 +153,7 @@ const comfyDeploy = new ComfyDeployCore({
 });
 
 async function run() {
-  const res = await runCancelRunRunRunIdCancelPost(comfyDeploy, {
+  const res = await runCancel(comfyDeploy, {
     runId: "<id>",
   });
 
@@ -183,8 +183,8 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useRunCancelRunRunRunIdCancelPostMutation
-} from "comfydeploy/react-query/runCancelRunRunRunIdCancelPost.js";
+  useRunCancelMutation
+} from "comfydeploy/react-query/runCancel.js";
 ```
 
 ### Parameters

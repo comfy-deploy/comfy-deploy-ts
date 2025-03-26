@@ -7,7 +7,7 @@ import { WorkflowRunWebhookBody } from "comfydeploy/models/components";
 
 let value: WorkflowRunWebhookBody = {
   runId: "<id>",
-  status: "running",
+  status: "success",
   liveStatus: "<value>",
 };
 ```

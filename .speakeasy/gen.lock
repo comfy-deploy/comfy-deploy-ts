@@ -1,23 +1,21 @@
 lockVersion: 2.0.0
 id: 7c23840f-645f-4067-8e26-e296b6caf16b
 management:
-  docChecksum: fc69145a3a6910fb532726a233655ece
+  docChecksum: a12e94397f17ad377cd82287f65fc0dd
   docVersion: V2
   speakeasyVersion: 1.523.2
   generationVersion: 2.560.1
-  releaseVersion: 2.1.0
-  configChecksum: ac0dbb28d639bc0bd094be7f3dcc88f0
+  releaseVersion: 2.2.0
+  configChecksum: e86fa74eba3531cc3ddfbdfc958049a2
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    callbacks: 1.0.0
     constsAndDefaults: 0.1.11
     core: 3.21.4
     defaultEnabledRetries: 0.1.0
-    deprecations: 2.81.1
     devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
@@ -33,9 +31,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
-    serverEvents: 0.1.5
     unions: 2.85.8
-    uploadStreams: 0.1.0
     webhookHandlers: 0.1.0
     webhooks: 1.5.0
 generatedFiles:
@@ -49,136 +45,35 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
-  - docs/models/components/apiroutestypesmachinegpu2.md
-  - docs/models/components/assetresponse.md
-  - docs/models/components/bodyuploadassetfileassetsuploadpost.md
-  - docs/models/components/bodyuploadassetfileassetsuploadpostfile.md
-  - docs/models/components/bodyuploadfilefileuploadpost.md
-  - docs/models/components/classtype.md
-  - docs/models/components/createfolderrequest.md
   - docs/models/components/createrunresponse.md
-  - docs/models/components/createsessionbody.md
-  - docs/models/components/createsessionresponse.md
   - docs/models/components/data.md
-  - docs/models/components/defaultvalue.md
-  - docs/models/components/deletesessionresponse.md
-  - docs/models/components/deploymentcreate.md
-  - docs/models/components/deploymentenvironment.md
-  - docs/models/components/deploymentfeaturedmodel.md
-  - docs/models/components/deploymentmodel.md
   - docs/models/components/deploymentrunrequest.md
-  - docs/models/components/deploymentsharemodel.md
-  - docs/models/components/deploymentupdate.md
-  - docs/models/components/eventupdate.md
-  - docs/models/components/eventupdateevent.md
-  - docs/models/components/filet.md
-  - docs/models/components/fileuploadresponse.md
   - docs/models/components/gpu.md
-  - docs/models/components/gputype.md
-  - docs/models/components/increasetimeoutbody.md
-  - docs/models/components/increasetimeoutbody2.md
-  - docs/models/components/inputmodel.md
   - docs/models/components/inputs.md
-  - docs/models/components/inputtypes.md
   - docs/models/components/loc.md
-  - docs/models/components/logdatacontent.md
-  - docs/models/components/logupdateevent.md
-  - docs/models/components/machinewithname.md
-  - docs/models/components/maxvalue.md
   - docs/models/components/mediaitem.md
-  - docs/models/components/minvalue.md
-  - docs/models/components/modelinput.md
-  - docs/models/components/modeloutput.md
-  - docs/models/components/modeloutputclasstype.md
-  - docs/models/components/modelsearchquery.md
-  - docs/models/components/modelwithmetadata.md
-  - docs/models/components/outputmodel.md
-  - docs/models/components/outputtypes.md
-  - docs/models/components/runstream.md
-  - docs/models/components/searchmodelsresponse.md
   - docs/models/components/security.md
-  - docs/models/components/sessionresponse.md
-  - docs/models/components/shareoptions.md
-  - docs/models/components/showcasemedia.md
-  - docs/models/components/snapshotsessionbody.md
-  - docs/models/components/step.md
-  - docs/models/components/two.md
   - docs/models/components/validationerror.md
-  - docs/models/components/version.md
-  - docs/models/components/workflow.md
-  - docs/models/components/workflowapijson.md
   - docs/models/components/workflowrunmodel.md
   - docs/models/components/workflowrunoutputmodel.md
-  - docs/models/components/workflowrunrequest.md
-  - docs/models/components/workflowrunrequestgpu.md
-  - docs/models/components/workflowrunrequestinputs.md
   - docs/models/components/workflowrunstatus.md
   - docs/models/components/workflowrunwebhookbody.md
   - docs/models/components/workflowrunwebhookresponse.md
-  - docs/models/components/workflowwithname.md
   - docs/models/errors/httpvalidationerror.md
   - docs/models/operations/cancelrunrunrunidcancelpostrequest.md
-  - docs/models/operations/deactivatedeploymentdeploymentdeploymentiddeactivatepostrequest.md
-  - docs/models/operations/deleteassetassetsassetiddeleterequest.md
-  - docs/models/operations/deletesessionsessionsessioniddeleterequest.md
-  - docs/models/operations/getassetassetsassetidgetrequest.md
-  - docs/models/operations/getdeploymentdeploymentdeploymentidgetrequest.md
-  - docs/models/operations/getdeploymentsdeploymentsgetrequest.md
-  - docs/models/operations/getmachinesessionssessionsgetrequest.md
   - docs/models/operations/getrunrunrunidgetrequest.md
-  - docs/models/operations/getsessionsessionsessionidgetrequest.md
-  - docs/models/operations/getsharedeploymentshareusernamesluggetrequest.md
-  - docs/models/operations/increasetimeout2sessionsessionidincreasetimeoutpostrequest.md
-  - docs/models/operations/listassetsassetsgetrequest.md
-  - docs/models/operations/searchsearchmodelgetrequest.md
-  - docs/models/operations/snapshotsessionsessionsessionidsnapshotpostrequest.md
-  - docs/models/operations/updatedeploymentdeploymentdeploymentidpatchrequest.md
-  - docs/models/operations/uploadassetfileassetsuploadpostrequest.md
   - docs/sdks/callbacks/README.md
   - docs/sdks/comfydeploy/README.md
   - docs/sdks/deployment/README.md
-  - docs/sdks/deployments/README.md
-  - docs/sdks/file/README.md
-  - docs/sdks/models/README.md
   - docs/sdks/run/README.md
-  - docs/sdks/search/README.md
-  - docs/sdks/session/README.md
-  - docs/sdks/workflow/README.md
   - eslint.config.mjs
   - jsr.json
   - package.json
   - src/core.ts
   - src/funcs/callbacksRunUpdateRequestBodyWebhookPost.ts
-  - src/funcs/deploymentsCreate.ts
-  - src/funcs/deploymentsDeactivate.ts
-  - src/funcs/deploymentsGet.ts
-  - src/funcs/deploymentsGetFeaturedDeploymentsDeploymentsFeaturedGet.ts
-  - src/funcs/deploymentsGetShareDeploymentShareUsernameSlugGet.ts
-  - src/funcs/deploymentsList.ts
-  - src/funcs/deploymentsUpdate.ts
-  - src/funcs/fileCreateFolderAssetsFolderPost.ts
-  - src/funcs/fileDeleteAssetAssetsAssetIdDelete.ts
-  - src/funcs/fileGetAssetAssetsAssetIdGet.ts
-  - src/funcs/fileListAssetsAssetsGet.ts
-  - src/funcs/fileUpload.ts
-  - src/funcs/fileUploadAssetFileAssetsUploadPost.ts
-  - src/funcs/modelsPublicModelsModelsGet.ts
-  - src/funcs/runCancelRunRunRunIdCancelPost.ts
+  - src/funcs/runCancel.ts
   - src/funcs/runDeploymentQueue.ts
-  - src/funcs/runDeploymentStream.ts
-  - src/funcs/runDeploymentSync.ts
   - src/funcs/runGet.ts
-  - src/funcs/runWorkflowQueue.ts
-  - src/funcs/runWorkflowStream.ts
-  - src/funcs/runWorkflowSync.ts
-  - src/funcs/searchSearchSearchModelGet.ts
-  - src/funcs/sessionCancel.ts
-  - src/funcs/sessionCreate.ts
-  - src/funcs/sessionGet.ts
-  - src/funcs/sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost.ts
-  - src/funcs/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.ts
-  - src/funcs/sessionList.ts
-  - src/funcs/sessionSnapshotSessionSessionSessionIdSnapshotPost.ts
   - src/funcs/validateWebhook.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
@@ -188,7 +83,6 @@ generatedFiles:
   - src/lib/config.ts
   - src/lib/dlv.ts
   - src/lib/encodings.ts
-  - src/lib/event-streams.ts
   - src/lib/files.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
@@ -213,149 +107,39 @@ generatedFiles:
   - src/mcp-server/server.ts
   - src/mcp-server/shared.ts
   - src/mcp-server/tools.ts
-  - src/mcp-server/tools/deploymentsCreate.ts
-  - src/mcp-server/tools/deploymentsDeactivate.ts
-  - src/mcp-server/tools/deploymentsGet.ts
-  - src/mcp-server/tools/deploymentsGetFeaturedDeploymentsDeploymentsFeaturedGet.ts
-  - src/mcp-server/tools/deploymentsGetShareDeploymentShareUsernameSlugGet.ts
-  - src/mcp-server/tools/deploymentsList.ts
-  - src/mcp-server/tools/deploymentsUpdate.ts
-  - src/mcp-server/tools/fileCreateFolderAssetsFolderPost.ts
-  - src/mcp-server/tools/fileDeleteAssetAssetsAssetIdDelete.ts
-  - src/mcp-server/tools/fileGetAssetAssetsAssetIdGet.ts
-  - src/mcp-server/tools/fileListAssetsAssetsGet.ts
-  - src/mcp-server/tools/fileUpload.ts
-  - src/mcp-server/tools/fileUploadAssetFileAssetsUploadPost.ts
-  - src/mcp-server/tools/modelsPublicModelsModelsGet.ts
-  - src/mcp-server/tools/runCancelRunRunRunIdCancelPost.ts
+  - src/mcp-server/tools/runCancel.ts
   - src/mcp-server/tools/runDeploymentQueue.ts
-  - src/mcp-server/tools/runDeploymentStream.ts
-  - src/mcp-server/tools/runDeploymentSync.ts
   - src/mcp-server/tools/runGet.ts
-  - src/mcp-server/tools/runWorkflowQueue.ts
-  - src/mcp-server/tools/runWorkflowStream.ts
-  - src/mcp-server/tools/runWorkflowSync.ts
-  - src/mcp-server/tools/searchSearchSearchModelGet.ts
-  - src/mcp-server/tools/sessionCancel.ts
-  - src/mcp-server/tools/sessionCreate.ts
-  - src/mcp-server/tools/sessionGet.ts
-  - src/mcp-server/tools/sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost.ts
-  - src/mcp-server/tools/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.ts
-  - src/mcp-server/tools/sessionList.ts
-  - src/mcp-server/tools/sessionSnapshotSessionSessionSessionIdSnapshotPost.ts
-  - src/models/components/apiroutestypesmachinegpu2.ts
-  - src/models/components/assetresponse.ts
-  - src/models/components/bodyuploadassetfileassetsuploadpost.ts
-  - src/models/components/bodyuploadfilefileuploadpost.ts
-  - src/models/components/createfolderrequest.ts
   - src/models/components/createrunresponse.ts
-  - src/models/components/createsessionbody.ts
-  - src/models/components/createsessionresponse.ts
-  - src/models/components/deletesessionresponse.ts
-  - src/models/components/deploymentcreate.ts
-  - src/models/components/deploymentenvironment.ts
-  - src/models/components/deploymentfeaturedmodel.ts
-  - src/models/components/deploymentmodel.ts
   - src/models/components/deploymentrunrequest.ts
-  - src/models/components/deploymentsharemodel.ts
-  - src/models/components/deploymentupdate.ts
-  - src/models/components/eventupdate.ts
-  - src/models/components/eventupdateevent.ts
-  - src/models/components/fileuploadresponse.ts
-  - src/models/components/gputype.ts
-  - src/models/components/increasetimeoutbody.ts
-  - src/models/components/increasetimeoutbody2.ts
   - src/models/components/index.ts
-  - src/models/components/inputmodel.ts
-  - src/models/components/logdatacontent.ts
-  - src/models/components/logupdateevent.ts
-  - src/models/components/machinewithname.ts
   - src/models/components/mediaitem.ts
-  - src/models/components/modelinput.ts
-  - src/models/components/modeloutput.ts
-  - src/models/components/modelsearchquery.ts
-  - src/models/components/modelwithmetadata.ts
-  - src/models/components/outputmodel.ts
-  - src/models/components/runstream.ts
-  - src/models/components/searchmodelsresponse.ts
   - src/models/components/security.ts
-  - src/models/components/sessionresponse.ts
-  - src/models/components/snapshotsessionbody.ts
   - src/models/components/validationerror.ts
   - src/models/components/workflowrunmodel.ts
   - src/models/components/workflowrunoutputmodel.ts
-  - src/models/components/workflowrunrequest.ts
   - src/models/components/workflowrunstatus.ts
   - src/models/components/workflowrunwebhookbody.ts
   - src/models/components/workflowrunwebhookresponse.ts
-  - src/models/components/workflowwithname.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/httpvalidationerror.ts
   - src/models/errors/index.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/models/operations/cancelrunrunrunidcancelpost.ts
-  - src/models/operations/deactivatedeploymentdeploymentdeploymentiddeactivatepost.ts
-  - src/models/operations/deleteassetassetsassetiddelete.ts
-  - src/models/operations/deletesessionsessionsessioniddelete.ts
-  - src/models/operations/getassetassetsassetidget.ts
-  - src/models/operations/getdeploymentdeploymentdeploymentidget.ts
-  - src/models/operations/getdeploymentsdeploymentsget.ts
-  - src/models/operations/getmachinesessionssessionsget.ts
   - src/models/operations/getrunrunrunidget.ts
-  - src/models/operations/getsessionsessionsessionidget.ts
-  - src/models/operations/getsharedeploymentshareusernameslugget.ts
-  - src/models/operations/increasetimeout2sessionsessionidincreasetimeoutpost.ts
   - src/models/operations/index.ts
-  - src/models/operations/listassetsassetsget.ts
-  - src/models/operations/searchsearchmodelget.ts
-  - src/models/operations/snapshotsessionsessionsessionidsnapshotpost.ts
-  - src/models/operations/updatedeploymentdeploymentdeploymentidpatch.ts
-  - src/models/operations/uploadassetfileassetsuploadpost.ts
   - src/react-query/_context.tsx
   - src/react-query/_types.ts
-  - src/react-query/deploymentsCreate.ts
-  - src/react-query/deploymentsDeactivate.ts
-  - src/react-query/deploymentsGet.ts
-  - src/react-query/deploymentsGetFeaturedDeploymentsDeploymentsFeaturedGet.ts
-  - src/react-query/deploymentsGetShareDeploymentShareUsernameSlugGet.ts
-  - src/react-query/deploymentsList.ts
-  - src/react-query/deploymentsUpdate.ts
-  - src/react-query/fileCreateFolderAssetsFolderPost.ts
-  - src/react-query/fileDeleteAssetAssetsAssetIdDelete.ts
-  - src/react-query/fileGetAssetAssetsAssetIdGet.ts
-  - src/react-query/fileListAssetsAssetsGet.ts
-  - src/react-query/fileUpload.ts
-  - src/react-query/fileUploadAssetFileAssetsUploadPost.ts
   - src/react-query/index.ts
-  - src/react-query/modelsPublicModelsModelsGet.ts
-  - src/react-query/runCancelRunRunRunIdCancelPost.ts
+  - src/react-query/runCancel.ts
   - src/react-query/runDeploymentQueue.ts
-  - src/react-query/runDeploymentStream.ts
-  - src/react-query/runDeploymentSync.ts
   - src/react-query/runGet.ts
-  - src/react-query/runWorkflowQueue.ts
-  - src/react-query/runWorkflowStream.ts
-  - src/react-query/runWorkflowSync.ts
-  - src/react-query/searchSearchSearchModelGet.ts
-  - src/react-query/sessionCancel.ts
-  - src/react-query/sessionCreate.ts
-  - src/react-query/sessionGet.ts
-  - src/react-query/sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost.ts
-  - src/react-query/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.ts
-  - src/react-query/sessionList.ts
-  - src/react-query/sessionSnapshotSessionSessionSessionIdSnapshotPost.ts
   - src/sdk/callbacks.ts
   - src/sdk/deployment.ts
-  - src/sdk/deployments.ts
-  - src/sdk/file.ts
   - src/sdk/index.ts
-  - src/sdk/models.ts
   - src/sdk/run.ts
   - src/sdk/sdk.ts
-  - src/sdk/search.ts
-  - src/sdk/session.ts
-  - src/sdk/workflow.ts
   - src/types/async.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts

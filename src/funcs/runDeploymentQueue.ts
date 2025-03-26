@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Deployment - Queue
+ * Queue Run
  *
  * @remarks
  * Create a new deployment run with the given parameters.

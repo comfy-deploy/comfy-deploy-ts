@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [runUpdateRequestBodyWebhookPost](#runupdaterequestbodywebhookpost) - Receive run status updates via webhook
+* [runUpdateRequestBodyWebhookPost](#runupdaterequestbodywebhookpost) - Run Update Webhook
 
 ## runUpdateRequestBodyWebhookPost
 

@@ -24,7 +24,7 @@ import { Result } from "../types/fp.js";
 import { WebhookRecipient } from "../types/webhooks.js";
 
 /**
- * Receive run status updates via webhook
+ * Run Update Webhook
  *
  * @remarks
  * This endpoint is called by the workflow runner to update the status of a run.
