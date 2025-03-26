@@ -5,8 +5,8 @@ management:
   docVersion: V2
   speakeasyVersion: 1.523.2
   generationVersion: 2.560.1
-  releaseVersion: 2.2.0
-  configChecksum: e86fa74eba3531cc3ddfbdfc958049a2
+  releaseVersion: 2.2.1
+  configChecksum: ddd7241c504a30dd8f9ee6230b17f20a
   repoURL: https://github.com/comfy-deploy/comfy-deploy-ts.git
   installationURL: https://github.com/comfy-deploy/comfy-deploy-ts
   published: true

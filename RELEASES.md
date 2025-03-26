@@ -89,3 +89,13 @@ Based on:
 - Speakeasy CLI 1.523.2 (2.560.1) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [typescript v2.2.0] .
+
+## 2025-03-26 16:23:52
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.523.2 (2.560.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v2.2.1] .
+### Releases
+- [NPM v2.2.1] https://www.npmjs.com/package/comfydeploy/v/2.2.1 - .
