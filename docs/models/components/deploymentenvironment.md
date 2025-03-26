@@ -11,5 +11,5 @@ let value: DeploymentEnvironment = "private-share";
 ## Values
 
 ```typescript
-"staging" | "production" | "public-share" | "private-share"
+"staging" | "production" | "public-share" | "private-share" | "preview"
 ```

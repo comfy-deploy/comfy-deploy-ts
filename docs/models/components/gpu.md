@@ -7,11 +7,11 @@ The GPU to override the machine's default GPU
 ```typescript
 import { Gpu } from "comfydeploy/models/components";
 
-let value: Gpu = "H100";
+let value: Gpu = "A100-80GB";
 ```
 
 ## Values
 
 ```typescript
-"T4" | "L4" | "A10G" | "A100" | "A100-80GB" | "H100"
+"T4" | "L4" | "A10G" | "L40S" | "A100" | "A100-80GB" | "H100"
 ```

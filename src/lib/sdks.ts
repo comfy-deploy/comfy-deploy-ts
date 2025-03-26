@@ -42,6 +42,10 @@ export type RequestOptions = {
    */
   retryCodes?: string[];
   /**
+   * Overrides the base server URL that will be used by an operation.
+   */
+  serverURL?: string | URL;
+  /**
    * Sets various request options on the `fetch` call made by an SDK method.
    *
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options|Request}
@@ -52,7 +56,7 @@ export type RequestOptions = {
 type RequestConfig = {
   method: string;
   path: string;
-  baseURL?: string | URL;
+  baseURL?: string | URL | undefined;
   query?: string;
   body?: RequestInit["body"];
   headers?: HeadersInit;
@@ -74,7 +78,7 @@ export class ClientSDK {
   readonly #httpClient: HTTPClient;
   readonly #hooks: SDKHooks;
   readonly #logger?: Logger | undefined;
-  protected readonly _baseURL: URL | null;
+  public readonly _baseURL: URL | null;
   public readonly _options: SDKOptions & { hooks?: SDKHooks };
 
   constructor(options: SDKOptions = {}) {
@@ -119,6 +123,7 @@ export class ClientSDK {
     const inputURL = new URL(path, reqURL);
 
     if (path) {
+      reqURL.pathname += reqURL.pathname.endsWith("/") ? "" : "/";
       reqURL.pathname += inputURL.pathname.replace(/^\/+/, "");
     }
 
@@ -126,7 +131,10 @@ export class ClientSDK {
 
     const secQuery: string[] = [];
     for (const [k, v] of Object.entries(security?.queryParams || {})) {
-      secQuery.push(encodeForm(k, v, { charEncoding: "percent" }));
+      const q = encodeForm(k, v, { charEncoding: "percent" });
+      if (typeof q !== "undefined") {
+        secQuery.push(q);
+      }
     }
     if (secQuery.length) {
       finalQuery += `&${secQuery.join("&")}`;
@@ -183,14 +191,9 @@ export class ClientSDK {
 
     if (conf.body instanceof ReadableStream) {
       if (!fetchOptions) {
-        fetchOptions = {
-          // @ts-expect-error see https://github.com/node-fetch/node-fetch/issues/1769
-          duplex: "half",
-        };
-      } else {
-        // @ts-expect-error see https://github.com/node-fetch/node-fetch/issues/1769
-        fetchOptions.duplex = "half";
+        fetchOptions = {};
       }
+      Object.assign(fetchOptions, { duplex: "half" });
     }
 
     let input;

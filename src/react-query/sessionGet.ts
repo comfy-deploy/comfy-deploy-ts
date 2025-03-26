@@ -26,7 +26,7 @@ import {
   TupleToPrefixes,
 } from "./_types.js";
 
-export type SessionGetQueryData = components.Session;
+export type SessionGetQueryData = components.SessionResponse;
 
 /**
  * Get Session

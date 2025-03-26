@@ -5,7 +5,7 @@
 ```typescript
 import { WorkflowRunStatus } from "comfydeploy/models/components";
 
-let value: WorkflowRunStatus = "cancelled";
+let value: WorkflowRunStatus = "failed";
 ```
 
 ## Values

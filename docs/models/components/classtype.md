@@ -12,6 +12,6 @@ const value: string = "<value>";
 ### `components.Two`
 
 ```typescript
-const value: components.Two = "ComfyUIDeployExternalNumberSlider";
+const value: components.Two = "ComfyUIDeployExternalTextSingleLine";
 ```
 

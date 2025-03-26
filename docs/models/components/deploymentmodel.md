@@ -6,23 +6,21 @@
 import { DeploymentModel } from "comfydeploy/models/components";
 
 let value: DeploymentModel = {
-  id: "0f55026e-1fd7-4539-a006-14342019ff62",
+  id: "b420447a-b462-4c0b-bcc4-5945370c1849",
   userId: "<id>",
   orgId: "<id>",
-  workflowVersionId: "7f1c43a3-a868-44b6-85de-035dffe4f31f",
-  workflowId: "b0be465b-3274-4d38-9fad-fcbff7142629",
-  machineId: "ef849e68-4763-4845-98c5-ed04715ba9b3",
+  workflowVersionId: "a0688a42-6f2e-487e-b7b6-ebb5ca32cf79",
+  workflowId: "7f9ded2a-6164-4d0f-9550-26e1fd753900",
+  machineId: "14342019-ff62-4a7f-b1c4-3a3a8684b65d",
   shareSlug: "<value>",
-  description: "gastropod ponder unibody scarcely legging of tough well",
+  description: "frequent and everlasting",
   shareOptions: {},
-  showcaseMedia: {},
-  environment: "production",
-  createdAt: new Date("2022-06-25T20:56:27.257Z"),
-  updatedAt: new Date("2024-08-29T09:21:28.573Z"),
-  workflow: {
-    id: "7e2a71b3-000e-4bea-a84f-576f25a19743",
-    name: "<value>",
-  },
+  showcaseMedia: [
+    {},
+  ],
+  environment: "staging",
+  createdAt: new Date("2024-05-07T10:10:03.097Z"),
+  updatedAt: new Date("2023-11-30T16:44:13.155Z"),
 };
 ```
 
@@ -39,10 +37,22 @@ let value: DeploymentModel = {
 | `shareSlug`                                                                                   | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `description`                                                                                 | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `shareOptions`                                                                                | [components.ShareOptions](../../models/components/shareoptions.md)                            | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `showcaseMedia`                                                                               | [components.ShowcaseMedia](../../models/components/showcasemedia.md)                          | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `showcaseMedia`                                                                               | [components.ShowcaseMedia](../../models/components/showcasemedia.md)[]                        | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `environment`                                                                                 | [components.DeploymentEnvironment](../../models/components/deploymentenvironment.md)          | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `createdAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `workflow`                                                                                    | [components.WorkflowWithName](../../models/components/workflowwithname.md)                    | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `workflow`                                                                                    | [components.WorkflowWithName](../../models/components/workflowwithname.md)                    | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `version`                                                                                     | [components.Version](../../models/components/version.md)                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `machine`                                                                                     | [components.MachineWithName](../../models/components/machinewithname.md)                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `inputTypes`                                                                                  | [components.InputModel](../../models/components/inputmodel.md)[]                              | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `outputTypes`                                                                                 | [components.OutputModel](../../models/components/outputmodel.md)[]                            | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `dubLink`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `gpu`                                                                                         | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `machineVersionId`                                                                            | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `modalImageId`                                                                                | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `concurrencyLimit`                                                                            | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `runTimeout`                                                                                  | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `idleTimeout`                                                                                 | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `keepWarm`                                                                                    | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `activatedAt`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `modalAppId`                                                                                  | *string*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |

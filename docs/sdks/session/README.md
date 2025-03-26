@@ -8,7 +8,10 @@
 * [get](#get) - Get Session
 * [cancel](#cancel) - Delete Session
 * [list](#list) - Get Machine Sessions
+* [increaseTimeoutSessionIncreaseTimeoutPost](#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
+* [increaseTimeout2SessionSessionIdIncreaseTimeoutPost](#increasetimeout2sessionsessionidincreasetimeoutpost) - Increase Timeout 2
 * [create](#create) - Create Session
+* [snapshotSessionSessionSessionIdSnapshotPost](#snapshotsessionsessionsessionidsnapshotpost) - Snapshot Session
 
 ## get
 
@@ -106,7 +109,7 @@ import {
 
 ### Response
 
-**Promise\<[components.Session](../../models/components/session.md)\>**
+**Promise\<[components.SessionResponse](../../models/components/sessionresponse.md)\>**
 
 ### Errors
 
@@ -223,9 +226,7 @@ const comfyDeploy = new ComfyDeploy({
 });
 
 async function run() {
-  const result = await comfyDeploy.session.list({
-    machineId: "<id>",
-  });
+  const result = await comfyDeploy.session.list({});
 
   // Handle the result
   console.log(result);
@@ -249,9 +250,7 @@ const comfyDeploy = new ComfyDeployCore({
 });
 
 async function run() {
-  const res = await sessionList(comfyDeploy, {
-    machineId: "<id>",
-  });
+  const res = await sessionList(comfyDeploy, {});
 
   if (!res.ok) {
     throw res.error;
@@ -305,7 +304,207 @@ import {
 
 ### Response
 
-**Promise\<[components.GPUEventModel[]](../../models/.md)\>**
+**Promise\<[components.SessionResponse[]](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## increaseTimeoutSessionIncreaseTimeoutPost
+
+Increase Timeout
+
+### Example Usage
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+
+const comfyDeploy = new ComfyDeploy({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await comfyDeploy.session.increaseTimeoutSessionIncreaseTimeoutPost({
+    machineId: "<id>",
+    sessionId: "d1cbd355-89fb-45f4-9778-6137629fc60d",
+    timeout: 465465,
+    gpu: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { sessionIncreaseTimeoutSessionIncreaseTimeoutPost } from "comfydeploy/funcs/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sessionIncreaseTimeoutSessionIncreaseTimeoutPost(comfyDeploy, {
+    machineId: "<id>",
+    sessionId: "d1cbd355-89fb-45f4-9778-6137629fc60d",
+    timeout: 465465,
+    gpu: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useSessionIncreaseTimeoutSessionIncreaseTimeoutPostMutation
+} from "comfydeploy/react-query/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.IncreaseTimeoutBody](../../models/components/increasetimeoutbody.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[any](../../models/.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## increaseTimeout2SessionSessionIdIncreaseTimeoutPost
+
+Increase Timeout 2
+
+### Example Usage
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+
+const comfyDeploy = new ComfyDeploy({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await comfyDeploy.session.increaseTimeout2SessionSessionIdIncreaseTimeoutPost({
+    sessionId: "<id>",
+    increaseTimeoutBody2: {
+      minutes: 840571,
+    },
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost } from "comfydeploy/funcs/sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost(comfyDeploy, {
+    sessionId: "<id>",
+    increaseTimeoutBody2: {
+      minutes: 840571,
+    },
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useSessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPostMutation
+} from "comfydeploy/react-query/sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.IncreaseTimeout2SessionSessionIdIncreaseTimeoutPostRequest](../../models/operations/increasetimeout2sessionsessionidincreasetimeoutpostrequest.md)                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 
@@ -400,6 +599,100 @@ import {
 ### Response
 
 **Promise\<[components.CreateSessionResponse](../../models/components/createsessionresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.HTTPValidationError | 422                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## snapshotSessionSessionSessionIdSnapshotPost
+
+Snapshot Session
+
+### Example Usage
+
+```typescript
+import { ComfyDeploy } from "comfydeploy";
+
+const comfyDeploy = new ComfyDeploy({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await comfyDeploy.session.snapshotSessionSessionSessionIdSnapshotPost({
+    sessionId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { ComfyDeployCore } from "comfydeploy/core.js";
+import { sessionSnapshotSessionSessionSessionIdSnapshotPost } from "comfydeploy/funcs/sessionSnapshotSessionSessionSessionIdSnapshotPost.js";
+
+// Use `ComfyDeployCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const comfyDeploy = new ComfyDeployCore({
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sessionSnapshotSessionSessionSessionIdSnapshotPost(comfyDeploy, {
+    sessionId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useSessionSnapshotSessionSessionSessionIdSnapshotPostMutation
+} from "comfydeploy/react-query/sessionSnapshotSessionSessionSessionIdSnapshotPost.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.SnapshotSessionSessionSessionIdSnapshotPostRequest](../../models/operations/snapshotsessionsessionsessionidsnapshotpostrequest.md)                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[any](../../models/.md)\>**
 
 ### Errors
 

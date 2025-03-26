@@ -11,7 +11,7 @@ let value: ModelWithMetadata = {
   inputs: [
     {
       inputId: "<id>",
-      classType: "<value>",
+      classType: "ComfyUIDeployExternalImageAlpha",
       required: false,
     },
   ],

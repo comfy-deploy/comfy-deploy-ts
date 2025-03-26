@@ -14,8 +14,8 @@ let value: WorkflowRunModel = {
   machineId: "b4290d0a-4bf3-4999-a3f7-db4d6e9ebb8f",
   origin: "<value>",
   status: "<value>",
-  createdAt: new Date("2023-04-10T13:04:59.510Z"),
-  updatedAt: new Date("2023-10-27T14:34:01.576Z"),
+  createdAt: new Date("2024-04-09T13:04:59.510Z"),
+  updatedAt: new Date("2024-10-26T14:34:01.576Z"),
   gpuEventId: "<id>",
   gpu: "<value>",
   machineVersion: "<value>",
@@ -29,8 +29,8 @@ let value: WorkflowRunModel = {
   number: 19193,
   duration: 3015.75,
   coldStartDuration: 6601.74,
-  coldStartDurationTotal: 2900.78,
-  runDuration: 6180.15,
+  coldStartDurationTotal: 2900.77,
+  runDuration: 6180.16,
 };
 ```
 

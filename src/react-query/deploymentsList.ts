@@ -82,6 +82,7 @@ export function setDeploymentsListData(
   queryKeyBase: [
     parameters: {
       environment?: components.DeploymentEnvironment | null | undefined;
+      isFluid?: boolean | undefined;
     },
   ],
   data: DeploymentsListQueryData,
@@ -96,6 +97,7 @@ export function invalidateDeploymentsList(
   queryKeyBase: TupleToPrefixes<
     [parameters: {
       environment?: components.DeploymentEnvironment | null | undefined;
+      isFluid?: boolean | undefined;
     }]
   >,
   filters?: Omit<InvalidateQueryFilters, "queryKey" | "predicate" | "exact">,
@@ -125,7 +127,10 @@ export function buildDeploymentsListQuery(
   queryFn: (context: QueryFunctionContext) => Promise<DeploymentsListQueryData>;
 } {
   return {
-    queryKey: queryKeyDeploymentsList({ environment: request.environment }),
+    queryKey: queryKeyDeploymentsList({
+      environment: request.environment,
+      isFluid: request.isFluid,
+    }),
     queryFn: async function deploymentsListQueryFn(
       ctx,
     ): Promise<DeploymentsListQueryData> {
@@ -147,6 +152,7 @@ export function buildDeploymentsListQuery(
 export function queryKeyDeploymentsList(
   parameters: {
     environment?: components.DeploymentEnvironment | null | undefined;
+    isFluid?: boolean | undefined;
   },
 ): QueryKey {
   return ["comfydeploy", "Deployments", "list", parameters];
