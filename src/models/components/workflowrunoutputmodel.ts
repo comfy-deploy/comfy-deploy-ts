@@ -14,12 +14,12 @@ import {
   MediaItem$outboundSchema,
 } from "./mediaitem.js";
 
-export type Data = MediaItem | string;
+export type Data = MediaItem | string | boolean;
 
 export type WorkflowRunOutputModel = {
   id: string;
   runId: string;
-  data: { [k: string]: Array<MediaItem | string> };
+  data: { [k: string]: Array<MediaItem | string | boolean> };
   nodeMeta?: any | null | undefined;
   createdAt: Date;
   updatedAt: Date;
@@ -29,14 +29,14 @@ export type WorkflowRunOutputModel = {
 
 /** @internal */
 export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .union([MediaItem$inboundSchema, z.string()]);
+  .union([MediaItem$inboundSchema, z.string(), z.boolean()]);
 
 /** @internal */
-export type Data$Outbound = MediaItem$Outbound | string;
+export type Data$Outbound = MediaItem$Outbound | string | boolean;
 
 /** @internal */
 export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.union([MediaItem$outboundSchema, z.string()]);
+  z.union([MediaItem$outboundSchema, z.string(), z.boolean()]);
 
 /**
  * @internal
@@ -73,7 +73,9 @@ export const WorkflowRunOutputModel$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   run_id: z.string(),
-  data: z.record(z.array(z.union([MediaItem$inboundSchema, z.string()]))),
+  data: z.record(
+    z.array(z.union([MediaItem$inboundSchema, z.string(), z.boolean()])),
+  ),
   node_meta: z.nullable(z.any()).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -93,7 +95,7 @@ export const WorkflowRunOutputModel$inboundSchema: z.ZodType<
 export type WorkflowRunOutputModel$Outbound = {
   id: string;
   run_id: string;
-  data: { [k: string]: Array<MediaItem$Outbound | string> };
+  data: { [k: string]: Array<MediaItem$Outbound | string | boolean> };
   node_meta?: any | null | undefined;
   created_at: string;
   updated_at: string;
@@ -109,7 +111,9 @@ export const WorkflowRunOutputModel$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   runId: z.string(),
-  data: z.record(z.array(z.union([MediaItem$outboundSchema, z.string()]))),
+  data: z.record(
+    z.array(z.union([MediaItem$outboundSchema, z.string(), z.boolean()])),
+  ),
   nodeMeta: z.nullable(z.any()).optional(),
   createdAt: z.date().transform(v => v.toISOString()),
   updatedAt: z.date().transform(v => v.toISOString()),

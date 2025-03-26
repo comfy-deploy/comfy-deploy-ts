@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetMachineSessionsSessionsGetRequest = {
-  machineId: string;
+  machineId?: string | null | undefined;
 };
 
 /** @internal */
@@ -18,7 +18,7 @@ export const GetMachineSessionsSessionsGetRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  machine_id: z.string(),
+  machine_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "machine_id": "machineId",
@@ -27,7 +27,7 @@ export const GetMachineSessionsSessionsGetRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetMachineSessionsSessionsGetRequest$Outbound = {
-  machine_id: string;
+  machine_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -36,7 +36,7 @@ export const GetMachineSessionsSessionsGetRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetMachineSessionsSessionsGetRequest
 > = z.object({
-  machineId: z.string(),
+  machineId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     machineId: "machine_id",

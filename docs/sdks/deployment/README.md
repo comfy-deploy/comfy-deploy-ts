@@ -25,7 +25,6 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.deployment.queue({
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -57,7 +56,6 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runDeploymentQueue(comfyDeploy, {
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -131,7 +129,6 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.deployment.sync({
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -163,7 +160,6 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runDeploymentSync(comfyDeploy, {
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -237,7 +233,6 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.deployment.stream({
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },
@@ -271,7 +266,6 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runDeploymentStream(comfyDeploy, {
     inputs: {
-      "num_inference_steps": 30,
       "prompt": "A beautiful landscape",
       "seed": 42,
     },

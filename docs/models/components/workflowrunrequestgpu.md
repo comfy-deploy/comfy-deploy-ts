@@ -7,11 +7,11 @@ The GPU to override the machine's default GPU
 ```typescript
 import { WorkflowRunRequestGpu } from "comfydeploy/models/components";
 
-let value: WorkflowRunRequestGpu = "A100";
+let value: WorkflowRunRequestGpu = "A100-80GB";
 ```
 
 ## Values
 
 ```typescript
-"T4" | "L4" | "A10G" | "A100" | "A100-80GB" | "H100"
+"T4" | "L4" | "A10G" | "L40S" | "A100" | "A100-80GB" | "H100"
 ```

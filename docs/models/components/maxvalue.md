@@ -6,12 +6,12 @@
 ### `number`
 
 ```typescript
-const value: number = 133439;
+const value: number = 633998;
 ```
 
 ### `number`
 
 ```typescript
-const value: number = 968.04;
+const value: number = 8672.9;
 ```
 

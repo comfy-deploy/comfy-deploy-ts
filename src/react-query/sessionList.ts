@@ -26,7 +26,7 @@ import {
   TupleToPrefixes,
 } from "./_types.js";
 
-export type SessionListQueryData = Array<components.GPUEventModel>;
+export type SessionListQueryData = Array<components.SessionResponse>;
 
 /**
  * Get Machine Sessions
@@ -79,7 +79,7 @@ export function prefetchSessionList(
 
 export function setSessionListData(
   client: QueryClient,
-  queryKeyBase: [parameters: { machineId: string }],
+  queryKeyBase: [parameters: { machineId?: string | null | undefined }],
   data: SessionListQueryData,
 ): SessionListQueryData | undefined {
   const key = queryKeySessionList(...queryKeyBase);
@@ -89,7 +89,9 @@ export function setSessionListData(
 
 export function invalidateSessionList(
   client: QueryClient,
-  queryKeyBase: TupleToPrefixes<[parameters: { machineId: string }]>,
+  queryKeyBase: TupleToPrefixes<
+    [parameters: { machineId?: string | null | undefined }]
+  >,
   filters?: Omit<InvalidateQueryFilters, "queryKey" | "predicate" | "exact">,
 ): Promise<void> {
   return client.invalidateQueries({
@@ -137,7 +139,7 @@ export function buildSessionListQuery(
 }
 
 export function queryKeySessionList(
-  parameters: { machineId: string },
+  parameters: { machineId?: string | null | undefined },
 ): QueryKey {
   return ["comfydeploy", "Session", "list", parameters];
 }

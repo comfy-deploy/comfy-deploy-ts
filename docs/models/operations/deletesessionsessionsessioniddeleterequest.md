@@ -15,3 +15,4 @@ let value: DeleteSessionSessionSessionIdDeleteRequest = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `sessionId`        | *string*           | :heavy_check_mark: | N/A                |
+| `waitForShutdown`  | *boolean*          | :heavy_minus_sign: | N/A                |

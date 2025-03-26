@@ -5,7 +5,10 @@
 import { sessionCancel } from "../funcs/sessionCancel.js";
 import { sessionCreate } from "../funcs/sessionCreate.js";
 import { sessionGet } from "../funcs/sessionGet.js";
+import { sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost } from "../funcs/sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost.js";
+import { sessionIncreaseTimeoutSessionIncreaseTimeoutPost } from "../funcs/sessionIncreaseTimeoutSessionIncreaseTimeoutPost.js";
 import { sessionList } from "../funcs/sessionList.js";
+import { sessionSnapshotSessionSessionSessionIdSnapshotPost } from "../funcs/sessionSnapshotSessionSessionSessionIdSnapshotPost.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -18,7 +21,7 @@ export class Session extends ClientSDK {
   async get(
     request: operations.GetSessionSessionSessionIdGetRequest,
     options?: RequestOptions,
-  ): Promise<components.Session> {
+  ): Promise<components.SessionResponse> {
     return unwrapAsync(sessionGet(
       this,
       request,
@@ -46,12 +49,43 @@ export class Session extends ClientSDK {
   async list(
     request: operations.GetMachineSessionsSessionsGetRequest,
     options?: RequestOptions,
-  ): Promise<Array<components.GPUEventModel>> {
+  ): Promise<Array<components.SessionResponse>> {
     return unwrapAsync(sessionList(
       this,
       request,
       options,
     ));
+  }
+
+  /**
+   * Increase Timeout
+   */
+  async increaseTimeoutSessionIncreaseTimeoutPost(
+    request: components.IncreaseTimeoutBody,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(sessionIncreaseTimeoutSessionIncreaseTimeoutPost(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Increase Timeout 2
+   */
+  async increaseTimeout2SessionSessionIdIncreaseTimeoutPost(
+    request:
+      operations.IncreaseTimeout2SessionSessionIdIncreaseTimeoutPostRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(
+      sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost(
+        this,
+        request,
+        options,
+      ),
+    );
   }
 
   /**
@@ -62,6 +96,20 @@ export class Session extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.CreateSessionResponse> {
     return unwrapAsync(sessionCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Snapshot Session
+   */
+  async snapshotSessionSessionSessionIdSnapshotPost(
+    request: operations.SnapshotSessionSessionSessionIdSnapshotPostRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(sessionSnapshotSessionSessionSessionIdSnapshotPost(
       this,
       request,
       options,

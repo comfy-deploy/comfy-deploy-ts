@@ -54,7 +54,7 @@ import { useRunGet } from "comfydeploy/react-query/runGet.js";
 
 export function Example() {
   const { data, error, status } = useRunGet({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Render the UI here...
@@ -74,7 +74,7 @@ export function ExampleWithOptions() {
   const [enabled, setEnabled] = useState(true);
   const { data, error, status } = useRunGet(
     {
-      runId: "<id>",
+      runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
     },
     {
       // TanStack Query options:
@@ -112,10 +112,10 @@ Query.
 [use-mutation]: https://tanstack.com/query/v5/docs/framework/react/reference/useMutation
 
 ```tsx
-import { useRunDeploymentQueueMutation } from "comfydeploy/react-query/runDeploymentQueue.js";
+import { useRunCancelRunRunRunIdCancelPostMutation } from "comfydeploy/react-query/runCancelRunRunRunIdCancelPost.js";
 
 export function Example() {
-  const { mutate, status } = useRunDeploymentQueueMutation();
+  const { mutate, status } = useRunCancelRunRunRunIdCancelPostMutation();
 
   return (
     <form
@@ -125,13 +125,7 @@ export function Example() {
         // Read form data here...
 
         mutate({
-          inputs: {
-            "num_inference_steps": 30,
-            "prompt": "A beautiful landscape",
-            "seed": 42,
-          },
-          webhook: "https://myapp.com/webhook",
-          deploymentId: "15e79589-12c9-453c-a41a-348fdd7de957",
+          runId: "<id>",
         });
       }}
     >
@@ -148,10 +142,10 @@ Since the underlying SDK handles request timeouts and retries, there are a few
 more options provided by the mutation hooks to control these behaviors.
 
 ```tsx
-import { useRunDeploymentQueueMutation } from "comfydeploy/react-query/runDeploymentQueue.js";
+import { useRunCancelRunRunRunIdCancelPostMutation } from "comfydeploy/react-query/runCancelRunRunRunIdCancelPost.js";
 
 export function ExampleWithOptions() {
-  const { mutate, status } = useRunDeploymentQueueMutation({
+  const { mutate, status } = useRunCancelRunRunRunIdCancelPostMutation({
     // TanStack Query options:
     networkMode: "online",
     gcTime: 5 * 60 * 1000, // 5 minutes
@@ -267,7 +261,7 @@ export function App() {
 
 function Example() {
   const { data } = useRunGetSuspense({
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   // Render the UI here...
@@ -297,7 +291,7 @@ export default async function Page() {
   });
 
   await prefetchRunGet(queryClient, comfyDeploy, {
-    runId: "<id>",
+    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
   });
 
   return (

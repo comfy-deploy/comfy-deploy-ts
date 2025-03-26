@@ -5,7 +5,7 @@
 ```typescript
 import { Two } from "comfydeploy/models/components";
 
-let value: Two = "ComfyUIDeployExternalTextSingleLine";
+let value: Two = "ComfyUIDeployExternalNumberSliderInt";
 ```
 
 ## Values
