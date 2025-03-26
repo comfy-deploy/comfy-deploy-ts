@@ -112,10 +112,10 @@ Query.
 [use-mutation]: https://tanstack.com/query/v5/docs/framework/react/reference/useMutation
 
 ```tsx
-import { useRunCancelRunRunRunIdCancelPostMutation } from "comfydeploy/react-query/runCancelRunRunRunIdCancelPost.js";
+import { useRunCancelMutation } from "comfydeploy/react-query/runCancel.js";
 
 export function Example() {
-  const { mutate, status } = useRunCancelRunRunRunIdCancelPostMutation();
+  const { mutate, status } = useRunCancelMutation();
 
   return (
     <form
@@ -142,10 +142,10 @@ Since the underlying SDK handles request timeouts and retries, there are a few
 more options provided by the mutation hooks to control these behaviors.
 
 ```tsx
-import { useRunCancelRunRunRunIdCancelPostMutation } from "comfydeploy/react-query/runCancelRunRunRunIdCancelPost.js";
+import { useRunCancelMutation } from "comfydeploy/react-query/runCancel.js";
 
 export function ExampleWithOptions() {
-  const { mutate, status } = useRunCancelRunRunRunIdCancelPostMutation({
+  const { mutate, status } = useRunCancelMutation({
     // TanStack Query options:
     networkMode: "online",
     gcTime: 5 * 60 * 1000, // 5 minutes

@@ -8,66 +8,57 @@ import {
   UseMutationResult,
 } from "@tanstack/react-query";
 import { ComfyDeployCore } from "../core.js";
-import { runWorkflowSync } from "../funcs/runWorkflowSync.js";
+import { runCancel } from "../funcs/runCancel.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useComfyDeployContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
-export type RunWorkflowSyncMutationVariables = {
-  request: components.WorkflowRunRequest;
+export type RunCancelMutationVariables = {
+  request: operations.CancelRunRunRunIdCancelPostRequest;
   options?: RequestOptions;
 };
 
-export type RunWorkflowSyncMutationData = Array<
-  components.WorkflowRunOutputModel
->;
+export type RunCancelMutationData = any;
 
 /**
- * Workflow - Sync
- *
- * @remarks
- * Create a new workflow run with the given parameters.
+ * Cancel Run
  */
-export function useRunWorkflowSyncMutation(
+export function useRunCancelMutation(
   options?: MutationHookOptions<
-    RunWorkflowSyncMutationData,
+    RunCancelMutationData,
     Error,
-    RunWorkflowSyncMutationVariables
+    RunCancelMutationVariables
   >,
-): UseMutationResult<
-  RunWorkflowSyncMutationData,
-  Error,
-  RunWorkflowSyncMutationVariables
-> {
+): UseMutationResult<RunCancelMutationData, Error, RunCancelMutationVariables> {
   const client = useComfyDeployContext();
   return useMutation({
-    ...buildRunWorkflowSyncMutation(client, options),
+    ...buildRunCancelMutation(client, options),
     ...options,
   });
 }
 
-export function mutationKeyRunWorkflowSync(): MutationKey {
-  return ["comfydeploy", "workflow", "sync"];
+export function mutationKeyRunCancel(): MutationKey {
+  return ["comfydeploy", "Run", "cancel"];
 }
 
-export function buildRunWorkflowSyncMutation(
+export function buildRunCancelMutation(
   client$: ComfyDeployCore,
   hookOptions?: RequestOptions,
 ): {
   mutationKey: MutationKey;
   mutationFn: (
-    variables: RunWorkflowSyncMutationVariables,
-  ) => Promise<RunWorkflowSyncMutationData>;
+    variables: RunCancelMutationVariables,
+  ) => Promise<RunCancelMutationData>;
 } {
   return {
-    mutationKey: mutationKeyRunWorkflowSync(),
-    mutationFn: function runWorkflowSyncMutationFn({
+    mutationKey: mutationKeyRunCancel(),
+    mutationFn: function runCancelMutationFn({
       request,
       options,
-    }): Promise<RunWorkflowSyncMutationData> {
+    }): Promise<RunCancelMutationData> {
       const mergedOptions = {
         ...hookOptions,
         ...options,
@@ -80,7 +71,7 @@ export function buildRunWorkflowSyncMutation(
           ),
         },
       };
-      return unwrapAsync(runWorkflowSync(
+      return unwrapAsync(runCancel(
         client$,
         request,
         mergedOptions,

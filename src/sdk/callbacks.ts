@@ -10,7 +10,7 @@ import { WebhookRecipient } from "../types/webhooks.js";
 
 export class Callbacks extends ClientSDK {
   /**
-   * Receive run status updates via webhook
+   * Run Update Webhook
    *
    * @remarks
    * This endpoint is called by the workflow runner to update the status of a run.

@@ -24,7 +24,7 @@ export type RunDeploymentQueueMutationVariables = {
 export type RunDeploymentQueueMutationData = components.CreateRunResponse;
 
 /**
- * Deployment - Queue
+ * Queue Run
  *
  * @remarks
  * Create a new deployment run with the given parameters.

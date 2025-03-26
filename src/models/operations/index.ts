@@ -3,19 +3,4 @@
  */
 
 export * from "./cancelrunrunrunidcancelpost.js";
-export * from "./deactivatedeploymentdeploymentdeploymentiddeactivatepost.js";
-export * from "./deleteassetassetsassetiddelete.js";
-export * from "./deletesessionsessionsessioniddelete.js";
-export * from "./getassetassetsassetidget.js";
-export * from "./getdeploymentdeploymentdeploymentidget.js";
-export * from "./getdeploymentsdeploymentsget.js";
-export * from "./getmachinesessionssessionsget.js";
 export * from "./getrunrunrunidget.js";
-export * from "./getsessionsessionsessionidget.js";
-export * from "./getsharedeploymentshareusernameslugget.js";
-export * from "./increasetimeout2sessionsessionidincreasetimeoutpost.js";
-export * from "./listassetsassetsget.js";
-export * from "./searchsearchmodelget.js";
-export * from "./snapshotsessionsessionsessionidsnapshotpost.js";
-export * from "./updatedeploymentdeploymentdeploymentidpatch.js";
-export * from "./uploadassetfileassetsuploadpost.js";

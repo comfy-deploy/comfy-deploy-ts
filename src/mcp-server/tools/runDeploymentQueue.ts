@@ -12,7 +12,7 @@ const args = {
 
 export const tool$runDeploymentQueue: ToolDefinition<typeof args> = {
   name: "run-deployment-queue",
-  description: `Deployment - Queue
+  description: `Queue Run
 
 Create a new deployment run with the given parameters.`,
   args,

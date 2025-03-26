@@ -45,8 +45,6 @@ To authenticate your requests, include your API key in the `Authorization` heade
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
-  * [Server-sent event streaming](#server-sent-event-streaming)
-  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -226,62 +224,17 @@ run();
 
 ### [callbacks](docs/sdks/callbacks/README.md)
 
-* [runUpdateRequestBodyWebhookPost](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Receive run status updates via webhook
+* [runUpdateRequestBodyWebhookPost](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Run Update Webhook
 
-
-### [deployments](docs/sdks/deployments/README.md)
-
-* [create](docs/sdks/deployments/README.md#create) - Create Deployment
-* [update](docs/sdks/deployments/README.md#update) - Update Deployment
-* [get](docs/sdks/deployments/README.md#get) - Get Deployment
-* [list](docs/sdks/deployments/README.md#list) - Get Deployments
-* [getShareDeploymentShareUsernameSlugGet](docs/sdks/deployments/README.md#getsharedeploymentshareusernameslugget) - Get Share Deployment
-* [getFeaturedDeploymentsDeploymentsFeaturedGet](docs/sdks/deployments/README.md#getfeatureddeploymentsdeploymentsfeaturedget) - Get Featured Deployments
-* [deactivate](docs/sdks/deployments/README.md#deactivate) - Deactivate Deployment
-
-### [file](docs/sdks/file/README.md)
-
-* [upload](docs/sdks/file/README.md#upload) - Upload File
-* [createFolderAssetsFolderPost](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
-* [listAssetsAssetsGet](docs/sdks/file/README.md#listassetsassetsget) - List Assets
-* [deleteAssetAssetsAssetIdDelete](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
-* [getAssetAssetsAssetIdGet](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
-* [uploadAssetFileAssetsUploadPost](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
-
-### [models](docs/sdks/models/README.md)
-
-* [publicModelsModelsGet](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
 
 ### [run](docs/sdks/run/README.md)
 
 * [get](docs/sdks/run/README.md#get) - Get Run
-* [cancelRunRunRunIdCancelPost](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
+* [cancel](docs/sdks/run/README.md#cancel) - Cancel Run
 
 #### [run.deployment](docs/sdks/deployment/README.md)
 
-* [queue](docs/sdks/deployment/README.md#queue) - Deployment - Queue
-* [sync](docs/sdks/deployment/README.md#sync) - Deployment - Sync
-* [stream](docs/sdks/deployment/README.md#stream) - Deployment - Stream
-
-#### [run.workflow](docs/sdks/workflow/README.md)
-
-* [queue](docs/sdks/workflow/README.md#queue) - Workflow - Queue
-* [sync](docs/sdks/workflow/README.md#sync) - Workflow - Sync
-* [stream](docs/sdks/workflow/README.md#stream) - Workflow - Stream
-
-### [search](docs/sdks/search/README.md)
-
-* [searchSearchModelGet](docs/sdks/search/README.md#searchsearchmodelget) - Search
-
-### [session](docs/sdks/session/README.md)
-
-* [get](docs/sdks/session/README.md#get) - Get Session
-* [cancel](docs/sdks/session/README.md#cancel) - Delete Session
-* [list](docs/sdks/session/README.md#list) - Get Machine Sessions
-* [increaseTimeoutSessionIncreaseTimeoutPost](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
-* [increaseTimeout2SessionSessionIdIncreaseTimeoutPost](docs/sdks/session/README.md#increasetimeout2sessionsessionidincreasetimeoutpost) - Increase Timeout 2
-* [create](docs/sdks/session/README.md#create) - Create Session
-* [snapshotSessionSessionSessionIdSnapshotPost](docs/sdks/session/README.md#snapshotsessionsessionsessionidsnapshotpost) - Snapshot Session
+* [queue](docs/sdks/deployment/README.md#queue) - Queue Run
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -308,116 +261,13 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
-- [`useCallbacksRunUpdateRequestBodyWebhookPostMutation`](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Receive run status updates via webhook
-- [`useDeploymentsCreateMutation`](docs/sdks/deployments/README.md#create) - Create Deployment
-- [`useDeploymentsDeactivateMutation`](docs/sdks/deployments/README.md#deactivate) - Deactivate Deployment
-- [`useDeploymentsGet`](docs/sdks/deployments/README.md#get) - Get Deployment
-- [`useDeploymentsGetFeaturedDeploymentsDeploymentsFeaturedGet`](docs/sdks/deployments/README.md#getfeatureddeploymentsdeploymentsfeaturedget) - Get Featured Deployments
-- [`useDeploymentsGetShareDeploymentShareUsernameSlugGet`](docs/sdks/deployments/README.md#getsharedeploymentshareusernameslugget) - Get Share Deployment
-- [`useDeploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
-- [`useDeploymentsUpdateMutation`](docs/sdks/deployments/README.md#update) - Update Deployment
-- [`useFileCreateFolderAssetsFolderPostMutation`](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
-- [`useFileDeleteAssetAssetsAssetIdDeleteMutation`](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
-- [`useFileGetAssetAssetsAssetIdGet`](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
-- [`useFileListAssetsAssetsGet`](docs/sdks/file/README.md#listassetsassetsget) - List Assets
-- [`useFileUploadAssetFileAssetsUploadPostMutation`](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
-- [`useFileUploadMutation`](docs/sdks/file/README.md#upload) - Upload File
-- [`useModelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
-- [`useRunCancelRunRunRunIdCancelPostMutation`](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
-- [`useRunDeploymentQueueMutation`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
-- [`useRunDeploymentStreamMutation`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
-- [`useRunDeploymentSyncMutation`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
+- [`useCallbacksRunUpdateRequestBodyWebhookPostMutation`](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Run Update Webhook
+- [`useRunCancelMutation`](docs/sdks/run/README.md#cancel) - Cancel Run
+- [`useRunDeploymentQueueMutation`](docs/sdks/deployment/README.md#queue) - Queue Run
 - [`useRunGet`](docs/sdks/run/README.md#get) - Get Run
-- [`useRunWorkflowQueueMutation`](docs/sdks/workflow/README.md#queue) - Workflow - Queue
-- [`useRunWorkflowStreamMutation`](docs/sdks/workflow/README.md#stream) - Workflow - Stream
-- [`useRunWorkflowSyncMutation`](docs/sdks/workflow/README.md#sync) - Workflow - Sync
-- [`useSearchSearchSearchModelGet`](docs/sdks/search/README.md#searchsearchmodelget) - Search
-- [`useSessionCancelMutation`](docs/sdks/session/README.md#cancel) - Delete Session
-- [`useSessionCreateMutation`](docs/sdks/session/README.md#create) - Create Session
-- [`useSessionGet`](docs/sdks/session/README.md#get) - Get Session
-- [`useSessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPostMutation`](docs/sdks/session/README.md#increasetimeout2sessionsessionidincreasetimeoutpost) - Increase Timeout 2
-- [`useSessionIncreaseTimeoutSessionIncreaseTimeoutPostMutation`](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
-- [`useSessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
-- [`useSessionSnapshotSessionSessionSessionIdSnapshotPostMutation`](docs/sdks/session/README.md#snapshotsessionsessionsessionidsnapshotpost) - Snapshot Session
 
 </details>
 <!-- End React hooks with TanStack Query [react-query] -->
-
-<!-- Start Server-sent event streaming [eventstream] -->
-## Server-sent event streaming
-
-[Server-sent events][mdn-sse] are used to stream content from certain
-operations. These operations will expose the stream as an async iterable that
-can be consumed using a [`for await...of`][mdn-for-await-of] loop. The loop will
-terminate when the server no longer has any events to send and closes the
-underlying connection.
-
-```typescript
-import { ComfyDeploy } from "comfydeploy";
-
-const comfyDeploy = new ComfyDeploy({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await comfyDeploy.run.deployment.stream({
-    inputs: {
-      "prompt": "A beautiful landscape",
-      "seed": 42,
-    },
-    webhook: "https://myapp.com/webhook",
-    deploymentId: "15e79589-12c9-453c-a41a-348fdd7de957",
-  });
-
-  for await (const event of result) {
-    // Handle the event
-    console.log(event);
-  }
-}
-
-run();
-
-```
-
-[mdn-sse]: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
-[mdn-for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
-<!-- End Server-sent event streaming [eventstream] -->
-
-<!-- Start File uploads [file-upload] -->
-## File uploads
-
-Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
-
-> [!TIP]
->
-> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
->
-> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
-> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
-> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
-> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
-
-```typescript
-import { ComfyDeploy } from "comfydeploy";
-import { openAsBlob } from "node:fs";
-
-const comfyDeploy = new ComfyDeploy({
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await comfyDeploy.file.upload({
-    file: await openAsBlob("example.file"),
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -718,37 +568,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`callbacksRunUpdateRequestBodyWebhookPost`](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Receive run status updates via webhook
-- [`deploymentsCreate`](docs/sdks/deployments/README.md#create) - Create Deployment
-- [`deploymentsDeactivate`](docs/sdks/deployments/README.md#deactivate) - Deactivate Deployment
-- [`deploymentsGet`](docs/sdks/deployments/README.md#get) - Get Deployment
-- [`deploymentsGetFeaturedDeploymentsDeploymentsFeaturedGet`](docs/sdks/deployments/README.md#getfeatureddeploymentsdeploymentsfeaturedget) - Get Featured Deployments
-- [`deploymentsGetShareDeploymentShareUsernameSlugGet`](docs/sdks/deployments/README.md#getsharedeploymentshareusernameslugget) - Get Share Deployment
-- [`deploymentsList`](docs/sdks/deployments/README.md#list) - Get Deployments
-- [`deploymentsUpdate`](docs/sdks/deployments/README.md#update) - Update Deployment
-- [`fileCreateFolderAssetsFolderPost`](docs/sdks/file/README.md#createfolderassetsfolderpost) - Create Folder
-- [`fileDeleteAssetAssetsAssetIdDelete`](docs/sdks/file/README.md#deleteassetassetsassetiddelete) - Delete Asset
-- [`fileGetAssetAssetsAssetIdGet`](docs/sdks/file/README.md#getassetassetsassetidget) - Get Asset
-- [`fileListAssetsAssetsGet`](docs/sdks/file/README.md#listassetsassetsget) - List Assets
-- [`fileUpload`](docs/sdks/file/README.md#upload) - Upload File
-- [`fileUploadAssetFileAssetsUploadPost`](docs/sdks/file/README.md#uploadassetfileassetsuploadpost) - Upload Asset File
-- [`modelsPublicModelsModelsGet`](docs/sdks/models/README.md#publicmodelsmodelsget) - Public Models
-- [`runCancelRunRunRunIdCancelPost`](docs/sdks/run/README.md#cancelrunrunrunidcancelpost) - Cancel Run
-- [`runDeploymentQueue`](docs/sdks/deployment/README.md#queue) - Deployment - Queue
-- [`runDeploymentStream`](docs/sdks/deployment/README.md#stream) - Deployment - Stream
-- [`runDeploymentSync`](docs/sdks/deployment/README.md#sync) - Deployment - Sync
+- [`callbacksRunUpdateRequestBodyWebhookPost`](docs/sdks/callbacks/README.md#runupdaterequestbodywebhookpost) - Run Update Webhook
+- [`runCancel`](docs/sdks/run/README.md#cancel) - Cancel Run
+- [`runDeploymentQueue`](docs/sdks/deployment/README.md#queue) - Queue Run
 - [`runGet`](docs/sdks/run/README.md#get) - Get Run
-- [`runWorkflowQueue`](docs/sdks/workflow/README.md#queue) - Workflow - Queue
-- [`runWorkflowStream`](docs/sdks/workflow/README.md#stream) - Workflow - Stream
-- [`runWorkflowSync`](docs/sdks/workflow/README.md#sync) - Workflow - Sync
-- [`searchSearchSearchModelGet`](docs/sdks/search/README.md#searchsearchmodelget) - Search
-- [`sessionCancel`](docs/sdks/session/README.md#cancel) - Delete Session
-- [`sessionCreate`](docs/sdks/session/README.md#create) - Create Session
-- [`sessionGet`](docs/sdks/session/README.md#get) - Get Session
-- [`sessionIncreaseTimeout2SessionSessionIdIncreaseTimeoutPost`](docs/sdks/session/README.md#increasetimeout2sessionsessionidincreasetimeoutpost) - Increase Timeout 2
-- [`sessionIncreaseTimeoutSessionIncreaseTimeoutPost`](docs/sdks/session/README.md#increasetimeoutsessionincreasetimeoutpost) - Increase Timeout
-- [`sessionList`](docs/sdks/session/README.md#list) - Get Machine Sessions
-- [`sessionSnapshotSessionSessionSessionIdSnapshotPost`](docs/sdks/session/README.md#snapshotsessionsessionsessionidsnapshotpost) - Snapshot Session
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

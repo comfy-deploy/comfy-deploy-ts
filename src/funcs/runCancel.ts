@@ -4,14 +4,13 @@
 
 import * as z from "zod";
 import { ComfyDeployCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -22,15 +21,16 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Increase Timeout
+ * Cancel Run
  */
-export function sessionIncreaseTimeoutSessionIncreaseTimeoutPost(
+export function runCancel(
   client: ComfyDeployCore,
-  request: components.IncreaseTimeoutBody,
+  request: operations.CancelRunRunRunIdCancelPostRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -54,7 +54,7 @@ export function sessionIncreaseTimeoutSessionIncreaseTimeoutPost(
 
 async function $do(
   client: ComfyDeployCore,
-  request: components.IncreaseTimeoutBody,
+  request: operations.CancelRunRunRunIdCancelPostRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -74,19 +74,26 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.IncreaseTimeoutBody$outboundSchema.parse(value),
+    (value) =>
+      operations.CancelRunRunRunIdCancelPostRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = null;
 
-  const path = pathToFunc("/session/increase-timeout")();
+  const pathParams = {
+    run_id: encodeSimple("run_id", payload.run_id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/run/{run_id}/cancel")(pathParams);
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -96,7 +103,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "increase_timeout_session_increase_timeout_post",
+    operationID: "cancel_run_run__run_id__cancel_post",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
