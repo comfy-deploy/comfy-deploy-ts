@@ -15,6 +15,7 @@ export type Inputs = string | number | number | boolean | Array<any>;
  * The GPU to override the machine's default GPU
  */
 export const Gpu = {
+  Cpu: "CPU",
   T4: "T4",
   L4: "L4",
   A10G: "A10G",
