@@ -6,7 +6,7 @@
 import { CreateRunResponse } from "comfydeploy/models/components";
 
 let value: CreateRunResponse = {
-  runId: "3a40c569-dad4-4c2f-8a3f-b4380365749d",
+  runId: "4e8e5e7e-4af2-438b-9922-15328cdd8f4f",
 };
 ```
 

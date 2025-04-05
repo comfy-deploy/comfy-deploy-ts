@@ -6,7 +6,7 @@
 import { MediaItem } from "comfydeploy/models/components";
 
 let value: MediaItem = {
-  url: "https://bitter-platter.info/",
+  url: "https://taut-violin.net",
   type: "<value>",
   filename: "example.file",
 };

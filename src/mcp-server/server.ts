@@ -27,7 +27,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "ComfyDeploy",
-    version: "2.2.1",
+    version: "2.2.2",
   });
 
   const client = new ComfyDeployCore({

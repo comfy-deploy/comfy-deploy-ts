@@ -6,16 +6,16 @@
 import { WorkflowRunModel } from "comfydeploy/models/components";
 
 let value: WorkflowRunModel = {
-  id: "8b986a7e-f6c8-49e1-910d-cdfc7c1a2f86",
-  workflowVersionId: "c790999f-a56b-40aa-8325-597f132a4732",
+  id: "625eca27-a2f8-4911-bbf2-bc325ecfcb07",
+  workflowVersionId: "2e12517a-eed8-4802-9821-1fa1a7086e73",
   workflowInputs: "<value>",
-  workflowId: "a235d1d1-f7f9-4b04-8141-561b94819e5a",
+  workflowId: "8a072a0a-afd0-480c-8283-fe1c3b40f3c1",
   workflowApi: "<value>",
-  machineId: "b4290d0a-4bf3-4999-a3f7-db4d6e9ebb8f",
+  machineId: "c7b252b8-efbc-4679-bec5-ef749b7fe5f6",
   origin: "<value>",
   status: "<value>",
-  createdAt: new Date("2024-04-09T13:04:59.510Z"),
-  updatedAt: new Date("2024-10-26T14:34:01.576Z"),
+  createdAt: new Date("2025-10-01T05:30:35.888Z"),
+  updatedAt: new Date("2023-03-28T18:50:58.271Z"),
   gpuEventId: "<id>",
   gpu: "<value>",
   machineVersion: "<value>",
@@ -26,11 +26,6 @@ let value: WorkflowRunModel = {
   liveStatus: "<value>",
   webhook: "<value>",
   webhookStatus: "<value>",
-  number: 19193,
-  duration: 3015.75,
-  coldStartDuration: 6601.74,
-  coldStartDurationTotal: 2900.77,
-  runDuration: 6180.16,
 };
 ```
 
@@ -65,8 +60,8 @@ let value: WorkflowRunModel = {
 | `webhookStatus`                                                                               | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
 | `webhookIntermediateStatus`                                                                   | *boolean*                                                                                     | :heavy_minus_sign:                                                                            | N/A                                                                                           |
 | `outputs`                                                                                     | [components.WorkflowRunOutputModel](../../models/components/workflowrunoutputmodel.md)[]      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `number`                                                                                      | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `duration`                                                                                    | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `coldStartDuration`                                                                           | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `coldStartDurationTotal`                                                                      | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
-| `runDuration`                                                                                 | *number*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `number`                                                                                      | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `duration`                                                                                    | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `coldStartDuration`                                                                           | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `coldStartDurationTotal`                                                                      | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
+| `runDuration`                                                                                 | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |
