@@ -42,11 +42,11 @@ export type WorkflowRunModel = {
   webhookStatus: string | null;
   webhookIntermediateStatus?: boolean | undefined;
   outputs?: Array<WorkflowRunOutputModel> | undefined;
-  number: number;
-  duration: number | null;
-  coldStartDuration: number | null;
-  coldStartDurationTotal: number | null;
-  runDuration: number | null;
+  number?: number | null | undefined;
+  duration?: number | null | undefined;
+  coldStartDuration?: number | null | undefined;
+  coldStartDurationTotal?: number | null | undefined;
+  runDuration?: number | null | undefined;
 };
 
 /** @internal */
@@ -88,11 +88,11 @@ export const WorkflowRunModel$inboundSchema: z.ZodType<
   webhook_status: z.nullable(z.string()),
   webhook_intermediate_status: z.boolean().default(false),
   outputs: z.array(WorkflowRunOutputModel$inboundSchema).optional(),
-  number: z.number().int(),
-  duration: z.nullable(z.number()),
-  cold_start_duration: z.nullable(z.number()),
-  cold_start_duration_total: z.nullable(z.number()),
-  run_duration: z.nullable(z.number()),
+  number: z.nullable(z.number().int()).optional(),
+  duration: z.nullable(z.number()).optional(),
+  cold_start_duration: z.nullable(z.number()).optional(),
+  cold_start_duration_total: z.nullable(z.number()).optional(),
+  run_duration: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "workflow_version_id": "workflowVersionId",
@@ -150,11 +150,11 @@ export type WorkflowRunModel$Outbound = {
   webhook_status: string | null;
   webhook_intermediate_status: boolean;
   outputs?: Array<WorkflowRunOutputModel$Outbound> | undefined;
-  number: number;
-  duration: number | null;
-  cold_start_duration: number | null;
-  cold_start_duration_total: number | null;
-  run_duration: number | null;
+  number?: number | null | undefined;
+  duration?: number | null | undefined;
+  cold_start_duration?: number | null | undefined;
+  cold_start_duration_total?: number | null | undefined;
+  run_duration?: number | null | undefined;
 };
 
 /** @internal */
@@ -190,11 +190,11 @@ export const WorkflowRunModel$outboundSchema: z.ZodType<
   webhookStatus: z.nullable(z.string()),
   webhookIntermediateStatus: z.boolean().default(false),
   outputs: z.array(WorkflowRunOutputModel$outboundSchema).optional(),
-  number: z.number().int(),
-  duration: z.nullable(z.number()),
-  coldStartDuration: z.nullable(z.number()),
-  coldStartDurationTotal: z.nullable(z.number()),
-  runDuration: z.nullable(z.number()),
+  number: z.nullable(z.number().int()).optional(),
+  duration: z.nullable(z.number()).optional(),
+  coldStartDuration: z.nullable(z.number()).optional(),
+  coldStartDurationTotal: z.nullable(z.number()).optional(),
+  runDuration: z.nullable(z.number()).optional(),
 }).transform((v) => {
   return remap$(v, {
     workflowVersionId: "workflow_version_id",

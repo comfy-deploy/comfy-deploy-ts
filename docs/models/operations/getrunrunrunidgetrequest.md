@@ -6,7 +6,7 @@
 import { GetRunRunRunIdGetRequest } from "comfydeploy/models/operations";
 
 let value: GetRunRunRunIdGetRequest = {
-  runId: "2275fcbe-189f-4431-b0ea-c4917fe5f3ff",
+  runId: "677a3821-c1b0-4146-9933-c4681e4048d7",
 };
 ```
 

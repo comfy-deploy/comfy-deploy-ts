@@ -27,6 +27,9 @@ async function run() {
       "seed": 42,
     },
     webhook: "https://myapp.com/webhook",
+    flags: [
+      "runpod_v2",
+    ],
     deploymentId: "15e79589-12c9-453c-a41a-348fdd7de957",
   });
 
@@ -58,6 +61,9 @@ async function run() {
       "seed": 42,
     },
     webhook: "https://myapp.com/webhook",
+    flags: [
+      "runpod_v2",
+    ],
     deploymentId: "15e79589-12c9-453c-a41a-348fdd7de957",
   });
 
