@@ -10,6 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetRunRunRunIdGetRequest = {
   runId: string;
+  queuePosition?: boolean | undefined;
 };
 
 /** @internal */
@@ -19,15 +20,18 @@ export const GetRunRunRunIdGetRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   run_id: z.string(),
+  queue_position: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     "run_id": "runId",
+    "queue_position": "queuePosition",
   });
 });
 
 /** @internal */
 export type GetRunRunRunIdGetRequest$Outbound = {
   run_id: string;
+  queue_position: boolean;
 };
 
 /** @internal */
@@ -37,9 +41,11 @@ export const GetRunRunRunIdGetRequest$outboundSchema: z.ZodType<
   GetRunRunRunIdGetRequest
 > = z.object({
   runId: z.string(),
+  queuePosition: z.boolean().default(false),
 }).transform((v) => {
   return remap$(v, {
     runId: "run_id",
+    queuePosition: "queue_position",
   });
 });
 

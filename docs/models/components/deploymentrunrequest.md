@@ -12,6 +12,7 @@ let value: DeploymentRunRequest = {
     "seed": 123456,
   },
   webhook: "https://myapp.com/webhook",
+  webhookIntermediateStatus: true,
   deploymentId: "12345678-1234-5678-1234-567812345678",
 };
 ```
@@ -24,4 +25,5 @@ let value: DeploymentRunRequest = {
 | `webhook`                                         | *string*                                          | :heavy_minus_sign:                                | N/A                                               |                                                   |
 | `webhookIntermediateStatus`                       | *boolean*                                         | :heavy_minus_sign:                                | N/A                                               | true                                              |
 | `gpu`                                             | [components.Gpu](../../models/components/gpu.md)  | :heavy_minus_sign:                                | The GPU to override the machine's default GPU     |                                                   |
+| `flags`                                           | *string*[]                                        | :heavy_minus_sign:                                | Array of flag strings                             | [<br/>"runpod_v2"<br/>]                           |
 | `deploymentId`                                    | *string*                                          | :heavy_check_mark:                                | N/A                                               | 15e79589-12c9-453c-a41a-348fdd7de957              |

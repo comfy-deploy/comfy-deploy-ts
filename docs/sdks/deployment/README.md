@@ -23,14 +23,15 @@ const comfyDeploy = new ComfyDeploy({
 async function run() {
   const result = await comfyDeploy.run.deployment.queue({
     inputs: {
-      "prompt": "A beautiful landscape",
-      "seed": 42,
+      "num_inference_steps": 30,
+      "prompt": "A futuristic cityscape",
+      "seed": 123456,
     },
     webhook: "https://myapp.com/webhook",
-    deploymentId: "15e79589-12c9-453c-a41a-348fdd7de957",
+    webhookIntermediateStatus: true,
+    deploymentId: "12345678-1234-5678-1234-567812345678",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -54,21 +55,20 @@ const comfyDeploy = new ComfyDeployCore({
 async function run() {
   const res = await runDeploymentQueue(comfyDeploy, {
     inputs: {
-      "prompt": "A beautiful landscape",
-      "seed": 42,
+      "num_inference_steps": 30,
+      "prompt": "A futuristic cityscape",
+      "seed": 123456,
     },
     webhook: "https://myapp.com/webhook",
-    deploymentId: "15e79589-12c9-453c-a41a-348fdd7de957",
+    webhookIntermediateStatus: true,
+    deploymentId: "12345678-1234-5678-1234-567812345678",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("runDeploymentQueue failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

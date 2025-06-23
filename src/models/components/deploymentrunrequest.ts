@@ -15,6 +15,7 @@ export type Inputs = string | number | number | boolean | Array<any>;
  * The GPU to override the machine's default GPU
  */
 export const Gpu = {
+  Cpu: "CPU",
   T4: "T4",
   L4: "L4",
   A10G: "A10G",
@@ -22,6 +23,8 @@ export const Gpu = {
   A100: "A100",
   A10080Gb: "A100-80GB",
   H100: "H100",
+  H200: "H200",
+  B200: "B200",
 } as const;
 /**
  * The GPU to override the machine's default GPU
@@ -41,6 +44,10 @@ export type DeploymentRunRequest = {
    * The GPU to override the machine's default GPU
    */
   gpu?: Gpu | undefined;
+  /**
+   * Array of flag strings
+   */
+  flags?: Array<string> | null | undefined;
   deploymentId: string;
 };
 
@@ -133,6 +140,7 @@ export const DeploymentRunRequest$inboundSchema: z.ZodType<
   webhook: z.string().optional(),
   webhook_intermediate_status: z.boolean().default(false),
   gpu: Gpu$inboundSchema.optional(),
+  flags: z.nullable(z.array(z.string())).optional(),
   deployment_id: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -149,6 +157,7 @@ export type DeploymentRunRequest$Outbound = {
   webhook?: string | undefined;
   webhook_intermediate_status: boolean;
   gpu?: string | undefined;
+  flags?: Array<string> | null | undefined;
   deployment_id: string;
 };
 
@@ -170,6 +179,7 @@ export const DeploymentRunRequest$outboundSchema: z.ZodType<
   webhook: z.string().optional(),
   webhookIntermediateStatus: z.boolean().default(false),
   gpu: Gpu$outboundSchema.optional(),
+  flags: z.nullable(z.array(z.string())).optional(),
   deploymentId: z.string(),
 }).transform((v) => {
   return remap$(v, {

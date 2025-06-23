@@ -18,6 +18,7 @@ export type Data = MediaItem | string | boolean;
 
 export type WorkflowRunOutputModel = {
   id: string;
+  outputId?: string | null | undefined;
   runId: string;
   data: { [k: string]: Array<MediaItem | string | boolean> };
   nodeMeta?: any | null | undefined;
@@ -72,6 +73,7 @@ export const WorkflowRunOutputModel$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
+  output_id: z.nullable(z.string()).optional(),
   run_id: z.string(),
   data: z.record(
     z.array(z.union([MediaItem$inboundSchema, z.string(), z.boolean()])),
@@ -83,6 +85,7 @@ export const WorkflowRunOutputModel$inboundSchema: z.ZodType<
   node_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "output_id": "outputId",
     "run_id": "runId",
     "node_meta": "nodeMeta",
     "created_at": "createdAt",
@@ -94,6 +97,7 @@ export const WorkflowRunOutputModel$inboundSchema: z.ZodType<
 /** @internal */
 export type WorkflowRunOutputModel$Outbound = {
   id: string;
+  output_id?: string | null | undefined;
   run_id: string;
   data: { [k: string]: Array<MediaItem$Outbound | string | boolean> };
   node_meta?: any | null | undefined;
@@ -110,6 +114,7 @@ export const WorkflowRunOutputModel$outboundSchema: z.ZodType<
   WorkflowRunOutputModel
 > = z.object({
   id: z.string(),
+  outputId: z.nullable(z.string()).optional(),
   runId: z.string(),
   data: z.record(
     z.array(z.union([MediaItem$outboundSchema, z.string(), z.boolean()])),
@@ -121,6 +126,7 @@ export const WorkflowRunOutputModel$outboundSchema: z.ZodType<
   nodeId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    outputId: "output_id",
     runId: "run_id",
     nodeMeta: "node_meta",
     createdAt: "created_at",

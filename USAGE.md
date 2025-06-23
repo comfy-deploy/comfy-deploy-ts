@@ -8,10 +8,9 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    runId: "faf49b3a-7b64-4687-95c8-58ca8a41dd73",
   });
 
-  // Handle the result
   console.log(result);
 }
 

@@ -54,7 +54,7 @@ import { useRunGet } from "comfydeploy/react-query/runGet.js";
 
 export function Example() {
   const { data, error, status } = useRunGet({
-    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    runId: "faf49b3a-7b64-4687-95c8-58ca8a41dd73",
   });
 
   // Render the UI here...
@@ -74,7 +74,7 @@ export function ExampleWithOptions() {
   const [enabled, setEnabled] = useState(true);
   const { data, error, status } = useRunGet(
     {
-      runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+      runId: "faf49b3a-7b64-4687-95c8-58ca8a41dd73",
     },
     {
       // TanStack Query options:
@@ -261,7 +261,7 @@ export function App() {
 
 function Example() {
   const { data } = useRunGetSuspense({
-    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    runId: "faf49b3a-7b64-4687-95c8-58ca8a41dd73",
   });
 
   // Render the UI here...
@@ -291,7 +291,7 @@ export default async function Page() {
   });
 
   await prefetchRunGet(queryClient, comfyDeploy, {
-    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    runId: "faf49b3a-7b64-4687-95c8-58ca8a41dd73",
   });
 
   return (

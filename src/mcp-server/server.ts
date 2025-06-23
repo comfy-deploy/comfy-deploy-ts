@@ -11,7 +11,7 @@ import {
   createRegisterResource,
   createRegisterResourceTemplate,
 } from "./resources.js";
-import { MCPScope, mcpScopes } from "./scopes.js";
+import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$runCancel } from "./tools/runCancel.js";
 import { tool$runDeploymentQueue } from "./tools/runDeploymentQueue.js";
@@ -27,7 +27,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "ComfyDeploy",
-    version: "2.2.1",
+    version: "2.3.0",
   });
 
   const client = new ComfyDeployCore({
@@ -36,7 +36,7 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
 
-  const scopes = new Set(deps.scopes ?? mcpScopes);
+  const scopes = new Set(deps.scopes);
 
   const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
   const tool = createRegisterTool(

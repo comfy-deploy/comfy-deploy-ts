@@ -23,10 +23,9 @@ const comfyDeploy = new ComfyDeploy({
 
 async function run() {
   const result = await comfyDeploy.run.get({
-    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    runId: "faf49b3a-7b64-4687-95c8-58ca8a41dd73",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,17 +48,14 @@ const comfyDeploy = new ComfyDeployCore({
 
 async function run() {
   const res = await runGet(comfyDeploy, {
-    runId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    runId: "faf49b3a-7b64-4687-95c8-58ca8a41dd73",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("runGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -131,7 +127,6 @@ async function run() {
     runId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -156,15 +151,12 @@ async function run() {
   const res = await runCancel(comfyDeploy, {
     runId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("runCancel failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

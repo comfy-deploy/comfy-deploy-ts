@@ -79,7 +79,10 @@ export function prefetchRunGet(
 
 export function setRunGetData(
   client: QueryClient,
-  queryKeyBase: [runId: string],
+  queryKeyBase: [
+    runId: string,
+    parameters: { queuePosition?: boolean | undefined },
+  ],
   data: RunGetQueryData,
 ): RunGetQueryData | undefined {
   const key = queryKeyRunGet(...queryKeyBase);
@@ -89,7 +92,9 @@ export function setRunGetData(
 
 export function invalidateRunGet(
   client: QueryClient,
-  queryKeyBase: TupleToPrefixes<[runId: string]>,
+  queryKeyBase: TupleToPrefixes<
+    [runId: string, parameters: { queuePosition?: boolean | undefined }]
+  >,
   filters?: Omit<InvalidateQueryFilters, "queryKey" | "predicate" | "exact">,
 ): Promise<void> {
   return client.invalidateQueries({
@@ -117,7 +122,9 @@ export function buildRunGetQuery(
   queryFn: (context: QueryFunctionContext) => Promise<RunGetQueryData>;
 } {
   return {
-    queryKey: queryKeyRunGet(request.runId),
+    queryKey: queryKeyRunGet(request.runId, {
+      queuePosition: request.queuePosition,
+    }),
     queryFn: async function runGetQueryFn(ctx): Promise<RunGetQueryData> {
       const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
       const mergedOptions = {
@@ -134,6 +141,9 @@ export function buildRunGetQuery(
   };
 }
 
-export function queryKeyRunGet(runId: string): QueryKey {
-  return ["comfydeploy", "Run", "get", runId];
+export function queryKeyRunGet(
+  runId: string,
+  parameters: { queuePosition?: boolean | undefined },
+): QueryKey {
+  return ["comfydeploy", "Run", "get", runId, parameters];
 }

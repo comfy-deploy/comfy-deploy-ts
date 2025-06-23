@@ -7,7 +7,7 @@
 
 ```typescript
 const value: components.MediaItem = {
-  url: "https://concrete-equal.name/",
+  url: "https://royal-icebreaker.biz",
   type: "<value>",
   filename: "example.file",
 };
@@ -22,6 +22,6 @@ const value: string = "<value>";
 ### `boolean`
 
 ```typescript
-const value: boolean = false;
+const value: boolean = true;
 ```
 

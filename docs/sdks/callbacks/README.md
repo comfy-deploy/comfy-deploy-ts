@@ -21,11 +21,10 @@ const comfyDeploy = new ComfyDeploy();
 async function run() {
   const result = await comfyDeploy.callbacks.runUpdateRequestBodyWebhookPost({
     runId: "<id>",
-    status: "success",
+    status: "running",
     liveStatus: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -47,18 +46,15 @@ const comfyDeploy = new ComfyDeployCore();
 async function run() {
   const res = await callbacksRunUpdateRequestBodyWebhookPost(comfyDeploy, {
     runId: "<id>",
-    status: "success",
+    status: "running",
     liveStatus: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("callbacksRunUpdateRequestBodyWebhookPost failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
